@@ -1,0 +1,680 @@
+.banner{height:550px;overflow: hidden;margin-top: 10px; }
+.banner_a{height:615px;overflow: hidden;margin-top: 10px; }
+.banner-min{height: 290px;}
+.banner-img{width:100%;height: 290px;background: url("../images/bg-business.png") no-repeat;color: #fff;font-size: 24px;font-weight: bold;}
+.banner-img p{width: 1220px;margin: 0 auto;padding-top: 45px;}
+
+.banner-content{width: 1220px;height:200px;margin: 0 auto;position: relative;top: -80px;}
+.banner-content-head{width:100%;height:45px;background: #2577e3;line-height: 45px;color: #fff;font-weight: bold;text-align: center;font-size: 16px;}
+.banner-content-head span::before {content: "一";color: white;  }
+.banner-content-head span::after {  content: "一";  color: white;}
+.banner-content-con{ width: 1220px;overflow:hidden; background: #fff;border: 1px solid  #e5e5e5;border-top:0px;padding: 0 24px;}
+.banner-content-con-list{float: left;}
+.form-control_a{margin-left:30px;}
+.banner-content-con-list>p{line-height: 64px;font-weight: bold; }
+.banner-content-con-list:nth-child(1){width: 520px;}
+.banner-content-con-list:nth-child(2){width: 520px;}
+.banner-content-con-list:nth-child(3){width: 450px;}
+.banner-content-con-list>div{font-size: 14px;}
+.banner-content-con-list-info span{margin-right: 30px;}
+.banner-content-con-list-info>.luggage{margin-right:30px;margin-left: 25px;}
+.banner-content-con-list-info input,.banner-content-con-list-info select{display:inline-block;width: inherit;}
+.banner-content-con-btn{clear: both; float: right;}
+.banner-content-con-btn button{margin-bottom: 2.5rem; width:120px;height:40px;background-color: #2577e3; margin-top: 15px; margin-right: 38px;}    
+.baoche{color: #2577e3;border-bottom:3px solid  #2577e3; }
+
+.hidden-info{display: none;}
+.show-info{display: inline-block;}
+.floatl{float: left;}
+.floatr{float: right;}
+.icon-star{color: #f19149;}
+.text-gray{color: #999;}
+.text-orange{color: #ff5418;}
+.text-sixteen{font-size: 16px;}
+.text-marbom{margin-bottom: 10px;}
+.text-style1 label{line-height: 34px;}
+.text-style1 label i{color:red; }
+.text-style2 label{padding: 3px 8px; color: #2377e3;border: 1px solid #2377e3;font-weight: normal;margin-right: 5px;border-radius: 5px;margin-bottom: 10px;}
+.bg-s1{background: #e3edfb;}
+.bg-s2{background: #f8f8f8;}
+.del-color label{color: #333;border: 1px solid #333;}
+.font-hei{line-height: 40px;}
+.search-the-local{width: 700px;margin:25px auto;line-height: 45px;overflow: hidden;text-align: center;margin-bottom: 70px;}
+.search-the-local input{width: 600px;height: 45px; text-align: center;float:left;background: #7f7f7f;color: #e5e5ec;}
+.search-the-local i{width: 100px;height: 45px; float:left;font-size: 32px;border:1px solid #7f7f7f;}
+.demo-input{padding-left: 10px; height: 38px; min-width: 262px; line-height: 38px; border: 1px solid #e6e6e6;  background-color: #fff;  border-radius: 2px;}
+.calendar-min{width: 400px;height: 392px;overflow: hidden;}
+.calendar-min .date-box{width: 400px;background:#fff;box-shadow:none;padding-bottom:10px;}
+.calendar-min .ht-rili-datebox{padding: 0;}
+.calendar-min .ht-rili-close{display: none;}
+.calendar-min .ht-custom{display: none;}
+/* .calendar-min .ht-rili-td{background: #fff;} */
+.calendar-box .iconfont{margin-right: 0px!important;}
+.ez-travel-tuxedo .time-info{top:1235px!important;    left: 383px!important;}
+
+body>.content{width: 1220px;margin: 0 auto;overflow: hidden; margin-top: 25px;}
+
+.tourism-info{width:1220px;height:240px;padding:0 50px 0 25px;overflow: hidden; margin: 0 auto;border: 2px solid #2577e3;}
+.tourism-info li{width:380px;padding-right:50px;float: left;}
+.tourism-info li>p{line-height: 64px;}
+.tourism-info li>select{margin: 10px 0;}
+.tourism-info li select:first-child{margin-top: 0px;}
+.tourism-info-btn{clear: both; }
+.tourism-info-btn button{float: right; width:120px;height:40px;background-color: #2577e3; margin-top: 15px; margin-right: 50px;}
+
+
+.travel-plan{width: 1220px;overflow: hidden;border: 1px solid #e5e5e5;margin: 20px 0 24px;}
+.travel-plan-head{line-height: 35px;padding: 0 25px;font-size: 16px;overflow: hidden;}
+.travel-plan-head-title{font-weight: bolder;float: left;}
+.travel-plan-head-add{float: right;}
+.travel-plan-head-add:before{font-size: 20px;color: #2577e3;}
+.travel-plan-content{width: 1220px;overflow: hidden;margin: 13px 0;}
+.travel-plan-content>i{width: 35px;line-height: 200px;float: left;text-align: center;font-size: 24px;cursor: pointer;}
+.travel-plan-content-list{width: 1150px;overflow: hidden;float: left;}
+.travel-plan-content ul{display: inline-block;width: 99999px;overflow: hidden;float: left;position: relative;}
+.travel-plan-content li{position: relative;margin-right:10px;float: left;}
+.travel-plan-content li:last-child{margin-right:0;float: left;}
+.travel-plan-content li>i{position: absolute;left:252px;font-size: 24px;color: #ff5c5c;}
+
+.tourism-custom{overflow: hidden;}
+.travel-list{width: 361px;height:1126px; border:1px solid #e3e3e3;float: left;}
+.travel-list-head{padding: 0 9px;height:45px;font-size: 20px;overflow: hidden;line-height: 44px;}
+.travel-list-head>span{display: flex;width: 20px;height: 100%;float: left;background-color: #afafaf;}
+.travel-list-head>span:last-child{background-color: #2577e3;}
+.travel-list-head>span i{font-size: 18px;color: #fff;font-weight: bolder;}
+.travel-list-head>div{width: 301px;height: 45px;float:  left;overflow:  hidden;}
+.travel-list-head ul{display: inline-block;width: 999999px ;position: relative; overflow: hidden;margin: 0 4px;}
+.travel-list-head li{width: 146px;text-align: center;float: left;border: 1px solid #e3e3e3;border-top: none;}
+.travel-list-head-span-style span{display: inline-block;line-height: 38px;border-bottom:3px solid #2577e3;color: #2577e3;}
+
+ .travel-list-head-span-style_yic{display: none;}
+ .travel-list-head-span-style_xians{display:block;}
+.travel-list-content-list{overflow: hidden;height: 1009px;}
+.travel-list-content ul{overflow: hidden;position: relative;}
+.travel-list-content li{position: relative; margin:10px 9px 10px 7px;}
+.travel-list-content li>i{position: absolute;font-size: 24px;left: 10px;color: #ff6600;}
+.travel-list-content-info{padding: 0 10px;border: 1px solid #e3e3e3;border-top: none;}
+.travel-list-content-info p{display: -webkit-box;  -webkit-line-clamp: 2;  -webkit-box-orient: vertical;overflow: hidden;line-height: 25px;font-weight: bolder;height: 45px;}
+.travel-list-content-info span{ color: #9e9e9e;line-height: 36px;}
+.travel-list-content-btn{text-align: center;line-height: 70px;}
+.travel-list-content-btn a{background: #fff;border-radius: 0;}
+.travel-list-content-btn a:hover{background: none;border-radius: 0;}
+.travel-list-content-btn a:first-child{color: #000;border:1px solid #e3e3e3;}
+.travel-list-content-btn a:last-child{background: #2577e3;border:1px solid #2577e3;}
+
+
+.travel-prompt{overflow: hidden;clear: both;margin-bottom: 38px;}   
+.travel-prompt-hred{overflow: hidden;text-align: center; font-size: 16px;} 
+.travel-prompt-hred ul{overflow: hidden;border: 1px solid #e5e5e5;}  
+.travel-prompt-hred li{padding-left: 28px;height:44px; float: left;line-height: 44px;}    
+.travel-prompt-hred li:after{content: "|";font-size: 22px;margin-left: 35px;}   
+.travel-prompt-hred li:last-child:after{content: ' ';} 
+.travel-prompt-hred-style{color:#2577e3; padding-bottom: 9px;border-bottom: 3px solid;}  
+.travel-prompt-content{height: 212px; padding: 0 28px; border: 1px solid #e5e5e5;}    
+.travel-prompt-content-title{line-height: 70px; font-size: 16px;font-weight: bolder;}   
+.travel-prompt-content-con{line-height: 24px}
+
+
+.content-order-details-contact-info{overflow: hidden;margin-bottom: 20px;}
+.content-order-details-contact-info div{float: left;overflow: hidden;padding-right: 76px;}
+.content-order-details-contact-info div:last-child{clear: both; display: block;float: none;}
+.content-order-details-contact-info input{float: left;}
+.content-order-details-contact-info p{line-height: 42px;}
+.content-order-details-tourguide{margin-bottom: 20px;}
+.content-order-details-tourguide dt{text-align: left;width: 150px;line-height: 35px;font-size: 16px;font-weight: normal;}
+.content-order-details-tourguide dd{margin-left: 150px;line-height: 35px;}
+.content-order-details-tourguide span{margin-right: 80px;}
+.content-order-details-tourism-custom table{margin-bottom: 20px;}
+.content-order-details-tourism-custom th{line-height: 34px;font-size: 16px;}
+.content-order-details-tourism-custom i{font-size: 24px;float: left;color: #2577e3;}
+.content-order-details-tourism-custom tr>td:first-child{width: 150px;float: left;display: inline-block; margin: 15px 0;}
+.content-order-details-travel-info{overflow: hidden;margin-bottom: 20px;}
+.content-order-details-travel-info div{float: left;overflow: hidden;padding-right: 76px;}
+.content-order-details-travel-info p{line-height: 42px;}
+.content-order-details-custom dd{margin-left: 0!important;}
+.content-order-details-custom span{display: inline-block; width: 250px;}
+.content-order-details-custom-sum{width: 820px; overflow: hidden; margin-bottom: 40px;}
+.content-order-details-custom-sum dl{width: 390px;float: left;margin-right: 20px;}
+.content-order-details-custom-sum dt{text-align: left;font-size: 18px;width: 150px;line-height: 35px;}
+.content-order-details-custom-sum dd{text-align: left;margin-left: 150px;line-height: 35px;}
+.content-order-details-left>dl{margin-bottom: 20px;}
+.content-order-details-left>dl dt{text-align: left;font-size: 18px;width: 150px;line-height: 35px;}
+.content-order-details-left>dl dd{text-align: left;margin-left: 150px;line-height: 35px;}
+.content-order-details-hotel{width: 810px;overflow: hidden;margin-bottom: 20px;}
+.content-order-details-hotel ul{width: 380px;float: left;background-color: #f6f8f9;margin-right: 20px;padding: 20px 60px;}
+.content-order-details-hotel ul>li:first-child{font-size: 16px;height: 32px;}
+
+
+
+
+
+.ez-travel-main .content{width: 1220px;margin: 0 auto;}
+.ez-travel-main .list-content{overflow: hidden;padding: 50px 0;}
+.ez-travel-main .list-content-head{width: 100%;height: 55px;}
+.ez-travel-main .list-content-head-left{float: left;padding-bottom: 30px;}
+.ez-travel-main .list-content-head-right{width:770px;height:55px;font-size:16px;overflow: hidden;border-bottom: 3px solid #2577e3;}
+.ez-travel-main .list-content-head-right ol{height:55px;overflow: hidden;float: right;}
+.ez-travel-main .list-content-head-right li{color: #adadad;margin: 10px 25px 0;float: left;text-align: center;font-weight: bolder;}
+.ez-travel-main .list-content-head-right-style{color: #2577e3!important;}
+.ez-travel-main .list-content-head-right li div{display:none;width: 50px;height: 3px;background:#2577e3;border: 1px solid #2577e3;border-radius: 8px;margin: 0 auto;}
+.ez-travel-main .list-content-main{width: 1220px;overflow: hidden;}
+.ez-travel-main .list-content-main>div{width: 605px;height:210px;float: left;margin-bottom:10px;margin-left: 10px;}
+.ez-travel-main .list-content-main div:first-child{height: 430px;margin-left:0px;}
+.ez-travel-main .list-content-main div:nth-child(4){margin-left:0px;}
+.ez-travel-main .list-content-main-text{width: 305px;height:210px;float: right;position: relative;padding-left:18px;border: 1px solid #ebebeb;border-left: none;}
+.ez-travel-main .list-content-main-text a{color: #262626;font-weight: bold;}
+.ez-travel-main .list-content-main-text>span{display: inline-block;height: 110px;color: #adadad;}
+.ez-travel-main .list-content-main-text>span::before{content: url("../images/tourism_icon3.png"); color: blue;  }
+.ez-travel-main .list-content-list{overflow: hidden;clear: both;}
+.ez-travel-main .list-content-list li{width: 300px;float: left;margin-right: 6px;}
+.ez-travel-main .list-content-list li:last-child{margin-right: 0px;}
+.ez-travel-main .list-content-list-text a{color: #262626;font-weight: bold;}
+.ez-travel-main .list-content-list-text>span::before{content: url("../images/tourism_icon3.png"); }
+.ez-travel-main .list-content-list-icon{padding-top: 10px;}
+.ez-travel-main .list-content-main-text p,.ez-travel-main .list-content-list-text p{display: -webkit-box;  -webkit-line-clamp: 2;  -webkit-box-orient: vertical;overflow: hidden;margin-top: 20px;}
+.ez-travel-main .list-content-main-text-icon span:last-child,.ez-travel-main .list-content-list-icon span:last-child{float: right;margin-right: 15px;}
+
+
+.ez-travel-map .travel-content{width: 857px; float: right;margin-bottom: 50px;}
+.ez-travel-map .travel-content-list{overflow: hidden;margin-bottom: 8px;border: 1px solid #e3e3e3;}
+.ez-travel-map .travel-content-head{width:100%;height:45px;line-height: 45px;padding:0 30px;border-bottom: 1px solid #e3e3e3;}
+.ez-travel-map .travel-content-head span:last-child{height:45px;float: right;overflow: hidden;}
+.ez-travel-map .travel-content-head span:last-child:before{color: #2577e3;font-size:20px;}
+.ez-travel-map .travel-content-con-left{float: left;}
+.ez-travel-map .travel-content-con-right{width: 155px;float: right;padding-left: 15px;}
+.ez-travel-map .travel-content-con-right dl{margin-top: 40px;}
+.ez-travel-map .travel-content-con-right dt{font-weight: normal;font-size: 16px;}
+.ez-travel-map .travel-content-con-right dd{height: 34px;line-height: 34px;}
+.ez-travel-map .travel-content-con-right dd>i{font-size: 24px;float: left;color: #2577e3;}
+.ez-travel-map .travel-content-con-right dd>span{line-height: 24px;margin-left: 10px;}
+.ez-travel-map .travel-buy{ width: 100%; overflow: hidden; float: right;text-align: right;margin-top: 175px;border-top: 1px dashed #e5e5e5;}
+.ez-travel-map .travel-buy>p{line-height: 40px;margin-top: 30px;}
+.ez-travel-map .travel-buy>p span{color: red;font-size: 20px;}
+.ez-travel-map .travel-buy ul{float: right;}
+.ez-travel-map .travel-buy li{float: left;margin-left: 30px;}
+.ez-travel-map .travel-buy a {display: inline-block; width: 130px;height: 50px;background-color:#fff;color: #000;border: 1px solid #e3e3e3;text-align: center;line-height: 50px;}
+.ez-travel-map .travel-buy li:last-child a{background-color: #2577e3;color: #fff;line-height: 20px;padding: 5px 0;}
+
+
+.ez-travel-custom .travel-content{width: 857px;min-height: 1126px; float: right;border-bottom: 1px dashed #e5e5e5;}
+.ez-travel-custom .travel-content-list{overflow: hidden;margin-bottom: 8px;border: 1px solid #e3e3e3;}
+.ez-travel-custom .travel-content-head{width:100%;height:45px;line-height: 45px;padding:0 30px;border-bottom: 1px solid #e3e3e3;}
+.ez-travel-custom .travel-content-head span:last-child{height:45px;float: right;overflow: hidden;}
+.ez-travel-custom .travel-content-head span:last-child:before{color: #2577e3;font-size:20px;}
+.ez-travel-custom .travel-content-con{padding-left: 30px;}
+.ez-travel-custom .travel-content-con li{width:830px;padding-top: 30px;overflow: hidden;}
+.ez-travel-custom .travel-content-con li>p{height:56px;line-height: 56px; margin-left: 15px;margin-right: 30px;border-bottom: 1px dashed #e5e5e5;}
+.ez-travel-custom .travel-content-con li>p i{font-size: 20px;}
+.ez-travel-custom .travel-content-con li>p:last-child{text-align: right;border-bottom: none;}
+.ez-travel-custom .travel-content-con-left{width:120px;height: 120px; float: left;overflow: hidden;margin-bottom: 20px;}
+.ez-travel-custom .travel-content-con-right{width:710px;height: 120px;float: left;overflow: hidden;margin-bottom: 20px;line-height: 30px;padding-left: 20px;padding-top: 30px;font-size: 16px;}
+.ez-travel-custom .travel-content-con-right b{font-size: 22px;}
+.ez-travel-custom .travel-content-con-right i{color: #2577e3;}
+.ez-travel-custom .travel-content-con-list{height:47px;line-height: 30px; background-color: #fbfbfb; clear: both;overflow: hidden;}
+.ez-travel-custom .travel-content-con-list p{padding-left: 15px;}
+.ez-travel-custom .travel-content-con-list p>i{font-size: 24px; margin-right: 30px;float: right;}
+.ez-travel-custom .travel-buy{overflow: hidden; float: right;text-align: right;margin-bottom: 50px;}
+.ez-travel-custom .travel-buy>p{line-height: 40px;margin-top: 30px;}
+.ez-travel-custom .travel-buy>p span{color: red;font-size: 20px;}
+.ez-travel-custom .travel-buy li{float: left;margin-left: 30px;}
+.ez-travel-custom .travel-buy a {display: inline-block; width: 130px;height: 50px;background-color:#fff;color: #000;border: 1px solid #e3e3e3;text-align: center;line-height: 50px;}
+.ez-travel-custom .travel-buy li:last-child a{background-color: #2577e3;color: #fff;line-height: 20px;padding: 5px 0;}
+
+
+.ez-travel-city .travel-content{width: 857px;min-height: 1126px; float: right;border-left: 1px solid #e5e5e5;}
+.ez-travel-city .travel-content-main{height: 876px; overflow-y: scroll;padding: 0 40px 0 30px;border-top: 1px solid #e5e5e5;}
+.ez-travel-city .travel-content-main-title{line-height: 40px;font-size: 16px;font-weight: bolder;}
+.ez-travel-city .travel-content-main-con input{width: 250px; height: 40px; padding-left: 10px;}
+.ez-travel-city .travel-content-main-con-btn{display: inline-block; width: 100px;height: 40px;border: 1px solid #e5e5e5;text-align: center;line-height: 40px;margin-left: 15px;}
+.ez-travel-city .travel-content-main-con-btn:nth-child(2){background-color: #2577e3;  border: 1px solid #e5e5e5;color: #fff;}
+.ez-travel-city .travel-content-main-con ul{padding-top: 15px;}
+.ez-travel-city .travel-content-main-con li{display: inline-block;padding: 5px 0;margin-left: 15px;}
+.ez-travel-city .travel-content-main-con li:nth-child(2n-1){margin-left: 0;}
+.ez-travel-city .travel-content-main-con li>a{display: inline-block;width: 250px; height: 40px;line-height: 40px; border: 1px solid #e5e5e5;padding: 0 10px;}
+.ez-travel-city .travel-content-main-con li>a i{float: right;}
+.ez-travel-city .travel-content-introduce{width: 857px;height: 250px; background-color: #f3f7fd;padding:30px 30px 0 30px;}
+.ez-travel-city .travel-content-introduce-left{width: 300px;float: left;}
+.ez-travel-city .travel-content-introduce-right{width: 497px;float: left;padding-left: 14px;}
+.ez-travel-city .travel-content-introduce-right b{font-size: 20px;}
+.ez-travel-city .travel-content-introduce-right p{font-size: 16px;line-height: 20px;}
+.ez-travel-city .travel-content-introduce-right p:nth-child(3){margin-top: 10px;}
+.ez-travel-city .travel-buy{overflow: hidden; float: right;text-align: right;margin-bottom: 50px;}
+.ez-travel-city .travel-buy>p{line-height: 40px;margin-top: 30px;}
+.ez-travel-city .travel-buy>p span{color: red;font-size: 20px;}
+.ez-travel-city .travel-buy li{float: left;margin-left: 30px;}
+.ez-travel-city .travel-buy a {display: inline-block; width: 130px;height: 50px;background-color:#fff;color: #000;border: 1px solid #e3e3e3;text-align: center;line-height: 50px;}
+.ez-travel-city .travel-buy li:last-child a{background-color: #2577e3;color: #fff;line-height: 20px;padding: 5px 0;}
+
+
+
+.ez-travel-attractions .travel-content{width: 857px;min-height: 1126px; float: right;border-left: 1px solid #e5e5e5;}
+.ez-travel-attractions .travel-content-main{height: 770px; overflow-y: scroll;padding: 0 40px 0 30px;border-top: 1px solid #e5e5e5;}
+.ez-travel-attractions .travel-content-main-title{line-height: 40px;font-size: 16px;font-weight: bolder;}
+.ez-travel-attractions .travel-content-main-con input{width: 250px; height: 40px; padding-left: 10px;}
+.ez-travel-attractions .travel-content-main-con-btn{display: inline-block; width: 100px;height: 40px;border: 1px solid #e5e5e5;text-align: center;line-height: 40px;margin-left: 15px;}
+.ez-travel-attractions .travel-content-main-con-btn:nth-child(2){background-color: #2577e3;  border: 1px solid #e5e5e5;color: #fff;}
+.ez-travel-attractions .travel-content-main-con ul{padding-top: 15px;}
+.ez-travel-attractions .travel-content-main-con li{display: inline-block;padding: 5px 0;margin-left: 15px;}
+.ez-travel-attractions .travel-content-main-con li:nth-child(2n-1){margin-left: 0;}
+.ez-travel-attractions .travel-content-main-con li>a{display: inline-block;width: 250px; height: 40px;line-height: 40px; border: 1px solid #e5e5e5;padding: 0 10px;}
+.ez-travel-attractions .travel-content-main-con li>a i{float: right;}
+.ez-travel-attractions .travel-content-introduce{width: 857px;height: 356px; background-color: #f3f7fd;padding:30px 30px 0 30px;}
+.ez-travel-attractions .travel-content-introduce-left{width: 300px;height:180px; float: left;}
+.ez-travel-attractions .travel-content-introduce-right{width: 497px;height: 180px; float: left;padding-left: 14px;}
+.ez-travel-attractions .travel-content-introduce-right b{font-size: 20px;}
+.ez-travel-attractions .travel-content-introduce-right p{font-size: 16px;line-height: 24px;}
+.ez-travel-attractions .travel-content-introduce-right p:nth-child(3){margin-top: 10px;}
+.ez-travel-attractions .travel-content-introduce-bottom{clear: both;padding-top: 15px;text-indent: 2em;font-size: 16px;}
+.ez-travel-attractions .travel-buy{overflow: hidden; float: right;text-align: right;margin-bottom: 50px;}
+.ez-travel-attractions .travel-buy>p{line-height: 40px;margin-top: 30px;}
+.ez-travel-attractions .travel-buy>p span{color: red;font-size: 20px;}
+.ez-travel-attractions .travel-buy li{float: left;margin-left: 30px;}
+.ez-travel-attractions .travel-buy a {display: inline-block; width: 130px;height: 50px;background-color:#fff;color: #000;border: 1px solid #e3e3e3;text-align: center;line-height: 50px;}
+.ez-travel-attractions .travel-buy li:last-child a{background-color: #2577e3;color: #fff;line-height: 20px;padding: 5px 0;}
+.ez-travel-attractions .title{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;}
+.ez-travel-attractions .ez-card-v .card-text .card-like{position: inherit;overflow: hidden;padding: 0;}
+
+
+.ez-travel-hotel .travel-content{width: 857px;float: right;}
+.ez-travel-hotel .travel-content-main{ overflow-y: hidden;border: 1px solid #e5e5e5;}
+.ez-travel-hotel .travel-content-main-title{line-height: 56px;font-size: 16px;font-weight: bolder;padding: 0 40px 0 30px;}
+.ez-travel-hotel .travel-content-main-search{display: block; line-height: 30px;overflow: hidden;padding: 0 40px 0 30px;}
+.ez-travel-hotel .travel-content-main-search>div{ display: block;overflow: hidden; height: 45px;}
+.ez-travel-hotel .travel-content-main-search label{float:  left;font-weight:inherit;}
+.ez-travel-hotel .travel-content-main-search i{float: left;}
+.ez-travel-hotel .travel-content-main-search li{display: inline-block; overflow: hidden; margin-left:15px;}
+.ez-travel-hotel .travel-content-main-search-con i{font-size: 24px; cursor: pointer;color:#bbb;}
+/* .ez-travel-hotel .travel-content-main-search-con li:first-child i{color: #2577e3;} */
+.ez-travel-hotel .travel-content-main-search-type select{display: inline-block;width: 60px; height: 30px;margin-left: 8px;}
+.ez-travel-hotel .travel-content-main-search-type i{color: #83b7fb;}
+.ez-travel-hotel .travel-content-main-list{width: 855px;}
+.ez-travel-hotel .travel-content-main-list li{margin: 20px 0; overflow: hidden;padding: 20px 40px 20px 30px;}
+.ez-travel-hotel .travel-content-main-list-style{background-color: #f8f8f8;}
+.ez-travel-hotel .travel-content-main-list-img{width: 150px;float: left;}
+.ez-travel-hotel .travel-content-main-list-con{width: 635px; float: left;line-height:30px;padding-left: 25px;}
+.ez-travel-hotel .travel-content-main-list-con h4{font-weight: bolder;line-height:30px;}
+.ez-travel-hotel .travel-content-main-list-con i{font-size: 24px;float: left;color: #859bb9;}
+.ez-travel-hotel #travel-content-main-list-paging{float: right;padding-right: 40px;}
+.ez-travel-hotel .travel-buy{overflow: hidden; float: right;text-align: right;margin-bottom: 50px;}
+.ez-travel-hotel .travel-buy>p{line-height: 40px;margin-top: 30px;}
+.ez-travel-hotel .travel-buy>p span{color: red;font-size: 20px;}
+.ez-travel-hotel .travel-buy li{float: left;margin-left: 30px;}
+.ez-travel-hotel .travel-buy a {display: inline-block; width: 130px;height: 50px;background-color:#fff;color: #000;border: 1px solid #e3e3e3;text-align: center;line-height: 50px;}
+.ez-travel-hotel .travel-buy li:last-child a{background-color: #2577e3;color: #fff;line-height: 20px;padding: 5px 0;}
+.ez-travel-hotel .pagination{margin: 13px 0;}
+/* .ez-travel-hotel .pagination>li>a, .pagination>li>span{border: none;} */
+.ez-travel-hotel .list-paging-active-style a{background-color: #2577e3!important;color: #fff!important;}
+.list-paging-active-style a{background-color: #2577e3!important;color: #fff!important;}
+
+.ez-travel-car .travel-content{width: 857px;min-height: 1126px; float: right;}
+.ez-travel-car .travel-content-main{ overflow-y: hidden;border: 1px solid #e5e5e5;}
+.ez-travel-car .travel-content-main-title{line-height: 56px;font-size: 16px;font-weight: bolder;padding: 0 40px 0 30px;}
+.ez-travel-car .travel-content-main-search{display: block; line-height: 40px;overflow: hidden;padding: 0 40px 0 30px;}
+.ez-travel-car .travel-content-main-search>div{ display: block;overflow: hidden; height: 45px;}
+.ez-travel-car .travel-content-main-search label{float:  left;font-weight:inherit;}
+.ez-travel-car .travel-content-main-search li{display: inline-block; overflow: hidden;}
+.ez-travel-car .travel-content-main-search-con select{width: 160px;height: 40px; float: left;margin: 0 22px;}
+.ez-travel-car .travel-content-main-list{width: 855px;}
+.ez-travel-car .travel-content-main-list li{margin: 20px 0; overflow: hidden;padding: 20px 0;}
+.ez-travel-car .travel-content-main-list li>input{float: left;height:120px;line-height: 120px;margin: 0 12px;border-radius: 50%;}
+.ez-travel-car .travel-content-main-list-style{background-color: #f8f8f8;}
+.ez-travel-car .travel-content-main-list-img{width: 150px;float: left;}
+.ez-travel-car .travel-content-main-list-con{width: 520px; float: left;padding-left: 25px;}
+.ez-travel-car .travel-content-main-list-con h4{float: left;font-weight: bolder;line-height:30px;}
+.ez-travel-car .travel-content-main-list-con-title{overflow: hidden;}
+.ez-travel-car .travel-content-main-list-con-title p{height: 30px;line-height: 30px; display: inline-block;margin-left: 30px;float: left;}
+.ez-travel-car .travel-content-main-list-con i{float: left;color: #859bb9;}
+/* .ez-travel-car .travel-content-main-list-con{} */
+.ez-travel-car .travel-content-main-list-review{width: 148px;height: 70px;float: right;text-align: right;padding-right: 25px;}
+.ez-travel-car .travel-content-main-list-review label{color: #ff8042;font-weight: inherit;}
+.ez-travel-car .travel-content-main-list-review p{color: #8b8b8b;text-decoration:underline;}
+.ez-travel-car .travel-content-main-list-under{width: 668px; height: 50px; float: left;padding-left: 25px;line-height: 50px;}
+.ez-travel-car .travel-content-main-list-under-right{float: right;overflow: hidden;line-height: normal;}
+.ez-travel-car .travel-content-main-list-under-right>div{ /*height: 50px;*/float: left;text-align: center;}
+.ez-travel-car .travel-content-main-list-under-right>div p{color: #ff6600;}
+.ez-travel-car .travel-content-main-list-under-right>div p>i{font-size: 24px;font-weight: bolder;}
+.ez-travel-car .travel-content-main-list-under-right>i{height: 50px;float: right;font-size: 35px;margin-left: 20px;margin-right: 25px;line-height: 50px;color: #60a0f6;}
+.ez-travel-car .travel-content-main-list-under-right>a>i{height: 50px;float: right;font-size: 35px;margin-left: 20px;margin-right: 25px;line-height: 50px;color: #60a0f6;}
+.ez-travel-car .travel-buy{overflow: hidden; float: right;text-align: right;margin-bottom: 50px;}
+.ez-travel-car .travel-buy>p{line-height: 40px;margin-top: 30px;}
+.ez-travel-car .travel-buy>p span{color: red;font-size: 20px;}
+.ez-travel-car .travel-buy li{float: left;margin-left: 30px;}
+.ez-travel-car .travel-buy a {display: inline-block; width: 130px;height: 50px;background-color:#fff;color: #000;border: 1px solid #e3e3e3;text-align: center;line-height: 50px;}
+.ez-travel-car .travel-buy li:last-child a{background-color: #2577e3;color: #fff;line-height: 20px;padding: 5px 0;}
+
+
+.ez-travel-tourguide .travel-content{width: 857px;min-height: 1126px; float: right;}
+.ez-travel-tourguide .travel-content-main{ overflow-y: hidden;border: 1px solid #e5e5e5;}
+.ez-travel-tourguide .travel-content-main-title{line-height: 56px;font-size: 16px;font-weight: bolder;padding: 0 40px 0 30px;}
+.ez-travel-tourguide .travel-content-main-search{display: block; line-height: 40px;overflow: hidden;padding: 0 40px 0 30px;}
+.ez-travel-tourguide .travel-content-main-search label{float:  left;font-weight:inherit;}
+.ez-travel-tourguide .travel-content-main-search ul{height: 40px;}
+.ez-travel-tourguide .travel-content-main-search li{display: inline-block; overflow: hidden; }
+.ez-travel-tourguide .travel-content-main-search-type{border-bottom: 1px dashed #e6e6e6;}
+.ez-travel-tourguide .travel-content-main-search-type label{width: 120px;margin-bottom: 0;}
+.ez-travel-tourguide .travel-content-main-search-type input{margin: 0 13px;}
+.ez-travel-tourguide .travel-content-main-list{width: 855px;}
+.ez-travel-tourguide .travel-content-main-list li{margin: 20px 0; overflow: hidden;padding: 20px 18px;}
+.ez-travel-tourguide .travel-content-main-list-style{background-color: #f8f8f8;}
+.ez-travel-tourguide .travel-content-main-list-img{width: 150px;height: 130px; float: left;text-align: center;}
+.ez-travel-tourguide .travel-content-main-list-img img{border-radius: 50%;}
+.ez-travel-tourguide .travel-content-main-list-con{width: 520px; float: left;padding-left: 25px;}
+.ez-travel-tourguide .travel-content-main-list-con-title{overflow: hidden;line-height:30px;}
+.ez-travel-tourguide .travel-content-main-list-con h4{font-weight: bolder;line-height:30px;}
+.ez-travel-tourguide .travel-content-main-list-con-title li{float: left;padding: 0;margin: 0 30px 0 0;}
+.ez-travel-tourguide .travel-content-main-list-con-goodat p{display: inline-block; height: 24px; line-height: 24px;float: left;margin-right: 10px;}
+.ez-travel-tourguide .travel-content-main-list-con-goodat i{color: #2577e3;}
+.ez-travel-tourguide .travel-content-main-list-con-goodat label{display: inline-block;width: 100px; height: 22px; font-weight: normal;background-color: #2577e3;color: #fff;text-align: center;margin-left: -1px;}
+.ez-travel-tourguide .travel-content-main-list-review{width: 148px;height: 70px;float: right;text-align: right;}
+.ez-travel-tourguide .travel-content-main-list-review label{color: #ff8042;font-weight: inherit;}
+.ez-travel-tourguide .travel-content-main-list-review p{color: #8b8b8b;text-decoration:underline;}
+.ez-travel-tourguide .travel-content-main-list-under{width: 668px; height: 50px; float: left;padding-left: 25px;margin-top: 20px;}
+.ez-travel-tourguide .travel-content-main-list-under>p{display: inline-block;width: 495px;}
+.ez-travel-tourguide .travel-content-main-list-under-right{float: right;overflow: hidden;line-height: normal;}
+.ez-travel-tourguide .travel-content-main-list-under-right{ height: 50px;float: right;text-align: center;}
+.ez-travel-tourguide .travel-content-main-list-under-right p{color: #ff6600;}
+.ez-travel-tourguide .travel-content-main-list-under-right p>i{font-size: 24px;font-weight: bolder;}
+.travel-content-main-list-paging{float: right;padding-right: 40px;}
+.ez-travel-tourguide .travel-buy{overflow: hidden; float: right;text-align: right;margin-bottom: 50px;}
+.ez-travel-tourguide .travel-buy>p{line-height: 40px;margin-top: 30px;}
+.ez-travel-tourguide .travel-buy>p span{color: red;font-size: 20px;}
+.ez-travel-tourguide .travel-buy li{float: left;margin-left: 30px;}
+.ez-travel-tourguide .travel-buy a {display: inline-block; width: 130px;height: 50px;background-color:#fff;color: #000;border: 1px solid #e3e3e3;text-align: center;line-height: 50px;}
+.ez-travel-tourguide .travel-buy li:last-child a{background-color: #2577e3;color: #fff;line-height: 20px;padding: 5px 0;}
+.ez-travel-tourguide .pagination{margin: 13px 0;}
+.ez-travel-tourguide .pagination>li>a, .pagination>li>span{border: none;}
+.ez-travel-tourguide .list-paging-active-style a{background-color: #2577e3!important;color: #fff!important;}
+
+
+
+
+
+/* E1-7 */
+.ez-travel-order .min-text{width: 275px!important;}
+.ez-travel-order .max-text{width: 555px!important;}
+.ez-travel-order .content{width: 1220px;margin: 0 auto;overflow: hidden;}
+.ez-travel-order .content-order-icon{width: 720px; height: 60px;margin:  60px auto;text-align: center;overflow: hidden;}
+.ez-travel-order .content-order-icon i{position: relative;z-index: 2; top: -7px;left: -2px; font-size: 24px;padding: 3px;float: left;color: #d9d9d9;}
+.ez-travel-order .content-order-icon div{position: relative; z-index: 2; border: 1px solid #d9d9d9;border-radius: 50%;display: inline-block; width: 28px;height: 28px;background-color: #fff;}
+.ez-travel-order .content-order-icon div:nth-child(2){margin: 0 260px;}
+.ez-travel-order .content-order-icon>div label{display: inline-table;width: 56px;margin-left: -13px;}
+.ez-travel-order .content-order-icon p{position: relative; z-index: 1; height: 1px;background-color: #d9d9d9;margin-top: -48px; }
+.ez-travel-order .content-order-details-left{width: 840px; float: left;padding:25px;padding-right: 110px;border:1px solid #e5e5e5;margin-bottom: 70px;}
+.ez-travel-order .content-order-details-left h3{width: 838px; position: relative;border-bottom: 1px solid #e5e5e5;left: -25px;padding-left: 25px;padding-bottom: 20px;}
+.ez-travel-order .content-order-details-left h4{font-weight: bolder;line-height: 58px;}
+.ez-travel-order .content-order-details-car-info dt{line-height: 56px!important;}
+.ez-travel-order .content-order-details-car-info span{margin-right: 80px;}
+.ez-travel-order .content-order-details-car-info dd:nth-child(3n-1){font-size: 16px;line-height: 56px;}
+.ez-travel-order .content-order-details-insurance{margin-bottom: 20px;}
+.ez-travel-order .content-order-details-insurance p{line-height: 42px;}
+.ez-travel-order .content-order-details-insurance>div a{color: #f99802;text-decoration: underline;}
+.ez-travel-order .content-order-details-visitors-info{width:810px}
+.ez-travel-order .content-order-details-visitors-info>div{overflow: hidden;margin: 5px 0;}
+.ez-travel-order .content-order-details-visitors-info span{display: inline-block;width: 115px; float: left;line-height: 34px;}
+.ez-travel-order .content-order-details-visitors-info span>label{color: #f99802;}
+.ez-travel-order .content-order-details-visitors-info input{float: left;margin-left: 5px;}
+.ez-travel-order .content-order-details-visitors-info select{float: left;margin-left: 5px;}
+.ez-travel-order .content-order-details-visitors-info-reset{width: 80px;height: 34px;border: 1px solid #ccc;float: left;text-align: center;line-height: 34px;margin-left: 20px;}
+.ez-travel-order .content-order-details-right{width: 370px;float: right;background-color: #f6f8f9;border:1px solid #e5e5e5;padding:25px 20px;}
+.ez-travel-order .content-order-details-right h3{width: 368px; position: relative;border-bottom: 1px solid #e5e5e5;left: -20px;padding-left: 20px;padding-bottom: 20px;}
+.ez-travel-order .content-order-details-right h4{font-weight: bolder;line-height: 58px;}
+.ez-travel-order .content-order-details-right>div{border-bottom: 1px dashed #e5e5e5;padding-bottom: 20px;}
+.ez-travel-order .content-order-details-right>div p{overflow: hidden;}
+.ez-travel-order .content-order-details-right>div label{float: left;font-weight: normal;}
+.ez-travel-order .content-order-details-right>div span{float: right;}
+.ez-travel-order .content-order-details-total{line-height: 90px;}
+.ez-travel-order .content-order-details-total b{float: right;font-size: 16px;}
+.ez-travel-order .content-order-details-confirm-order{display: inline-block;width: 100%; height: 50px;line-height: 50px;text-align: center; background-color: #2577e3;color: #fff;}
+.ez-travel-order .content-order-details-confirm-order:hover{color: #fff;}
+
+
+/* E1-7-1 */
+.ez-travel-payment .content{width: 1220px;margin: 0 auto;overflow: hidden;}
+.ez-travel-payment .content-order-icon{width: 720px; height: 60px;margin:  60px auto;text-align: center;overflow: hidden;}
+.ez-travel-payment .content-order-icon i{position: relative;z-index: 2; top: -7px;left: -2px; font-size: 24px;padding: 3px;float: left;color: #d9d9d9;}
+.ez-travel-payment .content-order-icon div{position: relative; z-index: 2; border: 1px solid #d9d9d9;border-radius: 50%;display: inline-block; width: 28px;height: 28px;background-color: #fff;}
+.ez-travel-payment .content-order-icon div:nth-child(2){margin: 0 260px;}
+.ez-travel-payment .content-order-icon>div label{display: inline-table;width: 56px;margin-left: -13px;}
+.ez-travel-payment .content-order-icon p{position: relative; z-index: 1; height: 1px;background-color: #d9d9d9;margin-top: -48px; }
+.ez-travel-payment .content-order-state{width: 100%; height: 200px;overflow: hidden;border: 1px solid #d9d9d9;padding: 0 40px 0 55px;}
+.ez-travel-payment .content-order-state-left{float: left; width: 500px;}
+.ez-travel-payment .content-order-state-left i{font-size: 96px;color: #2577e3; line-height: 200px; float: left;margin-right: 35px;}
+.ez-travel-payment .content-order-state-left>h4{font-size: 19px;color: #2577e3; margin-top: 60px;line-height: 45px;}
+.ez-travel-payment .content-order-state-right{float: right;line-height: 200px;}
+.ez-travel-payment .content-order-state-right a{padding: 10px 20px;border: 1px solid #9a9b9e;color: #9a9b9e; border-radius:20px;cursor: pointer;}
+.ez-travel-payment .content-order-details{border:1px solid #e5e5e5;overflow: hidden;}
+.ez-travel-payment .content-order-details-left{width: 840px; float: left;padding:25px;padding-right: 110px;}
+.ez-travel-payment .content-order-details-left h4{font-weight: bolder;line-height: 58px;}
+.ez-travel-payment .content-order-details-basis-info{overflow: hidden;margin-bottom: 20px;}
+.ez-travel-payment .content-order-details-basis-info p{display: inline-block; width: 50%;float: left;margin: 10px 0;}
+.ez-travel-payment .content-order-details-car-info dt{line-height: 56px!important;}
+.ez-travel-payment .content-order-details-car-info span{margin-right: 80px;}
+.ez-travel-payment .content-order-details-car-info dd:nth-child(3n-1){font-size: 16px;line-height: 56px;}
+.ez-travel-payment .content-order-details-order-price{width: 125px;height: 38px;background-color: #2577e3;color: #fff;font-size: 18px;font-weight: bolder;border-top-right-radius: 16px;border-bottom-right-radius: 16px;text-align: center;line-height: 38px;margin-bottom: 20px;}
+.ez-travel-payment .content-order-details-price-sun b{color: #f1934c;margin-left: 55px; }
+.ez-travel-payment .content-order-details-right{width: 370px;float: right;}
+.ez-travel-payment .content-order-details-print-info{width: 92px;height: 38px;background-color: #2577e3;color: #fff;margin-right: 35px;margin-top: 25px; float: right;text-align: center;line-height: 38px;}
+.ez-travel-payment .content-order-details-pay{width:1220px; clear: both;border:1px solid #e5e5e5;padding:25px;margin-top: 25px;}
+.ez-travel-payment .content-order-details-pay>span{line-height:90px;}
+.ez-travel-payment .content-order-details-pay>span b{color: #f1934c;font-size: 16px;margin-left: 25px;}
+.ez-travel-payment .content-order-details-pay-way{overflow: hidden;margin-bottom: 50px;}
+.ez-travel-payment .content-order-details-pay-way>div{display: inline-block;cursor: pointer; overflow: hidden; border: 1px solid #e2e2e2;padding: 10px 30px;border-radius: 5px;margin-right: 20px;}
+.ez-travel-payment .content-order-details-pay-way span{display: inline-block;line-height: 51px;float: left;margin-left: 17px;font-size: 16px;}
+.ez-travel-payment .content-order-details-pay-way i{font-size: 36px;float: left;}
+.ez-travel-payment .content-order-details-pay-way div:nth-child(1) i{width: 36px;height: 49px; background: url("../images/public-icon.png") -13px -28px no-repeat}
+.ez-travel-payment .content-order-details-pay-way div:nth-child(2) i{width: 36px;height: 49px; background: url("../images/public-icon.png") -55px -28px no-repeat}
+.ez-travel-payment .content-order-details-pay-way div:nth-child(3) i{width: 45px;height: 49px; background: url("../images/public-icon.png") -99px -28px no-repeat}
+.ez-travel-payment .content-order-details-pay-way div:nth-child(4) i{width: 36px;height: 49px; background: url("../images/public-icon.png") -148px -28px no-repeat}
+.ez-travel-payment .content-order-details-pay-way-style{border: 1px solid #f1934c!important;}
+.ez-travel-payment .content-order-details-pay-next{display: inline-block;width: 250px;height: 50px;line-height: 50px;text-align: center;background-color: #2577e3;color: #fff;}
+
+/* E1-7-3 */
+.ez-travel-complete .min-text{width: 275px!important;}
+.ez-travel-complete .max-text{width: 555px!important;}
+.ez-travel-complete .content{width: 1220px;margin: 0 auto;overflow: hidden;border-bottom: 1px solid #e5e5e5;}
+.ez-travel-complete .content-order-icon{width: 720px; height: 60px;margin:  60px auto;text-align: center;overflow: hidden;}
+.ez-travel-complete .content-order-icon i{position: relative;z-index: 2; top: -7px;left: -2px; font-size: 24px;padding: 3px;float: left;color: #d9d9d9;}
+.ez-travel-complete .content-order-icon div{position: relative; z-index: 2; border: 1px solid #d9d9d9;border-radius: 50%;display: inline-block; width: 28px;height: 28px;background-color: #fff;}
+.ez-travel-complete .content-order-icon div:nth-child(2){margin: 0 260px;}
+.ez-travel-complete .content-order-icon>div label{display: inline-table;width: 56px;margin-left: -13px;}
+.ez-travel-complete .content-order-icon p{position: relative; z-index: 1; height: 1px;background-color: #d9d9d9;margin-top: -48px; }
+.ez-travel-complete .content-order-details{width: 390px;margin: 0 auto;text-align: center;}
+.ez-travel-complete .content-order-details>p{margin-top: 60px;margin-bottom: 20px;}
+.ez-travel-complete .content-order-details-top{margin-bottom: 20px;}
+.ez-travel-complete .content-order-details-top i{font-size: 96px;color: #2577e3;}
+.ez-travel-complete .content-order-details-top p{line-height: 40px;}
+.ez-travel-complete .content-order-details-btn{overflow: hidden;}
+.ez-travel-complete .content-order-details-btn div{width: 160px;height: 50px;color: #2577e3;text-align: center;line-height: 50px;border: 1px solid #2577e3;float: right;cursor: pointer;}
+.ez-travel-complete .content-order-details-btn div:first-child{background-color: #2577e3;color: #fff;float: left;}
+
+
+
+
+/*H1-1*/
+.ez-travel-local .style-list-con{width: 25%;padding: 0 4px;}
+.ez-travel-local .search-info-sty{height: auto; overflow: hidden;border: 1px solid #ccc;}
+.ez-travel-local .search-info-sty .search-info-city>div:first-child{width: 290px;height: 100px;float: left;line-height: 100px;text-align: center; background: #e3edfb;color: #2577e3;font-weight: bolder;font-size: 20px;}
+.ez-travel-local .search-info-sty .search-info-city>div:first-child span{color: #000;font-weight: normal;font-size: 16px;}
+.ez-travel-local .search-info-sty .search-info-city>div:first-child i{font-size: 20px;}
+.ez-travel-local .search-info-sty .search-info-city>div:last-child{width: 926px;height: 100px;float: left;line-height: 100px;padding-left: 70px;}
+.ez-travel-local .search-info-player{display: inline-block;width: 160px;height: 40px;margin: 0 10px;}
+.ez-travel-local .search-info-left{width: 100px;height: 44px;background: #fafafa;padding-left: 15px;line-height: 44px;float: left;border-top: 1px solid #ccc;border-right: 1px solid #ccc;}
+.ez-travel-local .search-info-right{width: 1118px;  overflow: hidden; border-top: 1px dashed #ccc;line-height: 44px;}
+.ez-travel-local .search-info-right ul{padding: 0 25px;}
+.ez-travel-local .search-info-right li{float: left;padding: 0 15px;}
+.ez-travel-local .search-info-right input{margin-right: 15px;}
+
+
+
+.ez-travel-info .travel-info{border: 1px solid #ccc;}
+.ez-travel-info .travel-info-local{width: 1220px;padding: 20px;overflow: hidden;}
+.ez-travel-info .local-img img{width: 580px;height: 410px;}
+.ez-travel-info .local-info{width: 600px; padding-left: 20px;}
+.ez-travel-info .local-title{line-height: 60px;}
+.ez-travel-info .local-title .floatl span{font-weight: bolder;font-size: 20px;}
+.ez-travel-info .local-title{height: 60px; }
+.ez-travel-info .local-title img{width: 56px;height: 56px;border-radius: 50%;}
+.ez-travel-info .local-introduce{width: 100%; background: #f6f8f9;overflow: hidden;margin-top: 10px;}
+.ez-travel-info .local-introduce-title{width:70px;  padding:10px 7px; height: 100%;}
+.ez-travel-info .local-introduce-con{width: 510px; padding:10px;color: #878989;}
+.ez-travel-info .local-introduce-con p>span{display: inline-block;width: 90px;}
+.ez-travel-info .local-introduce-con p>label{color: #000; font-weight: normal;}
+.ez-travel-info .local-introduce-con .text-goodat label{border: 1px solid #2577e3;color: #2577e3;padding:5px;margin-right:10px;}
+.ez-travel-info .local-time{overflow: hidden;margin:10px 0;}
+.ez-travel-info .time-number-title{width: 100px;height: 40px;line-height: 40px;}
+.ez-travel-info .time-number-con{width: 480px;/*height: 40px;*/ line-height: 40px;}
+.ez-travel-info .local-number-con>.floatl{line-height: 40px;}
+.ez-travel-info .local-number-con>.floatl div{width: 122px;height: 40px;line-height: 40px;border: 1px solid #ccc;border-radius: 20px;margin: 0 20px;}
+.ez-travel-info .local-number-con>.floatl div>span{display: inline-block; width: 40px;height: 40px;text-align: center;cursor: pointer;}
+.ez-travel-info .local-number-con>.floatl div>input{display: inline-block; width: 40px;height: 36px;text-align: center;border: none;}
+.ez-travel-info .local-price-con{margin-top: 20px;}
+.ez-travel-info .local-price-con>div{height: 40;line-height: 40px;}
+.ez-travel-info .local-price-con .shopping-cart{width: 90px; height: 33px;border: 1px solid #ff6600;text-align: center;line-height: 33px;color: #333333;}
+.ez-travel-info .local-price-con>span{margin-right: 50px;margin-left: 20px;}
+.ez-travel-info .travel-recommended-line{width: 1220px;height: 300px; padding: 20px;background: #f6f8f9;margin-top: 20px;}
+.ez-travel-info .travel-recommended-line-title{height: 50px;line-height: 50px;font-weight: bolder;}
+.ez-travel-info .travel-recommended-line-con>div{width: 575px;margin-right: 15px;}
+.ez-travel-info .travel-recommended-line-con .card-text{width: 275px;height: 210px;border: none;}
+.ez-travel-info .travel-recommended-line-con .card-text .text-gray{height: 60px;}
+.ez-travel-info .travel-recommended-line-con h4{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;}
+.ez-travel-info .travel-recommended-line-con .footer-bottom{margin-top:20px;line-height: 35px;}
+.ez-travel-info .travel-recommended-line-con .footer-bottom a:last-child{width: 90px;height: 35px;text-align: center;color: #fff;background: #2577e3;}
+
+.ez-travel-info .travel-info-con{margin-top: 20px;}
+.ez-travel-info .travel-info-con-title{width: 100%;overflow: hidden;border: 1px solid #ccc;}
+.ez-travel-info .travel-info-con-title li{height: 44px;line-height: 44px;text-align: center;float: left;}
+.ez-travel-info .travel-info-con-title li span{padding: 0 15px; border-right:1px solid #ccc;}
+.ez-travel-info .travel-info-con-title-style{border-bottom: 2px solid #2577e3;}
+.ez-travel-info .travel-info-con-left{width: 897px; border: 1px solid #ccc;border-top: none;padding: 30px 20px;}
+.ez-travel-info .travel-info-con-left .travel-service{width: 125px; /* height: 524px; */ text-align: center;}
+.ez-travel-info .travel-info-con-left .travel-service img{width: 70px;height: 70px;}
+.ez-travel-info .travel-info-con-left .travel-user{padding-bottom: 50px;}
+/* .ez-travel-info .travel-info-con-left .travel-user img{width: 730px;} */
+.ez-travel-info .travel-info-con-left .travel-user p{line-height: 30px;}
+.ez-travel-info .travel-info-con-left .travel-list{width: 100%;height: auto;border:none;}
+.ez-travel-info .travel-info-con-left .travel-list-con{width: 730px;/* height: 350px;*/ overflow: hidden;float:left;}
+.ez-travel-info .travel-info-con-left .travel-list-con img{width: 40px;height: 40px;border-radius: 50%;margin-right: 60px;}
+.ez-travel-info .travel-info-con-left .travel-list-con .content{width: 630px;}
+.ez-travel-info .travel-info-con-left .travel-list-con .content>div{width: 100%;line-height: 40px;}
+.ez-travel-info .travel-info-con-left .travel-list-con .content>p{display: -webkit-box;-webkit-line-clamp: 5;-webkit-box-orient: vertical;overflow: hidden;border-bottom: 1px dashed #ccc;padding-bottom: 18px;}
+.ez-travel-info .ez-aside-card{margin-top: 5px;}
+.ez-travel-info .time-info{position: absolute; display: inline-block; top: 1130px; left: 550px;z-index: 999;}
+.ez-travel-info .ez-datetimer{position: inherit;display: inline-block;top: 0;left: -244px;}
+
+.erji_a{
+    float: right;
+    overflow:hidden;
+    width: 650px;
+    background-color:#F5F5F5;
+}
+.erji_b{
+    margin:15px 25px;
+    width: 600px;
+    min-height:35px;
+    border: 1px solid #eaedf0;
+    padding-left: 20px;
+}
+.erji_c img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right:15px;
+    float: left;
+    margin-left: 25px;
+    margin-top: 10px;
+}
+.erji_d{
+    width:544px;
+    float: left;
+    margin-top: 20px;
+}
+.erji_e{
+    clear: both;
+    margin-top:30px;
+    margin-bottom: 50px;
+}
+
+
+.ez-travel-tuxedo .local-info-left>img{width: 400px;height: 400px;}
+.ez-travel-tuxedo .local-info-left .travel-plan-content>i{width: 20px;line-height: 80px;font-size: 16px;}
+.ez-travel-tuxedo .local-info-left .travel-plan-content-list{width: 360px;}
+.ez-travel-tuxedo .local-info-left .travel-plan-content{width: 400px;}
+.ez-travel-tuxedo .local-info-left .travel-plan-content img{width: 80px;height: 80px;}
+.ez-travel-tuxedo .local-info-left .travel-plan-content li{margin: 0 5px;}
+.ez-travel-tuxedo .local-info-right {width: 760px;padding: 0 20px; color: #737373;}
+.ez-travel-tuxedo .time-number-con{ width: 100% }
+.ez-travel-tuxedo .local-info-right>p{line-height: 30px;}
+.ez-travel-tuxedo .local-info-right>p label{padding: 3px; border:1px solid #737373;margin-right: 5px;line-height: normal;}
+.ez-travel-tuxedo .local-content{width: 100%;overflow: hidden;border:1px solid #f19149;padding: 20px;}
+.ez-travel-tuxedo .time-number-con{width: 578px;}
+.ez-travel-tuxedo .time-price-con{width: 100%;line-height: 60px;}
+.ez-travel-tuxedo .local-number{overflow: hidden;margin:10px 0;}
+.ez-travel-tuxedo .shopping-cart{margin-left:10px;}
+.ez-travel-tuxedo .travel-content-main-search-type li{float: left;margin-right: 5px;}
+.ez-travel-tuxedo .font-f1{font-size: 20px;font-weight: bolder;}
+.ez-travel-tuxedo .font-f2{color: #2577e3;}
+.ez-travel-tuxedo .local-bottom-list{margin-top: 60px;}
+.ez-travel-tuxedo .local-bottom-list dt img{width: 30px;height: 30px;border-radius: 50%;text-align: center;}
+.ez-travel-tuxedo .local-bottom-list dt{width: 50px;text-align: center;}
+.ez-travel-tuxedo .local-bottom-list dd{margin-left: 50px;line-height: 30px;}
+.ez-travel-tuxedo .travel-title-con{width: 100%;overflow: hidden;}
+.ez-travel-tuxedo .travel-title-con img{width: 70px;height: 70px;}
+.ez-travel-tuxedo .travel-title-con-left{width: 130px;}
+.ez-travel-tuxedo .travel-title-con-right{width: 725px;}
+.ez-travel-tuxedo .travel-title-con-right span{padding: 5px 20px;border:1px solid #ccc;margin: 3px 10px;display: inline-block;}
+.ez-travel-tuxedo .travel-trip-info{overflow: hidden;border-bottom: 1px dashed #ccc;margin-bottom: 30px;} 
+.ez-travel-tuxedo .travel-trip{width: 130px; border-right: 1px solid #ccc;}
+.ez-travel-tuxedo .travel-trip li{display: inline-block;margin: 5px 0;}
+.ez-travel-tuxedo .travel-trip li span{padding: 5px 20px;border:1px solid #ccc;}
+.ez-travel-tuxedo .travel-trip li b{position: relative;left: 45px;font-size: 20px;}
+.ez-travel-tuxedo .travel-trip-style{color: #2377e3;}
+.ez-travel-tuxedo .travel-time-node{width: 725px;}
+.ez-travel-tuxedo .travel-time-node:last-child .travel-node{border-bottom: none;}
+.ez-travel-tuxedo .travel-time{width: 100px;text-align: center;float: left;padding-top: 14px;}
+.ez-travel-tuxedo .travel-node{width: 625px; float:left;border-bottom: 1px dashed #ccc;padding:14px 0 18px;}
+.ez-travel-tuxedo .travel-list{border-bottom: 1px dashed #ccc!important;margin-bottom: 30px;}
+.ez-travel-tuxedo .travel-list:last-child{border-bottom:none!important;}
+.ez-travel-tuxedo .travel-list-video-left{height: auto!important;}
+.ez-travel-tuxedo .travel-list-video{width: 730px;float:left;}
+.ez-travel-tuxedo .travel-list-video video{width: 730px;}
+.ez-travel-tuxedo .travel-consulting{border-bottom: 1px dashed #ccc;}
+.ez-travel-tuxedo .consulting{color: #2377e3;font-weight: bolder;font-size: 20px;position: absolute;right: 375px;}
+.ez-travel-tuxedo .modal-footer button{width: 90px; background: #2377e3;color: #fff;}
+.ez-travel-tuxedo .modal-body .form-group div{display: inline-block;}
+.ez-travel-tuxedo .text-reply{padding: 15px 10px;background: #f6f8f9;border:none;border-bottom:none!important;}
+
+.ez-conventional .search-type{overflow: hidden;margin-bottom:20px;}
+.ez-conventional .conventional-address{width: 292px; height: 113px;float: left;padding: 20px;margin-right: 20px;}
+.ez-conventional .conventional-address p{line-height: 30px;}
+.ez-conventional .conventional-address .icon-dingwei{padding-right: 20px;}
+.ez-conventional .conventional-address i{line-height: 72px;font-size: 24px;}
+/*.conventional-address i{line-height: 113px;}*/
+
+.ez-conventional .ez-search-result .box-left .box-card{height: auto; min-height: 270px;}
+.ez-conventional .ez-search-result .box-left .box-card .box-card-text{height: 270px;}
+.ez-conventional .evaluation-info{width: 730px; overflow: hidden;margin: 15px 65px;border: 1px solid #ccc;}
+.ez-conventional .travel-list-con{width: 730px;overflow: hidden;border-bottom: 1px solid #ccc;padding:5px 10px;}
+.ez-conventional .travel-list-con>div:first-child img{width: 40px;height: 40px;border-radius: 50%;margin-right: 30px;}
+.ez-conventional .travel-list-con .content{width: 630px;}
+.ez-conventional .travel-list-con .content>div{width: 100%;line-height: 40px;}
+.ez-conventional .travel-list-con .content>p{display: -webkit-box;-webkit-line-clamp: 5;-webkit-box-orient: vertical;overflow: hidden;padding-bottom: 18px;}
+
+.ez-conventional .ez-datetimer{top: 30px;left: 90px;}
+#date-box{width: 802px!important;}
+.ez-conventional .date-box,.ez-travel-tuxedo .time-info{width: 802px!important;}
+.ez-conventional .ht-rili-datebox,.ez-travel-tuxedo .time-info .ht-rili-datebox{width: 100%}
+.ez-conventional .ht-rili-date,.ez-travel-tuxedo .time-info .ht-rili-date{width: 355px;}
+.ez-conventional .ht-rili-date1,.ez-travel-tuxedo .time-info .ht-rili-date1{width: 355px; text-align: center;display: inline-block!important;height: 24px;line-height: 32px;vertical-align: middle;font-size: 16px;}
+.ez-conventional .ht-rili-entirety,.ez-travel-tuxedo .time-info .ht-rili-entirety{display: inline-block!important;}
+.ez-conventional .ht-rili-head,.ez-travel-tuxedo .time-info .ht-rili-head{width: 400px;}
+.ez-conventional .ht-rili-body,.ez-travel-tuxedo .time-info .ht-rili-body{width: 400px;}
+.ez-conventional .ht-rili-body1,.ez-travel-tuxedo .time-info .ht-rili-body1{width: 400px;padding:0 20px;}
+
+
+.ez-travel-tuxedo .time-info .ht-bottom{display: inline-block!important;    text-align: center;    padding: 5px 25px;}
+.ez-travel-tuxedo .time-info .ht-bottom li{width: 150px;height: 100px;float:left;line-height: 30px;}
+
+/*添加点击眼睛*/
+.yianying_lick{color:red;}
+/*点击下一页*/
+.huan_aa{height:1100px;overflow: hidden;}
