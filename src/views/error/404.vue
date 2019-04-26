@@ -19,8 +19,8 @@ export default {
         }
     },
     created () {
-       login();
-        console.log(process.env);
+        console.log( this.$message)
+        this.infoMsg("警告哦，这是一条警告消息")
     }
     
 }

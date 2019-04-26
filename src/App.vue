@@ -1,6 +1,12 @@
 <template>
   <div id="app" v-cloak>
-    <router-view/>
+    <transition
+      :enter-active-class="enterTransition"
+      :leave-active-class="leaveTransition">
+      <navigation>
+        <router-view/>
+      </navigation>
+    </transition>
   </div>
 </template>
 
@@ -10,30 +16,45 @@
 }
 // #app {
 //   font-family: "Avenir", Helvetica, Arial, sans-serif;
+//   font-family: "Avenir", Helvetica, Arial, sans-serif;
 //   -webkit-font-smoothing: antialiased;
 //   -moz-osx-font-smoothing: grayscale;
 //   text-align: center;
 //   color: #2c3e50;
 // }
+//navigation  前进刷新  后退缓存恢复
 </style>
 <script>
 import { mapState, mapMutations } from "vuex";
 import { getLanguage, getProtocol, getCurrency, myInfor, getHotCity, getComNavigation} from 'getData';
 export default {
   name: "App",
+  data () {
+    return {
+      enterTransition: 'animated fadeIn',
+      leaveTransition: 'animated fadeOut',
+    }
+  },
   created() {
-// fetch('/test/forlogin/login')
-//   .then(function(response) {
-//     return response.json();
-//   })
-//   .then(function(myJson) {
-//     console.log(myJson);
-//   });
+    this.$navigation.on('forward', (to, from) => {
+      this.enterTransition = 'animated fadeInRight';
+      this.leaveTransition = 'animated fadeOutLeft';
+    })
+    this.$navigation.on('back', (to, from) => {
+      this.enterTransition = 'animated fadeInLeft';
+      this.leaveTransition = 'animated fadeOutRight';
+    })
+    this.$navigation.on('replace', (to, from) => {
+      this.enterTransition = 'animated fadeIn';
+      this.leaveTransition = 'animated fadeOut';
+    })
+
     //在页面加载时读取sessionStorage里的状态信息
     if (sessionStorage.getItem("store") ) {
         this.$store.replaceState(Object.assign({}, this.$store.state,JSON.parse(sessionStorage.getItem("store"))))
     }
-    console.log(process.env);
+      // console.log(process.env);
+      // console.log($("#app"))
     //在页面刷新时将vuex里的信息保存到sessionStorage里
     window.addEventListener("beforeunload",()=>{
         sessionStorage.setItem("store",JSON.stringify(this.$store.state))
@@ -49,6 +70,11 @@ export default {
   computed: {
       ...mapState([ "loginType" ]),
   },
+  // beforeRouteLeave(to, from, next) {
+  //     // 设置下一个路由的 meta
+  //   to.meta.keepAlive = true;  // B 跳转到 A 时，让 A 缓存，即不刷新
+  //   next();
+  // },
   methods: {
     ...mapMutations(["loginFlagChange", "languageListChange", "currencyListChange", "setComProtocol", "setMember", "sethotCityList", "setComNavigationList"]),
     //弹窗类型初始化

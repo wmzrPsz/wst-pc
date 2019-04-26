@@ -1,16 +1,16 @@
 const plugins = [
-  [
-    "component",
-    {
-      "libraryName": "element-ui",
-      "styleLibraryName": "theme-chalk"
-    }
-  ],
-  ['import', {
-    libraryName: 'vant',
-    libraryDirectory: 'es',
-    style: true
-  }, 'vant']
+  // [
+  //   "component",
+  //   {
+  //     "libraryName": "element-ui",
+  //     "styleLibraryName": "theme-chalk"
+  //   }
+  // ],
+  // ['import', {
+  //   libraryName: 'vant',
+  //   libraryDirectory: 'es',
+  //   style: true
+  // }, 'vant']
 ];
 if (['production', 'prod'].includes(process.env.NODE_ENV)) {
   // 去掉 console.log
@@ -19,5 +19,5 @@ if (['production', 'prod'].includes(process.env.NODE_ENV)) {
 
 module.exports = {
   presets: [["@vue/app",{"useBuiltIns": "entry"}]],
-  // plugins: plugins
+  plugins: plugins
 };

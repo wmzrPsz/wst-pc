@@ -3,7 +3,7 @@
  * @Author: 彭善智
  * @LastEditors: 彭善智
  * @Date: 2019-03-01 22:48:18
- * @LastEditTime: 2019-04-24 00:26:51
+ * @LastEditTime: 2019-04-26 17:33:40
  */
 import store from '../store/index'
 import {errorMsg} from '../utils/popup'
@@ -11,7 +11,7 @@ import {errorMsg} from '../utils/popup'
 
 export default async (url = '', data = {}, type = 'GET', method = 'fetch')=>{
   const res = await Ajax(url,data,type,method);
-  console.log(res);
+  console.log(url,res);
   if(res.success){
     if(!res.body) return res.success;
     if(Object.keys(res.body).length == 1)
@@ -62,10 +62,10 @@ export default async (url = '', data = {}, type = 'GET', method = 'fetch')=>{
     let reqConfig = {
       credentials: 'include',
       method: type,
-      headers: {
-        'Accept': 'application/json',
-        'Content-type': 'application/json'
-      },
+      // headers: {
+      //   'Accept': 'application/json',
+      //   'Content-type': 'application/json'
+      // },
       mode: 'cors',
      cache: 'default',
       // cache: 'no-cache',

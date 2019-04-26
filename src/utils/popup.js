@@ -3,14 +3,14 @@
  * @Author: 彭善智
  * @LastEditors: 彭善智
  * @Date: 2019-03-30 13:15:39
- * @LastEditTime: 2019-03-30 23:52:49
+ * @LastEditTime: 2019-04-26 17:07:36
  */
 
-import { Message } from 'element-ui';
+// import { Message } from 'element-ui';
 
 //消息提示
 export const infoMsg = (text)=>{
-    Message({
+  ELEMENT.Message({
       showClose: true,
       message: text,
       type: 'info'
@@ -19,16 +19,16 @@ export const infoMsg = (text)=>{
 
 //成功消息提示
 export const successMsg = (text)=>{
-      Message({
+  ELEMENT.Message({
         showClose: true,
         message: text,
         type: 'success'
       });
 }
 
-//失败消息提示
+//警告消息提示
 export const errorMsg = (text)=>{
-      Message({
+  ELEMENT.Message({
         showClose: true,
         message: text,
         type: 'error'
@@ -37,7 +37,7 @@ export const errorMsg = (text)=>{
 
 //警告消息提示
 export const warningMsg = (text)=>{
-      Message({
+  ELEMENT.Message({
         showClose: true,
         message: text,
         type: 'warning'

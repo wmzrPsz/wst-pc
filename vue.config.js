@@ -8,6 +8,7 @@ function resolve (dir) {
   console.log(__dirname)
   return path.join(__dirname, dir)
 }
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 module.exports = {
   // 项目部署的基础路径
   // 我们默认假设你的应用将会部署在域名的根部，
@@ -27,7 +28,7 @@ module.exports = {
   // 是否在保存的时候使用 `eslint-loader` 进行检查。
   // 有效的值：`ture` | `false` | `"error"`
   // 当设置为 `"error"` 时，检查出的错误会触发编译失败。
-  lintOnSave: true,
+  lintOnSave: false,
 
   // 使用带有浏览器内编译器的完整构建版本
   // 查阅 https://cn.vuejs.org/v2/guide/installation.html#运行时-编译器-vs-只包含运行时
@@ -125,14 +126,14 @@ module.exports = {
     //   }
     // },
 
-    config.plugins.push(
-      new webpack.ProvidePlugin({
-        $: 'jquery',
-        jQuery: 'jquery',
-        'window.jQuery': 'jquery',
-        Popper: ['popper.js', 'default']
-      })
-    )
+    // config.plugins.push(
+    //   new webpack.ProvidePlugin({
+    //     $: 'jquery',
+    //     jQuery: 'jquery',
+    //     jquery: "jquery",
+    //     'window.jQuery': 'jquery'
+    //   })
+    // )
 
     // 生产环境
     if (process.env.NODE_ENV === 'production') {
@@ -170,15 +171,15 @@ module.exports = {
       )
 
       //去除多余的css
-      // config.plugins.push(
-      //   new PurgecssPlugin({
-      //     paths: glob.sync([
-      //       path.join(__dirname, './src/index.html'),
-      //       path.join(__dirname, './**/*.vue'),
-      //       path.join(__dirname, './src/**/*.js')
-      //     ])
-      //   })
-      // );
+      config.plugins.push(
+        new PurgecssPlugin({
+          paths: glob.sync([
+            path.join(__dirname, './src/index.html'),
+            path.join(__dirname, './**/*.vue'),
+            path.join(__dirname, './src/**/*.js')
+          ])
+        })
+      );
 
     } else {
       // 开发环境
@@ -194,6 +195,7 @@ module.exports = {
       .set('assets', resolve('src/assets'))
       .set('images', resolve('src/assets/images'))
       .set('style', resolve('src/assets/style'))
+      .set('javaScript', resolve('src/assets/javaScript'))
       .set('components', resolve('src/components'))
       .set('utils', resolve('src/utils'))
       .set('getData', resolve('src/api/getData'))
@@ -205,19 +207,47 @@ module.exports = {
       return args;
     });
 
+    // 左边代表要引入资源包的名字，右边代表该模块在外面使用引用的名字
     //防止将某些 import 的包(package)打包到 bundle 中，而是在运行时(runtime)再去从外部获取这些扩展依赖
     config.externals = {
-      '@babel/polyfill': '@babel/polyfill',
-      'element-ui': 'ElementUI ',
+      'vue': 'Vue',
+      'element-ui': 'ELEMENT',
       'bootstrap': 'bootstrap',
       'vue-router':'VueRouter',
       'vuex': 'Vuex',
-      'jquery': 'jquery',
+      'jquery': '$',
+      // 'jquery': {
+      //   commonjs: 'jQuery',
+      //   amd: 'jQuery',
+      //   root: '$'
+      // },
       'vue-lazyload': 'VueLazyload',
+      '@babel/polyfill': '@babel/polyfill',
+      // 'element-ui': 'ElementUI',
       // 'vant': 'vant',
-      'vue': 'Vue'
     }
 
+    // 打包分析
+    if (process.env.VUE_APP_IS_ANALYZ == "true") {
+
+      //每次自动打开
+      config.plugin('webpack-report')
+        .use(BundleAnalyzerPlugin, [{
+          // analyzerMode: 'static',
+          analyzerMode: 'server',
+          generateStatsFile: true,
+          statsOptions: { source: false }
+        }]);
+      
+        //运行特定命令才打开   npm run bundle-report
+        // config.plugin('webpack-report')
+        // .use(BundleAnalyzerPlugin, [{
+        //   analyzerMode: 'disabled',
+        //   generateStatsFile: true,
+        //   statsOptions: { source: false }
+        // }]);
+
+    }
 
   },
 
