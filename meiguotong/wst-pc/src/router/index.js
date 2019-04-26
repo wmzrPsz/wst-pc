@@ -1,7 +1,16 @@
+/*
+ * @Description:   根路由
+ * @Author: 彭善智
+ * @LastEditors: 彭善智
+ * @Date: 2019-04-24 09:56:10
+ * @LastEditTime: 2019-04-26 09:55:22
+ */
 // import Vue from 'vue'
 // import Router from 'vue-router'
-import homeRouter from './modules/homeRouter'
-
+// import homeRouter from './modules/homeRouter'
+// import ruleRouter from './modules/ruleRouter'
+    // homeRouter,
+    // ruleRouter,
 Vue.use(VueRouter)
 const createRouter = () =>  new VueRouter({
   mode: 'history',
@@ -9,14 +18,26 @@ const createRouter = () =>  new VueRouter({
   routes: [
     {
       path: "/",
-      component: ()=> import( '@/views/home/index'),
-      redirect: "/home"
+      component: ()=> import( '@/views/home/homeIndex'),
+      name: "homeIndex",
+      meta: { title: "首页", requireAuth: false}
     },
-    homeRouter,
+    {
+      path:"/ruleIndex",
+      component: ()=> import( '@/views/rule/ruleIndex'),
+      name: "rule",
+      meta: { title: "常规路线", requireAuth: false}
+    },
+    {
+      path:"/ruleInfo/:id",
+      component: ()=> import('@/views/rule/ruleInfo'),
+      name: "ruleInfo",
+      meta: { title: "常规路线详情", requireAuth: false}
+    },
     {
       path: '*',
       component: ()=> import( '@/views/error/404'),
-      meta: { title: 404, requireAuth: false}
+      meta: { title: 404, requireAuth: false, cache: true}
     },
   ]
 })

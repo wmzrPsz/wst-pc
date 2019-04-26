@@ -5,7 +5,8 @@ body>#app>.content{
     width: 1220px;
     margin: 0 auto;
     overflow: hidden; 
-    margin-top: 25px;}
+    margin-top: 25px;
+}
 .tui_huo{
     float: right;
     display: block; 

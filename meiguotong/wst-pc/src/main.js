@@ -8,13 +8,16 @@ import store from "./store/index";
 // import 'bootstrap'
 // import "bootstrap/dist/css/bootstrap.css"
 // import 'element-ui/lib/theme-chalk/index.css'
+import Navigation from 'vue-navigation'
 import "style/ez-public.less"
+import "style/ez-website.less"
+import "style/ez-slider.less"
+import "style/E-publc.css"
 import "style/common.css"
 import "style/reset.css"
 import "style/iconfont/iconfont.css"
-import "style/ez-website.less"
-import "style/ez-slider.less"
-import { infoMsg } from 'utils/popup.js'
+import "javaScript/ez-public.js"
+import { infoMsg, successMsg, errorMsg, warningMsg} from 'utils/popup'
 import { isNull } from 'utils/common'
 // import VueLazyload from 'vue-lazyload'  
 
@@ -22,8 +25,16 @@ import { isNull } from 'utils/common'
 Vue.config.productionTip = false;
 
 Vue.prototype.infoMsg = infoMsg
+Vue.prototype.successMsg = successMsg
+Vue.prototype.errorMsg = errorMsg
+Vue.prototype.warningMsg = warningMsg
 Vue.prototype.isNull = isNull
 
+// Vue.use(ElementUI);
+console.log(VueRouter)
+console.log(ELEMENT)
+
+Vue.use(Navigation, {router, store, moduleName: 'navigation', keyName: 'VNK'})
 
 Vue.use(VueLazyload,{
     attempt: 3,
@@ -49,6 +60,11 @@ Vue.use(VueLazyload,{
   }
   })
 
+  import * as custom from './filters/custom'
+
+  Object.keys(custom).forEach(key => {
+    Vue.filter(key, custom[key])
+  })
 
 
 /**
@@ -59,8 +75,8 @@ Vue.use(VueLazyload,{
  * next() 进行管道中的下一个钩子 如果全部钩子执行完了，则状态就是 confirmed （确认的）
  */
 router.beforeEach((to, from, next) => {
-  console.log(to)
-  console.log(from)
+  // console.log(to)
+  // console.log(from)
   if(to.meta.requireAuth){ // 判断该路由是否需要登录权限
     if(store.state.sessionToken){ // 通过vuex state获取当前的token是否存在
       next();
