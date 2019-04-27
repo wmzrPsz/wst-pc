@@ -854,7 +854,16 @@ import { getModuleDataInfo } from 'getData'
 import { mapState } from "vuex"
 export default {
     name: "ezModule",
-    props: ['htmlName', 'htmlSeal'],
+    props: {
+        htmlName: {
+            type: String,
+            required: true
+        },
+        htmlSeal: {
+            type: String,
+            required: true
+        },
+    },
     data: function () {
         return {
             contentList: [],
