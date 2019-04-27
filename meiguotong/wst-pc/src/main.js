@@ -21,7 +21,6 @@ import { infoMsg, successMsg, errorMsg, warningMsg} from 'utils/popup'
 import { isNull } from 'utils/common'
 // import VueLazyload from 'vue-lazyload'  
 
-    // "bootstrap": "^3.4.1",
 Vue.config.productionTip = false;
 
 Vue.prototype.infoMsg = infoMsg
@@ -29,10 +28,7 @@ Vue.prototype.successMsg = successMsg
 Vue.prototype.errorMsg = errorMsg
 Vue.prototype.warningMsg = warningMsg
 Vue.prototype.isNull = isNull
-
-// Vue.use(ElementUI);
-console.log(VueRouter)
-console.log(ELEMENT)
+Vue.prototype.currencySign = store.state.common.currencySign
 
 Vue.use(Navigation, {router, store, moduleName: 'navigation', keyName: 'VNK'})
 

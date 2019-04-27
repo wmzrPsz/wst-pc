@@ -29,8 +29,21 @@
                     </div>
 
                     <div class="calendar-min">
-                        <div class="date-box"></div>
+                      <ezCalendar></ezCalendar>
+                        <!-- <div class="date-box"></div> -->
+<!-- <el-calendar>
+  <template
+    slot="dateCell"
+    slot-scope="{date, data}">
+    <p :class="data.isSelected ? 'is-selected' : ''">
+      {{ data.day.split('-').slice(1).join('-') }} 
+      {{ data.isSelected ? '✔️' : ''}}
+    </p>
+  </template>
+</el-calendar> -->
+
                     </div>
+                    
                     <p>备注：{{route.remark}}</p>
                 </div>
                 <div class="local-info-right floatl">
@@ -44,14 +57,16 @@
                             <span class="text-gray" @click="priceInfor" id="priceInfor">价格说明</span></div>
                             <span class="tooltip-show floatl" @click="refundTips" id="refundTips"><u>退款说明</u></span>
                         <div class="floatr">
-                            <i class="iconfont icon-star" v-for="(item, index) in 5" v-if="route.star > index"></i>
-                            <u><a href="#comment">{{route.commentNum}}条评价</a></u>
+                            <!-- <i class="iconfont icon-star" v-for="(item, index) in 5" v-if="route.star > index"></i> -->
+                              <el-rate style="margin-right:30px;" v-model="route.star" disabled/>
+                            <!-- <u><a href="#comment">{{route.commentNum}}条评价</a></u> -->
+                            <u><a>{{route.commentNum}}条评价</a></u>
                         </div>
                     </div>
                     <div class="local-content">
                         <div class="local-time">
                             <div class="local-time-title time-number-title floatl">出发城市</div>
-                            <div class="local-time-con time-number-con floatl">{{cityName}}</div>
+                            <div class="local-time-con time-number-con floatl">{{route.startCityContent}}</div>
                         </div>
                         <div class="local-time">
                             <div class="local-time-title time-number-title floatl">出发时间</div>
@@ -61,7 +76,7 @@
                         </div>
                         <div class="local-number">
                             <div class="local-number-title time-number-title floatl">出游人数</div>
-                            <div class="local-number-con time-number-con floatl">
+                            <!-- <div class="local-number-con time-number-con floatl">
                                 <div class="floatl">
                                     <span class="floatl">成人</span>
                                     <div class="floatl"><span onclick="{if(app.adultNum > 0)app.adultNum--}">-
@@ -70,17 +85,38 @@
                                 </div>
                                 <div class="floatl">
                                     <span class="floatl">儿童</span>
-                                    <div class="floatl"><span onclick="{if(app.childNum > 0)app.childNum--}">-
+                                    <div class="floatl">
+                                        <span onclick="{if(app.childNum > 0)app.childNum--}">-
                                         </span><input type="number" v-model.trim="childNum" readonly="readonly" maxlength="3"><span
-                                            onclick="{app.childNum++}">+</span></div>
+                                            onclick="{app.childNum++}">+</span>
+                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
+                              <span class="number-right" >成人</span>
+                                <el-input-number v-model.number="adultNum" step-strictly size="small" :min="0" :max="10" label="成人"/>
+                             <span class="number-right number-left" >儿童</span>
+                                <el-input-number v-model.number="childNum" step-strictly size="small" :min="0" :max="10" label="儿童"/>
+                          
                         </div>
 
                         <div class="local-number ez-travel-hotel ">
                             <div class="time-number-title floatl">房间数量</div>
                             <div class="time-number-con floatl travel-content-main-search-type">
-                                <ul>
+                            <p>
+                                <span class="number-right" >单人间</span>
+                                    <el-input-number v-model="oneNum" step-strictly size="small" :min="0" :max="10" label="单人间"/>
+                                <span class="number-right number-left">双人间</span>
+                                    <el-input-number v-model.number="twoNum" step-strictly size="small" :min="0" :max="10" label="双人间"/>  
+                            </p>
+                            <p>
+                                <span class="number-right" >三人间</span>
+                                <el-input-number v-model.number="threeNum" step-strictly size="small" :min="0" :max="10" label="三人间"/>  
+                                <span class="number-right number-left" >四人间</span>
+                                <el-input-number v-model.number="fourNum" step-strictly size="small" :min="0" :max="10" label="四人间"/>  
+                                <span class="number-right number-left" >配房</span>
+                                <el-input-number v-model.number="arrangeNum" step-strictly size="small" :min="0" :max="10" label="配房"/>  
+                            </p>
+                                <!-- <ul>
                                     <li>
                                         <i class="iconfont icon-ren"></i>
                                         <select class="form-control" v-model="oneNum">
@@ -119,7 +155,8 @@
                                             <option v-for="(item, index) in 5" :value="item">{{item}}</option>
                                         </select>
                                     </li>
-                                </ul>
+                                </ul> -->
+
                             </div>
                         </div>
                         <div class="local-price">
@@ -386,7 +423,7 @@ import ezContainer from "components/home/ezContainer"
 import ezModule from "components/home/ezModule"
 import ezFooter from "components/home/ezFooter"
 import ezAside from "components/home/ezAside"
-import { mapState, mapMutations } from "vuex";
+import ezCalendar from "components/common/calendar"
 import { 
     saveConsult,
     getConsult,
@@ -403,7 +440,6 @@ export default {
         return {
             routeid: this.$route.params.id,
             route: {},   //常规路线详情
-            cityName: "",   //出发城市
             imgIndex: 0,  //选中的img图片下标
             adultNum: 0,  //大人数量
             childNum: 0,  //小孩数量
@@ -431,7 +467,7 @@ export default {
         }
     },
     computed: {
-        ...mapState(["currencySign"]),
+        //价格
         price:function(){
             if (!this.beginDate) return 0;
             return this.oneNum * this.oneCost + this.twoNum * this.twoCost + this.threeNum * this.threeCost +
@@ -443,7 +479,8 @@ export default {
         ezContainer,
         ezModule,
         ezFooter,
-        ezAside
+        ezAside,
+        ezCalendar
     },
     created() {
         this.routeid = this.$route.params.id
@@ -657,6 +694,8 @@ export default {
                 })
                 if(data){
                     this.route = data;
+                     //解决分数是字符串报错
+                    this.$set(this.route , "star", this.route.star?parseInt(this.route.star):0)
                     this.route.carImg = this.route.carImg.split(",");
                     this.route.tagContent = this.route.tagContent.split(",");
                     this.route.scenicContent = this.route.scenicContent.split(",");
@@ -734,5 +773,11 @@ export default {
         margin: 0 auto;
         overflow: hidden; 
         margin-top: 25px;
+    }
+    .number-right{
+        margin-right: 10px;
+    }
+    .number-left{
+        margin-left: 10px;
     }
 </style>

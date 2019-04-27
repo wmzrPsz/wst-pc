@@ -192,8 +192,9 @@
                             <div class="box-card-rate">
                                 <div class="ez-star pull-left">
                                     <!-- <img src="../../assets/images/star-on.png"> -->
-                                    <img :src="list.star>index?starOn:starOff"  
-                                        title="regular" v-for="(item, index) in 5" :key="index">
+                                    <!-- <img :src="list.star>index?starOn:starOff"  
+                                        title="regular" v-for="(item, index) in 5" :key="index"> -->
+                                        <el-rate v-model.number="list.star" disabled/>
                                 </div>
                                 <span class="pull-right text-gray evaluation-click" @click.stop="commentNumClick(index)"><u>{{list.commentNum}}条评价</u></span>
                             </div>
@@ -320,7 +321,6 @@ import ezContainer from "components/home/ezContainer"
 import ezModule from "components/home/ezModule"
 import ezFooter from "components/home/ezFooter"
 import ezAside from "components/home/ezAside"
-import { mapState, mapMutations } from "vuex";
 import { 
     getRoutePriceDetails,
     addChildComment,
@@ -924,6 +924,8 @@ export default {
                     if(list.carImg){
                         this.$set(list, "carImg", list.carImg.split(",")[0])
                     }
+                    //解决分数是字符串报错
+                     this.$set(list, "star", list.star?parseInt(list.star):0)
                 }
                 this.pages = data.totalPage;
             }
@@ -969,11 +971,6 @@ export default {
         },
     },
     computed: {
-        ...mapState(["currencySign"]),
-        ...mapState({
-            starOn: state => state.rule.starOn,
-            starOff: state => state.rule.starOff,
-        }),
         //出发城市名称
         startCityName(){
             if( this.cityList.length > 0)
