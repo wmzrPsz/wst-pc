@@ -13,13 +13,11 @@ const mutations = {
       //语言改变
       languageChange: (state, languageid)=> {
         state.languageid = languageid;
-        console.log(state);
       },
       //货币改变
-      currencyChange: (state, currencyid, currencySign)=> {
-        state.currencyid = currencyid;
-        state.currencySign = currencySign;
-        console.log(state);
+      currencyChange: (state, currency)=> {
+        state.currencyid = currency.currencyid;
+        state.currencySign = currency.sign;
       },
       //设置网站基本参数
       setComProtocol: (state, comProtocol)=> {

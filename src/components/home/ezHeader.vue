@@ -52,7 +52,7 @@
 
         <ul class="nav navbar-nav navbar-right ez-header-right">
             <li class="dropdown">
-                <select class="select-left"  v-model="currencyidMp" @change="changeCurrency">
+                <select class="select-left"  v-model="currencyidFlag" @change="changeCurrency">
                     <option v-for="(k,index) in currencyList" :key="index" :value="k.currencyid">{{k.currency}}</option>
                 </select>
             </li>
@@ -64,7 +64,7 @@
                 </a>
                 <ul class="dropdown-menu">
                     <li v-for="(k,index) in languageList" :key="index">
-                        <input type="radio" name="language" :value="k.languageid" v-model="languageidMp" @change="changeLanguage(index)">{{k.content}}
+                        <input type="radio" name="language" :value="k.languageid" v-model="languageidFlag" @change="changeLanguage(index)">{{k.content}}
                     </li>
                 </ul>
             </li>
@@ -84,8 +84,8 @@ export default {
     name: "ezHeader",
     data () {
         return {
-            languageidMp: "", //语言ID
-            currencyidMp: "", //货币ID
+            languageidFlag: "", //语言ID
+            currencyidFlag: "", //货币ID
         }
     },
     computed: {
@@ -105,16 +105,6 @@ export default {
                 }
             }
         },
-        //货币名称
-        currencyName() {
-            for (const list of this.currencyList) {
-                if (list.currencyid == this.currencyid) {
-                    console.log(list)
-                    this.currencyChange(list.currencyid,list.sign)
-                    return list.currency;
-                }
-            }
-        },
     },
     components: {
         "ezlogin": ezlogin,
@@ -122,8 +112,8 @@ export default {
     //     // // "ez-forest": ezForest,
     },
     created() {
-        this.languageidMp = this.languageid;
-        this.currencyidMp = this.currencyid;
+        this.languageidFlag = this.languageid;
+        this.currencyidFlag = this.currencyid;
     },
     methods: {
         ...mapMutations([ "addLogin", "removeLogin", "languageChange", "currencyChange", "setComProtocol", "loginFlagChange" ]),
@@ -135,11 +125,15 @@ export default {
         },
        //语言改变
         changeLanguage() {
-            this.languageChange(this.languageidMp);
+            this.languageChange(this.languageidFlag);
         },
         //货币改变
         changeCurrency() {
-            this.currencyChange(this.currencyidMp);
+            for (const list of this.currencyList) {
+                if (list.currencyid == this.currencyidFlag) {
+                    this.currencyChange(list)
+                }
+            }
         },
         //退出登录
         removeLoginClick() {

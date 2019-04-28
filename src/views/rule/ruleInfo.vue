@@ -53,7 +53,7 @@
                     <p><label v-for="(tag, index) in route.tagContent">{{tag}}</label></p>
                     <p>{{route.infor}}</p>
                     <div class="time-price-con floatl">
-                        <div class="text-orange ez-price floatl">¥{{route.price}} <span class="text-gray">/元起</span>
+                        <div class="text-orange ez-price floatl">{{currencySign}}{{route.price}} <span class="text-gray">/元起</span>
                             <span class="text-gray" @click="priceInfor" id="priceInfor">价格说明</span></div>
                             <span class="tooltip-show floatl" @click="refundTips" id="refundTips"><u>退款说明</u></span>
                         <div class="floatr">
@@ -71,8 +71,11 @@
                         <div class="local-time">
                             <div class="local-time-title time-number-title floatl">出发时间</div>
                             <div class="calendar-box date-box time-info" id="calendar-box"></div>
-                            <div class="local-time-con time-number-con floatl"><input type="text" class="demo-input"
-                                    placeholder="选择日期" id="test6" @click="calendarClick" v-model="beginDate" readonly="readonly"></div>
+                            <div class="local-time-con time-number-con floatl">
+                             <!-- <input type="text" class="demo-input" placeholder="选择日期" id="test6" 
+                             @click="calendarClick" v-model="beginDate" readonly="readonly"> -->
+                             {{calendarDate.checkDate}}
+                                    </div>
                         </div>
                         <div class="local-number">
                             <div class="local-number-title time-number-title floatl">出游人数</div>
@@ -424,6 +427,7 @@ import ezModule from "components/home/ezModule"
 import ezFooter from "components/home/ezFooter"
 import ezAside from "components/home/ezAside"
 import ezCalendar from "components/common/calendar"
+import { mapState, mapMutations } from "vuex";
 import { 
     saveConsult,
     getConsult,
@@ -459,17 +463,26 @@ export default {
             content: "",  //咨询内容
             name: "",  //姓名
             mobile: "", //电话
-            oneCost:0,  //单人房价格
-            twoCost:0,  //双人房价格
-            threeCost:0, //三人房价格
-            fourCost:0,  //四人房价格
-            arrangeCost:0,  //配房价格
+            // oneCost:0,  //单人房价格
+            // twoCost:0,  //双人房价格
+            // threeCost:0, //三人房价格
+            // fourCost:0,  //四人房价格
+            // arrangeCost:0,  //配房价格
         }
     },
     computed: {
+        ...mapState([ "currencySign", ]),
+        ...mapState({
+            calendarDate: state => state.rule.calendarDate,
+            oneCost: state => state.rule.calendarDate.oneCost,
+            twoCost: state => state.rule.calendarDate.twoCost,
+            threeCost: state => state.rule.calendarDate.threeCost,
+            fourCost: state => state.rule.calendarDate.fourCost,
+            arrangeCost: state => state.rule.calendarDate.arrangeCost,
+         }),
         //价格
         price:function(){
-            if (!this.beginDate) return 0;
+            // if (!this.beginDate) return 0;
             return this.oneNum * this.oneCost + this.twoNum * this.twoCost + this.threeNum * this.threeCost +
                     this.fourNum * this.fourCost + this.arrangeNum * this.arrangeCost + (this.adultNum + this.childNum) * this.route.price ;
         },
@@ -489,8 +502,7 @@ export default {
         this.getRefundInfo();
         this.selectComment(1, 1);
         this.getConsult(1, 1);
-        this.calendarClick();
-        $('.calendar-box').hide();
+        // this.calendarClick();
     },
     methods: {
            //下单页面
@@ -718,25 +730,25 @@ export default {
             },
             //点击日历
             async calendarClick() {
-                let calendarDate = new Date();
-                $('.calendar-box').show();
-                let priceDate = calendarDate.year + "-" + (calendarDate.month > 9 ? calendarDate.month : "0" + calendarDate.month);
+                let priceDate = this.calendarDate.year + "-" + (this.calendarDate.month > 9 ? this.calendarDate.month : "0" + this.calendarDate.month);
                 console.log(priceDate);
                 let data = await getRoutePriceDetails({
                     routeid: this.routeid,
                     priceDate: priceDate,
                 })
+                console.log(data)
                 if(data){
                     this.oneCost = data[0].oneCost;
                     this.twoCost = data[0].twoCost;
                     this.threeCost = data[0].threeCost;
                     this.fourCost = data[0].fourCost;
                     this.arrangeCost = data[0].arrangeCost;
-                    $(".date-box").calendar({
-                        ele: '.date-box', //依附dom
-                        title: '',
-                        data: data
-                    });
+                    this.setOpt(data)
+                    // $(".date-box").calendar({
+                    //     ele: '.date-box', //依附dom
+                    //     title: '',
+                    //     data: data
+                    // });
                 }
             },
         },
@@ -748,23 +760,6 @@ export default {
         },
     
 }
-
-    $(document).bind('click', function (e) {
-        var e = e || window.event; //浏览器兼容性 
-        var elem = e.target || e.srcElement;
-        while (elem) { //循环判断至跟节点，防止点击的是div子元素 
-            if (elem.id && elem.id == 'calendar-box' || elem.id == 'test6') {
-                return;
-            }
-            elem = elem.parentNode;
-        }
-        $('.calendar-box').css('display', 'none'); //点击的不是div或其子元素 
-        let beginDate = $('.calendar-box').calendarGetActive().date.split("-");
-        let month = parseInt(beginDate[1]);
-        let day = parseInt(beginDate[2]);
-        app.beginDate = beginDate[0] + "-" + ( month> 9 ? month : "0" + month) + "-" + (day > 9 ? day : "0" + day) ;
-    });
-
 
 </script>
 <style lang="less" scoped>

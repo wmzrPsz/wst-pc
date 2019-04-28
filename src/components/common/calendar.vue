@@ -3,9 +3,9 @@
     <div class="date-box">
       <div class="ht-rili-querybox">
         <div class="ht-rili-datebox">
-          <span class="ht-rili-leftarr"></span>
-          <span class="ht-rili-date">2019年 5月</span>
-          <span class="ht-rili-rightarr"></span>
+          <span class="ht-rili-leftarr" @click="monthLeftClick"></span>
+          <span class="ht-rili-date">{{calendarDate.year}}年{{calendarDate.month}}月</span>
+          <span class="ht-rili-rightarr" @click="monthRightClick"></span>
         </div>
       </div>
       <div class="ht-rili-entirety floatl">
@@ -19,141 +19,159 @@
           <div class="ht-rili-th">六</div>
         </div>
         <div class="ht-rili-body">
-          <div class="ht-rili-td ht-rili-td-disabled" data-date="2019-4-28">
-            <span class="ht-rili-day">28</span>
-            <span class="ht-rili-money"></span>
-          </div>
-          <div class="ht-rili-td ht-rili-td-disabled" data-date="2019-4-29">
-            <span class="ht-rili-day">29</span>
-            <span class="ht-rili-money"></span>
-          </div>
-          <div class="ht-rili-td ht-rili-td-disabled" data-date="2019-4-30">
-            <span class="ht-rili-day">30</span>
-            <span class="ht-rili-money"></span>
-          </div>
-          <div class="ht-rili-td ht-rili-onclick" data-date="2019-5-1">
-            <span class="ht-rili-day">
-              1
-              <i data-state="100">余100</i>
+          <div :class="[list.flag?'ht-rili-onclick':'ht-rili-td-disabled','ht-rili-td',list.check?'ht-rili-td-active':'']" 
+          v-for="(list, index) in dataList" :key="index" @click="dayClick(index)">
+            <span class="ht-rili-day">{{list.day}}
+              <!-- 1 -->
+              <i data-state="100" v-if="list.flag">余{{list.state}}</i>
             </span>
-            <span class="ht-rili-money" data-money="1888">￥1888</span>
+            <span class="ht-rili-money" v-if="list.flag">{{currencySign}}{{list.price}}</span>
           </div>
-          <div class="ht-rili-td ht-rili-onclick" data-date="2019-5-2">
-            <span class="ht-rili-day">
-              2
-              <i data-state="100">余100</i>
-            </span>
-            <span class="ht-rili-money" data-money="1888">￥1888</span>
-          </div>
-          <div class="ht-rili-td ht-rili-onclick" data-date="2019-5-3">
-            <span class="ht-rili-day">
-              3
-              <i data-state="100">余100</i>
-            </span>
-            <span class="ht-rili-money" data-money="1888">￥1888</span>
-          </div>
-          <div class="ht-rili-td ht-rili-onclick" data-date="2019-5-4">
-            <span class="ht-rili-day">
-              4
-              <i data-state="100">余100</i>
-            </span>
-            <span class="ht-rili-money" data-money="1888">￥1888</span>
-          </div>
- 
         </div>
       </div>
     </div>
   </div>
 </template>
 <script>
+import { mapState, mapMutations } from "vuex"
+import {  getRoutePriceDetails } from 'getData'
 export default {
   name: "calendar",
-//   props: {
-//     htmlName: {
-//       type: String,
-//       required: true
-//     },
-//     htmlSeal: {
-//       type: String,
-//       required: true
-//     }
-//   },
   data() {
     return {
       calendarDate: {},
-      currencySign: "$",
-      opt:[{"oneCost":3999.0,"twoCost":3999.0,"threeCost":3999.0,"fourCost":3999.0,"arrangeCost":3999.0,"state":"-1","date":"2019-05-04","price":3999.00},{"oneCost":3999.0,"twoCost":3999.0,"threeCost":3999.0,"fourCost":3999.0,"arrangeCost":3999.0,"state":"-1","date":"2019-05-05","price":3999.00},{"oneCost":3999.0,"twoCost":3999.0,"threeCost":3999.0,"fourCost":3999.0,"arrangeCost":3999.0,"state":"-1","date":"2019-05-06","price":3999.00},{"oneCost":3999.0,"twoCost":3999.0,"threeCost":3999.0,"fourCost":3999.0,"arrangeCost":3999.0,"state":"-1","date":"2019-05-07","price":3999.00},{"oneCost":3999.0,"twoCost":3999.0,"threeCost":3999.0,"fourCost":3999.0,"arrangeCost":3999.0,"state":"-1","date":"2019-05-08","price":3999.00},{"oneCost":3999.0,"twoCost":3999.0,"threeCost":3999.0,"fourCost":3999.0,"arrangeCost":3999.0,"state":"-1","date":"2019-05-09","price":3999.00},{"oneCost":3999.0,"twoCost":3999.0,"threeCost":3999.0,"fourCost":3999.0,"arrangeCost":3999.0,"state":"-1","date":"2019-05-10","price":3999.00},{"oneCost":3999.0,"twoCost":3999.0,"threeCost":3999.0,"fourCost":3999.0,"arrangeCost":3999.0,"state":"-1","date":"2019-05-11","price":3999.00},{"oneCost":3999.0,"twoCost":3999.0,"threeCost":3999.0,"fourCost":3999.0,"arrangeCost":3999.0,"state":"-1","date":"2019-05-12","price":3999.00},{"oneCost":3999.0,"twoCost":3999.0,"threeCost":3999.0,"fourCost":3999.0,"arrangeCost":3999.0,"state":"-1","date":"2019-05-13","price":3999.00},{"oneCost":3999.0,"twoCost":3999.0,"threeCost":3999.0,"fourCost":3999.0,"arrangeCost":3999.0,"state":"-1","date":"2019-05-14","price":3999.00},{"oneCost":3999.0,"twoCost":3999.0,"threeCost":3999.0,"fourCost":3999.0,"arrangeCost":3999.0,"state":"-1","date":"2019-05-15","price":3999.00}]
+      dataList: [],
+      date: "",  //选择的日期
     };
+  },
+  computed: {
+     ...mapState([ "currencySign", ]),
+     ...mapState({
+       opt: state => state.rule.opt
+    }),
   },
   created() {
       this.calendarDateInit();
-    //   setTimeout(()=>{
-    //         this.getIndexDay();
-    //   },3000)
-    
+      this.calendarClick();
   },
   methods: {
+    ...mapMutations("rule",["calendarDateChange", "setOpt"]),
+      async calendarClick() {
+          let priceDate = this.calendarDate.year + "-" + (this.calendarDate.month > 9 ? this.calendarDate.month : "0" + this.calendarDate.month);
+          console.log(priceDate);
+          let data = await getRoutePriceDetails({
+              routeid: 2,
+              priceDate: priceDate,
+          })
+          console.log(data)
+          if(data){
+              this.calendarDate.oneCost = data[0].oneCost;
+              this.calendarDate.twoCost = data[0].twoCost;
+              this.calendarDate.threeCost = data[0].threeCost;
+              this.calendarDate.fourCost = data[0].fourCost;
+              this.calendarDate.arrangeCost = data[0].arrangeCost;
+              this.setOpt(data)
+          }
+          this.getIndexDay();
+      },
+    //点击左边月份
+    monthLeftClick(){
+        if (this.calendarDate.month <= 1) {
+            this.calendarDate.year -= 1;
+            this.calendarDate.month = 12;
+        } else {
+            this.calendarDate.month -= 1;
+        }
+        this.getIndexDay();
+         console.log(this.date)
+    },
+    //点击右边月份
+    monthRightClick(){
+        if (this.calendarDate.month == 12) {
+            this.calendarDate.year += 1;
+            this.calendarDate.month = 1;
+        } else {
+            this.calendarDate.month += 1;
+        }
+        this.getIndexDay();
+        console.log(this.date)
+    },
+    //点击日期
+    dayClick(index) {
+      this.date = this.dataList[index].date
+      if(this.dataList[index].flag){
+          this.activeChange();
+      }
+      console.log(this.date)
+    },
+    //改变选中的日期
+    activeChange(){
+      this.dataList.map((list)=>{
+        this.$set(list, "check", false);
+        if(list.flag && this.date && this.checkDate(this.date,list.date)){
+             this.$set(list, "check", true);
+            //  let list = this.date.split("-");
+            //  this.calendarDate.checkDate = list[0] + list[1]>9?list[1]:"0"+list[1] + list[2]>9?list[2]:"0"+list[2];
+             this.calendarDate.checkDate  = this.date;
+             this.calendarDateChange(this.calendarDate)
+        }
+      })
+    },
+    //日期初始化
     calendarDateInit() {
-     this.calendarDate.opt = this.opt;
       this.calendarDate.today = new Date();
       this.calendarDate.year = this.calendarDate.today.getFullYear();
       this.calendarDate.month = this.calendarDate.today.getMonth() + 1;
       this.calendarDate.date = this.calendarDate.today.getDate();
       this.calendarDate.day = this.calendarDate.today.getDay();
     },
+    //天数初始化
     getIndexDay() {
         this.isLeapYear();
         this.getDays();
-        let riliHtml = '';
+        let dataList = [];
         this.calendarDate.monthStart = new Date(this.calendarDate.year + "/" + this.calendarDate.month + "/1").getDay();
         if (this.calendarDate.monthStart == 0) {
             this.calendarDate.monthStart = 7;
         }
-        for (var i = this.calendarDate.monthStart; i > 0; i--) {
-            var dataDateStr = this.calendarDate.lastYear + "-" + this.calendarDate.lastMonth + "-" + (this.calendarDate.lastDays - i +
+        for (let i = this.calendarDate.monthStart; i > 0; i--) {
+            let map = {};
+            map.flag = false;
+            map.day = this.calendarDate.lastDays - i + 1;
+            map.date = this.calendarDate.lastYear + "-" + this.calendarDate.lastMonth + "-" + (this.calendarDate.lastDays - i +
                 1);
-            riliHtml += '<div class="ht-rili-td ht-rili-td-disabled" data-date="' + dataDateStr +
-                '"><span class="ht-rili-day">' + (this.calendarDate.lastDays - i + 1) +
-                '</span><span class="ht-rili-money"></span></div>';
+            dataList.push(map);
         }
         for (var k = 0; k < this.calendarDate.days; k++) {
-            var flag;
-            var dataDateStr = this.calendarDate.year + "-" + this.calendarDate.month + "-" + (k + 1);
-            for (var d in this.calendarDate.opt.data) {
-                var nowDate = dataDateStr;
-                var dataDate = this.calendarDate.opt.data[d].date;//日期
-                var state = this.calendarDate.opt.data[d].state;//房间数量情况
-                var price = this.calendarDate.opt.data[d].price;//价格
-                flag = checkDate(nowDate, dataDate);
-                if (flag) {
-                    riliHtml += '' +
-                        '<div class="ht-rili-td ht-rili-onclick" data-date="' + dataDateStr +'">' +
-                            '<span class="ht-rili-day">' + (k + 1) + '<i data-state="' + state +'">' +"余" +state + '</i>' +'</span>' +
-                            '<span class="ht-rili-money" data-money="' +price + '">'+this.currencySign+'' + price + '</span>' +
-                        '</div>';
+            let map = {};
+            map.flag = false;
+            map.day = k + 1;
+            map.date = this.calendarDate.year + "-" + this.calendarDate.month + "-" + (k + 1);
+            for (let d in this.opt) {
+                map.state = this.opt[d].state;//房间数量情况
+                map.price = this.opt[d].price;//价格
+                map.flag = this.checkDate(map.date, this.opt[d].date);
+                if (map.flag) {
                     break;
                 }
             }
-            if (!flag) {
-                riliHtml += '<div class="ht-rili-td ht-rili-td-disabled" data-date="' + dataDateStr +
-                    '"><span class="ht-rili-day">' + (k + 1) + '</span><span class="ht-rili-money"></span></div>';
-            }
+            dataList.push(map);
         }
-        for (var j = 0; j < (42 - this.calendarDate.days - this.calendarDate.monthStart); j++) {
-            var dataDateStr = this.calendarDate.nextYear + "-" + this.calendarDate.nextMonth + "-" + (j + 1);
-            riliHtml += '<div class="ht-rili-td ht-rili-td-disabled" data-date="' + dataDateStr +
-                '"><span class="ht-rili-day">' + (j + 1) + '</span><span class="ht-rili-money"></span></div>';
+        for (let j = 0; j < (42 - this.calendarDate.days - this.calendarDate.monthStart); j++) {
+            let map = {};
+            map.flag = false;
+            map.day = j + 1;
+            map.date = this.calendarDate.nextYear + "-" + this.calendarDate.nextMonth + "-" + (j + 1);
+            dataList.push(map);
         }
-
-        this.calendarDate.month++;
-        if (this.calendarDate.month > 12) {
-            this.calendarDate.year += 1;
-            this.calendarDate.month = 1;
+        this.dataList = dataList;
+        if(this.date){
+          this.activeChange();
         }
-        console.log(riliHtml)
-        console.log($('.ht-rili-body'))
-         $('.ht-rili-body').append(riliHtml);
+        console.log(dataList)
+        console.log(this.calendarDate)
     },
+    //判断是否是闰年
     isLeapYear() {
         if ((this.calendarDate.year % 4 == 0) && (this.calendarDate.year % 100 != 0 || this.calendarDate.year % 400 == 0)) {
             this.calendarDate.isLeapYear = true;
@@ -161,6 +179,7 @@ export default {
             this.calendarDate.isLeapYear = false;
         }
     },
+    //获取上个月下个月天数
     getDays() {
         if (parseInt(this.calendarDate.month) == 1) {
             this.calendarDate.lastDays = new Date(this.calendarDate.year - 1, 12, 0).getDate();
@@ -181,7 +200,27 @@ export default {
             this.calendarDate.nextYear = new Date(this.calendarDate.year, this.calendarDate.month + 1, 0).getFullYear();
         }
         this.calendarDate.days = new Date(this.calendarDate.year, this.calendarDate.month, 0).getDate();
-    }
+    },
+    //判断日期是否相等
+    checkDate(dateStr1, dateStr2){
+        let date1 = dateStr1.split("-");
+        let date2 = dateStr2.split("-");
+        if (date1[1] < 10 && date1[1].length < 2) {
+            date1[1] = "0" + date1[1];
+        }
+        if (date1[2] < 10 && date1[2].length < 2) {
+            date1[2] = "0" + date1[2];
+        }
+        if (date2[1] < 10 && date2[1].length < 2) {
+            date2[1] = "0" + date2[1];
+        }
+        if (date2[2] < 10 && date2[2].length < 2) {
+            date2[2] = "0" + date2[2];
+        }
+        date1 = date1.join("-");
+        date2 = date2.join("-");
+        return date1 == date2;
+    },
   }
 };
 </script>
@@ -288,7 +327,7 @@ export default {
     padding: 0 20px;
 }
 .ht-rili-day {
-    font-size:14px;
+    font-size:10px;
     font-weight:700;
     display:inline-block;
     width:100%

@@ -28,7 +28,6 @@ Vue.prototype.successMsg = successMsg
 Vue.prototype.errorMsg = errorMsg
 Vue.prototype.warningMsg = warningMsg
 Vue.prototype.isNull = isNull
-Vue.prototype.currencySign = store.state.common.currencySign
 
 Vue.use(Navigation, {router, store, moduleName: 'navigation', keyName: 'VNK'})
 
