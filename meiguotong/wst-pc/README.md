@@ -30,8 +30,10 @@ npm run lint
 yarn lint
 ```
 ### 自动部署
+
 npm run deploy:dev
 yarn deploy:dev
+
 npm run deploy:prod
 yarn deploy:prod
 

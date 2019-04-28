@@ -321,6 +321,7 @@ import ezContainer from "components/home/ezContainer"
 import ezModule from "components/home/ezModule"
 import ezFooter from "components/home/ezFooter"
 import ezAside from "components/home/ezAside"
+import { mapState } from "vuex";
 import { 
     getRoutePriceDetails,
     addChildComment,
@@ -971,6 +972,7 @@ export default {
         },
     },
     computed: {
+         ...mapState([ "currencySign", ]),
         //出发城市名称
         startCityName(){
             if( this.cityList.length > 0)

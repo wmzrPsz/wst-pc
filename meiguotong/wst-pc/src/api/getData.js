@@ -3,10 +3,10 @@
  * @Author: 彭善智
  * @LastEditors: 彭善智
  * @Date: 2019-03-29 13:12:37
- * @LastEditTime: 2019-04-24 14:49:30
+ * @LastEditTime: 2019-04-28 18:40:51
  */
 
-import ajax from './fetch';;
+import ajax from './fetch'
 import {imgUpload} from "../utils/common"
 
 
