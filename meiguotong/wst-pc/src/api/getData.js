@@ -3,7 +3,7 @@
  * @Author: 彭善智
  * @LastEditors: 彭善智
  * @Date: 2019-03-29 13:12:37
- * @LastEditTime: 2019-04-28 18:40:51
+ * @LastEditTime: 2019-04-28 19:33:03
  */
 
 import ajax from './fetch'
@@ -152,6 +152,8 @@ export const getGuideByCity = (param = {}) => ajax( process.env.VUE_APP_PROXY_AP
 export const getNearbyCity = (param = {}) => ajax( process.env.VUE_APP_PROXY_API +'/common/getNearbyCity', param);
 //获取城市景点
 export const getCitySpot = (param = {}) => ajax( process.env.VUE_APP_PROXY_API +'/common/getCitySpot', param);
+//产品菜单接口
+export const getProMenu = (param = {}) => ajax( process.env.VUE_APP_PROXY_API +'/common/getProMenu', param);
 
 
 

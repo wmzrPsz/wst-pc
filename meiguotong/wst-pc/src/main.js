@@ -17,6 +17,7 @@ import "style/common.css"
 import "style/reset.css"
 import "style/iconfont/iconfont.css"
 import "javaScript/ez-public.js"
+import "javaScript/jqPaginator.js"
 import { infoMsg, successMsg, errorMsg, warningMsg} from 'utils/popup'
 import { isNull } from 'utils/common'
 // import VueLazyload from 'vue-lazyload'  
