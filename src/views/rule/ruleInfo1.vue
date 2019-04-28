@@ -56,7 +56,7 @@
                         <div class="text-orange ez-price floatl">{{currencySign}}{{route.price}} <span class="text-gray">/元起</span>
                              <el-tooltip class="item" effect="dark" placement="bottom">
                             <!-- <span class="text-gray" @click="priceInfor" id="priceInfor">价格说明</span> -->
-                              <div slot="content">{{route.priceInfor}}</div>
+                              <div slot="content" style="width:200px">{{route.priceInfor}}</div>
                             <span class="text-gray">价格说明</span>
                              </el-tooltip>
                             </div>
@@ -79,7 +79,7 @@
                             <div class="local-time-con time-number-con floatl">
                              <!-- <input type="text" class="demo-input" placeholder="选择日期" id="test6" 
                              @click="calendarClick" v-model="beginDate" readonly="readonly"> -->
-                             {{calendarDate.checkDate}}
+                             {{beginDate}}
                                     </div>
                         </div>
                         <div class="local-number">
@@ -101,9 +101,9 @@
                                 </div>
                             </div> -->
                               <span class="number-right" >成人</span>
-                                <el-input-number v-model.number="adultNum" step-strictly size="small" :min="0" :max="10" label="成人"/>
+                                <el-input-number v-model.number="adultNum" @change="setAdultNum" step-strictly size="small" :min="0" :max="10" label="成人"/>
                              <span class="number-right number-left" >儿童</span>
-                                <el-input-number v-model.number="childNum" step-strictly size="small" :min="0" :max="10" label="儿童"/>
+                                <el-input-number v-model.number="childNum" @change="setChildNum" step-strictly size="small" :min="0" :max="10" label="儿童"/>
                           
                         </div>
 
@@ -112,17 +112,17 @@
                             <div class="time-number-con floatl travel-content-main-search-type">
                             <p>
                                 <span class="number-right" >单人间</span>
-                                    <el-input-number v-model="oneNum" step-strictly size="small" :min="0" :max="10" label="单人间"/>
+                                    <el-input-number v-model="oneNum" @change="setOneNum"  step-strictly size="small" :min="0" :max="10" label="单人间"/>
                                 <span class="number-right number-left">双人间</span>
-                                    <el-input-number v-model.number="twoNum" step-strictly size="small" :min="0" :max="10" label="双人间"/>  
+                                    <el-input-number v-model.number="twoNum" @change="setTwoNum"  step-strictly size="small" :min="0" :max="10" label="双人间"/>  
                             </p>
                             <p>
                                 <span class="number-right" >三人间</span>
-                                <el-input-number v-model.number="threeNum" step-strictly size="small" :min="0" :max="10" label="三人间"/>  
+                                <el-input-number v-model.number="threeNum" @change="setThreeNum" step-strictly size="small" :min="0" :max="10" label="三人间"/>  
                                 <span class="number-right number-left" >四人间</span>
-                                <el-input-number v-model.number="fourNum" step-strictly size="small" :min="0" :max="10" label="四人间"/>  
+                                <el-input-number v-model.number="fourNum" @change="setFourNum" step-strictly size="small" :min="0" :max="10" label="四人间"/>  
                                 <span class="number-right number-left" >配房</span>
-                                <el-input-number v-model.number="arrangeNum" step-strictly size="small" :min="0" :max="10" label="配房"/>  
+                                <el-input-number v-model.number="arrangeNum" @change="setArrangeNum" step-strictly size="small" :min="0" :max="10" label="配房"/>  
                             </p>
                                 <!-- <ul>
                                     <li>
@@ -431,8 +431,8 @@ import ezContainer from "components/home/ezContainer"
 import ezModule from "components/home/ezModule"
 import ezFooter from "components/home/ezFooter"
 import ezAside from "components/home/ezAside"
-import ezCalendar from "components/common/calendar"
-import { mapState, mapMutations } from "vuex";
+import ezCalendar from "components/common/calendar1"
+import { mapState, mapMutations, mapGetters } from "vuex";
 import { 
     saveConsult,
     getConsult,
@@ -448,7 +448,6 @@ export default {
     name: "uleInfo",
     data() {
         return {
-            routeid: this.$route.params.id,
             route: {},   //常规路线详情
             imgIndex: 0,  //选中的img图片下标
             adultNum: 0,  //大人数量
@@ -459,7 +458,6 @@ export default {
             fourNum: 0,  //四人间
             arrangeNum: 0, //配房数量
             refundMsg: "",  //退款说明文字
-            beginDate: "",  //出发时间
             routeContentList: [], //行程内容
             routeContentIndex: 0,  //选中的天数
             totalPage1: 1,  //评论总页数
@@ -469,29 +467,14 @@ export default {
             content: "",  //咨询内容
             name: "",  //姓名
             mobile: "", //电话
-            // oneCost:0,  //单人房价格
-            // twoCost:0,  //双人房价格
-            // threeCost:0, //三人房价格
-            // fourCost:0,  //四人房价格
-            // arrangeCost:0,  //配房价格
         }
     },
     computed: {
-        ...mapState([ "currencySign", ]),
+         ...mapState([ "currencySign", ]),
         ...mapState({
-            calendarDate: state => state.rule.calendarDate,
-            oneCost: state => state.rule.calendarDate.oneCost,
-            twoCost: state => state.rule.calendarDate.twoCost,
-            threeCost: state => state.rule.calendarDate.threeCost,
-            fourCost: state => state.rule.calendarDate.fourCost,
-            arrangeCost: state => state.rule.calendarDate.arrangeCost,
+            routeid: state => state.rule.routeid,
          }),
-        //价格
-        price:function(){
-            // if (!this.beginDate) return 0;
-            return this.oneNum * this.oneCost + this.twoNum * this.twoCost + this.threeNum * this.threeCost +
-                    this.fourNum * this.fourCost + this.arrangeNum * this.arrangeCost + (this.adultNum + this.childNum) * this.route.price ;
-        },
+         ...mapGetters("rule",["beginDate", "price"]),
     },
     components: {
         ezHeader,
@@ -502,7 +485,7 @@ export default {
         ezCalendar
     },
     created() {
-        this.routeid = this.$route.params.id
+        this.setRouteid(this.$route.params.id)
         this.getData();
         this.getRouteContent();
         this.getRefundInfo();
@@ -512,6 +495,9 @@ export default {
         this.getProMenu();
     },
     methods: {
+        ...mapMutations("rule",["setRouteid", "setAdultNum", "setChildNum", "setOneNum", 
+            "setTwoNum", "setThreeNum", "setFourNum", "setArrangeNum", "setRoute",]),
+        // ...mapMutations("rule",["setRouteid"]),
         //获取产品菜单
         async getProMenu() {
                 let data = await getProMenu({
@@ -552,14 +538,6 @@ export default {
                 localStorage.setItem("fourCost",this.fourCost);
                 localStorage.setItem("arrangeCost",this.arrangeCost);
                 location.href = "./F1-4.html";
-            },
-            //价格说明
-            priceInfor:function(){
-                layer.tips(this.route.priceInfor, '#priceInfor', {
-                    tips: [1, '#3595CC'],
-                    maxWidth:230,
-                    time: 4000
-                });
             },
             //退款提示
             refundTips: function () {
@@ -719,6 +697,7 @@ export default {
                 let data = await getRouteDetails({
                     routeid: this.routeid,
                 })
+                           
                 if(data){
                     this.route = data;
                      //解决分数是字符串报错
@@ -726,6 +705,7 @@ export default {
                     this.route.carImg = this.route.carImg.split(",");
                     this.route.tagContent = this.route.tagContent.split(",");
                     this.route.scenicContent = this.route.scenicContent.split(",");
+                    this.setRoute(data)
                 }
             },
             //获取退款说明

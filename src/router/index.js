@@ -3,7 +3,7 @@
  * @Author: 彭善智
  * @LastEditors: 彭善智
  * @Date: 2019-04-24 09:56:10
- * @LastEditTime: 2019-04-26 09:55:22
+ * @LastEditTime: 2019-04-29 01:58:05
  */
 // import Vue from 'vue'
 // import Router from 'vue-router'
@@ -30,7 +30,7 @@ const createRouter = () =>  new VueRouter({
     },
     {
       path:"/ruleInfo/:id",
-      component: ()=> import('@/views/rule/ruleInfo'),
+      component: ()=> import('@/views/rule/ruleInfo1'),
       name: "ruleInfo",
       meta: { title: "常规路线详情", requireAuth: false}
     },

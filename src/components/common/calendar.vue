@@ -110,9 +110,10 @@ export default {
         this.$set(list, "check", false);
         if(list.flag && this.date && this.checkDate(this.date,list.date)){
              this.$set(list, "check", true);
-            //  let list = this.date.split("-");
-            //  this.calendarDate.checkDate = list[0] + list[1]>9?list[1]:"0"+list[1] + list[2]>9?list[2]:"0"+list[2];
-             this.calendarDate.checkDate  = this.date;
+             let checkDateList = this.date.split("-")
+             this.calendarDate.checkDate = checkDateList[0] +"-"+ 
+                                           (checkDateList[1].length > 1?checkDateList[1]:"0"+checkDateList[1]) + "-"+
+                                           (checkDateList[2].length > 1?checkDateList[2]:"0"+checkDateList[2]);
              this.calendarDateChange(this.calendarDate)
         }
       })

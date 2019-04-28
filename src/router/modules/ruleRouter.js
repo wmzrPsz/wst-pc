@@ -3,7 +3,7 @@
  * @Author: 彭善智
  * @LastEditors: 彭善智
  * @Date: 2019-04-24 01:31:07
- * @LastEditTime: 2019-04-26 01:40:51
+ * @LastEditTime: 2019-04-29 01:57:31
  */
 const ruleRouter = {
     path: '/rule',
