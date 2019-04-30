@@ -50,21 +50,13 @@ const mutations = {
       //设置选择城市
       setHotCityListIndex: (state, index)=> {
         state.hotCityList.forEach((list,key) => {
-            if(key == index){
-              list.flag = true;
-            }else{
-              list.flag = false;
-            }
+          list.flag = list.cityid == index ? true : false;
         });
       },
-      //设置导航栏
+      //设置选择导航栏
       setComNavigationIndex: (state, index)=> {
         state.comNavigationList.forEach((list,key) => {
-            if(key == index){
-              list.flag = true;
-            }else{
-              list.flag = false;
-            }
+          list.flag = list.id == index ? true : false;
         });
       },
 }

@@ -1,7 +1,7 @@
 <template>
   <div class="container ez-container ez-main-nav">
     <ul class="list-inline text-center ez-navlist">
-      <li v-for="(list,index) in comNavigationList" :key="index" :class="{'active':list.flag}" @click="setComNavigationIndex(index)">
+      <li v-for="(list,index) in comNavigationList" :key="index" :class="{'active':list.flag}" @click="comNavigationClick(list)">
         <!-- <a :href="list.link">{{list.name}}</a> -->
         <a>{{list.name}}</a>
       </li>
@@ -13,7 +13,7 @@
     </div>
 
     <ul class="list-inline ez-citylist">
-      <li v-for="(list, index) in hotCityList" :key="index" :class="{'active':list.flag}" @click="setHotCityListIndex(index)">
+      <li v-for="(list, index) in hotCityList" :key="index" :class="{'active':list.flag}" @click="hotCityListClick(list)">
         <!-- <a :href="list.link">{{list.cityName}}</a> -->
         <a>{{list.cityName}}</a>
       </li>
@@ -33,6 +33,16 @@ export default {
     },
     methods: {
       ...mapMutations(["setHotCityListIndex", "setComNavigationIndex"]),
+      //点击城市
+      hotCityListClick(list){
+          this.setHotCityListIndex(list.cityid);
+          // this.$router.push(list.link)
+      },
+      //点击导航栏
+      comNavigationClick(list){
+          this.setComNavigationIndex(list.id);
+          this.$router.push(list.link)
+      },
     },
 }
 </script>

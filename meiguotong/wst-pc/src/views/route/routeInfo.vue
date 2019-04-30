@@ -1,75 +1,71 @@
 <template>
     <div>
+
         <ezHeader></ezHeader>
         <ezContainer></ezContainer>
 
-    <div class="banner banner-min">
-        <div class="banner-img">
-            <p></p>
+        <div class="banner banner-min">
+            <div class="banner-img">
+                <p></p>
+            </div>
         </div>
-    </div>
-    <div class="content ez-travel-info ez-travel-tuxedo">
-        <div class="travel-info">
-            <div class="travel-info-local">
-                <div class="local-info-left floatl">
-                    <img :src="route.carImg | carImgFilter(imgIndex)"  alt="常规路线详情图片">
-                    <div>
-                        <div class="travel-plan-content">
-                            <i class="iconfont icon-prev travel-plan-content-prev" @click="imgLeft"></i>
-                            <div class="travel-plan-content-list">
-                                <ul>
-                                    <li v-for="(item, index) in route.carImg" :key="index" :class="index == imgIndex?'imgBorder':''"
-                                        @click="imgIndexClick(index)" v-if="index > imgIndex-4">
-                                        <a><img v-lazy="item" alt=""></a>
-                                    </li>
-                                </ul>
+        <div class="content ez-travel-info ez-travel-tuxedo">
+            <div class="travel-info">
+                <div class="travel-info-local">
+                    <div class="local-info-left floatl">
+                        <img :src="route.carImg | carImgFilter(imgIndex)" alt="当地参团详情图片">
+                        <div>
+                            <div class="travel-plan-content">
+                                <i class="iconfont icon-prev travel-plan-content-prev" @click="imgLeft"></i>
+                                <div class="travel-plan-content-list">
+                                    <ul>
+                                        <li v-for="(item, index) in route.carImg"  :key="index" :class="index == imgIndex?'imgBorder':''"
+                                            @click="imgIndexClick(index)" v-if="index > imgIndex-4">
+                                            <a><img :src="item" alt=""></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <i class="iconfont icon-next travel-plan-content-next" @click="imgRight"></i>
                             </div>
-                            <i class="iconfont icon-next travel-plan-content-next" @click="imgRight"></i>
                         </div>
-                    </div>
 
-                    <div class="calendar-min">
-                      <ezCalendar></ezCalendar>
+                        <div class="calendar-min">
+                             <ezCalendar></ezCalendar>
+                        </div>
+                        <p>备注：{{route.remark}}</p>
                     </div>
-                    
-                    <p>备注：{{route.remark}}</p>
-                </div>
-                <div class="local-info-right floatl">
-                    <p class="font-f1">{{route.title}}</p>
-                    <p class="font-f2">{{route.subtitle}}</p>
-                    <p>编号{{route.no}}：本产品由{{route.companyName}}及具有资质的合作旅行社提供相关服务</p>
-                    <p><label v-for="(tag, index) in route.tagContent" :key="index">{{tag}}</label></p>
-                    <p>{{route.infor}}</p>
-                    <div class="time-price-con floatl">
-                        <div class="text-orange ez-price floatl">{{currencySign}}{{route.price}} <span class="text-gray">/元起</span>
+                    <div class="local-info-right floatl">
+                        <p class="font-f1">{{route.title}}</p>
+                        <!-- <p class="font-f2">时尚半自助出游新选择！将团队游的实惠、便捷与自由行的轻松、惬意完美结合～</p> -->
+                        <p>编号{{route.no}}：本产品由{{route.companyName}}及具有资质的合作旅行社提供相关服务</p>
+                        <p><label v-for="(tag, index) in route.tagContent" :key="index">{{tag}}</label></p>
+                        <p>{{route.infor}}</p>
+                        <div class="time-price-con floatl">
+                            <div class="text-orange ez-price floatl">¥{{route.price}} <span class="text-gray">/元起</span>
+                                  <el-tooltip class="item" effect="dark" placement="bottom">
+                                    <div slot="content" class="priceInfor" >{{route.priceInfor}}</div>
+                                    <span class="text-gray">价格说明</span>
+                                  </el-tooltip>
+                                </div>
                              <el-tooltip class="item" effect="dark" placement="bottom">
-                                <div slot="content" class="priceInfor" >{{route.priceInfor}}</div>
-                                <span class="text-gray">价格说明</span>
-                             </el-tooltip>
-                            </div>
-                            <el-tooltip class="item" effect="dark" placement="bottom">
                                   <div slot="content" class="priceInfor" >{{refundMsg}}</div>
                                 <span class="tooltip-show floatl"><u>退款说明</u></span>
                             </el-tooltip>
-                        <div class="floatr">
-                              <el-rate style="margin-right:30px;" v-model="route.star" disabled/>
-                            <u><a v-href="'proMenuList3'">{{route.commentNum}}条评价</a></u>
+                            <div class="floatr">
+                                <el-rate style="margin-right:30px;" v-model="route.star" disabled/>
+                                <u><a v-href="'proMenuList3'">{{route.commentNum}}条评价</a></u>
+                            </div>
                         </div>
-                    </div>
-                    <div class="local-content">
-                        <div class="local-time">
-                            <div class="local-time-title time-number-title floatl">出发城市</div>
-                            <div class="local-time-con time-number-con floatl">{{route.endCityContent}}</div>
-                        </div>
-                        <div class="local-time">
-                            <div class="local-time-title time-number-title floatl">出发时间</div>
-                            <div class="calendar-box date-box time-info" id="calendar-box"></div>
-                            <div class="local-time-con time-number-con floatl">
-                             <!-- <input type="text" class="demo-input" placeholder="选择日期" id="test6" 
-                             @click="calendarClick" v-model="beginDate" readonly="readonly"> -->
-                             {{beginDate}}
-                                    </div>
-                        </div>
+                        <div class="local-content">
+                            <div class="local-time">
+                                <div class="local-time-title time-number-title floatl">出发时间</div>
+                                <div class="calendar-box date-box time-info" id="calendar-box"></div>
+                                <div class="local-time-con time-number-con floatl">
+                                    <!-- <input type="text" class="demo-input" placeholder="选择日期" 
+                                     @click="calendarClick" v-model="beginDate"  readonly="readonly"> -->
+                                        {{beginDate}}
+                                        </div>
+                            </div>
                         <div class="local-number">
                             <div class="local-number-title time-number-title floatl">出游人数</div>
                               <span class="number-right" >成人</span>
@@ -98,31 +94,31 @@
                             </p>
                             </div>
                         </div>
-                        <div class="local-price">
+                            <div class="local-price">
 
-                            <div class="local-price-con floatr">
-                                <!-- <div class="text-orange ez-price floatl"><span class="text-gray">总价</span> ¥{{price}}</div> -->
-                                <div class="shopping-cart floatl"  @click="addOrder" 
-                                style="background-color: #ff5418;color: #fff;border-radius:5px;">
-                                    <span class="text-gray" style="color: #fff;">总价</span> {{currencySign}}{{orderPrice}}</div>
-                                <div class="shopping-cart floatl" @click="addCar">加入购物车</div>
+                                <div class="local-price-con floatr">
+                                    <!-- <div class="text-orange ez-price floatl"><span class="text-gray">总价</span> ¥{{price}}</div> -->
+                                    <div class="shopping-cart floatl" @click="addOrder" style="background-color: #ff5418;color: #fff;border-radius:5px;">
+                                        <span class="text-gray" style="color: #fff;">总价</span>
+                                        {{currencySign}}{{orderPrice}}</div>
+                                    <div class="shopping-cart floatl" @click="addCar">加入购物车</div>
+                                </div>
                             </div>
                         </div>
+
+                        <div class="local-bottom-list">
+                            <dl class="dl-horizontal">
+                                <dt><img src="~images/news.png" alt=""></dt>
+                                <dd>“产品经理推荐”</dd>
+                                <dd>{{route.recommend}}</dd>
+                            </dl>
+                        </div>
+
+
                     </div>
-
-                    <div class="local-bottom-list">
-                        <dl class="dl-horizontal">
-                            <dt><img src="~images/news.png" alt=""></dt>
-                            <dd>“产品经理推荐”</dd>
-                            <dd>{{route.recommend}}</dd>
-                        </dl>
-                    </div>
-
-
                 </div>
-            </div>
 
-        </div>
+            </div>
 
         <div class="travel-info-con col-md-12 ez-index-wrap ez-index-public ez-index-5">
             <div class="travel-info-con-title">
@@ -248,7 +244,7 @@
 
                 </div>
 
-                <div class="travel-list"  v-if="list.isadd > 4" :id="'proMenuList'+list.isadd">
+                <div class="travel-list"  v-if="list.isadd>4" :id="'proMenuList'+list.isadd">
                     <div class="travel-service travel-list-video-left floatl"><img src="~images/ic_moren.png" alt=""></div>
                     <div class="travel-list-video" v-html="list.content">
                         <!-- <video :src="route.content" controls="controls" class='ez-video'></video> -->
@@ -355,10 +351,12 @@
                 </div>
             </div>
         </div>
-    </div>
+
+        </div>
 
         <ezFooter></ezFooter>
         <ezAside></ezAside>
+
     </div>
 </template>
 <script>
@@ -380,8 +378,8 @@ import {
     getProMenu,
 } from 'getData'
 export default {
-    name: "uleInfo",
-    data() {
+    name: "routeInfo",
+    data () {
         return {
             route: {},   //常规路线详情
             imgIndex: 0,  //选中的img图片下标
@@ -435,7 +433,7 @@ export default {
         //获取产品菜单
         async getProMenu() {
                 let data = await getProMenu({
-                    proType: 1,  //1.常规路线2.当地参团3.景点4.游轮
+                    proType: 2,  //1.常规路线2.当地参团3.景点4.游轮
                     proid: this.routeid,
                 })
                 this.proMenuList = data;
@@ -448,7 +446,7 @@ export default {
                     this.loginFlagChange(1);
                     return;
                 }
-                 this.$router.push({path:"/ruleSure"})
+                 this.$router.push({path:"/routeSure"})
             },
             //添加用户咨询
             async addConsult() {
@@ -458,7 +456,7 @@ export default {
                 }
               if(await saveConsult({
                     typeid: this.routeid,
-                    proType: 4,
+                    proType: 5,
                     content: this.content,
                     name: this.name,
                     mobile: this.mobile,
@@ -517,7 +515,7 @@ export default {
                 let data = await selectComment({
                     pageNo: pageNo,
                     typeid: this.routeid,
-                    proType: 4,
+                    proType: 5,
                 })
                 if(data){
                     this.commentList = data.list;
@@ -559,7 +557,7 @@ export default {
                 }
                 if (await saveCar({
                     typeid: this.routeid,
-                    carType: 1,
+                    carType: 2,  //1.常规路线2.当地参团3.当地玩家4.游轮5.景点
                     beginDate: this.beginDate,
                     adultNum: this.adultNum,
                     childNum: this.childNum,
@@ -620,7 +618,7 @@ export default {
             //获取退款说明
             async getRefundInfo() {
                 let data = await refundInfor({
-                    productType: 4,
+                    productType: 5,
                     productid: this.routeid,
                 })
                 if(data){
@@ -663,9 +661,7 @@ export default {
                 return value[imgIndex];
             },
         },
-    
 }
-
 </script>
 <style lang="less" scoped>
     .ez-travel-tuxedo{
@@ -684,3 +680,4 @@ export default {
         max-width: 500px;
     }
 </style>
+
