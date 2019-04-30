@@ -216,39 +216,22 @@ module.exports = {
       'vue-router':'VueRouter',
       'vuex': 'Vuex',
       'jquery': '$',
-      // 'jquery': {
-      //   commonjs: 'jQuery',
-      //   amd: 'jQuery',
-      //   root: '$'
-      // },
       'vue-lazyload': 'VueLazyload',
       '@babel/polyfill': '@babel/polyfill',
-      // 'element-ui': 'ElementUI',
-      // 'vant': 'vant',
     }
 
     // 打包分析
     if (process.env.VUE_APP_IS_ANALYZ == "true") {
-
-      //每次自动打开
       config.plugin('webpack-report')
         .use(BundleAnalyzerPlugin, [{
-          // analyzerMode: 'static',
           analyzerMode: 'server',
-          generateStatsFile: true,
+          analyzerPort: 8888,
+          openAnalyzer: true,  //是否自动打开浏览器
+          generateStatsFile: true,  //webpack stats JSON文件将在bundle输出目录中生成
+          statsFilename: "stats.json", 
           statsOptions: { source: false }
         }]);
-      
-        //运行特定命令才打开   npm run bundle-report
-        // config.plugin('webpack-report')
-        // .use(BundleAnalyzerPlugin, [{
-        //   analyzerMode: 'disabled',
-        //   generateStatsFile: true,
-        //   statsOptions: { source: false }
-        // }]);
-
     }
-
   },
 
   // 第三方插件的选项

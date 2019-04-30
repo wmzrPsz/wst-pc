@@ -7,8 +7,7 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "deploy:dev": "npm run build && cross-env NODE_ENV=dev node ./deploy",
-    "deploy:prod": "npm run build && cross-env NODE_ENV=prod node ./deploy",
-    "bundle-report": "webpack-bundle-analyzer --port 8123 dist/stats.json"
+    "deploy:prod": "npm run build && cross-env NODE_ENV=prod node ./deploy"
   },
   "dependencies": {
     "@babel/polyfill": "^7.4.0",
