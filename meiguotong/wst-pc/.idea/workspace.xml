@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="80b40797-43b9-4611-bc2b-c377e0e57908" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.env.development" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.env.production" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/404.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/activity-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/activity-2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/activity-3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/avatar-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/avatar-2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/avatar-3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/avatar-4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/avatar-8.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/avatar.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/banner-about.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/banner/1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/banner/2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/banner/3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/bg-aside-title.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/bg-baner-2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/bg-baner-3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/bg-business.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/bg-cruise.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/bg-guide.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/bg-scenic.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/bg-search.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/bg-strategy.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/bg-title-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/bg-title-2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/bg-title-news.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/business-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/business-2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/business-3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/car.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/city-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/city-2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/city-3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/city-4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/city-post.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/collection1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/collection2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/cruise-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/cruise-2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/cruise-3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/cruise-4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/cruise-5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/cruise-6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/cruise-xs-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/cruise-xs-2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/cruise-xs-3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/cruise-xs-4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/default.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/ez-advantage.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/ez-iata.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/ez-nta.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/fjian1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/fjian2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/footer-logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/gd-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/gd-2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/gobal-lg-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/gobal-lg-2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/gobal-lg-3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/gobal-lg-4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/gobal-md-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/gobal-md-2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/gobal-md-3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/hot-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/hot-2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/hot-3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/hot-4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/hot-city-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/hot-city-2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/hot-city-3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/hot-city-4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/hot-city-5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/hot-city-6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/hot-icon-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/hot-icon-2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/hot-icon-3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/hot-icon-4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/idcard-com.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/idcard-com2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/index-1-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/index-1-2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/index-1-3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/index-11-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/index-11-2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/index-11-3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/index-4-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/index-4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/index-6-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/left-arr.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/likes-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/likes-2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/link-logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/links/link1.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/links/link10.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/links/link11.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/links/link12.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/links/link13.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/links/link14.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/links/link15.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/links/link16.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/links/link17.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/links/link18.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/links/link2.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/links/link3.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/links/link4.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/links/link5.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/links/link6.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/links/link7.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/links/link8.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/links/link9.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/logo1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/news-banner.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/news.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/public-icon-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/public-icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/qrcode.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/right-arr.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/scenic-intro.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/search.ele.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/service-time.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/star-half.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/star-off.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/star-on.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/tb-101.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/tourism_icon1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/tourism_icon2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/tourism_icon3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/upload.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/upload2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/user.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/bootstrap/bootstrap-datetimepicker.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/bootstrap/bootstrap-datetimepicker.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/bootstrap/bootstrap-datetimepicker.zh-CN.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/bootstrap/bootstrap.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/bootstrap/bootstrap.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/calendar/calendar-h.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/calendar/calendar-k.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/calendar/calendar-pro.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/calendar/calendar-pro.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/calendar/calendar-two.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/chengs@rq/chengshi/kk.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/chengs@rq/chengshi/kuCity.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/chengs@rq/chengshi/kuCity.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/chengs@rq/laydate/laydate.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/chengs@rq/laydate/theme/default/font/iconfont.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/chengs@rq/laydate/theme/default/font/iconfont.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/chengs@rq/laydate/theme/default/font/iconfont.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/chengs@rq/laydate/theme/default/font/iconfont.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/chengs@rq/laydate/theme/default/laydate.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/fonts/glyphicons-halflings-regular.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/fonts/glyphicons-halflings-regular.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/fonts/glyphicons-halflings-regular.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/fonts/glyphicons-halflings-regular.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/fonts/glyphicons-halflings-regular.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/html5.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/jQuery.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/jquery/jQuery.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/layui/lay/modules/carousel.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/layui/lay/modules/code.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/layui/lay/modules/colorpicker.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/layui/lay/modules/element.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/layui/lay/modules/flow.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/layui/lay/modules/form.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/layui/lay/modules/jquery.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/layui/lay/modules/laydate.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/layui/lay/modules/layedit.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/layui/lay/modules/layer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/layui/lay/modules/laypage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/layui/lay/modules/laytpl.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/layui/lay/modules/mobile.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/layui/lay/modules/rate.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/layui/lay/modules/slider.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/layui/lay/modules/table.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/layui/lay/modules/tree.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/layui/lay/modules/upload.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/layui/lay/modules/util.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/layui/layui.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/layui/layui.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/raty/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/raty/lib/img/cancel-off.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/raty/lib/img/cancel-on.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/raty/lib/img/star-half.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/raty/lib/img/star-off.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/raty/lib/img/star-on.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/raty/lib/jquery.raty.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/raty/lib/jquery.raty.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/respond.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/schedule/schedule.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/schedule/schedule.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/dialogs/emotion/emotion.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/dialogs/emotion/emotion.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/dialogs/emotion/images/0.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/dialogs/emotion/images/bface.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/dialogs/emotion/images/cface.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/dialogs/emotion/images/fface.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/dialogs/emotion/images/jxface2.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/dialogs/emotion/images/neweditor-tab-bg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/dialogs/emotion/images/tface.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/dialogs/emotion/images/wface.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/dialogs/emotion/images/yface.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/dialogs/formula/formula.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/dialogs/formula/formula.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/dialogs/formula/formula.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/dialogs/formula/images/formula.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/dialogs/image/image.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/dialogs/image/image.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/dialogs/image/images/close.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/dialogs/image/images/upload1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/dialogs/image/images/upload2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/dialogs/link/link.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/dialogs/map/map.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/dialogs/map/map.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/dialogs/video/images/center_focus.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/dialogs/video/images/left_focus.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/dialogs/video/images/none_focus.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/dialogs/video/images/right_focus.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/dialogs/video/video.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/dialogs/video/video.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/lang/en/en.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/lang/en/images/addimage.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/lang/en/images/alldeletebtnhoverskin.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/lang/en/images/alldeletebtnupskin.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/lang/en/images/background.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/lang/en/images/button.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/lang/en/images/copy.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/lang/en/images/deletedisable.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/lang/en/images/deleteenable.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/lang/en/images/imglabel.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/lang/en/images/listbackground.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/lang/en/images/localimage.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/lang/en/images/music.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/lang/en/images/rotateleftdisable.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/lang/en/images/rotateleftenable.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/lang/en/images/rotaterightdisable.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/lang/en/images/rotaterightenable.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/lang/en/images/upload.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/lang/zh-cn/images/copy.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/lang/zh-cn/images/imglabel.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/lang/zh-cn/images/localimage.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/lang/zh-cn/images/music.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/lang/zh-cn/images/upload.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/lang/zh-cn/zh-cn.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/php/Uploader.class.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/php/getContent.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/php/imageUp.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/themes/default/css/umeditor.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/themes/default/css/umeditor.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/themes/default/images/caret.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/themes/default/images/close.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/themes/default/images/icons.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/themes/default/images/icons.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/themes/default/images/ok.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/themes/default/images/pop-bg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/themes/default/images/spacer.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/themes/default/images/videologo.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/third-party/jquery.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/third-party/mathquill/font/Symbola.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/third-party/mathquill/font/Symbola.otf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/third-party/mathquill/font/Symbola.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/third-party/mathquill/font/Symbola.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/third-party/mathquill/font/Symbola.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/third-party/mathquill/font/stixgeneral-bundle/STIXFontLicense2010.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/third-party/mathquill/font/stixgeneral-bundle/stixgeneral-webfont.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/third-party/mathquill/font/stixgeneral-bundle/stixgeneral-webfont.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/third-party/mathquill/font/stixgeneral-bundle/stixgeneral-webfont.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/third-party/mathquill/font/stixgeneral-bundle/stixgeneral-webfont.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/third-party/mathquill/font/stixgeneral-bundle/stixgeneralbol-webfont.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/third-party/mathquill/font/stixgeneral-bundle/stixgeneralbol-webfont.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/third-party/mathquill/font/stixgeneral-bundle/stixgeneralbol-webfont.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/third-party/mathquill/font/stixgeneral-bundle/stixgeneralbol-webfont.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/third-party/mathquill/font/stixgeneral-bundle/stixgeneralbolita-webfont.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/third-party/mathquill/font/stixgeneral-bundle/stixgeneralbolita-webfont.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/third-party/mathquill/font/stixgeneral-bundle/stixgeneralbolita-webfont.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/third-party/mathquill/font/stixgeneral-bundle/stixgeneralbolita-webfont.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/third-party/mathquill/font/stixgeneral-bundle/stixgeneralitalic-webfont.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/third-party/mathquill/font/stixgeneral-bundle/stixgeneralitalic-webfont.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/third-party/mathquill/font/stixgeneral-bundle/stixgeneralitalic-webfont.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/third-party/mathquill/font/stixgeneral-bundle/stixgeneralitalic-webfont.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/third-party/mathquill/mathquill.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/third-party/mathquill/mathquill.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/third-party/mathquill/mathquill.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/umeditor.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/umeditor.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/vendor/umeditor/umeditor.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/common.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/md5.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/popup.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vue.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/babel.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/babel.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/HelloWorld.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/router.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/About.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Home.vue" beforeDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/dist/" />
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/views/rule/ruleIndex.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="920">
+              <caret line="783" selection-start-line="783" selection-end-line="783" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/views/rule/ruleIndex.vue" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="-1447" />
+    <option name="y" value="-8" />
+    <option name="width" value="1152" />
+    <option name="height" value="618" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="wst-pc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="wst-pc" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="wst-pc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="wst-pc" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="wst-pc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="wst-pc" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="wst-pc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="wst-pc" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="route" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="wst-pc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="wst-pc" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="rule" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.standard" value="project" />
+    <property name="node.js.selected.package.eslint" value="D:\WEB\workspace\wst-pc\node_modules\eslint" />
+    <property name="node.js.selected.package.standard" value="D:\WEB\node\node_global\node_modules\eslint" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="prettierjs.PrettierConfiguration.Package" value="D:\WEB\workspace\wst-pc\node_modules\prettier" />
+    <property name="settings.editor.selected.configurable" value="settings.javascript.linters.eslint" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="80b40797-43b9-4611-bc2b-c377e0e57908" name="Default Changelist" comment="" />
+      <created>1556618831797</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1556618831797</updated>
+      <workItem from="1556618833374" duration="1452000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="1452000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-1928" y="-138" width="1936" height="1056" extended-state="7" />
+    <layout>
+      <window_info id="npm" side_tool="true" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24973656" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/views/rule/ruleIndex.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="920">
+          <caret line="783" selection-start-line="783" selection-end-line="783" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
