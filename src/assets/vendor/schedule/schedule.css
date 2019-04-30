@@ -1,0 +1,92 @@
+#schedule-box{
+	width: 100%;
+	margin: 0 auto;
+	padding: 30px 20px;
+	font-size: 13px;
+}
+.schedule-hd{position: relative;
+	display: flex;
+	justify-content: space-between;
+	padding: 10px 20%;
+	margin-bottom: 20px;
+}
+.schedule-hd .arrow-prev,
+.schedule-hd .arrow-next{
+	/*position: absolute;
+	top:1px;*/
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	background-size: contain;
+	vertical-align: middle;
+	cursor: pointer;
+}
+.schedule-hd .arrow-prev{
+	/*left:1px;*/
+	background: url(../../images/left-arr.png) left center no-repeat;
+
+}
+.schedule-hd .arrow-next{
+	/*right:1px;*/
+	background: url(../../images/right-arr.png) right center no-repeat;
+
+
+}
+.schedule-hd .today{
+	flex: 1;
+	text-align: center;
+	line-height: 30px;
+	font-size: 16px;
+}
+.ul-box{
+	overflow: hidden;
+}
+.ul-box > li{
+	float: left;
+	width: 14.28%;
+	text-align: center;
+	padding: 5px 0;
+}
+.other-month{
+	color: #999999;
+}
+.current-month{
+	color: #333333;
+}
+.today-style{
+	border-radius: 50%;
+	background: #58d321;
+}
+.arrow{
+	cursor: pointer;
+}
+.dayStyle{
+	display: inline-block;
+	width: 60px;
+	height: 35px;
+	/*border-radius: 50%;*/
+	text-align: center;
+	line-height: 35px;
+	cursor: pointer;
+}
+.current-month > .dayStyle:hover{
+	background: #f2f2f2;
+	/*color: #ffffff;*/
+}
+.today-flag{
+	/*background: #2577e3;*/
+	/*color: #fff;*/
+	border: 1px solid #2577e3;
+}
+.boxshaw{
+	box-shadow: 2px 2px 15px 2px #e3e3e3;
+}
+.selected-style {
+	background: #2577e3;
+	color: #ffffff;
+}
+.current-month > .selected-style:hover{
+	background: #2577e3;
+	color: #ffffff;
+}
+

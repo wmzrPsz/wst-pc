@@ -1,0 +1,45 @@
+[v-cloak]{
+    display:none;
+}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,
+form,fieldset,input,textarea,p,blockquote,th,td {
+    padding: 0;
+    margin: 0;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+fieldset,img {
+    border: 0;
+}
+address,caption,cite,code,dfn,em,strong,th,var {
+    font-weight: normal;
+    font-style: normal;
+}
+ol,ul ,li{
+    list-style: none;
+    padding-left: 0;
+}
+i{
+    font-style: normal;
+}
+a{
+    color: #333;
+    cursor: pointer;
+}
+a:hover,a:focus,a:visited{
+    text-decoration: none;
+}
+q:before,q:after {
+    content:'';
+}
+input[type='file']{
+    background:none;
+    outline:none;
+    border:0;
+    opacity:0; filter:alpha(opacity=0)
+}
+.list-inline{
+    margin-left: 0;
+}
