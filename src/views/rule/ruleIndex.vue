@@ -175,10 +175,12 @@
 
                 <div class="ez-search-sort text-center pull-left">
                     <ul class="list-inline ez_public_list">
-                        <li class="active" @click.stop="orderByTypeChange('')"><a class="btn ez-btn-sort">综合</a></li>
-                        <li class="" @click.stop="orderByTypeChange(1)"><a class="btn ez-btn-sort">销量</a></li>
-                        <li class="" @click.stop="orderByTypeChange(2)"><a class="btn ez-btn-sort">价格<i class="caret"></i></a></li>
-                        <li class="" @click.stop="orderByTypeChange(4)"><a class="btn ez-btn-sort">评论</a></li>
+                            <li :class="{'active': !orderByType}" @click.stop="orderByTypeChange('')"><a class="btn ez-btn-sort">综合</a></li>
+                            <li :class="{'active': orderByType == 1}" @click.stop="orderByTypeChange(1)"><a class="btn ez-btn-sort">销量</a></li>
+                            <li :class="{'active': orderByType == 2 || orderByType == 3}" @click.stop="orderByTypeChange(2)">
+                                <a class="btn ez-btn-sort">价格<i class="caret" :class="{'caret-up':orderByType==3}"></i></a>
+                            </li>
+                            <li :class="{'active': orderByType == 4}" @click.stop="orderByTypeChange(4)"><a class="btn ez-btn-sort">评论</a></li>
                     </ul>
                 </div>
                 
@@ -204,7 +206,7 @@
                             <h4 class="title ez-mb-md">{{list.title}}</h4>
                             <h5 class="subtitle text-blue ez-mb-md">{{list.subtitle}}</h5>
                             <p class="intro text-gray ez-mb-md">{{list.infor}}</p>
-                            <p class="text-style2 del-color"><label v-for="(tag, index) in list.tagContent.split(',')" :key="index">{{tag}}</label></p>
+                            <p class="text-style2 del-color"><label v-for="(tag, index) in list.tagContent" :key="index">{{tag}}</label></p>
                             <div class="card-like">
                                 <span class="pull-left text-orange ez-price"><span>{{currencySign}}</span>{{list.price}}<span class="text-gray">天</span></span>
                                 <span class="pull-right text-orange list-time-info" @click.stop="calendarClick(index)">出发日期</span>
@@ -220,8 +222,7 @@
                                         alt="用户一级评论头像" :key="comment.memberPhoto"></div>
                                 <div class="content floatl">
                                     <div>{{comment.memberName}}<div class="ez-star pull-right">
-                                            <img v-lazy="comment.level>index1?'~images/star-on.png':'~images/star-off.png'"
-                                                title="regular" v-for="(item, index) in 5" :key="index">
+                                                 <el-rate v-model.number="comment.level" disabled/>
                                         </div>
                                     </div>
                                     <p>{{comment.content}}</p>
@@ -318,7 +319,6 @@
 <script>
 import ezHeader from "components/home/ezHeader"
 import ezContainer from "components/home/ezContainer"
-import ezModule from "components/home/ezModule"
 import ezFooter from "components/home/ezFooter"
 import ezAside from "components/home/ezAside"
 import { mapState, mapMutations } from "vuex";
@@ -345,7 +345,7 @@ export default {
             // endCityName: "",  //到达城市名称
             cityList: [],  //城市list
             choice: "",  //已选择
-            orderByType: 4,  //1.销量2.价格降序3.价格升序4好评
+            orderByType: "",  //1.销量2.价格降序3.价格升序4好评
             pageNo: 1, //页数
             routeList: [],  //路线列表
             current_page: 1, //当前页
@@ -377,7 +377,6 @@ export default {
     components: {
         ezHeader,
         ezContainer,
-        ezModule,
         ezFooter,
         ezAside
     },
@@ -905,6 +904,7 @@ export default {
                     if(list.carImg){
                         this.$set(list, "carImg", list.carImg.split(",")[0])
                     }
+                    this.$set(list, "tagContent", list.tagContent?list.tagContent.split(","):[])
                     //解决分数是字符串报错
                      this.$set(list, "star", list.star?parseInt(list.star):0)
                 }

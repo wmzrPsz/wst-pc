@@ -1,12 +1,301 @@
 <template>
     <div>
-        
+        <ezHeader></ezHeader>
+        <ezContainer></ezContainer> 
+
+       <!--content-->
+        <div class="container ez-container ez-conventional">
+
+            <div class="ez-search-selector">
+                <div class="search-type">
+                    <div class="form-inline ez-selector text-style1">
+                        <label class="floatl" for="exampleInputName2"><i class="iconfont icon-hot"></i>热门目的地</label>
+                        <div class="sl-value">
+
+                            <select class="form-control ">
+                                <option>选择目的地</option>
+                                <option>奥兰多</option>
+                                <option>俄勒冈州·波特兰</option>
+                                <option>缅因州·波特兰</option>
+                                <option>巴尔的摩</option>
+                            </select></div>
+                    </div>
+                    <div class="ez-selector">
+                        <ul class="list-inline sl-value">
+                            <li>奥兰多</li>
+                            <li>奥克兰</li>
+                            <li>安大略</a></li>
+                            <li>俄勒冈州·波特兰</li>
+                            <li>波士顿</li>
+                            <li>巴尔的摩</li>
+                            <li>波兹曼</li>
+                            <li>缅因州·波特兰</li>
+                        </ul>
+                    </div>
+
+                </div>
+                <div id="ez-selector" class="ez-selector">
+                        <div class="s-line">
+                            <div class="sl-wrap">
+                                <div class="sl-key">出发日期</div>
+                                <div class="sl-value">
+                                    <div class="sl-v-list">
+                                        <ul class="sl-month-list">
+                                            <li v-for="(list, index) in dataList" :key="index" :class="list.flag?'active':''"
+                                                @click.stop="monthClick(index)">
+                                                <a><i></i>{{list.month}}月</a><span class="selectFlag"></span>
+                                            </li>
+                                        </ul>
+                                        <div class="sl-date-list">
+                                            <ul class="list-inline">
+                                                <li class="" v-for="(list, index) in days" :key="index" :class="list.flag?'date-selected':''"
+                                                    @click.stop="dayClick(index)">
+                                                    <a class="sl-date-day">{{list.day}}</a>号
+                                                    <span class="selectFlag"></span>
+                                                </li>
+                                            </ul>
+                                        </div>
+    
+                                    </div>
+                                </div>
+                                <div class="sl-ext">
+                                    <a class="sl-e-more sl-date-more" href="javascript:;">
+                                        <span class="date-btn-open">展开<i class="iconfont icon-down"></i></span>
+                                        <span class="date-btn-close" style="display: none">收起<i class="iconfont icon-up"></i></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="s-line" v-show="dayShowFlag">
+                            <div class="sl-wrap" :class="dayFlag?'multiple extend':''">
+                                <div class="sl-key">行程天数</div>
+                                <div class="sl-value">
+                                    <div class="sl-v-list">
+                                        <ul>
+                                            <li v-for="(day, index) in dayList" :key="index" :class="day.flag?'selected':''"
+                                                @click.stop="tripDayClick(index)">
+                                                <a><i></i>{{day.day| dayFilter}}</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="sl-btns">
+                                        <a class="btn btn-sm ez-search-confirm" href="javascript:;" @click.stop="daySure">确定</a>
+                                        <a class="btn btn-sm ez-search-cancel" href="javascript:;" @click.stop="dayFlagClick(1)">取消</a>
+                                    </div>
+                                </div>
+                                <div class="sl-ext">
+                                    <a class="sl-e-more ez-search-more" href="javascript:;">
+                                        <span class="sl-btn-open">更多<i class="iconfont icon-down"></i></span>
+                                        <span class="sl-btn-open" style="display: none">收起<i class="iconfont icon-up"></i></span>
+                                    </a>
+                                    <a class="sl-e-multiple ez-search-multiple pull-right" :class="dayFlag?'active':''"
+                                        @click.stop="dayFlagClick(0)">
+                                        <i class="iconfont icon-add"></i>多选
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="s-line" v-show="priceShowFlag">
+                            <div class="sl-wrap">
+                                <div class="sl-key">价格预算</div>
+                                <div class="sl-value">
+                                    <div class="sl-v-list">
+                                        <ul>
+                                            <li v-for="(list, index) in priceList" :key="index" @click.stop="priceClick(index)">
+                                                <a>{{list.content}}</a>
+                                            </li>
+                                            <li>
+                                                <input type="number" class="input-txt input-txt-md" v-model.number="minPrice"
+                                                    @change="priceChange"> -
+                                                <input type="number" class="input-txt input-txt-md" v-model.number="maxPrice"
+                                                    @change="priceChange">
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="s-line" v-for="(list, index1) in lableList" :key="index1" v-show="list.showFlag">
+                            <div class="sl-wrap" :class="list.lableFlag?'multiple extend':''">
+                                <div class="sl-key">{{list.content}}</div>
+                                <div class="sl-value">
+                                    <div class="sl-v-list">
+                                        <ul class="">
+                                            <li v-for="(item, index2) in list.comTagList" :key="index2" :class="item.flag?'selected':''"
+                                                @click.stop="lableClick(index1,index2)">
+                                                <a><i></i>{{item.content}}</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="sl-btns">
+                                        <a class="btn btn-sm ez-search-confirm" href="javascript:;" @click.stop="lableSure(index1)">确定</a>
+                                        <a class="btn btn-sm ez-search-cancel" href="javascript:;" @click.stop="lableFlagClick(1,index1)">取消</a>
+                                    </div>
+                                </div>
+                                <div class="sl-ext">
+                                    <a class="sl-e-multiple ez-search-multiple pull-right" :class="list.lableFlag?'active':''"
+                                        @click.stop="lableFlagClick(0,index1)">
+                                        <i class="iconfont icon-add"></i>多选</a>
+                                </div>
+                            </div>
+                        </div>
+    
+                    </div>
+    
+                    <div class="ez-search-selected pull-left">
+                        <ul class="list-inline ez-ml-0 selected-list">
+                            <span>您已选择：</span>
+                            <li v-for="(item, index) in opt" :key="index" @click.stop="delOpt(index)">
+                                <span class="crumb-key">{{item.contentKey}}</span>：
+                                <span class="crumb-value">{{item.contentValue}}</span>
+                                <i class="iconfont icon-close crumb-remove"></i>
+                            </li>
+                        </ul>
+                    </div>
+    
+                    <div class="ez-search-sort text-center pull-left">
+                        <ul class="list-inline ez_public_list">
+                            <li :class="{'active': !orderByType}" @click.stop="orderByTypeChange('')"><a class="btn ez-btn-sort">综合</a></li>
+                            <li :class="{'active': orderByType == 1}" @click.stop="orderByTypeChange(1)"><a class="btn ez-btn-sort">销量</a></li>
+                            <li :class="{'active': orderByType == 2 || orderByType == 3}" @click.stop="orderByTypeChange(2)">
+                                <a class="btn ez-btn-sort">价格<i class="caret" :class="{'caret-up':orderByType==3}"></i></a>
+                            </li>
+                            <li :class="{'active': orderByType == 4}" @click.stop="orderByTypeChange(4)"><a class="btn ez-btn-sort">评论</a></li>
+                        </ul>
+                    </div>
+            </div>
+
+            <div class="container ez-container ez-search-result">
+                <div class="box-left pull-left">
+                    <div class="box-card" v-for="(list, index) in routeList" :key="index">
+                        <div class="box-card-left pull-left" @click.stop="getInfor(list.routeid)">
+                            <img v-lazy="list.carImg">
+                            <div class="box-card-rate">
+                                <div class="ez-star pull-left">
+                                        <!-- <img :src="list.star>index?'~images/star-on.png':'~images/star-off.png'"
+                                        title="regular" v-for="(item, index) in 5" :key="index"> -->
+                                           <el-rate v-model.number="list.star" disabled/>
+                                </div>
+                                <span class="pull-right text-gray"  @click.stop="commentNumClick(index)">{{list.commentNum}}条评价</span>
+                            </div>
+                        </div>
+                        <div class="box-card-text pull-right" @click.stop="getInfor(list.routeid)">
+                            <h4 class="title ez-mb-md">{{list.title}}</h4>
+                            <p class="text-style2"><label v-for="(tag, index) in list.tagContent" :key="index">{{tag}}</label></p>
+                            <h5 class="text-marbom">当地上车参团：<i style="color: red;">{{list.endCityContent}}成团 </i>
+                                |  {{list.scenicContentLength}}个景点：{{list.scenicContent}}</h5>
+                            <p class="intro text-gray ez-mb-md">{{list.infor}}</p>
+                            <h5 class=" ez-mb-md">团期：{{list.routeDate}}</h5>
+                            <div class="card-like">
+                                <span class="pull-left text-orange ez-price"><span>{{currencySign}}</span>{{list.price}}<span class="text-gray">起</span></span>
+                                <span class="pull-right text-orange" @click.stop="calendarClick(index)">出发日期</span>
+                            </div>
+                        </div>
+                        <div class="evaluation-info" :class="{'hidden-info':!list.show}" v-if="list.show">
+
+                            <div class="travel-list-con" v-for="(comment, index1) in list.commentList" :key="index1"
+                                v-if="list.commentList" style="min-height: 150px;">
+                                <div class="floatl"><img :src="comment.memberPhoto?comment.memberPhoto:'~images/news.png'"
+                                        alt="用户一级评论头像"></div>
+                                <div class="content floatl">
+                                    <div>{{comment.memberName}}<div class="ez-star pull-right">
+                                            <el-rate v-model.number="comment.level" disabled/>
+                                        </div>
+                                    </div>
+                                    <p>{{comment.content}}</p>
+                                    <p class="pull-left"><span>{{comment.createDate}}</span></p>
+                                    <p class="pull-right" @click.stop="subreviewClick(index,index1)"><i class="iconfont icon-dialog"></i><span>{{comment.childNum}}</span></p>
+                                    <p class="pull-right ez-pr-10" @click.stop="digComment(comment.commentid,index,index1)"><i
+                                            class="iconfont icon-like"></i><span>{{comment.digNum}}</span></p>
+
+                                </div>
+
+                                <div v-if="comment.show">
+                                    <div class="erji_a">
+                                        <input class="erji_b" type="text" @keyup.13="addChildComment(comment.commentid)"
+                                            v-model.trim="content" :placeholder="'回复@'+comment.memberName">
+                                    </div>
+
+                                    <div class="erji_a" v-for="(item, index) in comment.commentList" :key="index">
+                                        <div class="erji_c"><img :src="item.memberPhoto?item.memberPhoto:'~images/news.png'"
+                                                alt=""></div>
+                                        <div class="erji_d">
+                                            <p><i style="float: left;">{{item.memberName}}</i><i style="float: right;">{{item.createDate}}</i></p>
+                                            <p class="erji_e">{{item.content}}</p>
+                                        </div>
+                                    </div>
+
+
+                                    <div id="travel-content-main-list-paging2" class="pagination" style="float:right"></div>
+                                </div>
+
+                            </div>
+
+                            <div id="travel-content-main-list-paging1" class="pagination" style="float:right"></div>
+
+                        </div>
+                        <div class="calendar-box date-box" :class="!list.calendarShow?'hidden-info':''"></div>
+                    </div>
+
+                    <nav class="text-center col-lg-9 col-md-9 col-sm-9" v-show="show">
+                        <ul class="pagination ez-navigation">
+                            <li @click.stop="pageChange(-1)">
+                                <a class="page-next" aria-label="Next" style="margin-right: 10px;">
+                                    <span aria-hidden="true">上一页 &gt;</span>
+                                </a>
+                            </li>
+                            <li v-show="current_page>5" @click.stop="jumpPage(1)"><a href="#">1</a></li>
+                            <li v-show="efont"><a>...</a></li>
+                            <li v-for="(num,index) in indexs" :key="index" :class="{active:current_page==num}" @click.stop="jumpPage(num)"><a>{{num}}</a></li>
+                            <li v-show="ebehind"><a>...</a></li>
+                            <li v-show="current_page<pages-4" @click.stop="jumpPage(pages)"><a>{{pages}}</a></li>
+                            <li @click.stop="pageChange(1)">
+                                <a class="page-next" aria-label="Next" style="margin-left: 10px;">
+                                    <span aria-hidden="true">下一页 &gt;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+
+                </div>
+                
+                <div class="box-right pull-right">
+                    <div class="ez-aside-banner ez-mb-md">
+                        <img src="~images/bg-baner-2.png">
+                        <ul class="list-inline text-center">
+                            <div class="title text-left">热门常规旅行</div>
+                            <div class="sub-title text-left">THE SITIES YOU CANT MISS</div>
+                            <li><a href="#" class="btn btn-type-lg">迈阿密·西海岸 </a></li>
+                            <li><a href="#" class="btn btn-type-lg">夏威夷·东海岸</a></li>
+                            <li><a href="#" class="btn btn-type-lg">墨西哥·边境墙</a></li>
+                        </ul>
+                    </div>
+                    <div class="ez-aside-banner">
+                        <img src="~images/bg-baner-2.png">
+                        <ul class="list-inline text-center">
+                            <div class="title text-left">热门常规旅行</div>
+                            <div class="sub-title text-left">THE SITIES YOU CANT MISS</div>
+                            <li><a href="#" class="btn btn-type-lg">迈阿密·西海岸 </a></li>
+                            <li><a href="#" class="btn btn-type-lg">夏威夷·东海岸</a></li>
+                            <li><a href="#" class="btn btn-type-lg">墨西哥·边境墙</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+        <ezFooter></ezFooter>
+        <ezAside></ezAside>
+
     </div>
 </template>
 <script>
 import ezHeader from "components/home/ezHeader"
 import ezContainer from "components/home/ezContainer"
-import ezModule from "components/home/ezModule"
 import ezFooter from "components/home/ezFooter"
 import ezAside from "components/home/ezAside"
 import { mapState } from "vuex";
@@ -16,11 +305,11 @@ import {
     digComment,
     getChildComment,
     selectComment,
-    selectRoute,
+    selectCityRoute,
     getLabel,
     getCityList
 } from 'getData'
-export default {
+export default { 
     name: "routeIndex",
     data() {
         return {
@@ -51,6 +340,12 @@ export default {
             dayShowFlag: true,  //行程天数是否展示   index(1)
             priceShowFlag: true,  //价格预算是否展示  index(2)
         }
+    },
+    components: {
+        ezHeader,
+        ezContainer,
+        ezFooter,
+        ezAside
     },
     created() {
         this.getLabel();
@@ -472,7 +767,7 @@ export default {
             let data = await selectComment({
                 pageNo: pageNo,
                 typeid: this.routeList[this.index1].routeid,
-                proType: 4,  //1.包车租车2.短程接送3.接送机4常规路线5.当地参团6.游轮7.景点门票
+                proType: 5,  //1.包车租车2.短程接送3.接送机4常规路线5.当地参团6.游轮7.景点门票
                             //8.当地玩家9.酒店10.保险11.旅游定制12导游 13.攻略评论 14.城市评论',
             })
             if(data){
@@ -485,7 +780,7 @@ export default {
         },
         //当地参团查询
         async selectRoute() {
-            let data = await selectRoute({
+            let data = await selectCityRoute({
                 startCity: this.startCity,
                 orderByType: this.orderByType,
                 pageNo: this.current_page,
@@ -496,13 +791,17 @@ export default {
                 labelAttrid: this.labelAttrid.join(","),
             },"POST")
             if(data){
+                console.log(data)
                 this.routeList = data.list;
                 for (const list of this.routeList) {
                     if(list.carImg){
                         this.$set(list, "carImg", list.carImg.split(",")[0])
                     }
+                    this.$set(list, "tagContent", list.tagContent?list.tagContent.split(","):[])
                     //解决分数是字符串报错
                      this.$set(list, "star", list.star?parseInt(list.star):0)
+                     //景点个数
+                     this.$set(list, "scenicContentLength", list.scenicContent?list.scenicContent.split(',').length:0)
                 }
                 this.pages = data.totalPage;
                 this.getRouteDate();
@@ -525,7 +824,7 @@ export default {
         //获取标签属性
         async getLabel() {
             let data = await getLabel({
-                routeType: 1,  //1  常规线路  2 当地参团  3 邮轮  4 景点 5 当地玩家  6 商务定制',
+                routeType: 2,  //1  常规线路  2 当地参团  3 邮轮  4 景点 5 当地玩家  6 商务定制',
             })
             this.lableList = data;
             for (const list of Object.values(this.lableList)) {
@@ -621,3 +920,24 @@ export default {
     },
 }
 </script>
+<style lang="less">
+    .intro{
+        text-overflow: -o-ellipsis-lastline;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        line-clamp: 4;
+        -webkit-box-orient: vertical;
+    }
+    .text-marbom{
+        text-overflow: -o-ellipsis-lastline;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        line-clamp: 1;
+        -webkit-box-orient: vertical;
+    }
+</style>
+
