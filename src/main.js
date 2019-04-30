@@ -53,7 +53,8 @@ Vue.use(VueLazyload,{
     adapter: {
       error (listender, Init) {
         listender.error = store.state.comProtocol.defaultImg;
-        // console.log(listender)
+        console.log(listender)
+        console.log(Init)
       }
   }
   })
