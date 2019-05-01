@@ -82,7 +82,7 @@
                             <img :src="list.imgUrl | splitVc(0) |defImg">
                             <div class="box-card-rate">
                                 <div class="ez-star pull-left">
-                                    <img :src="list.star>index?'../../images/star-on.png':'../../images/star-off.png'"
+                                    <img :src="list.star>index?'~images/star-on.png':'~images/star-off.png'"
                                         title="regular" v-for="(item, index) in 5" :key="index">
                                 </div>
                                 <span class="pull-right text-gray" @click.stop="commentNumClick(index)">{{list.commentNum}}条评价</span>
@@ -111,11 +111,11 @@
 
                             <div class="travel-list-con" v-for="(comment, index1) in list.commentList" :key="index1"
                                 v-if="list.commentList" style="min-height: 150px;">
-                                <div class="floatl"><img :src="comment.memberPhoto?comment.memberPhoto:'../../images/news.png'"
+                                <div class="floatl"><img :src="comment.memberPhoto?comment.memberPhoto:'~images/news.png'"
                                         alt="用户一级评论头像"></div>
                                 <div class="content floatl">
                                     <div>{{comment.memberName}}<div class="ez-star pull-right">
-                                            <img :src="comment.level>index?'../../images/star-on.png':'../../images/star-off.png'"
+                                            <img :src="comment.level>index?'~images/star-on.png':'~images/star-off.png'"
                                                 title="regular" v-for="(item, index) in 5" :key="index">
                                         </div>
                                     </div>
@@ -135,7 +135,7 @@
                                     </div>
 
                                     <div class="erji_a" v-for="(item, index) in comment.commentList" :key="index">
-                                        <div class="erji_c"><img :src="item.memberPhoto?item.memberPhoto:'../../images/news.png'"
+                                        <div class="erji_c"><img :src="item.memberPhoto?item.memberPhoto:'~images/news.png'"
                                                 alt=""></div>
                                         <div class="erji_d">
                                             <p><i style="float: left;">{{item.memberName}}</i><i style="float: right;">{{item.createDate}}</i></p>
@@ -165,7 +165,7 @@
                         <div class="aside-card">
                             <div class="aside-card-no active">1</div>
                             <div class="aside-card-img">
-                                <img src="../../images/news.png" class="img-responsive center-block">
+                                <img src="~images/news.png" class="img-responsive center-block">
                             </div>
                             <div class="aside-card-text">
                                 <h5>阿拉斯加高山滑雪2日游|包接送...</h5>
@@ -174,7 +174,7 @@
                         <div class="aside-card">
                             <div class="aside-card-no">2</div>
                             <div class="aside-card-img">
-                                <img src="../../images/news.png" class="img-responsive center-block">
+                                <img src="~images/news.png" class="img-responsive center-block">
                             </div>
                             <div class="aside-card-text">
                                 <h5>阿拉斯加航空展览1日游|赠送飞行体验...</h5>
@@ -183,7 +183,7 @@
                         <div class="aside-card">
                             <div class="aside-card-no">3</div>
                             <div class="aside-card-img">
-                                <img src="../../images/news.png" class="img-responsive center-block">
+                                <img src="~images/news.png" class="img-responsive center-block">
                             </div>
                             <div class="aside-card-text">
                                 <h5>迈阿密，旧金山，夏威夷，波士顿...</h5>
@@ -192,7 +192,7 @@
                         <div class="aside-card">
                             <div class="aside-card-no">4</div>
                             <div class="aside-card-img">
-                                <img src="../../images/news.png" class="img-responsive center-block">
+                                <img src="~images/news.png" class="img-responsive center-block">
                             </div>
                             <div class="aside-card-text">
                                 <h5>墨西哥边境墙，旧金山，夏威夷，波士顿...</h5>
@@ -201,7 +201,7 @@
                         <div class="aside-card">
                             <div class="aside-card-no">5</div>
                             <div class="aside-card-img">
-                                <img src="../../images/news.png" class="img-responsive center-block">
+                                <img src="~images/news.png" class="img-responsive center-block">
                             </div>
                             <div class="aside-card-text">
                                 <h5>旧金山，夏威夷，迈阿密西海岸...</h5>
@@ -210,7 +210,7 @@
                         <div class="aside-card">
                             <div class="aside-card-no">6</div>
                             <div class="aside-card-img">
-                                <img src="../../images/news.png" class="img-responsive center-block">
+                                <img src="~images/news.png" class="img-responsive center-block">
                             </div>
                             <div class="aside-card-text">
                                 <h5>旧金山，迈阿密西海岸，波士顿...</h5>
@@ -219,7 +219,7 @@
                         <div class="aside-card">
                             <div class="aside-card-no">7</div>
                             <div class="aside-card-img">
-                                <img src="../../images/news.png" class="img-responsive center-block">
+                                <img src="~images/news.png" class="img-responsive center-block">
                             </div>
                             <div class="aside-card-text">
                                 <h5>迈阿密西海岸，旧金山，夏威夷，波士顿...</h5>
@@ -228,7 +228,7 @@
                         <div class="aside-card">
                             <div class="aside-card-no">8</div>
                             <div class="aside-card-img">
-                                <img src="../../images/news.png" class="img-responsive center-block">
+                                <img src="~images/news.png" class="img-responsive center-block">
                             </div>
                             <div class="aside-card-text">
                                 <h5>迈阿密西海岸，旧金山，夏威夷，波士顿...</h5>
