@@ -46,6 +46,16 @@
                                     <div slot="content" class="priceInfor" >{{route.priceInfor}}</div>
                                     <span class="text-gray">价格说明</span>
                                   </el-tooltip>
+                                  <template>
+  <el-popover
+    placement="top-start"
+    title="标题"
+    width="200"
+    trigger="hover"
+    content="这是一段内容,这是一段内容,这是一段内容,这是一段内容。">
+    <el-button slot="reference">hover 激活</el-button>
+  </el-popover>
+                                  </template>
                                 </div>
                              <el-tooltip class="item" effect="dark" placement="bottom">
                                   <div slot="content" class="priceInfor" >{{refundMsg}}</div>
