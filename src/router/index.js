@@ -99,6 +99,17 @@ const createRouter = () =>  new VueRouter({
       component: ()=> import( '@/views/error/404'),
       meta: { title: 404, requireAuth: false, cache: true}
     },
+    {
+      path:"/city",
+      component: ()=> import('@/views/city/cityIndex'),
+      name: "popular cities",
+      meta: { title: "热门城市", requireAuth: false}
+    },
+    {
+        path: '/city/:id',
+        component: ()=> import('@/views/city/cityDetail'),
+        meta: { title: "热门城市详情", requireAuth: false}
+    }
   ]
 })
 
