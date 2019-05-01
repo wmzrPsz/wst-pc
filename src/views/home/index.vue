@@ -1,5 +1,5 @@
-<template>
-    <div id="home">
+<<template>
+    <div>
         <ezHeader></ezHeader>
         <ezContainer></ezContainer>
         <div class="container-fluid ez-search-wrap">
@@ -110,14 +110,16 @@
                 <!--part25 更多活动 end-->
             </div>
         </div>
-
-
+        <ezFooter></ezFooter>
+        <ezAside></ezAside>
     </div>
 </template>
 <script>
-import ezHeader from "components/common/ezHeader"
-import ezModule from "components/common/ezModule"
-import ezContainer from "components/common/ezContainer"
+import ezHeader from "components/home/ezHeader"
+import ezContainer from "components/home/ezContainer"
+import ezModule from "components/home/ezModule"
+import ezFooter from "components/home/ezFooter"
+import ezAside from "components/home/ezAside"
 import { mapState } from "vuex"
 export default {
     name: "home",
@@ -129,10 +131,15 @@ export default {
     computed: {
         ...mapState([ "comProtocol", ]),
     },
+    created () {
+        console.log("----------------------------------------------------------------")
+    },
     components: {
         ezHeader,
+        ezContainer,
         ezModule,
-        ezContainer
+        ezFooter,
+        ezAside
     }
 }
 </script>

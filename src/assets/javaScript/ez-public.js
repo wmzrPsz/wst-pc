@@ -189,12 +189,21 @@ $(function(){
     //     $(".ez-scenic-search .citylist-content").slideUp(100);
     //     $(".ez-scenic-search .search-result-content").slideToggle(200);
     // });
+    $("#app").on("click", ".ez-search-input",()=>{
+        $(".ez-scenic-search .citylist-content").slideUp(100);
+        $(".ez-scenic-search .search-result-content").slideToggle(200);
+    })
 
     //景点搜索-景点选择
-    $(".select-scenic>a").click(function(){
+    // $(".select-scenic>a").click(function(){
+    //     $(".ez-scenic-search .search-result-content").slideUp(100);
+    //     $(".ez-scenic-search .citylist-content").slideToggle(200);
+    // });
+    $("#app").on("click", ".select-scenic>a",()=>{
         $(".ez-scenic-search .search-result-content").slideUp(100);
         $(".ez-scenic-search .citylist-content").slideToggle(200);
-    });
+    })
+
     //景点搜索-下拉列表选择
     $(".ez-scenic-search .city-list a").click(function(){
         var city=$(this).text();
@@ -354,14 +363,14 @@ $(function(){
     //     $(this).parents('.sl-wrap').removeClass('multiple extend');
     // });
 
-    $(".ez-selector").on("click",".ez-search-more",function(){  //展开与收起
+    $("#app").on("click",".ez-search-more",function(){  //展开与收起
         console.log("multiple");
         $(this).parent('.sl-ext').parent('.sl-wrap').toggleClass('extend');
         $(this).children(".sl-btn-open").toggle();
         $(this).children(".sl-btn-close").toggle();
     });
 
-    $(".ez-selector").on("click",".sl-date-more",function(){   //日期展开与收起
+    $("#app").on("click",".sl-date-more",function(){   //日期展开与收起
         $(this).parent('.sl-ext').parent('.sl-wrap').toggleClass('extend');
         $(this).children(".date-btn-open").toggle();
         $(this).children(".date-btn-close").toggle();

@@ -3,7 +3,7 @@
  * @Author: 彭善智
  * @LastEditors: 彭善智
  * @Date: 2019-04-24 09:56:10
- * @LastEditTime: 2019-04-30 21:43:41
+ * @LastEditTime: 2019-05-01 12:05:30
  */
 // import Vue from 'vue'
 // import Router from 'vue-router'
@@ -18,13 +18,13 @@ const createRouter = () =>  new VueRouter({
   routes: [
     {
       path: "/",
-      component: ()=> import( '@/views/home/homeIndex'),
-      name: "homeIndex",
+      component: ()=> import( '@/views/home/index'),
+      name: "index",
       meta: { title: "首页", requireAuth: false}
     },
     {
-      path:"/ruleIndex",
-      component: ()=> import( '@/views/rule/ruleIndex'),
+      path:"/rule",
+      component: ()=> import( '@/views/rule/rule'),
       name: "rule",
       meta: { title: "常规路线", requireAuth: false}
     },
@@ -53,9 +53,9 @@ const createRouter = () =>  new VueRouter({
       meta: { title: "常规路线订单支付成功", requireAuth: false}
     },
     {
-      path:"/routeIndex",
-      component: ()=> import('@/views/route/routeIndex'),
-      name: "routeIndex",
+      path:"/route",
+      component: ()=> import('@/views/route/route'),
+      name: "route",
       meta: { title: "当地参团", requireAuth: false}
     },
     {
@@ -81,6 +81,18 @@ const createRouter = () =>  new VueRouter({
       component: ()=> import('@/views/route/routeSuccess'),
       name: "routeSuccess",
       meta: { title: "当地参团订单支付成功", requireAuth: false}
+    },
+    {
+      path:"/sopt",
+      component: ()=> import('@/views/sopt/sopt'),
+      name: "sopt",
+      meta: { title: "景点首页", requireAuth: false}
+    },
+    {
+      path:"/soptList",
+      component: ()=> import('@/views/sopt/soptList'),
+      name: "soptList",
+      meta: { title: "景点列表", requireAuth: false}
     },
     {
       path: '*',
