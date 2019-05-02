@@ -169,7 +169,7 @@
                 <div class="box-left pull-left">
                     <div class="box-card" v-for="(list, index) in routeList" :key="index">
                         <div class="box-card-left pull-left" @click.stop="getInfor(list.routeid)">
-                            <img v-lazy="list.carImg">
+                            <img v-lazy="list.carImg" :key="list.carImg">
                             <div class="box-card-rate">
                                 <div class="ez-star pull-left">
                                         <!-- <img :src="list.star>index?'~images/star-on.png':'~images/star-off.png'"
@@ -185,9 +185,9 @@
                                 <label v-for="(tag, index) in list.tagContent" :key="index">{{tag}}</label>
                                 <!-- <el-tag v-for="(tag, index) in list.tagContent" :key="index">{{tag}}</el-tag> -->
                                 </p>
-                            <h5 class="text-marbom">当地上车参团：<i style="color: red;">{{list.endCityContent}}成团 </i>
+                            <h5 class="text-marbom max-1">当地上车参团：<i style="color: red;">{{list.endCityContent}}成团 </i>
                                 |  {{list.scenicContentLength}}个景点：{{list.scenicContent}}</h5>
-                            <p class="intro text-gray ez-mb-md">{{list.infor}}</p>
+                            <p class="intro text-gray ez-mb-md max-4">{{list.infor}}</p>
                             <h5 class=" ez-mb-md">团期：{{list.routeDate}}</h5>
                             <div class="card-like">
                                 <span class="pull-left text-orange ez-price"><span>{{currencySign}}</span>{{list.price}}<span class="text-gray">起</span></span>
@@ -668,10 +668,10 @@ export default {
                 this.loginFlagChange(1);
                 return;
             }
-            if(this.content == ""){
-                this.infoMsg("请输入评论内容");  
-                return;
-            }
+           if(this.isNull(this.content)){
+               this.infoMsg("请输入评论内容");
+               return;
+           }
            let data = await addChildComment({
                 commentid: id,
                 content: this.content,
@@ -759,10 +759,12 @@ export default {
                 commentid: this.routeList[this.index1].commentList[this.index2].commentid,
                 pageNo: pageNo,
             })
-            Vue.set(this.routeList[this.index1].commentList[this.index2], "commentList", data.list);
-            Vue.set(this.routeList[this.index1].commentList[this.index2], "pages", data.totalPage);
-            if (type == 1) {
-                this.page2();
+            if(data){
+                Vue.set(this.routeList[this.index1].commentList[this.index2], "commentList", data.list);
+                Vue.set(this.routeList[this.index1].commentList[this.index2], "pages", data.totalPage);
+                if (type == 1) {
+                    this.page2();
+                }
             }
         },
         //获取评论列表
@@ -829,9 +831,11 @@ export default {
             let data = await getLabel({
                 routeType: 2,  //1  常规线路  2 当地参团  3 邮轮  4 景点 5 当地玩家  6 商务定制',
             })
-            this.lableList = data;
-            for (const list of Object.values(this.lableList)) {
-                Vue.set(list, "showFlag", true);
+            if(data){
+                this.lableList = data;
+                for (const list of Object.values(this.lableList)) {
+                    Vue.set(list, "showFlag", true);
+                }
             }
         },
         //获取全部城市
@@ -923,24 +927,5 @@ export default {
     },
 }
 </script>
-<style lang="less">
-    .intro{
-        text-overflow: -o-ellipsis-lastline;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        -webkit-line-clamp: 4;
-        line-clamp: 4;
-        -webkit-box-orient: vertical;
-    }
-    .text-marbom{
-        text-overflow: -o-ellipsis-lastline;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        -webkit-line-clamp: 1;
-        line-clamp: 1;
-        -webkit-box-orient: vertical;
-    }
-</style>
+
 

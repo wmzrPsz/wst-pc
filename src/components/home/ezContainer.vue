@@ -41,7 +41,7 @@ export default {
         //点击导航栏
         comNavigationClick(list){
             this.setComNavigationIndex(list.id);
-            this.$router.push(list.link)
+            this.$router.push("/"+list.link)
         },
     },
 }

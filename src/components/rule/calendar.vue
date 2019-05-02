@@ -70,7 +70,7 @@ export default {
 }
 .ht-rili-head {
     overflow:hidden;
-    padding: 0 20px;
+    padding: 0 10px;
 }
 .ht-rili-querybox {
     overflow:hidden;
@@ -156,11 +156,11 @@ export default {
 }
 .ht-rili-body {
     overflow:hidden;
-    padding: 0 20px;
+    padding: 0 10px;
 }
 .ht-rili-day {
     font-size:10px;
-    font-weight:700;
+    // font-weight:700;
     display:inline-block;
     width:100%
 }
