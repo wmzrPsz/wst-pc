@@ -3,7 +3,7 @@
  * @Author: 彭善智
  * @LastEditors: 彭善智
  * @Date: 2019-04-24 09:56:10
- * @LastEditTime: 2019-05-01 12:05:30
+ * @LastEditTime: 2019-05-02 16:11:29
  */
 // import Vue from 'vue'
 // import Router from 'vue-router'
@@ -29,7 +29,7 @@ const createRouter = () =>  new VueRouter({
       meta: { title: "常规路线", requireAuth: false}
     },
     {
-      path:"/ruleInfo/:id",
+      path:"/ruleInfo/:id(\\d+)",
       component: ()=> import('@/views/rule/ruleInfo'),
       name: "ruleInfo",
       meta: { title: "常规路线详情", requireAuth: false}
@@ -59,7 +59,7 @@ const createRouter = () =>  new VueRouter({
       meta: { title: "当地参团", requireAuth: false}
     },
     {
-      path:"/routeInfo/:id",
+      path:"/routeInfo/:id(\\d+)",
       component: ()=> import('@/views/route/routeInfo'),
       name: "routeInfo",
       meta: { title: "当地参团详情", requireAuth: false}
@@ -93,6 +93,18 @@ const createRouter = () =>  new VueRouter({
       component: ()=> import('@/views/sopt/soptList'),
       name: "soptList",
       meta: { title: "景点列表", requireAuth: false}
+    },
+    {
+      path:"/soptInfo/:id(\\d+)",
+      component: ()=> import('@/views/sopt/soptInfo'),
+      name: "soptInfo",
+      meta: { title: "景点详情", requireAuth: false}
+    },
+    {
+      path:"/soptSure",
+      component: ()=> import('@/views/sopt/soptSure'),
+      name: "soptSure",
+      meta: { title: "景点订单确定", requireAuth: false}
     },
     {
       path: '*',

@@ -3,7 +3,7 @@
  * @Author: 彭善智
  * @LastEditors: 彭善智
  * @Date: 2019-03-12 22:51:19
- * @LastEditTime: 2019-03-13 12:21:21
+ * @LastEditTime: 2019-05-01 14:50:12
  */
 
 //性别过滤器
@@ -53,8 +53,13 @@ export const carLevelVc = value => {
 
 //截取逗号拼接的第n个
 export const splitVc = (value,index) => {
-    if(!value) return "";  
-    return value.split(",")[index];
+    console.log(value,index)
+    if(!value) return "";
+    if( typeof value == String){
+        return value.split(",")[index];
+    }  else{
+        return value[index];
+    }
 }
 
 //星级转化百分比

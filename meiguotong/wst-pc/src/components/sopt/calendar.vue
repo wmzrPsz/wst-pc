@@ -23,9 +23,27 @@
           v-for="(list, index) in dataList" :key="index" @click="dayClick(index)">
             <span class="ht-rili-day">{{list.day}}
               <!-- 1 -->
-              <i data-state="100" v-if="list.flag">余{{list.state}}</i>
+              <!-- <i data-state="100" v-if="list.flag">余{{list.state}}</i> -->
             </span>
             <span class="ht-rili-money" v-if="list.flag">{{currencySign}}{{list.price}}</span>
+          </div>
+        </div>
+        <div class="ht-custom">
+          <div class="ht-custom-left">选择人数</div>
+          <div class="ht-custom-right">
+            <div>
+              <span class="counter-label pull-left">成人</span>
+              <el-input-number v-model.number="adultNum" @change="setAdultNum" step-strictly size="small" :min="0" :max="10" label="成人"/>
+            </div>
+            <div>
+              <span class="counter-label pull-left">儿童</span>
+              <el-input-number v-model.number="childNum" @change="setChildNum" step-strictly size="small" :min="0" :max="10" label="儿童"/>
+            </div>
+            <div class="btn-group">
+              <button type="button" class="btn total-price" @click="addOrder">{{currencySign}}<i all-price>{{orderPrice}}</i>
+              </button>
+              <button type="button" class="btn ht-btn-cart toShopcart" @click=" addCar">加入购物车</button>
+            </div>
           </div>
         </div>
       </div>
@@ -33,31 +51,75 @@
   </div>
 </template>
 <script>
-import { mapState, mapActions } from "vuex"
+import { mapState, mapActions, mapMutations, mapGetters } from "vuex"
+import { saveCar } from "getData"
 export default {
   name: "calendar",
   data() {
     return {
-
+        adultNum: 0,
+        childNum: 0,
     };
   },
   computed: {
-     ...mapState([ "currencySign", "calendarDate"]),
+     ...mapState([ "currencySign"]),
      ...mapState({
-        dataList: state => state.rule.dataList
-    }),
-  },
-  created() {
-      this.calendarDateInit();
+            dataList: state => state.sopt.dataList,
+            calendarDate: state => state.sopt.calendarDate,
+            scenicid: state => state.sopt.scenicid,
+      }),
+    ...mapGetters("sopt", ["orderPrice", "beginDate"]),
   },
   methods: {
-    ...mapActions("rule", ["monthLeftClick", "monthRightClick", "dayClick", "calendarDateInit"])
+    ...mapMutations("sopt",["setAdultNum", "setChildNum"]),
+    ...mapActions("sopt", ["monthLeftClick", "monthRightClick", "dayClick", "calendarDateInit"]),
+    //下单
+    async addOrder(){
+      if(this.checkData()) return;
+      this.$router.push("/soptSure")
+    },
+    //加入购物车
+    async addCar() {
+      if(this.checkData()) return;
+      if(await saveCar({
+            typeid: this.scenicid,
+            carType: 5,  //1.常规路线2.当地参团3.当地玩家4.游轮5.景点
+            beginDate: this.beginDate,
+            adultNum: this.adultNum,
+            childNum: this.childNum,
+            price: this.orderPrice,
+      })){
+        this.successMsg("添加购物车成功");
+        this.adultNum = 0
+        this.childNum = 0
+      }
+    },
+    //判断参数
+    checkData(){
+        if(this.loginType == 1){
+            this.loginFlagChange(1);
+            return true;
+        }
+        if(this.isNull(this.beginDate)){
+            this.infoMsg("请选择日期");
+            return true;
+        }
+        if (this.adultNum + this.childNum <= 0) {
+              this.infoMsg("请选择出游人数");
+            return true;
+        }
+        if(this.orderPrice <= 0){
+              this.infoMsg("价格错误");
+            return true;
+        }
+        return false;
+    }
   }
 };
 </script>
 <style lang="less" scoped>
 .date-box {
-    width:400px;
+    width:500px;
     overflow:hidden;
     background:#f2f2f2;
     border:1px solid #e6e8eb;

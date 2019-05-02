@@ -1,11 +1,11 @@
 /*
- * @Description:  常规路线
+ * @Description:  景点
  * @Author: 彭善智
  * @LastEditors: 彭善智
  * @Date: 2019-04-24 18:26:49
- * @LastEditTime: 2019-05-02 15:14:22
+ * @LastEditTime: 2019-05-02 15:40:27
  */
-import { getRoutePriceDetails } from 'getData'
+import { getScenicNum } from 'getData'
 import { nowDate } from 'utils/common'
 
 const state = {
@@ -17,6 +17,11 @@ const state = {
   childNum: 0,  //小孩数量
   insurance: "", //保险信息
   orderid: "", //订单ID
+
+  scenicid: "", //景点ID
+  scenicSpot: "", //景点详情
+  scenicSpotTicket: "", //选择的景点门票详情
+
   routeid: "",  //常规路线ID
   oneNum: 0,  //单人间
   twoNum: 0,  //双人间
@@ -34,9 +39,7 @@ const state = {
 const getters = {
     //订单价格
     orderPrice: (state)=> {
-      return state.oneNum * state.oneCost + state.twoNum * state.twoCost + state.threeNum * state.threeCost +
-            state.fourNum * state.fourCost + state.arrangeNum * state.arrangeCost + 
-            (state.adultNum + state.childNum) * (state.route ? state.route.price : 0 )
+      return (state.adultNum + state.childNum) * (state.scenicSpotTicket ? state.scenicSpotTicket.price : 0 )
             + ((state.insurance? state.insurance.price * (state.childNum + state.adultNum) : 0));
     },
     //选中的日期  yyyy-mm-dd
@@ -56,17 +59,6 @@ const mutations = {
     setOpt: (state, opt)=> {
       state.opt = opt;
       console.log(state);
-    },
-    //设置常规路线ID
-    setRouteid: (state, routeid)=> {
-      state.routeid = routeid;
-      console.log(state)
-    },
-    //设置房间价格
-    setCost: (state, cost)=>{
-        [state.oneCost, state.twoCost, state.threeCost, state.fourCost, state.arrangeCost]  =
-         [cost.oneCost || state.oneCost|| 0, cost.twoCost ||  cost.twoCost || 0, cost.threeCost || state.threeCost ||0, 
-          cost.fourCost || state.fourCost || 0, cost.arrangeCost || state.arrangeCost || 0]
     },
     //判断是否是闰年
     isLeapYear(state) {
@@ -115,41 +107,39 @@ const mutations = {
     setSureDate(state, sureDate){
       state.sureDate = sureDate;
     },
+    //设置成人数量
     setAdultNum(state, adultNum){
       state.adultNum = adultNum;
     },
+    //设置儿童数量
     setChildNum(state, childNum){
       state.childNum = childNum;
     },
-    setOneNum(state, oneNum){
-      state.oneNum = oneNum;
-    },
-    setTwoNum(state, twoNum){
-      state.twoNum = twoNum;
-    },
-    setThreeNum(state, threeNum){
-      state.threeNum = threeNum;
-    },
-    setFourNum(state, fourNum){
-      state.fourNum = fourNum;
-    },
-    setArrangeNum(state, arrangeNum){
-      state.arrangeNum = arrangeNum;
-    },
-    setRoute(state, route) {
-      state.route = route;
-    },
+    //设置保险信息
     InsuranceSet(state, insurance){
        state.insurance = insurance;
     },
+    //设置订单ID
     orderidSet(state, orderid){
       state.orderid = orderid;
+    },
+    //设置景点ID
+    scenicidSet(state, scenicid){
+      state.scenicid = scenicid
+    },
+    //设置景点详情
+    scenicSpotSet(state, scenicSpot){
+      state.scenicSpot = scenicSpot
+    },
+    //设置门票详情
+    scenicSpotTicketSet(state, scenicSpotTicket){
+      state.scenicSpotTicket = scenicSpotTicket;
     }
 }
 
 const actions = {
     //日期初始化
-    calendarDateInit: ({commit, dispatch})=> {
+    calendarDateInit: ({commit, dispatch},scenicSpotTicket)=> {
       let calendarDate = {}
       calendarDate.today = new Date();
       calendarDate.year = calendarDate.today.getFullYear();
@@ -157,19 +147,25 @@ const actions = {
       calendarDate.date = calendarDate.today.getDate();
       calendarDate.day = calendarDate.today.getDay();
       commit("calendarDateChange", calendarDate)
-      dispatch("calendarClick")
+      commit("setSureDate", "")
+      commit("setAdultNum", 0)
+      commit("setChildNum", 0)
+      commit("InsuranceSet", "")
+      commit("orderidSet", "")
+      commit("setOpt", "")
+      commit("setDataList", "")
+      commit("scenicSpotTicketSet", scenicSpotTicket)
+      dispatch("getScenicNumClick")
     },
-    //获取日期价格
-    async calendarClick({state, getters, commit, dispatch }) {
+    //点击门票预约
+    async getScenicNumClick({state, commit, dispatch}){
       let priceDate = state.calendarDate.year + "-" + (state.calendarDate.month > 9 ? state.calendarDate.month : "0" + state.calendarDate.month);
-      let data = await getRoutePriceDetails({
-          routeid: state.routeid,
-          priceDate: priceDate,
+      let data = await getScenicNum({
+        scenicSpotTicketId: state.scenicSpotTicket.id,
+        scenicDate: priceDate,
       })
-      console.log(data)
-      if(data && data.length > 0){
+      if(data){
         commit("setOpt",data)
-        commit("setCost",data[0])
       }
       dispatch("getIndexDay")
     },
@@ -232,7 +228,7 @@ const actions = {
           calendarDate.month -= 1;
       }
       await commit("calendarDateChange", calendarDate)
-      dispatch("calendarClick")
+      dispatch("getScenicNumClick")
     },
     //点击右边月份
     async monthRightClick({state, commit, dispatch}){
@@ -246,7 +242,7 @@ const actions = {
             calendarDate.month += 1;
         }
         await commit("calendarDateChange", calendarDate)
-        dispatch("calendarClick")
+        dispatch("getScenicNumClick")
     },
     //点击日期
     dayClick({state, commit, dispatch},index) {

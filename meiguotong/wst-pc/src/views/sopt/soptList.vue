@@ -12,7 +12,7 @@
 
             <div class="ez-search-selector scenic-selector">
                 <div id="ez-selector" class="ez-selector">
-                    <div class="s-line" v-show="cityScenicShow">
+                    <div class="s-line" v-if="cityScenicShow">
                         <div class="sl-wrap">
                             <div class="sl-key">出发城市</div>
                             <div class="sl-value">
@@ -79,11 +79,12 @@
                 <div class="box-left pull-left">
                     <div class="box-card" v-for="(list, index) in scenicList" :key="index">
                         <div class="box-card-left pull-left" @click.stop="getInfor(list.id)">
-                            <img :src="list.imgUrl | splitVc(0) |defImg">
+                            <img v-lazy="list.imgUrl" :key="list.imgUrl">
                             <div class="box-card-rate">
                                 <div class="ez-star pull-left">
-                                    <img :src="list.star>index?'~images/star-on.png':'~images/star-off.png'"
-                                        title="regular" v-for="(item, index) in 5" :key="index">
+                                    <!-- <img :src="list.star>index?'~images/star-on.png':'~images/star-off.png'"
+                                        title="regular" v-for="(item, index) in 5" :key="index"> -->
+                                      <el-rate v-model="list.star" disabled/>
                                 </div>
                                 <span class="pull-right text-gray" @click.stop="commentNumClick(index)">{{list.commentNum}}条评价</span>
                             </div>
@@ -92,15 +93,14 @@
                             <h4 class="title ez-mb-md">{{list.name}}</h4>
                             <h5 class="text-blue ez-mb-md">【{{list.countryName}} • {{list.cityName}}】</h5>
                             <div class="col-md-12 ez-mb-md ez-pd-0">
-                                <div class="ez-icon-tag ez-mr-sm" v-for="(tag, index) in list.tagContent.split(',')"
-                                    :key="index">
+                                <div class="ez-icon-tag ez-mr-sm" v-for="(tag, index) in list.tagContent"  :key="index">
                                     <div class="ez-triangle-left"><i></i></div>
                                     <div class="ez-rect">{{tag}}</div>
                                 </div>
                             </div>
                             <ul class="col-md-12 ez-mb-md ez-pd-0 card-info">
-                                <li class="col-md-12">地址：{{list.address}}</li>
-                                <li class="col-md-12">详情：{{list.content}}</li>
+                                <li class="col-md-12 max-1">地址：{{list.address}}</li>
+                                <li class="col-md-12 max-4">详情：{{list.content}}</li>
                             </ul>
                             <div class="card-like">
                                 <span class="pull-left text-orange ez-price"><span>{{currencySign}}</span>{{list.price}}<span
@@ -284,6 +284,7 @@ import {
     getCityScenicNum,
     getLabel,
 } from "getData"
+import { debug } from 'util';
 export default {
     name: "soptList",
     data() {
@@ -317,41 +318,43 @@ export default {
     methods: {
         ...mapMutations(["loginFlagChange"]),
         //添加子评论
-        addChildComment: function (id) {
+        async addChildComment(id) {
             if(this.loginType == 1){
                 this.loginFlagChange(1);
                 return;
             }
-            if(this.content == ""){
-                layerMsg("请输入评论内容");  return;
-            }
-            requestGet(addChildCommentUrl, {
-                commentid: id,
-                content: this.content,
-            }, function (data) {
-                layerMsg("评论成功");
-                app.content = "";
-                app.getChildComment(1, 1);
-            })
-        },
-        //点赞-取消点赞
-        digComment: function (id, index1, index2) {
-            if (localStorage.getItem("login_type") != 2) {
-                layerMsg("请登录");
+            if(this.isNull(this.content)){
+                this.infoMsg("请输入评论内容");  
                 return;
             }
-            requestGet(digCommentUrl, {
+           let data = await addChildComment({
+                commentid: id,
+                content: this.content,
+            })
+            if(data){
+                this.successMsg("评论成功");
+                this.content = "";
+                this.getChildComment(1, 1);
+            }
+        },
+        //点赞-取消点赞
+        async digComment(id, index1, index2) {
+            if(this.loginType == 1){
+                this.loginFlagChange(1);
+                return;
+            }
+            let data =  digComment({
                 typeId: id,
                 digType: 1,
-            }, function (data) {
-                if (data.body.code) {
-                    Vue.set(app.scenicList[index1].commentList[index2], "commentList", app.scenicList[index1].commentList[index2].digNum++);
-                    layerMsg("点赞成功");
-                } else {
-                    Vue.set(app.scenicList[index1].commentList[index2], "commentList", app.scenicList[index1].commentList[index2].digNum--);
-                    layerMsg("取消点赞成功");
-                }
-            });
+            })
+            if (data.code) {
+                Vue.set(this.scenicList[index1].commentList[index2], "commentList", this.scenicList[index1].commentList[index2].digNum++);
+                this.successMsg("点赞成功");
+            } else {
+                Vue.set(this.scenicList[index1].commentList[index2], "commentList", this.scenicList[index1].commentList[index2].digNum--);
+                this.successMsg("取消点赞成功");
+            }
+
         },
         //初始化一级评论分页
         page1: function () {
@@ -407,36 +410,38 @@ export default {
             }
         },
         //获取子评论列表
-        getChildComment: function (type, pageNo) {
-            requestGet(getChildCommentUrl, {
+        async getChildComment(type, pageNo) {
+            let data = await getChildComment({
                 commentid: this.scenicList[this.index1].commentList[this.index2].commentid,
                 pageNo: pageNo,
-            }, function (data) {
-                Vue.set(app.scenicList[app.index1].commentList[app.index2], "commentList", data.body.list);
-                Vue.set(app.scenicList[app.index1].commentList[app.index2], "pages", data.body.totalPage);
+            })
+            if(data){
+                Vue.set(this.scenicList[this.index1].commentList[this.index2], "commentList", data.list);
+                Vue.set(this.scenicList[this.index1].commentList[this.index2], "pages", data.totalPage);
                 if (type == 1) {
-                    app.page2();
+                    this.page2();
                 }
-            });
+            }
         },
         //获取评论列表
-        selectComment: function (type, pageNo) {
-            requestGet(selectCommentUrl, {
+        async selectComment(type, pageNo) {
+            let data = await selectComment({
                 pageNo: pageNo,
                 typeid: this.scenicList[this.index1].id,
                 proType: 7,  //1.包车租车2.短程接送3.接送机4常规路线5.当地参团6.游轮7.景点门票
-                //8.当地玩家9.酒店10.保险11.旅游定制12导游 13.攻略评论 14.城市评论',
-            }, function (data) {
-                Vue.set(app.scenicList[app.index1], "commentList", data.body.list);
-                Vue.set(app.scenicList[app.index1], "pages", data.body.totalPage);
+                            //8.当地玩家9.酒店10.保险11.旅游定制12导游 13.攻略评论 14.城市评论',
+            })
+            if(data){
+                Vue.set(this.scenicList[this.index1], "commentList", data.list);
+                Vue.set(this.scenicList[this.index1], "pages", data.totalPage);
                 if (type == 1) {
-                    app.page1();
+                    this.page1();
                 }
-            });
+            }
         },
         //景点详情
         getInfor: function (id) {
-            location.href = `./L1-3-1.html?id=${id}`;
+             this.$router.push({path:"/soptInfo/"+id})
         },
         //点击城市
         cityScenicClick: function (index) {
@@ -498,34 +503,45 @@ export default {
             this.selectScenicList();
         },
         //景点搜索
-        selectScenicList: function () {
-            requestGet(selectScenicListUrl, {
+        async selectScenicList() {
+            let data = await selectScenicList({
                 cityid: this.cityid,
                 labelAttrid: this.labelAttrid.join(","),
                 pageNo: this.current_page,
                 orderByType: this.orderByType,
-            }, function (data) {
-                app.pages = data.body.totalPage;
-                app.scenicList = data.body.list;
-            });
+            })
+            if(data){
+                this.pages = data.totalPage;
+                this.scenicList = data.list;
+                for (const list of this.scenicList ) {
+                    if(list.imgUrl){
+                        this.$set(list, "imgUrl", list.imgUrl.split(",")[0])
+                    }
+                    this.$set(list, "tagContent", list.tagContent ? list.tagContent.split(",") : [])
+                     //解决分数是字符串报错
+                    this.$set(list, "star", list.star?parseInt(list.star):0)
+                }
+            }
         },
         //获取城市景点
-        getCityScenicNum: function () {
-            requestGet(getCityScenicNumUrl, {
-            }, function (data) {
-                app.cityScenic = data.body.list;
-            });
+        async getCityScenicNum() {
+            let data = await getCityScenicNum({
+                
+            })
+            console.log(data)
+            this.cityScenic = data;
         },
         //获取标签属性
-        getLabel: function () {
-            requestGet(getLabelUrl, {
+        async getLabel () {
+            let data = await getLabel({
                 routeType: 4,  //1  常规线路  2 当地参团  3 邮轮  4 景点 5 当地玩家  6 商务定制',
-            }, function (data) {
-                app.lableList = data.body.list;
-                for (const iterator of Object.values(app.lableList)) {
-                    Vue.set(iterator, "showFlag", true);
+            })
+            if(data){
+                this.lableList = data;
+                for (const list of Object.values(this.lableList)) {
+                    Vue.set(list, "showFlag", true);
                 }
-            });
+            }
         },
         //点击上一页 下一页
         pageChange: function (index) {

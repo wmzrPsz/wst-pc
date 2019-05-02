@@ -77,7 +77,7 @@ module.exports = {
     //      openPage: "",
     // host: 'localhost',
     disableHostCheck: true,
-    port: 80,
+    port: 8080,
     https: false,
     hotOnly: false, ////热更新（webpack已实现了，这里false即可）
     open: false, ////浏览器自动打开页面

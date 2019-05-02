@@ -24,7 +24,7 @@
                                 <option v-for="(list, index) in cityList" :key="index" :value="list.cityid">{{list.cityName}}</option>
                          </select>
                     </div>
-                    
+
                 </div>
 
                 <div id="ez-selector" class="ez-selector">
@@ -191,7 +191,7 @@
                 <div class="box-left pull-left">
                     <div class="box-card" v-for="(list, index) in routeList" :key="index">
                         <div  class="box-card-left pull-left" @click.stop="getInfor(list.routeid)">
-                            <img v-lazy="list.carImg">
+                            <img v-lazy="list.carImg" :key="list.carImg">
                             <div class="box-card-rate">
                                 <div class="ez-star pull-left">
                                     <!-- <img src="../../assets/images/star-on.png"> -->
@@ -206,7 +206,7 @@
                         <div class="box-card-text pull-right" @click.stop="getInfor(list.routeid)">
                             <h4 class="title ez-mb-md">{{list.title}}</h4>
                             <h5 class="subtitle text-blue ez-mb-md">{{list.subtitle}}</h5>
-                            <p class="intro text-gray ez-mb-md">{{list.infor}}</p>
+                            <p class="intro text-gray ez-mb-md max-5">{{list.infor}}</p>
                             <p class="text-style2 del-color"><label v-for="(tag, index) in list.tagContent" :key="index">{{tag}}</label></p>
                             <div class="card-like">
                                 <span class="pull-left text-orange ez-price"><span>{{currencySign}}</span>{{list.price}}<span class="text-gray">天</span></span>
@@ -772,10 +772,10 @@ export default {
                 this.loginFlagChange(1);
                 return;
             }
-            if(this.content == ""){
-                this.infoMsg("请输入评论内容");  
-                return;
-            }
+           if(this.isNull(this.content)){
+               this.infoMsg("请输入评论内容");
+               return;
+           }
            let data = await addChildComment({
                 commentid: id,
                 content: this.content,
@@ -863,10 +863,12 @@ export default {
                 commentid: this.routeList[this.index1].commentList[this.index2].commentid,
                 pageNo: pageNo,
             })
-            Vue.set(this.routeList[this.index1].commentList[this.index2], "commentList", data.list);
-            Vue.set(this.routeList[this.index1].commentList[this.index2], "pages", data.totalPage);
-            if (type == 1) {
-                this.page2();
+            if(data){
+                Vue.set(this.routeList[this.index1].commentList[this.index2], "commentList", data.list);
+                Vue.set(this.routeList[this.index1].commentList[this.index2], "pages", data.totalPage);
+                if (type == 1) {
+                    this.page2();
+                }
             }
         },
         //获取评论列表
@@ -917,9 +919,11 @@ export default {
             let data = await getLabel({
                 routeType: 1,  //1  常规线路  2 当地参团  3 邮轮  4 景点 5 当地玩家  6 商务定制',
             })
-            this.lableList = data;
-            for (const list of Object.values(this.lableList)) {
-                Vue.set(list, "showFlag", true);
+            if(data){
+                this.lableList = data;
+                for (const list of Object.values(this.lableList)) {
+                    Vue.set(list, "showFlag", true);
+                }
             }
         },
         //根据城市获取景点
@@ -1026,25 +1030,4 @@ export default {
     }
 }
 </script>
-<style lang="less">
-    .ez-conventional{
-        >.ez-search-result{
-            >.box-left{
-                >.box-card{
-                    >.box-card-text{
-                        >.intro{
-                            text-overflow: -o-ellipsis-lastline;
-                            overflow: hidden;
-                            text-overflow: ellipsis;
-                            display: -webkit-box;
-                            -webkit-line-clamp: 5;
-                            line-clamp: 5;
-                            -webkit-box-orient: vertical;
-                        }
-                    }
-                }
-            }
-        }
-    }
-</style>
 

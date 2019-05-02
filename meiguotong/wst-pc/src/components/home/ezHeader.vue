@@ -4,7 +4,7 @@
         <!-- Brand-->
         <div class="navbar-header header-logo">
             <a class="ez-logo" :href="comProtocol.logoLink">
-                <img alt="万事通美国" v-lazy="comProtocol.pcLogo">
+                <img alt="万事通美国" v-lazy="comProtocol.pcLogo" :key="comProtocol.pcLog">
                 <!-- languageList  -->
             </a>
         </div>
@@ -26,7 +26,7 @@
                     aria-expanded="false" @click= "loginFlagClick(1)">
                     <span class="ez-avatar">
                         <!-- defaultPhoto -->
-                        <img alt="用户头像" v-lazy="member.photo">
+                        <img alt="用户头像" v-lazy="member.photo" :key="member.photo">
                         <b class="text-black" v-if="loginType == 1" style="color: #2577e3;">未登录</b>
                         <b class="text-black" v-if="loginType == 2">{{member.nickName}}</b>
                     </span>

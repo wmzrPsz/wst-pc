@@ -12,7 +12,7 @@
         <div class="travel-info">
             <div class="travel-info-local">
                 <div class="local-info-left floatl">
-                    <img :src="route.carImg | carImgFilter(imgIndex)"  alt="常规路线详情图片">
+                    <img :src="route.carImg | splitVc(imgIndex)"  alt="常规路线详情图片">
                     <div>
                         <div class="travel-plan-content">
                             <i class="iconfont icon-prev travel-plan-content-prev" @click="imgLeft"></i>
@@ -42,15 +42,17 @@
                     <p>{{route.infor}}</p>
                     <div class="time-price-con floatl">
                         <div class="text-orange ez-price floatl">{{currencySign}}{{route.price}} <span class="text-gray">/元起</span>
-                             <el-tooltip class="item" effect="dark" placement="bottom">
-                                <div slot="content" class="priceInfor" >{{route.priceInfor}}</div>
-                                <span class="text-gray">价格说明</span>
-                             </el-tooltip>
+                                <el-popover placement="bottom-start" title="价格说明"  width="270" trigger="hover">
+                                    <div class="priceInfor" >{{route.priceInfor}}</div>
+                                    <a class="text-gray" slot="reference" >价格说明</a>
+                                </el-popover>
+                                <el-popover placement="bottom-start" title="退款说明"  width="270" trigger="hover">
+                                    <div v-for="(list, index) in refundList" :key="index">
+                                        订单确认后，提前{{list.refundDay}}天退单，返回{{list.refundNum}}%;
+                                    </div>
+                                    <a class="text-gray" slot="reference" >退款说明</a>
+                                </el-popover> 
                             </div>
-                            <el-tooltip class="item" effect="dark" placement="bottom">
-                                  <div slot="content" class="priceInfor" >{{refundMsg}}</div>
-                                <span class="tooltip-show floatl"><u>退款说明</u></span>
-                            </el-tooltip>
                         <div class="floatr">
                               <el-rate style="margin-right:30px;" v-model="route.star" disabled/>
                             <u><a v-href="'proMenuList3'">{{route.commentNum}}条评价</a></u>
@@ -129,7 +131,7 @@
                 <ul>
                     <!-- class="travel-info-con-title-style"  -->
                     <li v-for="(list, index) in proMenuList" :key="index" v-href="'proMenuList'+list.isadd">
-                        <span v-if="list.isAdd == 2">{{list.title}}（{{route.commentNum}}）</span>
+                        <span v-if="list.isadd == 3">{{list.title}}（{{route.commentNum}}）</span>
                          <span v-else>{{list.title}}</span>
                     </li>
                 </ul>
@@ -403,6 +405,7 @@ export default {
             name: "",  //姓名
             mobile: "", //电话
             proMenuList: [],  //产品菜单
+            refundList: [], //退款说明
         }
     },
     computed: {
@@ -655,12 +658,6 @@ export default {
                     //     data: data
                     // });
                 }
-            },
-        },
-        filters:{
-            carImgFilter:function(value,imgIndex){
-                if(!value) return; 
-                return value[imgIndex];
             },
         },
     
