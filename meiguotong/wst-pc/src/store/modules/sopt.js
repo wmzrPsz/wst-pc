@@ -3,10 +3,10 @@
  * @Author: 彭善智
  * @LastEditors: 彭善智
  * @Date: 2019-04-24 18:26:49
- * @LastEditTime: 2019-05-02 15:40:27
+ * @LastEditTime: 2019-05-05 23:34:30
  */
 import { getScenicNum } from 'getData'
-import { nowDate } from 'utils/common'
+import { nowDate, copy } from 'utils/common'
 
 const state = {
   calendarDate: "",  //日期信息
@@ -15,32 +15,18 @@ const state = {
   dataList: "", //日历展示的日期
   adultNum: 0,  //大人数量
   childNum: 0,  //小孩数量
-  insurance: "", //保险信息
   orderid: "", //订单ID
 
   scenicid: "", //景点ID
   scenicSpot: "", //景点详情
   scenicSpotTicket: "", //选择的景点门票详情
-
-  routeid: "",  //常规路线ID
-  oneNum: 0,  //单人间
-  twoNum: 0,  //双人间
-  threeNum: 0,  //三人间
-  fourNum: 0,  //四人间
-  arrangeNum: 0, //配房数量
-  oneCost:0,  //单人房价格
-  twoCost:0,  //双人房价格
-  threeCost:0, //三人房价格
-  fourCost:0,  //四人房价格
-  arrangeCost:0,  //配房价格
-  route: "", //参团详情
 }
 
 const getters = {
     //订单价格
-    orderPrice: (state)=> {
+    orderPrice: (state, getters, rootState, rootGetters)=> {
       return (state.adultNum + state.childNum) * (state.scenicSpotTicket ? state.scenicSpotTicket.price : 0 )
-            + ((state.insurance? state.insurance.price * (state.childNum + state.adultNum) : 0));
+            + ((rootState.order.insurance? rootState.order.insurance.price * (state.childNum + state.adultNum) : 0));
     },
     //选中的日期  yyyy-mm-dd
     beginDate: (state)=> {
@@ -115,10 +101,6 @@ const mutations = {
     setChildNum(state, childNum){
       state.childNum = childNum;
     },
-    //设置保险信息
-    InsuranceSet(state, insurance){
-       state.insurance = insurance;
-    },
     //设置订单ID
     orderidSet(state, orderid){
       state.orderid = orderid;
@@ -150,7 +132,6 @@ const actions = {
       commit("setSureDate", "")
       commit("setAdultNum", 0)
       commit("setChildNum", 0)
-      commit("InsuranceSet", "")
       commit("orderidSet", "")
       commit("setOpt", "")
       commit("setDataList", "")
@@ -174,7 +155,7 @@ const actions = {
       commit("isLeapYear");
       commit("getDays");
       // let calendarDate = state.calendarDate;
-      let calendarDate = JSON.parse(JSON.stringify(state.calendarDate))
+      let calendarDate = copy(state.calendarDate)
       let dataList = [];
       calendarDate.monthStart = new Date(calendarDate.year + "/" + calendarDate.month + "/1").getDay();
       if (calendarDate.monthStart == 0) {
@@ -220,7 +201,7 @@ const actions = {
     //点击左边月份
     async monthLeftClick({state, commit, dispatch}){
       // let calendarDate = [...state.calendarDate]
-      let calendarDate = JSON.parse(JSON.stringify(state.calendarDate))
+      let calendarDate = copy(state.calendarDate)
       if (calendarDate.month <= 1) {
           calendarDate.year -= 1;
           calendarDate.month = 12;
@@ -233,7 +214,7 @@ const actions = {
     //点击右边月份
     async monthRightClick({state, commit, dispatch}){
       // let calendarDate = [...state.calendarDate];
-      let calendarDate = JSON.parse(JSON.stringify(state.calendarDate))
+      let calendarDate = copy(state.calendarDate)
       // let calendarDate = {}
         if (calendarDate.month == 12) {
             calendarDate.year += 1;
