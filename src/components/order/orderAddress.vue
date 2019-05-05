@@ -29,7 +29,7 @@
             </div>
             <div>
                 <p>时间</p>
-                <input type="date" class="form-control min-text" :value="startDate" readonly="readonly" style="background-color: #fff;">
+                <input type="text" class="form-control min-text" :value="startDate" readonly="readonly" style="background-color: #fff;">
             </div>
             <div>
                 <p>人数</p>
@@ -64,11 +64,13 @@ export default {
             remark: "", //备注
         }
     },
-    computed: {
-      
-    },
     methods: {
         ...mapMutations('order', ["contactsNameSet", "contactsMobileSet", 'remarkSet']),
+    },
+    created() {
+        this.contactsNameSet("");
+        this.contactsMobileSet("");
+        this.remarkSet("");
     },
 }
 </script>

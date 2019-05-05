@@ -23,7 +23,7 @@
                     </div>
                     <div class="content-order-details-btn">
                         <router-link :to="{ name: 'user'}" tag="div" >查看订单</router-link>
-                        <router-link :to="{ path: 'routeIndex'}" tag="div" >返回当地参团</router-link>
+                        <router-link :to="{ path: 'route'}" tag="div" >返回当地参团</router-link>
                     </div>
                     <p>如有疑问,请致电话{{comProtocol.phone}}</p>
                 </div>

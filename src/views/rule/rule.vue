@@ -204,9 +204,9 @@
                         </div>
                 
                         <div class="box-card-text pull-right" @click.stop="getInfor(list.routeid)">
-                            <h4 class="title ez-mb-md">{{list.title}}</h4>
+                            <h4 class="title ez-mb-md" v-html="list.title"></h4>
                             <h5 class="subtitle text-blue ez-mb-md">{{list.subtitle}}</h5>
-                            <p class="intro text-gray ez-mb-md max-5">{{list.infor}}</p>
+                            <p class="intro text-gray ez-mb-md max-5" >{{list.infor}}</p>
                             <p class="text-style2 del-color"><label v-for="(tag, index) in list.tagContent" :key="index">{{tag}}</label></p>
                             <div class="card-like">
                                 <span class="pull-left text-orange ez-price"><span>{{currencySign}}</span>{{list.price}}<span class="text-gray">天</span></span>

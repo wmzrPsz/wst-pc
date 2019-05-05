@@ -3,7 +3,7 @@
         <ezHeader></ezHeader>
         <ezContainer></ezContainer>
 
-    <div class="content ez-travel-payment">
+    <div class="content ez-travel-payment main_content">
         <div class="content-order">
             <div class="content-order-icon">
                 <div style="border: 1px solid #f99905;"><i style="color:#f99905;" class="iconfont icon-dagou"></i><label>确认订单</label></div>

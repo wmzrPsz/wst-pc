@@ -3,10 +3,10 @@
  * @Author: 彭善智
  * @LastEditors: 彭善智
  * @Date: 2019-04-24 18:26:49
- * @LastEditTime: 2019-05-02 20:45:12
+ * @LastEditTime: 2019-05-05 23:35:27
  */
 import { getRoutePriceDetails } from 'getData'
-import { nowDate } from 'utils/common'
+import { nowDate, copy } from 'utils/common'
 
 const state = {
   calendarDate: "",  //日期信息
@@ -48,6 +48,27 @@ const getters = {
 }
 
 const mutations = {
+    //日期初始化
+    calendarDateInit(state){
+      state.opt = ""
+      state.sureDate = ""
+      state.dataList = ""
+      state.adultNum = 0
+      state.childNum = 0
+      state.insurance = ""
+      state.orderid = ""
+      state.oneNum = 0
+      state.twoNum = 0
+      state.threeNum = 0
+      state.fourNum = 0
+      state.arrangeNum = 0
+      state.oneCost = 0
+      state.twoCost = 0
+      state.threeCost = 0
+      state.fourCost = 0
+      state.arrangeCost = 0
+      state.insurance = ""
+    },
     calendarDateChange: (state, calendarDate)=> {
       state.calendarDate = calendarDate;
       console.log(state)
@@ -144,7 +165,7 @@ const mutations = {
     },
     orderidSet(state, orderid){
       state.orderid = orderid;
-    }
+    },
 }
 
 const actions = {
@@ -157,6 +178,7 @@ const actions = {
       calendarDate.date = calendarDate.today.getDate();
       calendarDate.day = calendarDate.today.getDay();
       commit("calendarDateChange", calendarDate)
+      commit("calendarDateInit")
       dispatch("calendarClick")
     },
     //获取日期价格
@@ -178,7 +200,7 @@ const actions = {
       commit("isLeapYear");
       commit("getDays");
       // let calendarDate = state.calendarDate;
-      let calendarDate = JSON.parse(JSON.stringify(state.calendarDate))
+      let calendarDate = copy(state.calendarDate)
       let dataList = [];
       calendarDate.monthStart = new Date(calendarDate.year + "/" + calendarDate.month + "/1").getDay();
       if (calendarDate.monthStart == 0) {
@@ -224,7 +246,7 @@ const actions = {
     //点击左边月份
     async monthLeftClick({state, commit, dispatch}){
       // let calendarDate = [...state.calendarDate]
-      let calendarDate = JSON.parse(JSON.stringify(state.calendarDate))
+      let calendarDate = copy(state.calendarDate)
       if (calendarDate.month <= 1) {
           calendarDate.year -= 1;
           calendarDate.month = 12;
@@ -237,7 +259,7 @@ const actions = {
     //点击右边月份
     async monthRightClick({state, commit, dispatch}){
       // let calendarDate = [...state.calendarDate];
-      let calendarDate = JSON.parse(JSON.stringify(state.calendarDate))
+      let calendarDate = copy(state.calendarDate)
       // let calendarDate = {}
         if (calendarDate.month == 12) {
             calendarDate.year += 1;
@@ -281,7 +303,7 @@ const checkDate = (dateStr1, dateStr2)=>{
 
 export default {
   namespaced: true,
-  state,
+  state,  
   getters,
   mutations,
   actions

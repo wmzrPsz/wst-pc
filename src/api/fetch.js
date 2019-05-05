@@ -3,10 +3,11 @@
  * @Author: 彭善智
  * @LastEditors: 彭善智
  * @Date: 2019-03-01 22:48:18
- * @LastEditTime: 2019-04-26 17:33:40
+ * @LastEditTime: 2019-05-05 23:20:17
  */
 import store from '../store/index'
-import {errorMsg} from '../utils/popup'
+import { errorMsg } from '../utils/popup'
+import { isNull } from '../utils/common'
 
 
 export default async (url = '', data = {}, type = 'GET', method = 'fetch')=>{
@@ -44,13 +45,13 @@ export default async (url = '', data = {}, type = 'GET', method = 'fetch')=>{
   if (type == 'GET') {
     let _data = []
     Object.keys(data).forEach(key => {
-      _data.push(key + '=' + data[key])
+      _data.push(key + '=' + data[key] || "" )
     })
     url =  url + '?' + _data.join('&');
   } else {
     //sendData = JSON.stringify(data)
     Object.keys(data).forEach(key => {
-      formData.append(key,data[key]);
+      formData.append(key,data[key] || "");
     })
 
   }

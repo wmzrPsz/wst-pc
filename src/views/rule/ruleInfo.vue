@@ -35,7 +35,7 @@
                     <p>备注：{{route.remark}}</p>
                 </div>
                 <div class="local-info-right floatl">
-                    <p class="font-f1">{{route.title}}</p>
+                    <p class="font-f1" v-html="route.title"></p>
                     <p class="font-f2">{{route.subtitle}}</p>
                     <p>编号{{route.no}}：本产品由{{route.companyName}}及具有资质的合作旅行社提供相关服务</p>
                     <p><label v-for="(tag, index) in route.tagContent" :key="index">{{tag}}</label></p>
@@ -169,7 +169,7 @@
                                 <p v-if="routeContent.tripType != 1">
                                     <b>{{routeContent.scenicName}}</b>
                                 </p>
-                                <p v-if="routeContent.tripType != 1">{{routeContent.infor}}</p>
+                                <p v-if="routeContent.tripType != 1" v-html="routeContent.infor"></p>
 
                             </div>
 

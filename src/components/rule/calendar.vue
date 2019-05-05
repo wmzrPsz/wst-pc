@@ -165,14 +165,14 @@ export default {
     width:100%
 }
 .ht-rili-day >i{
-    font-size:11px;
-    padding-left: 3px;
+    font-size:10px;
+    // padding-left: 3px;
     color: #888;
 }
 .ht-rili-money {
     display:inline-block;
     width:100%;
-    font-size:13px;
+    font-size:12px;
     color:#f60;
     background: #fdefe5;
 }

@@ -1,5 +1,35 @@
 <template>
     <div>
+
+        <div class="content-order-details-insurance">
+            <h4>保险方案</h4>
+            <div>
+                <!-- <p>意外险</p> -->
+                <!-- <div v-for="(list, index) in insuranceList" :key="index">
+                    
+                        <input type="radio" :value="list.id" v-model="insuranceid" name="insurance">{{list.name}}
+                        <el-tooltip class="item" effect="dark" placement="bottom">
+                        <div slot="content" class="priceInfor" >{{list.content}}</div>
+                            <a>（保险说明）</a>
+                        </el-tooltip>
+                                <span>{{currencySign}}{{list.price}}/人</span>
+                    
+                </div> -->
+                    <template>
+                        <el-radio-group v-model="insuranceid">
+                        <el-radio :label="list.id" v-for="(list, index) in insuranceList" :key="index">
+                            {{list.name}}
+                            <el-tooltip class="item" effect="dark" placement="bottom">
+                                <div slot="content" class="priceInfor" >{{list.content}}</div>
+                                    <a>（保险说明）</a>
+                            </el-tooltip>
+                            <span>{{currencySign}}{{list.price}}/人</span>
+                        </el-radio>
+                        </el-radio-group>
+                    </template>
+            </div>
+        </div>
+
         <h4>出游人信息</h4>
         <div class="content-order-details-visitors-info" v-for="(list, index) in orderMember" :key="index">
             <div>
@@ -23,7 +53,7 @@
                     <option :value="item.id" v-for="(item, index) in certTypeSelectList" :key="index">{{item.name}}</option>
                 </select>
                 <input type="tetx" class="form-control min-text" placeholder="证件号码" maxlength="25"
-                    :value="list.mobile" @input="infoChange(index,'mobile',$event)" />
+                    :value="list.certNo" @input="infoChange(index,'certNo',$event)" />
             </div>
             <div>
                 <span><label>*</label>证件有效期</span>
@@ -93,7 +123,7 @@
     </div>
 </template>
 <script>
-import { getMemberContact } from "getData"
+import { getMemberContact, getInsurance } from "getData"
 import { mapState, mapMutations, mapActions} from 'vuex'
 export default {
     name: "orderMember",
@@ -107,6 +137,10 @@ export default {
             type: Number,
             default: 0,
             required: true,
+        },
+        productType:{
+            type: Number,
+            required: true
         }
     },
     data() {
@@ -114,28 +148,58 @@ export default {
             memberContactsList: [],  //选择的常用联系人
             orderMemberIndex: "",  //点击添加联系人的下标
             memberContactsIndex: "", //选择的常用联系人的下标
+            insuranceList: [],  //保险集合
+            insuranceid: "",  //保险ID
         }
     },
     computed: {
         ...mapState("order",["orderMember"]),
+        ...mapState(["currencySign"]),
+    },
+    watch: {
+        //计算保险价格
+        insuranceid: function () {
+            for (const list of Object.values(this.insuranceList)) {
+                if (list.id == this.insuranceid) {
+                    this.insuranceSet(list);
+                }
+             
+            }
+        },
     },
     created() {
+        this.orderMemberSet([]);
+        this.insuranceSet("");
         this.orderMemberInit();
+        this.getInsurancData();
         this.getMemberContact();
     },
     methods: {
-        ...mapMutations("order",["orderMemberSet","infoSet"]),
-        infoChange(index, key, event){
-            this.infoSet(index, key,event.target.value)
+        ...mapMutations("order",["orderMemberSet","infoSet", "insuranceSet"]),
+         //获取保险数据
+        async getInsurancData() {
+            let data = await getInsurance({
+                  productType: this.productType,
+            })
+            if(data){
+                this.insuranceList = data;
+            }
         },
+        //常用联系人数据改变
+        infoChange(index, key, event){
+            console.log(key)
+            console.log(event.target.value)
+            this.infoSet({index: index, key: key, value: event.target.value})
+        },
+        //保存到常用联系人改变
         typeChange(index){
-             let orderMember = JSON.parse(JSON.stringify(this.orderMember))
+             let orderMember = this.copy(this.orderMember)
              Vue.set(orderMember[index], "type", !orderMember[index].type);
              this.orderMemberSet(orderMember)
         },
         //确定添加联系人
         addMemberContact: function () {
-            let orderMember = JSON.parse(JSON.stringify(this.orderMember))
+            let orderMember = this.copy(this.orderMember)
             if (this.memberContactsIndex === "") return;
             let map = {};
             Vue.set(map, "chineseName", this.memberContactsList[this.memberContactsIndex].chineseName);
@@ -169,7 +233,7 @@ export default {
         },
         //添加清空数据
         emptyOrderMemberByIndex: function (index) {
-            let orderMember = JSON.parse(JSON.stringify(this.orderMember))
+            let orderMember = this.copy(this.orderMember)
             let map = {};
             Vue.set(map, "chineseName", "");
            //Vue.set(map,"englishName","");
@@ -188,7 +252,6 @@ export default {
         },
         //出游人集合初始化
         orderMemberInit: function () {
-            this.orderMemberSet([]);
             let num = this.adultNum + this.childNum;
             if (!num) return;
             for (let k = 0; k < num; k++) {

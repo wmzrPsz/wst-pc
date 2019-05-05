@@ -1,7 +1,7 @@
 .imgBorder{ 
     border: 2px solid #ff6600;
 }
-.content{
+.main_content{
     width: 1220px;
     margin: 0 auto;
     overflow: hidden; 
