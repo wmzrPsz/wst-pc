@@ -3,7 +3,7 @@
  * @Author: 彭善智
  * @LastEditors: 彭善智
  * @Date: 2019-04-24 18:26:49
- * @LastEditTime: 2019-05-05 23:35:27
+ * @LastEditTime: 2019-05-06 12:16:15
  */
 import { getRoutePriceDetails } from 'getData'
 import { nowDate, copy } from 'utils/common'
@@ -42,7 +42,7 @@ const getters = {
     //选中的日期  yyyy-mm-dd
     beginDate: (state)=> {
       if(state.sureDate){
-        return nowDate(new Date(state.sureDate),0);
+        return nowDate(0, new Date(state.sureDate));
       }
     }
 }

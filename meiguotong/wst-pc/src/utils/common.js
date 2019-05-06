@@ -3,7 +3,7 @@
  * @Author: 彭善智
  * @LastEditors: 彭善智
  * @Date: 2019-03-12 22:51:19
- * @LastEditTime: 2019-05-05 23:31:57
+ * @LastEditTime: 2019-05-06 12:15:12
  */
 
 import store from '@/store/index'
@@ -71,7 +71,7 @@ export const nowMonth = () => {
 
 
 //获取x天后的时间
-export const nowDate = (date = new Date(), num = 0) => {
+export const nowDate = (num = 0, date = new Date()) => {
   date.setDate(date.getDate() + parseInt(num)); 
   let year = date.getFullYear();
   let month = date.getMonth() + 1;
@@ -87,8 +87,7 @@ export const nowDate = (date = new Date(), num = 0) => {
 
 
 //获取数组格式时间
-export const nowDateByAny = () => {
-  let date = new Date();
+export const nowDateByAny = (date = new Date()) => {
   let list = [];
   let year = date.getFullYear();
   let month = date.getMonth() + 1;
