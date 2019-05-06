@@ -32,55 +32,142 @@
 
         <h4>出游人信息</h4>
         <div class="content-order-details-visitors-info" v-for="(list, index) in orderMember" :key="index">
-            <div>
+            <div class="chineseName">
                 <span><label>*</label>中文姓名</span>
-                <input type="text" class="form-control min-text" maxlength="30" 
-                    placeholder="需要与证件一致" :value="list.chineseName" @input="infoChange(index,'chineseName',$event)" />
-                <button type="button" class="btn btn-default" style="margin-left:20px;" data-toggle="modal"
-                    data-target="#contactModal" @click="addOrderMember(index)">选择常用联系人</button>
-                <button type="button" class="btn btn-default" style="margin-left:20px;" @click.stop="emptyOrderMemberByIndex(index)">清空</button>
-            </div>
+                <!-- <input type="text" class="form-control min-text" maxlength="30" 
+                    placeholder="需要与证件一致" :value="list.chineseName" @input="infoChange(index,'chineseName',$event)" /> -->
+
+                <el-input 
+                :value="list.chineseName" 
+                clearable
+                placeholder="请输入中文姓名(需要与证件一致)"  
+                @input="infoChange(index,'chineseName',$event)">
+                </el-input>
+
+                <!-- <button type="button" class="btn btn-default" style="margin-left:20px;" data-toggle="modal"
+                    data-target="#contactModal" @click="addOrderMember(index)">选择常用联系人</button> -->
+                <!-- <div> -->
+         <el-button type="primary" data-toggle="modal" class="left-15"
+                    data-target="#contactModal" @click="addOrderMember(index)">选择常用联系人</el-button>
+                <!-- </div> -->
+            
+                <!-- <button type="button" class="btn btn-default" style="margin-left:20px;" @click.stop="emptyOrderMemberByIndex(index)">清空</button> -->
+                <el-button type="info"  @click.stop="emptyOrderMemberByIndex(index)">清空</el-button>
+         </div>
             <div>
                 <span><label>*</label>英文姓名</span>
-                <input type="text" class="form-control min-text" placeholder="姓（拼音或英文）" maxlength="20"
-                    :value="list.key" @input="infoChange(index,'key',$event)" />
-                <input type="text" class="form-control min-text" placeholder="名（拼音或英文）" maxlength="20"
-                     :value="list.value" @input="infoChange(index,'value',$event)" />
+
+                <!-- <input type="text" class="form-control min-text" placeholder="姓（拼音或英文）" maxlength="20"
+                    :value="list.key" @input="infoChange(index,'key',$event)" /> -->
+
+                <el-input 
+                :value="list.key" 
+                clearable
+                placeholder="姓(拼音或英文)"  
+                @input="infoChange(index,'key',$event)">
+                </el-input>
+
+                <!-- <input type="text" class="form-control min-text" placeholder="名（拼音或英文）" maxlength="20"
+                     :value="list.value" @input="infoChange(index,'value',$event)" /> -->
+
+                <el-input 
+                class="left-10"
+                :value="list.value" 
+                clearable
+                placeholder="名(拼音或英文)"  
+                @input="infoChange(index,'value',$event)">
+                </el-input>
+
             </div>
             <div>
                 <span><label>*</label>证件类型</span>
-                <select class="form-control min-text" :value="list.certType" @input="infoChange(index,'certType',$event)" >
+                <!-- <select class="form-control min-text" :value="list.certType" @input="infoChange(index,'certType',$event)" >
                     <option :value="item.id" v-for="(item, index) in certTypeSelectList" :key="index">{{item.name}}</option>
-                </select>
+                </select> -->
+
+                <el-select :value="list.certType" placeholder="请选择证件类型" @input="infoChange(index,'certType',$event)">
+                    <el-option
+                    v-for="item in certTypeSelectList"
+                    :key="item.id"
+                    :label="item.name"
+                    :value="item.id">
+                    </el-option>
+                </el-select>
+<!-- 
                 <input type="tetx" class="form-control min-text" placeholder="证件号码" maxlength="25"
-                    :value="list.certNo" @input="infoChange(index,'certNo',$event)" />
+                    :value="list.certNo" @input="infoChange(index,'certNo',$event)" /> -->
+                <el-input 
+                :value="list.certNo" 
+                clearable
+                placeholder="请输入证件号码"  
+                @input="infoChange(index,'certNo',$event)">
+                </el-input>
+
             </div>
             <div>
                 <span><label>*</label>证件有效期</span>
-                <input type="date" class="form-control max-text" placeholder="YYYY-MM-DD" maxlength="20"
-                    :value="list.certValidDate" @input="infoChange(index,'certValidDate',$event)" />
+
+                <!-- <input type="date" class="form-control max-text" placeholder="YYYY-MM-DD" maxlength="20"
+                    :value="list.certValidDate" @input="infoChange(index,'certValidDate',$event)" /> -->
+                <el-date-picker
+                :value="list.certValidDate"
+                type="date"
+                placeholder="选择证件有效期"
+                value-format = "yyyy-MM-dd"
+                :picker-options="certValidDateOptions"
+                @input="infoChange(index,'certValidDate',$event)"
+                >
+                </el-date-picker>
             </div>
             <div>
                 <span><label>*</label>出生年月</span>
-                <input type="date" class="form-control max-text" placeholder="YYYY-MM-DD" maxlength="20"
-                 :value="list.birthday" @input="infoChange(index,'birthday',$event)"/>
+                <!-- <input type="date" class="form-control max-text" placeholder="YYYY-MM-DD" maxlength="20"
+                 :value="list.birthday" @input="infoChange(index,'birthday',$event)"/> -->
+                <el-date-picker
+                :value="list.birthday"
+                type="date"
+                placeholder="选择出生年月"
+                value-format = "yyyy-MM-dd"
+                :picker-options="birthdayOptions"
+                @input="infoChange(index,'birthday',$event)"
+                >
+                </el-date-picker>
             </div>
             <div>
                 <span><label>*</label>手机号码</span>
-                <select class="form-control min-text" :value="list.area" @input="infoChange(index,'area',$event)">
+
+                <!-- <select class="form-control min-text" :value="list.area" @input="infoChange(index,'area',$event)">
                     <option :value="item.id" v-for="(item, index) in areaSelectList" :key="index">{{item.name}}</option>
-                </select>
-                <input type="number" class="form-control min-text" placeholder="出游人手机号" maxlength="20"
-                     :value="list.mobile" @input="infoChange(index,'mobile',$event)"/>
+                </select> -->
+
+                <el-select :value="list.area" placeholder="请选择证件类型" @input="infoChange(index,'area',$event)">
+                    <el-option
+                    v-for="item in areaSelectList"
+                    :key="item.id"
+                    :label="item.name"
+                    :value="item.id">
+                    </el-option>
+                </el-select>
+
+                <!-- <input type="number" class="form-control min-text" placeholder="出游人手机号" maxlength="20"
+                     :value="list.mobile" @input="infoChange(index,'mobile',$event)"/> -->
+
+                <el-input 
+                :value="list.mobile" 
+                clearable
+                placeholder="请输入出游人手机号"  
+                @input="infoChange(index,'mobile',$event)">
+                </el-input>
+
             </div>
             <div v-if="list.typeShow">
                 <span><label></label></span>
-                <input type="checkbox" :value="list.type" id="typess" @change="typeChange(index)" /> 保存到常用联系人
+                <!-- <input type="checkbox" :value="list.type" id="typess" @change="typeChange(index)" /> 保存到常用联系人 -->
+                 <el-checkbox :value="list.type" @change="infoChange(index,'type',$event)">保存到常用联系人</el-checkbox>
             </div>
             <hr style=" height:2px;border:none;border-top:2px dotted #C0C0C0;" v-if="index<(orderMember.length-1)" />
         </div>
     
-
             <!-- 选择常用联系人（Modal） -->
             <div class="modal fade contactModal ez-modal" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
                 aria-hidden="true">
@@ -125,6 +212,7 @@
 <script>
 import { getMemberContact, getInsurance } from "getData"
 import { mapState, mapMutations, mapActions} from 'vuex'
+import { nowDate,} from 'utils/common'
 export default {
     name: "orderMember",
     props:{
@@ -150,6 +238,16 @@ export default {
             memberContactsIndex: "", //选择的常用联系人的下标
             insuranceList: [],  //保险集合
             insuranceid: "",  //保险ID
+            certValidDateOptions: {   //证件有效期
+                disabledDate(time) {  //设置禁用状态，参数为当前日期，要求返回 Boolean
+                    return time.getTime() < new Date(nowDate(-1)).getTime();
+                },
+           },
+            birthdayOptions: {  //出生日期
+                disabledDate(time) {
+                    return time.getTime() >  Date.now();
+                },
+           }
         }
     },
     computed: {
@@ -187,15 +285,12 @@ export default {
         },
         //常用联系人数据改变
         infoChange(index, key, event){
-            console.log(key)
-            console.log(event.target.value)
-            this.infoSet({index: index, key: key, value: event.target.value})
-        },
-        //保存到常用联系人改变
-        typeChange(index){
-             let orderMember = this.copy(this.orderMember)
-             Vue.set(orderMember[index], "type", !orderMember[index].type);
-             this.orderMemberSet(orderMember)
+            console.log(event)
+            let value = this.isNull(event)? "" : event;
+            if(!this.isNull(event) && !this.isNull(event.target)){
+                value = event.target.value 
+            }
+            this.infoSet({index: index, key: key, value: value})
         },
         //确定添加联系人
         addMemberContact: function () {
@@ -261,3 +356,31 @@ export default {
     },
 }
 </script>
+<style lang="less" scope>
+     .el-select{
+        width: auto;
+    }
+    .el-select{
+        float: left;
+        margin-right: 10px;
+        width: 275px;
+        height: 40px;
+    }
+    .el-input {
+        width: 275px !important;
+        height: 40px;
+    }
+    .left-10{
+        margin-left: 10px;
+    }
+    .left-15{
+        margin-left: 15px;
+    }
+    .chineseName{
+        >div{
+            float: left;
+        } 
+    }
+</style>
+
+

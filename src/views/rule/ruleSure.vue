@@ -287,7 +287,7 @@ export default {
         },
         //结束时间
         startDateEnd: function () {
-            return nowDate(new Date(this.beginDate), this.route.dayNum);
+            return nowDate(this.route.dayNum, new Date(this.beginDate));
         },
     },
     components: {

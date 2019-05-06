@@ -1454,10 +1454,10 @@ input[readonly]{
 .sl-key{font-size: 13px;}
 .sousuo_aa_b a{color:#000000;text-decoration:none; color: none;}
 .input-txt{width:50px;}
-
+/* 
 .selected{font-weight:900;
     color: royalblue;
-    border-bottom:royalblue  3px solid;}
+    border-bottom:royalblue  3px solid;} */
 .huang_aaa li img{width:240px; height: 210px; margin-top: 20px; margin-right: 15px;}
 .zhuyi_aa li{margin-top: 20px;margin-bottom: 20px;width:100px;text-align: center; }
 .xiabiaoq{text-decoration:underline;color:royalblue; font-weight: 800;}

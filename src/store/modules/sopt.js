@@ -31,7 +31,7 @@ const getters = {
     //选中的日期  yyyy-mm-dd
     beginDate: (state)=> {
       if(state.sureDate){
-        return nowDate(new Date(state.sureDate),0);
+        return nowDate(0, new Date(state.sureDate));
       }
     }
 }
