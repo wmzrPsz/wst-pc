@@ -1,33 +1,74 @@
 <template>
     <div>
-        <ezHeader></ezHeader>
-        <ezContainer></ezContainer>
+        
+        <ez-header></ez-header>
+        <ez-container></ez-container>
+
         <!--content-->
         <div class="container ez-container ez-conventional">
-            <div class="ez-search-selector">
-                <div class="search-type">
-                    <div class="conventional-address bg-s1">
-                        <i class="iconfont icon-dingwei floatl"></i>
-                        <i class="iconfont icon-down floatr"></i>
-                        <p>出发地</p>
-                        <h3 class="text-blue"><b>{{startCityName}}</b></h3>
-                        <select class="form-control" v-model="startCity" @change="cityChange(1)">
-                            <option v-for="(list, index) in cityList" :key="index" :value="list.cityid">{{list.cityName}}</option>
-                        </select>
-                    </div>
 
-                    <div class="conventional-address bg-s2">
-                        <i class="iconfont icon-down floatr"></i>
-                        <p>目的地</p>
-                        <h3><b>{{endCityName}}</b></h3>
-                        <select class="form-control" v-model="endCity" @change="cityChange(2)">
-                                <option v-for="(list, index) in cityList" :key="index" :value="list.cityid">{{list.cityName}}</option>
-                         </select>
-                    </div>
 
-                </div>
+            <div class="ez-search-selector" style="border:1px solid gainsboro; border-bottom: none;">
 
                 <div id="ez-selector" class="ez-selector">
+                    <div class="s-line" v-show="cityShowFlag">
+                        <div class="sl-wrap" :class="cityFlag?'multiple extend':''">
+                            <div class="sl-key">出发城市</div>
+                            <div class="sl-value">
+                                <div class="sl-v-list">
+                                    <ul class="">
+                                        <li v-for="(list, index) in cityList" :key="index" :class="list.flag?'selected':''"
+                                            @click.stop="cityClick(index)">
+                                            <a><i></i>{{list.cityName}}</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="sl-btns">
+                                    <a class="btn btn-sm ez-search-confirm" href="javascript:;" @click.stop="citySure">确定</a>
+                                    <a class="btn btn-sm ez-search-cancel" href="javascript:;" @click.stop="cityFlagClick(false)">取消</a>
+                                </div>
+                            </div>
+                            <div class="sl-ext">
+                                <a class="sl-e-more ez-search-more" href="javascript:;">
+                                    <span class="sl-btn-open">更多<i class="iconfont icon-down"></i></span>
+                                    <span class="sl-btn-open" style="display: none">收起<i class="iconfont icon-up"></i></span>
+                                </a>
+                                <a class="sl-e-multiple ez-search-multiple pull-right" :class="cityFlag?'active':''"
+                                    @click.stop="cityFlagClick(true)">
+                                    <i class="iconfont icon-add"></i>多选
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="s-line" v-show="courseShowFlag">
+                        <div class="sl-wrap" :class="courseFlag?'multiple extend':''">
+                            <div class="sl-key">邮轮航线</div>
+                            <div class="sl-value">
+                                <div class="sl-v-list">
+                                    <ul class="">
+                                        <li v-for="(list, index) in courseList" :key="index" :class="list.flag?'selected':''"
+                                            @click.stop="courseClick(index)">
+                                            <a><i></i>{{list.name}}</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="sl-btns">
+                                    <a class="btn btn-sm ez-search-confirm" href="javascript:;" @click.stop="courseSure">确定</a>
+                                    <a class="btn btn-sm ez-search-cancel" href="javascript:;" @click.stop="courseFlagClick(false)">取消</a>
+                                </div>
+                            </div>
+                            <div class="sl-ext">
+                                <a class="sl-e-more ez-search-more" href="javascript:;">
+                                    <span class="sl-btn-open">更多<i class="iconfont icon-down"></i></span>
+                                    <span class="sl-btn-open" style="display: none">收起<i class="iconfont icon-up"></i></span>
+                                </a>
+                                <a class="sl-e-multiple ez-search-multiple pull-right" :class="courseFlag?'active':''"
+                                    @click.stop="courseFlagClick(true)">
+                                    <i class="iconfont icon-add"></i>多选
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                     <div class="s-line">
                         <div class="sl-wrap">
                             <div class="sl-key">出发日期</div>
@@ -64,16 +105,16 @@
                             <div class="sl-key">行程天数</div>
                             <div class="sl-value">
                                 <div class="sl-v-list">
-                                    <ul>
+                                    <ul class="">
                                         <li v-for="(day, index) in dayList" :key="index" :class="day.flag?'selected':''"
                                             @click.stop="tripDayClick(index)">
-                                            <a><i></i>{{day.day| dayFilter}}</a>
+                                            <a><i></i>{{day.dayContent}}</a>
                                         </li>
                                     </ul>
                                 </div>
                                 <div class="sl-btns">
                                     <a class="btn btn-sm ez-search-confirm" href="javascript:;" @click.stop="daySure">确定</a>
-                                    <a class="btn btn-sm ez-search-cancel" href="javascript:;" @click.stop="dayFlagClick(1)">取消</a>
+                                    <a class="btn btn-sm ez-search-cancel" href="javascript:;" @click.stop="dayFlagClick(false)">取消</a>
                                 </div>
                             </div>
                             <div class="sl-ext">
@@ -82,61 +123,12 @@
                                     <span class="sl-btn-open" style="display: none">收起<i class="iconfont icon-up"></i></span>
                                 </a>
                                 <a class="sl-e-multiple ez-search-multiple pull-right" :class="dayFlag?'active':''"
-                                    @click.stop="dayFlagClick(0)">
+                                    @click.stop="dayFlagClick(true)">
                                     <i class="iconfont icon-add"></i>多选
                                 </a>
                             </div>
                         </div>
                     </div>
-                    <div class="s-line" v-show="priceShowFlag">
-                        <div class="sl-wrap">
-                            <div class="sl-key">价格预算</div>
-                            <div class="sl-value">
-                                <div class="sl-v-list">
-                                    <ul>
-                                        <li v-for="(list, index) in priceList" :key="index" @click.stop="priceClick(index)">
-                                            <a>{{list.content}}</a>
-                                        </li>
-                                        <li>
-                                            <input type="number" class="input-txt input-txt-md" v-model.number="minPrice"
-                                                @change="priceChange"> -
-                                            <input type="number" class="input-txt input-txt-md" v-model.number="maxPrice"
-                                                @change="priceChange">
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="s-line" v-show="scenicShowFlag">
-                        <div class="sl-wrap" :class="scenicFlag?'multiple extend':''">
-                            <div class="sl-key">途观景点</div>
-                            <div class="sl-value">
-                                <div class="sl-v-list">
-                                    <ul>
-                                        <li v-for="(list, index) in cityScenicList" :key="index" :class="list.flag?'selected':''"
-                                            @click.stop="scenicClick(index)">
-                                            <a><i></i>{{list.name}}</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="sl-btns">
-                                    <a class="btn btn-sm ez-search-confirm" href="javascript:;" @click.stop="scenicSure">确定</a>
-                                    <a class="btn btn-sm ez-search-cancel" href="javascript:;" @click.stop="scenicFlagClick(1)">取消</a>
-                                </div>
-                            </div>
-                            <div class="sl-ext">
-                                <a class="sl-e-more ez-search-more" href="javascript:;">
-                                    <span class="sl-btn-open">更多<i class="iconfont icon-down"></i></span>
-                                    <span class="sl-btn-open" style="display: none">收起<i class="iconfont icon-up"></i></span>
-                                </a>
-                                <a class="sl-e-multiple ez-search-multiple pull-right" :class="scenicFlag?'active':''"
-                                    @click.stop="scenicFlagClick(0)">
-                                    <i class="iconfont icon-add"></i>多选</a>
-                            </div>
-                        </div>
-                    </div>
-
                     <div class="s-line" v-for="(list, index1) in lableList" :key="index1" v-show="list.showFlag">
                         <div class="sl-wrap" :class="list.lableFlag?'multiple extend':''">
                             <div class="sl-key">{{list.content}}</div>
@@ -160,7 +152,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
 
                 <div class="ez-search-selected pull-left">
@@ -184,46 +175,52 @@
                             <li :class="{'active': orderByType == 4}" @click.stop="orderByTypeChange(4)"><a class="btn ez-btn-sort">评论</a></li>
                     </ul>
                 </div>
-                
             </div>
 
             <div class="container ez-container ez-search-result">
                 <div class="box-left pull-left">
-                    <div class="box-card" v-for="(list, index) in routeList" :key="index">
-                        <div  class="box-card-left pull-left" @click.stop="getInfor(list.routeid)">
-                            <img v-lazy="list.carImg" :key="list.carImg">
+                    <div class="box-card" v-for="(list, index) in linerList" :key="index" @click.stop="getInfor(list.id)">
+                        <div class="box-card-left pull-left">
+                            <img v-lazy="list.imgUrl" :key="list.imgUrl">
                             <div class="box-card-rate">
                                 <div class="ez-star pull-left">
-                                    <!-- <img src="../../assets/images/star-on.png"> -->
-                                    <!-- <img :src="list.star>index?starOn:starOff"  
+                                    <!-- <img :src="list.star>index?'~images/star-on.png':'~images/star-off.png'"
                                         title="regular" v-for="(item, index) in 5" :key="index"> -->
-                                        <el-rate v-model.number="list.star" disabled/>
+                                    <el-rate v-model.number="list.star" disabled/>
                                 </div>
-                                <span class="pull-right text-gray evaluation-click" @click.stop="commentNumClick(index)"><u>{{list.commentNum}}条评价</u></span>
+                                <span class="pull-right text-gray" @click.stop="commentNumClick(index)">{{list.commentNum}}条评价</span>
                             </div>
                         </div>
-                
-                        <div class="box-card-text pull-right" @click.stop="getInfor(list.routeid)">
-                            <h4 class="title ez-mb-md" v-html="list.title"></h4>
-                            <h5 class="subtitle text-blue ez-mb-md">{{list.subtitle}}</h5>
-                            <p class="intro text-gray ez-mb-md max-5" >{{list.infor}}</p>
-                            <p class="text-style2 del-color"><label v-for="(tag, index) in list.tagContent" :key="index">{{tag}}</label></p>
+                        <div class="box-card-text pull-right">
+                            <h4 class="title ez-mb-md">{{list.name}}</h4>
+                            <div class="col-md-12 ez-mb-md ez-pd-0">
+                                <div class="ez-icon-tag ez-mr-sm" v-for="tag in list.tagContent" :key="tag">
+                                    <div class="ez-triangle-left"><i></i></div>
+                                    <div class="ez-rect">{{tag}}</div>
+                                </div>
+                            </div>
+                            <p class="ez-mb-md card-msg">
+                                <span class="text-blue ez-mr-sm">{{list.startCityName}}上船</span><span>{{list.infor}}</span>
+                            </p>
+                            <ul class="col-md-12 ez-mb-md ez-pd-0 card-info">
+                                <li class="col-md-12">邮轮航线：{{list.route}}</li>
+                                <li class="col-md-12">出发日期：{{list.startDate}}</li>
+                            </ul>
                             <div class="card-like">
-                                <span class="pull-left text-orange ez-price"><span>{{currencySign}}</span>{{list.price}}<span class="text-gray">天</span></span>
-                                <span class="pull-right text-orange list-time-info" @click.stop="calendarClick(index)">出发日期</span>
-
+                                <span class="pull-left text-orange ez-price"><span>{{currencySign}}</span>{{list.price}}<span
+                                        class="text-gray">/元起</span></span>
                             </div>
                         </div>
- 
                         <div class="evaluation-info" :class="{'hidden-info':!list.show}" v-if="list.show">
 
                             <div class="travel-list-con" v-for="(comment, index1) in list.commentList" :key="index1"
                                 v-if="list.commentList" style="min-height: 150px;">
-                                <div class="floatl"><img v-lazy="comment.memberPhoto?comment.memberPhoto:'~images/news.png'"
-                                        alt="用户一级评论头像" :key="comment.memberPhoto"></div>
+                                <div class="floatl"><img :src="comment.memberPhoto?comment.memberPhoto:'~images/news.png'"
+                                        alt="用户一级评论头像"></div>
                                 <div class="content floatl">
                                     <div>{{comment.memberName}}<div class="ez-star pull-right">
-                                                 <el-rate v-model.number="comment.level" disabled/>
+                                            <img :src="comment.level>index2?'~images/star-on.png':'~images/star-off.png'"
+                                                title="regular" v-for="(item, index2) in 5" :key="index2">
                                         </div>
                                     </div>
                                     <p>{{comment.content}}</p>
@@ -237,11 +234,11 @@
                                 <div v-if="comment.show">
                                     <div class="erji_a">
                                         <input class="erji_b" type="text" @keyup.13="addChildComment(comment.commentid)"
-                                            v-model="content" :placeholder="'回复@'+comment.memberName">
+                                            v-model.trim="content" :placeholder="'回复@'+comment.memberName">
                                     </div>
 
-                                    <div class="erji_a" v-for="(item, index) in comment.commentList" :key="index">
-                                        <div class="erji_c"><img v-lazy="item.memberPhoto?item.memberPhoto:'~images/news.png'"
+                                    <div class="erji_a" v-for="(item, index2) in comment.commentList" :key="index2">
+                                        <div class="erji_c"><img :src="item.memberPhoto?item.memberPhoto:'~images/news.png'"
                                                 alt=""></div>
                                         <div class="erji_d">
                                             <p><i style="float: left;">{{item.memberName}}</i><i style="float: right;">{{item.createDate}}</i></p>
@@ -258,12 +255,11 @@
                             <div id="travel-content-main-list-paging1" class="pagination" style="float:right"></div>
 
                         </div>
-                        <div class="calendar-box date-box" :class="!list.calendarShow?'hidden-info':''"></div>
                     </div>
 
                 </div>
                 <div class="box-right pull-right">
-                    <div class="ez-aside-banner ez-mb-md">
+                    <div class="ez-aside-banner">
                         <img src="~images/bg-baner-2.png">
                         <ul class="list-inline text-center">
                             <div class="title text-left">热门常规旅行</div>
@@ -283,10 +279,9 @@
                             <li><a href="#" class="btn btn-type-lg">墨西哥·边境墙</a></li>
                         </ul>
                     </div>
-
                 </div>
 
-                <nav class="text-center col-lg-9 col-md-9 col-sm-9" v-show="show">
+                <nav class="text-center text-center col-lg-9 col-md-9 col-sm-9" v-show="show">
                     <ul class="pagination ez-navigation">
                         <li @click.stop="pageChange(-1)">
                             <a class="page-next" aria-label="Next" style="margin-right: 10px;">
@@ -295,7 +290,7 @@
                         </li>
                         <li v-show="current_page>5" @click.stop="jumpPage(1)"><a href="#">1</a></li>
                         <li v-show="efont"><a>...</a></li>
-                        <li v-for="(num,index) in indexs" :key="index" :class="{active:current_page==num}" @click.stop="jumpPage(num)"><a>{{num}}</a></li>
+                        <li v-for="num in indexs" :class="{active:current_page==num}" @click.stop="jumpPage(num)"><a>{{num}}</a></li>
                         <li v-show="ebehind"><a>...</a></li>
                         <li v-show="current_page<pages-4" @click.stop="jumpPage(pages)"><a>{{pages}}</a></li>
                         <li @click.stop="pageChange(1)">
@@ -306,73 +301,65 @@
                     </ul>
                 </nav>
 
-
-
             </div>
 
         </div>
 
-        <ezFooter></ezFooter>
-        <ezAside></ezAside>
+        <ez-footer></ez-footer>
+        <ez-aside></ez-aside>
+
     </div>
 </template>
-
 <script>
 import ezHeader from "components/home/ezHeader"
 import ezContainer from "components/home/ezContainer"
 import ezFooter from "components/home/ezFooter"
 import ezAside from "components/home/ezAside"
+import ezModule from "components/home/ezModule"
 import { mapState, mapMutations } from "vuex";
-import { 
-    getRoutePriceDetails,
+import {
     addChildComment,
     digComment,
     getChildComment,
     selectComment,
-    selectRoute,
     getLabel,
-    getScenicByCity,
-    getCityList
+    cruiseScreen,
+    getCityList,
+    getCourse,
 } from 'getData'
 export default {
-    name: "ruleIndex",
-    data () {
+    data() {
         return {
-            cityName: "广州市", //定位获取
-            cityid: 1,  //目的城市ID 
-            startCity: "",  //出发城市ID
-            // startCityName: "",  //出发城市名称
-            endCity: "",   //到达城市ID
-            // endCityName: "",  //到达城市名称
-            cityList: [],  //城市list
-            choice: "",  //已选择
-            orderByType: "",  //1.销量2.价格降序3.价格升序4好评
-            pageNo: 1, //页数
-            routeList: [],  //路线列表
-            current_page: 1, //当前页
-            pages: 3, //总页数
+            linerList: [],  //路线List
+            current_page: 1,  //当前页
+            pages: 1,  //总页数
             index1: "",  //评论下标
             index2: "",  //子评论下标
             content: "",  //评论的内容
-            dataList: [],  //日期List
+            orderByType: "",  //1.销量2.价格降序3.价格升序4好评 “”综合
+            searchContent: localStorage.getItem("searchContent"), //搜索内容
+            searchType: localStorage.getItem("searchType"), //搜索type   0.搜索内容  1邮轮 2航线  3目的地  4出发港口
+            searchTypeid: localStorage.getItem("searchTypeid"), //搜索typeid
+            searchCityid: localStorage.getItem("searchCityid"), //搜索城市ID
+            lableList: [],  //标签属性
+            cityList: [],  //出发城市
+            courseList: [],  //邮轮航线
+            dataList: [],  //出发日期
+            dayList: [],  //行程天数
+            cityShowFlag: true,   //出发城市是否展示 
+            cityFlag: false,  //出发城市是否多选
+            courseShowFlag: true,    //邮轮航线是否展示 
+            courseFlag: false,  //邮轮航线是否多选
+            dayShowFlag: true,  //行程天数是否展示 
+            dayFlag: false,  //行程天数是否多选
             monthIndex: "",  //展示的月份下标
             days: [],  //展示的天数
-            selectDate: [], //选择的时间  [{year:”2018”,month:”05”,days:”05,06”},{}]
-            dayList: [],  //行程天数List
-            dayFlag: false,  //行程天数是否多选
+            startDate: [], //选择的时间  [{year:”2018”,month:”05”,days:”05,06”},{}]
             day: [],  //选择行程天数
-            minPrice: "", //最小价格
-            maxPrice: "",  //最大价格
-            priceList: [],  //价格LIst
-            cityScenicList: [],  //途径景点
-            scenicFlag: false,  //途径景点是否多选
-            scenic: [],  //选择的景点
-            lableList: [],  //标签属性
+            startCity: [],  //出发城市ID
+            route: [],  //航线ID
             labelAttrid: [],  //选择的标签属性ID
-            opt: [],  //选择的数据
-            dayShowFlag: true,  //行程天数是否展示   index(1)
-            priceShowFlag: true,  //价格预算是否展示  index(2)
-            scenicShowFlag: true,  //途观景点是否展示 index(3)
+            opt: [],  //页面展示选择的数据
         }
     },
     components: {
@@ -382,70 +369,50 @@ export default {
         ezAside
     },
     created() {
-        this.getLabel();
-        this.getScenicByCity();
         this.getCity();
-        this.selectRoute();
+        this.getCourse();
+        this.getLabel();
         this.dateInit();
         this.dayListInit();
-        this.priceInit();
+        this.getData();
     },
     methods: {
         ...mapMutations(["loginFlagChange"]),
-        //城市改变
-        cityChange(index){
-            //出发城市改变
-            if(index == 1){
-                this.getScenicByCity()
-            }
-            let flag = -1;
-            for (const [list,index] of this.opt) {
-                if(list.key == 3){
-                    this.scenicShowFlag = true;
-                    this.scenicFlag = false;
-                    this.scenic = [];
-                    for (const iterator of Object.values(this.cityScenicList)) {
-                        iterator.flag = false;
-                    }
-                    flag = flag;
-                }
-            }
-            if(flag > -1){
-                Vue.delete(this.opt, index);
-            }
-            this.selectRoute();
+        //跳转详情
+        getInfor:function(id){
+            this.$router.push(`/cruise/cruiseInfo/${id}`)
         },
         //删除展示数据
         delOpt: function (index) {
-            if (this.opt[index].key > 3) {  //标签属性
-                let index1 = this.opt[index].key - 4;
+            if (this.opt[index].key > 4) {  //标签属性
+                let index1 = this.opt[index].key - 5;
                 this.lableFlagClick(1, index1);
                 this.lableSure(index1, 0);
                 Vue.set(this.lableList[index1], "showFlag", true);
-            } else if (this.opt[index].key == 1) {  //行程天数
+            } else if (this.opt[index].key == 1) {  //城市
+                this.cityShowFlag = true;
+                this.cityFlag = false;
+                this.day = [];
+                for (const iterator of Object.values(this.cityList)) {
+                    Vue.set(iterator, "flag", false);
+                }
+            } else if (this.opt[index].key == 2) {  //航线 
+                this.courseShowFlag = true;
+                this.courseFlag = false;
+                this.route = [];
+                for (const iterator of Object.values(this.courseList)) {
+                    Vue.set(iterator, "flag", false);
+                }
+            }else if(this.opt[index].key == 3){  //行程天数
                 this.dayShowFlag = true;
                 this.dayFlag = false;
                 this.day = [];
                 for (const iterator of Object.values(this.dayList)) {
                     iterator.flag = false;
                 }
-            } else if (this.opt[index].key == 2) {  //价格预算
-                this.minPrice = "";
-                this.maxPrice = "";
-                this.priceShowFlag = true;
-                for (const iterator of Object.values(this.priceList)) {
-                    iterator.flag = false;
-                }
-            } else if (this.opt[index].key == 3) {  //途观景点
-                this.scenicShowFlag = true;
-                this.scenicFlag = false;
-                this.scenic = [];
-                for (const iterator of Object.values(this.cityScenicList)) {
-                    iterator.flag = false;
-                }
             }
             Vue.delete(this.opt, index);
-            this.selectRoute();
+            this.getData(1);
         },
         //添加已选择的数据
         addOpt: function (key, value, contentKey, contentValue) {
@@ -477,9 +444,9 @@ export default {
             Vue.set(this.lableList[index], "lableFlag", false);
             Vue.set(this.lableList[index], "showFlag", false);
             if (type) {
-                this.addOpt(index + 4, opt.join(","), contentKey, contentValue.join(","));
+                this.addOpt(index + 5, opt.join(","), contentKey, contentValue.join(","));
                 console.log(this.labelAttrid);
-                this.selectRoute();
+                this.getData(1);
             }
         },
         //点击标签属性
@@ -499,103 +466,6 @@ export default {
                 Vue.set(this.lableList[index], "lableFlag", true);
             }
         },
-        //途径景点确定
-        scenicSure: function () {
-            this.scenicShowFlag = false;
-            this.scenic = [];
-            let contentValue = [];
-            for (const list of Object.values(this.cityScenicList)) {
-                if (list.flag) {
-                    this.scenic.push(list.scenicSpotid);
-                    contentValue.push(list.name);
-                }
-            }
-            let e = window.event || arguments.callee.caller.arguments[0];
-            let contentKey = $(e.target).parents(".sl-wrap").children('.sl-key').text();
-            this.addOpt(3, this.scenic.join(","), contentKey, contentValue.join(","));
-            this.selectRoute();
-        },
-        //点击途径景点
-        scenicClick: function (index) {
-            Vue.set(this.cityScenicList[index], "flag", !this.cityScenicList[index].flag);
-            if (this.scenicFlag) return;  //多选
-            this.scenicShowFlag = false;
-            this.scenic = [];
-            for (const [key, value] of Object.entries(this.cityScenicList)) {
-                if (key != index) Vue.set(value, "flag", false);
-            }
-            let e = window.event || arguments.callee.caller.arguments[0];
-            let contentKey = $(e.target).parents(".sl-wrap").children('.sl-key').text();
-            this.addOpt(3, this.cityScenicList[index].scenicSpotid, contentKey, this.cityScenicList[index].name);
-            this.scenic.push(this.cityScenicList[index].scenicSpotid);
-            this.selectRoute();
-        },
-        //点击途径景点多选  0点击多选 1点击取消 
-        scenicFlagClick: function (flag) {
-            if (flag) {
-                this.scenicFlag = false;
-                for (const iterator of Object.values(this.cityScenicList)) {
-                    Vue.set(iterator, "flag", false);
-                }
-            } else {
-                this.scenicFlag = true;
-            }
-        },
-        //价格改变
-        priceChange: function () {
-            if (this.minPrice < 0) {
-                this.minPrice = "";
-            }
-            if (this.maxPrice < 1) {
-                this.maxPrice = "";
-            }
-            if (this.minPrice >= 0 && this.maxPrice) {
-                this.selectRoute();
-            }
-        },
-        //价格选择
-        priceClick: function (index) {
-            this.priceShowFlag = false;
-            this.priceList[index].flag = true;
-            this.maxPrice = this.priceList[index].maxPrice;
-            this.minPrice = this.priceList[index].minPrice;
-            let e = window.event || arguments.callee.caller.arguments[0];
-            let contentKey = $(e.target).parents(".sl-wrap").children('.sl-key').text();
-            this.addOpt(2, `${this.minPrice},${this.maxPrice}`, contentKey, this.priceList[index].content);
-            this.selectRoute();
-        },
-        //价格选择初始化
-        priceInit: function () {
-            this.priceList = [];
-            for (let k = 0; k < 4; k++) {
-                let map = {};
-                if (k == 0) {
-                    Vue.set(map, "minPrice", 0);
-                    Vue.set(map, "maxPrice", 999);
-                    Vue.set(map, "content", "0-999");
-                    Vue.set(map, "flag", false);
-                }
-                if (k == 1) {
-                    Vue.set(map, "minPrice", 1000);
-                    Vue.set(map, "maxPrice", 2999);
-                    Vue.set(map, "content", "1000-2999");
-                    Vue.set(map, "flag", false);
-                }
-                if (k == 2) {
-                    Vue.set(map, "minPrice", 3000);
-                    Vue.set(map, "maxPrice", 4999);
-                    Vue.set(map, "content", "3000-4999");
-                    Vue.set(map, "flag", false);
-                }
-                if (k == 3) {
-                    Vue.set(map, "minPrice", 5000);
-                    Vue.set(map, "content", "5000以上");
-                    Vue.set(map, "flag", false);
-                }
-                this.priceList.push(map);
-            }
-            console.log(this.priceList);
-        },
         //行程天数确定
         daySure: function () {
             this.day = [];
@@ -603,25 +473,14 @@ export default {
             for (const list of Object.values(this.dayList)) {
                 if (list.flag) {
                     this.day.push(list.day);
-                    contentValue.push(list.day >= 15 ? '15天及以上' : `${list.day}天`);
+                    contentValue.push(list.dayContent);
                 }
             }
             let e = window.event || arguments.callee.caller.arguments[0];
             let contentKey = $(e.target).parents(".sl-wrap").children('.sl-key').text();
-            this.addOpt(1, this.day.join(","), contentKey, contentValue.join(","));
+            this.addOpt(3, this.day.join(","), contentKey, contentValue.join(","));
             this.dayShowFlag = false;
-            this.selectRoute();
-        },
-        //点击行程天数多选  0点击多选 1点击取消 
-        dayFlagClick: function (flag) {
-            if (flag) {
-                this.dayFlag = false;
-                for (const iterator of Object.values(this.dayList)) {
-                    Vue.set(iterator, "flag", false);
-                }
-            } else {
-                this.dayFlag = true;
-            }
+            this.getData(1);
         },
         //点击行程天数
         tripDayClick: function (index) {
@@ -634,25 +493,119 @@ export default {
             }
             let e = window.event || arguments.callee.caller.arguments[0];
             let contentKey = $(e.target).parents(".sl-wrap").children('.sl-key').text();
-            let contentValue = this.dayList[index].day >= 15 ? '15天及以上' : `${this.dayList[index].day}天`;
-            this.addOpt(1, this.dayList[index].day, contentKey, contentValue);
+            let contentValue = this.dayList[index].dayContent;
+            this.addOpt(3, this.dayList[index].day, contentKey, contentValue);
             this.dayShowFlag = false;
             this.day.push(this.dayList[index].day);
-            this.selectRoute();
+            this.getData(1);
+        },
+        //点击行程天数多选取消多选
+        dayFlagClick: function (flag) {
+            this.dayFlag = flag;
+            if (!flag) {
+                for (const iterator of Object.values(this.dayList)) {
+                    Vue.set(iterator, "flag", false);
+                }
+            }
+        },
+        //城市确定
+        citySure: function () {
+            this.startCity = [];
+            let contentValue = [];
+            for (const list of Object.values(this.cityList)) {
+                if (list.flag) {
+                    this.startCity.push(list.cityid);
+                    contentValue.push(list.cityName);
+                }
+            }
+            let e = window.event || arguments.callee.caller.arguments[0];
+            let contentKey = $(e.target).parents(".sl-wrap").children('.sl-key').text();
+            this.addOpt(1, this.day.join(","), contentKey, contentValue.join(","));
+            this.cityShowFlag = false;
+            this.getData(1);
+        },
+        //航线确定
+        courseSure: function () {
+            this.route = [];
+            let contentValue = [];
+            for (const list of Object.values(this.courseList)) {
+                if (list.flag) {
+                    this.route.push(list.id);
+                    contentValue.push(list.name);
+                }
+            }
+            let e = window.event || arguments.callee.caller.arguments[0];
+            let contentKey = $(e.target).parents(".sl-wrap").children('.sl-key').text();
+            this.addOpt(2, this.day.join(","), contentKey, contentValue.join(","));
+            this.courseShowFlag = false;
+            this.getData(1);
+        },
+        //点击城市
+        cityClick: function (index) {
+            Vue.set(this.cityList[index], "flag", !this.cityList[index].flag);
+            if (this.cityFlag) return;  //多选
+            this.startCity = [];
+            for (const [key, value] of Object.entries(this.cityList)) {
+                if (key != index)
+                    Vue.set(value, "flag", false);
+            }
+            let e = window.event || arguments.callee.caller.arguments[0];
+            let contentKey = $(e.target).parents(".sl-wrap").children('.sl-key').text();
+            this.addOpt(1, this.cityList[index].cityid, contentKey, this.cityList[index].cityName);
+            this.cityShowFlag = false;
+            this.startCity.push(this.cityList[index].cityid);
+            this.getData(1);
+        },
+        //点击航线
+        courseClick: function (index) {
+            Vue.set(this.courseList[index], "flag", !this.courseList[index].flag);
+            if (this.courseFlag) return;  //多选
+            this.route = [];
+            for (const [key, value] of Object.entries(this.courseList)) {
+                if (key != index)
+                    Vue.set(value, "flag", false);
+            }
+            let e = window.event || arguments.callee.caller.arguments[0];
+            let contentKey = $(e.target).parents(".sl-wrap").children('.sl-key').text();
+            this.addOpt(2, this.courseList[index].id, contentKey, this.courseList[index].name);
+            this.courseShowFlag = false;
+            this.route.push(this.courseList[index].id);
+            this.getData(1);
+        },
+        //城市多选点击 取消多选
+        cityFlagClick: function (flag) {
+            this.cityFlag = flag;
+            if (!flag) {
+                for (const iterator of Object.values(this.cityList)) {
+                    Vue.set(iterator, "flag", false);
+                }
+            }
+        },
+        //航线多选点击 取消多选
+        courseFlagClick: function (flag) {
+            this.courseFlag = flag;
+            if (!flag) {
+                for (const iterator of Object.values(this.courseList)) {
+                    Vue.set(iterator, "flag", false);
+                }
+            }
         },
         //行程天数初始化
         dayListInit: function () {
+            let dayList = [];
             for (let k = 2; k <= 15; k++) {
                 var map = {};
+                Vue.set(map, "dayContent", k < 15 ? k + "天" : "15天及以上");
                 Vue.set(map, "day", k);
                 Vue.set(map, "flag", false);
-                this.dayList.push(map);
+                dayList.push(map);
             }
+            this.dayList = dayList;
             console.log(this.dayList);
         },
         //处理选择时间
         dateHandle: function () {
-            this.selectDate = [];
+            this.startDate = [];
             for (const iterator of Object.values(this.dataList)) {
                 let map = {};
                 if (iterator.flag) {
@@ -666,10 +619,10 @@ export default {
                     }
                     if (list) map["days"] = list.join(",");
                     console.log(map["days"]);
-                    this.selectDate.push(map);
+                    this.startDate.push(map);
                 }
             }
-            this.selectRoute();
+            this.getData(1);
         },
         //点击天数
         dayClick: function (index) {
@@ -726,32 +679,6 @@ export default {
             console.log(List);
             this.dataList = List;
         },
-        //点击日历
-        async calendarClick(index) {
-            for (const [key, value] of Object.entries(this.routeList)) {
-                if (key != index) {
-                    Vue.set(value, "calendarShow", false);
-                } else {
-                    Vue.set(value, "calendarShow", !value.calendarShow);
-                }
-            }
-            let priceDate = calendarDate.year + "-" + (calendarDate.month > 9 ? calendarDate.month : "0" + calendarDate.month);
-            console.log(priceDate);
-            let nthis = $(this).parent().parent().next().next(".calendar-box");
-            let list = await getRoutePriceDetails({
-                routeid: this.routeList[index].routeid,
-                priceDate: priceDate,
-            })
-             nthis.calendar({
-                ele: '.date-box', //依附dom
-                title: '',
-                data: list
-            });
-        },
-        //参团详情页面
-        getInfor: function (id) {
-            this.$router.push({path:"/ruleInfo/"+id})
-        },
         //修改排序方式
         orderByTypeChange: function (index) {
             if (index === 2) {
@@ -764,18 +691,18 @@ export default {
             }
             console.log(this.orderByType);
             this.current_page = 1;
-            this.selectRoute();
+            this.getData();
         },
         //添加子评论
-       async  addChildComment(id) {
+        async addChildComment(id) {
             if(this.loginType == 1){
                 this.loginFlagChange(1);
                 return;
             }
-           if(this.isNull(this.content)){
-               this.infoMsg("请输入评论内容");
-               return;
-           }
+            if(this.isNull(this.content)){
+                this.infoMsg("请输入评论内容");  
+                return;
+            }
            let data = await addChildComment({
                 commentid: id,
                 content: this.content,
@@ -797,22 +724,22 @@ export default {
                 digType: 1,
             })
             if (data.code) {
-                Vue.set(this.routeList[index1].commentList[index2], "commentList", this.routeList[index1].commentList[index2].digNum++);
+                Vue.set(this.scenicList[index1].commentList[index2], "commentList", this.scenicList[index1].commentList[index2].digNum++);
                 this.successMsg("点赞成功");
             } else {
-                Vue.set(this.routeList[index1].commentList[index2], "commentList", this.routeList[index1].commentList[index2].digNum--);
+                Vue.set(this.scenicList[index1].commentList[index2], "commentList", this.scenicList[index1].commentList[index2].digNum--);
                 this.successMsg("取消点赞成功");
             }
         },
         //初始化一级评论分页
         page1: function () {
             $('#travel-content-main-list-paging1').jqPaginator({
-                totalPages: this.routeList[this.index1].pages,
+                totalPages: this.linerList[this.index1].pages,
                 visiblePages: 6,
                 currentPage: 1,
                 onPageChange: function (num, type) {
                     if(type == "change"){
-                        app.selectComment(2, num);
+                        this.selectComment(2, num);
                     }
                 }
             });
@@ -820,21 +747,21 @@ export default {
         //初始化二级评论分页
         page2: function () {
             $('#travel-content-main-list-paging2').jqPaginator({
-                totalPages: this.routeList[this.index1].commentList[app.index2].pages,
+                totalPages: this.linerList[this.index1].commentList[this.index2].pages,
                 visiblePages: 6,
                 currentPage: 1,
                 onPageChange: function (num, type) {
                     if(type == "change"){
-                        app.getChildComment(2, num);
+                        this.getChildComment(2, num);
                     }
                 }
             });
         },
         //一级评论显示隐藏
         commentNumClick: function (index1) {
-            Vue.set(this.routeList[index1], "show", !this.routeList[index1].show);
-            if (this.routeList[index1].show) {
-                for (const [key, value] of Object.entries(this.routeList)) {
+            Vue.set(this.linerList[index1], "show", !this.linerList[index1].show);
+            if (this.linerList[index1].show) {
+                for (const [key, value] of Object.entries(this.linerList)) {
                     if (key != index1) {
                         Vue.set(value, "show", false);
                     }
@@ -845,10 +772,10 @@ export default {
         },
         //二级评论显示隐藏
         subreviewClick: function (index1, index2) {
-            Vue.set(this.routeList[index1].commentList[index2], "show", !this.routeList[index1].commentList[index2].show);
-            if (this.routeList[index1].commentList[index2].show) {
+            Vue.set(this.linerList[index1].commentList[index2], "show", !this.linerList[index1].commentList[index2].show);
+            if (this.linerList[index1].commentList[index2].show) {
                 this.content = "";
-                for (const [key, value] of Object.entries(this.routeList[index1].commentList)) {
+                for (const [key, value] of Object.entries(this.linerList[index1].commentList)) {
                     if (key != index2) {
                         Vue.set(value, "show", false);
                     }
@@ -860,12 +787,12 @@ export default {
         //获取子评论列表
         async getChildComment(type, pageNo) {
             let data = await getChildComment({
-                commentid: this.routeList[this.index1].commentList[this.index2].commentid,
+                commentid: this.linerList[this.index1].commentList[this.index2].commentid,
                 pageNo: pageNo,
             })
             if(data){
-                Vue.set(this.routeList[this.index1].commentList[this.index2], "commentList", data.list);
-                Vue.set(this.routeList[this.index1].commentList[this.index2], "pages", data.totalPage);
+                Vue.set(this.linerList[this.index1].commentList[this.index2], "commentList", data.list);
+                Vue.set(this.linerList[this.index1].commentList[this.index2], "pages", data.totalPage);
                 if (type == 1) {
                     this.page2();
                 }
@@ -875,49 +802,22 @@ export default {
         async selectComment(type, pageNo) {
             let data = await selectComment({
                 pageNo: pageNo,
-                typeid: this.routeList[this.index1].routeid,
-                proType: 4,  //1.包车租车2.短程接送3.接送机4常规路线5.当地参团6.游轮7.景点门票
-                            //8.当地玩家9.酒店10.保险11.旅游定制12导游 13.攻略评论 14.城市评论',
+                typeid: this.linerList[this.index1].id,
+                proType: 6,  //1.包车租车2.短程接送3.接送机4常规路线5.当地参团6.游轮7.景点门票
+                //8.当地玩家9.酒店10.保险11.旅游定制12导游 13.攻略评论 14.城市评论',
             })
             if(data){
-                Vue.set(this.routeList[this.index1], "commentList", data.list);
-                Vue.set(this.routeList[this.index1], "pages", data.totalPage);
+              Vue.set(this.linerList[this.index1], "commentList", data.list);
+                Vue.set(this.linerList[this.index1], "pages", data.totalPage);
                 if (type == 1) {
                     this.page1();
                 }
             }
         },
-        //常规路线查询
-        async selectRoute() {
-            let data = await selectRoute({
-                startCity: this.startCity,
-                endCity: this.endCity,
-                orderByType: this.orderByType,
-                pageNo: this.current_page,
-                date: JSON.stringify(this.selectDate),
-                day: this.day.join(","),
-                maxPrice: this.maxPrice,
-                minPrice: this.minPrice,
-                scenic: this.scenic.join(","),
-                labelAttrid: this.labelAttrid.join(","),
-            },"POST")
-            if(data){
-                this.routeList = data.list;
-                for (const list of this.routeList) {
-                    if(list.carImg){
-                        this.$set(list, "carImg", list.carImg.split(",")[0])
-                    }
-                    this.$set(list, "tagContent", list.tagContent?list.tagContent.split(","):[])
-                    //解决分数是字符串报错
-                     this.$set(list, "star", list.star?parseInt(list.star):0)
-                }
-                this.pages = data.totalPage;
-            }
-        },
         //获取标签属性
         async getLabel() {
             let data = await getLabel({
-                routeType: 1,  //1  常规线路  2 当地参团  3 邮轮  4 景点 5 当地玩家  6 商务定制',
+                routeType: 3, //1  常规线路  2 当地参团  3 邮轮  4 景点 5 当地玩家  6 商务定制',
             })
             if(data){
                 this.lableList = data;
@@ -926,17 +826,63 @@ export default {
                 }
             }
         },
-        //根据城市获取景点
-        async getScenicByCity() {
-            this.cityScenicList = await getScenicByCity({
-                cityid: this.startCity
-            });
+        //查询游轮路线
+        async getData(pageNo = this.current_page) {
+            this.current_page = pageNo;
+            let data = await cruiseScreen({
+                portid:this.searchType==4?this.searchTypeid:"",   //出发港口
+                linerid:this.searchType==1?this.searchTypeid:"",   //邮轮ID
+                startCity: this.startCity.join(","),
+                route: this.route.join(","),
+                startDate: JSON.stringify(this.startDate),
+                day: this.day.join(","),
+                labelAttrid: this.labelAttrid.join(","),
+                pageNo: pageNo,
+                orderByType: this.orderByType,
+                searchContent: this.searchContent,
+            },"post")
+            if(data){
+                this.linerList = data.list;
+                for (const list of this.linerList) {
+                    if(list.imgUrl){
+                        this.$set(list, "imgUrl", list.imgUrl.split(",")[0])
+                    }
+                    this.$set(list, "tagContent", list.tagContent?list.tagContent.split(","):[])
+                    //解决分数是字符串报错
+                    this.$set(list, "star", list.star?parseInt(list.star):0)
+                }
+                this.pages = data.totalPage;
+            }
         },
         //获取全部城市
-        async getCity() {
-            this.cityList = await getCityList({
-                cityid: this.startCity
-            });
+        async getCity () {
+            let data = await getCityList()
+            if(data){
+                 this.cityList = data;
+                if (this.searchCityid) {
+                    for (const [key,list] of Object.entries(this.cityList)) {
+                        if (list.cityid == this.searchCityid) {
+                            this.cityClick(key);
+                            return;
+                        }
+                    }
+                }
+            }
+        },
+        //获取邮轮航线
+        async getCourse() {
+            let data = await getCourse()
+            if(data){
+                this.courseList = data;
+                if (this.searchType == 2) {
+                    for (const [key,list] of Object.entries(this.courseList)) {
+                        if (list.searchTypeid == list.id) {
+                            this.courseClick(key);
+                            return;
+                        }
+                    }
+                }
+            }
         },
         //点击上一页 下一页
         pageChange: function (index) {
@@ -945,7 +891,7 @@ export default {
                 return;
             }
             this.current_page = index;
-            this.selectRoute();
+            this.getData();
         },
         //选择页数
         jumpPage: function (id) {
@@ -953,31 +899,13 @@ export default {
                 return;
             }
             this.current_page = id;
-            this.selectRoute();
+            this.getData();
         },
     },
     computed: {
-         ...mapState([ "currencySign", "loginType"]),
-        //出发城市名称
-        startCityName(){
-            if( this.cityList.length > 0)
-            for (const list of this.cityList) {
-                if(this.startCity == list.cityid){
-                    return list.cityName;
-                }
-            }
-        },
-        //到达城市名称
-        endCityName(){
-            if( this.cityList.length > 0)
-            for (const list of this.cityList) {
-                if(this.endCity == list.cityid){
-                    return list.cityName;
-                }
-            }
-        },
+        ...mapState([ "currencySign", "loginType"]),
         show: function () {
-            return this.pages && this.pages != 1
+            return this.pages && this.pages != 1;
         },
         pstart: function () {
             return this.current_page <= 1;
@@ -1021,13 +949,5 @@ export default {
             return ar;
         },
     },
-    filters: {
-        dayFilter: function (value) {
-            if (!value) return;
-            if (parseInt(value) < 15) return `${value}天`;
-            return "15天及以上";
-        },
-    }
 }
 </script>
-
