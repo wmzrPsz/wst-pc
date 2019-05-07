@@ -66,10 +66,12 @@
 
                 <div class="ez-search-sort text-center pull-left">
                     <ul class="list-inline ez_public_list">
-                        <li class="active" @click.stop="orderByTypeChange('')"><a class="btn ez-btn-sort">综合</a></li>
-                        <li class="" @click.stop="orderByTypeChange(1)"><a class="btn ez-btn-sort">销量</a></li>
-                        <li class="" @click.stop="orderByTypeChange(2)"><a class="btn ez-btn-sort">价格<i class="caret"></i></a></li>
-                        <li class="" @click.stop="orderByTypeChange(4)"><a class="btn ez-btn-sort">评论</a></li>
+                            <li :class="{'active': !orderByType}" @click.stop="orderByTypeChange('')"><a class="btn ez-btn-sort">综合</a></li>
+                            <li :class="{'active': orderByType == 1}" @click.stop="orderByTypeChange(1)"><a class="btn ez-btn-sort">销量</a></li>
+                            <li :class="{'active': orderByType == 2 || orderByType == 3}" @click.stop="orderByTypeChange(2)">
+                                <a class="btn ez-btn-sort">价格<i class="caret" :class="{'caret-up':orderByType==3}"></i></a>
+                            </li>
+                            <li :class="{'active': orderByType == 4}" @click.stop="orderByTypeChange(4)"><a class="btn ez-btn-sort">评论</a></li>
                     </ul>
                 </div>
 
@@ -248,7 +250,7 @@
                         </li>
                         <li v-show="current_page>5" @click.stop="jumpPage(1)"><a href="#">1</a></li>
                         <li v-show="efont"><a>...</a></li>
-                        <li v-for="num in indexs" :class="{active:current_page==num}" @click.stop="jumpPage(num)"><a>{{num}}</a></li>
+                        <li v-for="num in indexs" :key="num" :class="{active:current_page==num}" @click.stop="jumpPage(num)"><a>{{num}}</a></li>
                         <li v-show="ebehind"><a>...</a></li>
                         <li v-show="current_page<pages-4" @click.stop="jumpPage(pages)"><a>{{pages}}</a></li>
                         <li @click.stop="pageChange(1)">
@@ -354,7 +356,6 @@ export default {
                 Vue.set(this.scenicList[index1].commentList[index2], "commentList", this.scenicList[index1].commentList[index2].digNum--);
                 this.successMsg("取消点赞成功");
             }
-
         },
         //初始化一级评论分页
         page1: function () {
@@ -441,7 +442,7 @@ export default {
         },
         //景点详情
         getInfor: function (id) {
-             this.$router.push({path:"/soptInfo/"+id})
+             this.$router.push(`/sopt/soptInfo/${id}`)
         },
         //点击城市
         cityScenicClick: function (index) {
@@ -536,11 +537,11 @@ export default {
             let data = await getLabel({
                 routeType: 4,  //1  常规线路  2 当地参团  3 邮轮  4 景点 5 当地玩家  6 商务定制',
             })
-            if(data){
+             if(data){
                 this.lableList = data;
                 for (const list of Object.values(this.lableList)) {
                     Vue.set(list, "showFlag", true);
-                }
+             }
             }
         },
         //点击上一页 下一页

@@ -351,7 +351,7 @@ export default {
             },"post")
             if(data){
                 this.orderidSet(data);
-                this.$router.push({path:"/routePay"})
+                this.$router.push("routePay")
             }
         },
         //确定添加联系人

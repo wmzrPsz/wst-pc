@@ -350,7 +350,7 @@ export default {
             },"post")
             if(data){
                 this.orderidSet(data);
-                this.$router.push({path:"/rulePay"})
+                this.$router.push("rulePay")
             }
         },
         //确定添加联系人

@@ -34,6 +34,8 @@ Vue.prototype.warningMsg = warningMsg
 Vue.prototype.isNull = isNull
 Vue.prototype.copy = copy
 
+Vue.use(VueRouter)
+
 Vue.use(Navigation, {router, store, moduleName: 'navigation', keyName: 'VNK'})
 
 Vue.use(VueLazyload,{

@@ -356,7 +356,7 @@ export default {
     },
 }
 </script>
-<style lang="less" scope>
+<style lang="less" scoped>
      .el-select{
         width: auto;
     }
@@ -382,5 +382,11 @@ export default {
         } 
     }
 </style>
+<style lang="less">
+    .el-select>.el-input{
+            display: inline-block;
+    }
+</style>
+
 
 

@@ -141,7 +141,7 @@
                                         </li>
                                         <li v-show="current_page>5" @click.stop="jumpPage(1)"><a href="#">1</a></li>
                                         <li v-show="efont"><a>...</a></li>
-                                        <li v-for="num in indexs" :class="{active:current_page==num}" @click.stop="jumpPage(num)"><a>{{num}}</a></li>
+                                        <li v-for="num in indexs" :key="num" :class="{active:current_page==num}" @click.stop="jumpPage(num)"><a>{{num}}</a></li>
                                         <li v-show="ebehind"><a>...</a></li>
                                         <li v-show="current_page<pages-4" @click.stop="jumpPage(pages)"><a>{{pages}}</a></li>
                                         <li @click.stop="pageChange(1)">
@@ -230,7 +230,6 @@ export default {
                 productType: 7,
                 productid: this.scenicid,
             })
-            console.log(data)
             if(data){
                 this.refundList = data;
                 let refundMsg = "";

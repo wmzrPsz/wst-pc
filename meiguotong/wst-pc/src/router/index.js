@@ -3,15 +3,17 @@
  * @Author: 彭善智
  * @LastEditors: 彭善智
  * @Date: 2019-04-24 09:56:10
- * @LastEditTime: 2019-05-02 16:11:29
+ * @LastEditTime: 2019-05-07 11:41:24
  */
 // import Vue from 'vue'
 // import Router from 'vue-router'
 // import homeRouter from './modules/homeRouter'
-// import ruleRouter from './modules/ruleRouter'
-    // homeRouter,
-    // ruleRouter,
-Vue.use(VueRouter)
+import ruleRouter from './modules/ruleRouter'
+import routeRouter from './modules/routeRouter'
+import soptRouter from './modules/soptRouter'
+import cruiseRouter from './modules/cruiseRouter'
+
+
 const createRouter = () =>  new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
@@ -22,90 +24,10 @@ const createRouter = () =>  new VueRouter({
       name: "index",
       meta: { title: "首页", requireAuth: false}
     },
-    {
-      path:"/rule",
-      component: ()=> import( '@/views/rule/rule'),
-      name: "rule",
-      meta: { title: "常规路线", requireAuth: false}
-    },
-    {
-      path:"/ruleInfo/:id(\\d+)",
-      component: ()=> import('@/views/rule/ruleInfo'),
-      name: "ruleInfo",
-      meta: { title: "常规路线详情", requireAuth: false}
-    },
-    {
-      path:"/ruleSure",
-      component: ()=> import('@/views/rule/ruleSure'),
-      name: "ruleSure",
-      meta: { title: "常规路线订单确定", requireAuth: false}
-    },
-    {
-      path:"/rulePay",
-      component: ()=> import('@/views/rule/rulePay'),
-      name: "rulePay",
-      meta: { title: "常规路线订单支付", requireAuth: false}
-    },
-    {
-      path:"/ruleSuccess",
-      component: ()=> import('@/views/rule/ruleSuccess'),
-      name: "ruleSuccess",
-      meta: { title: "常规路线订单支付成功", requireAuth: false}
-    },
-    {
-      path:"/route",
-      component: ()=> import('@/views/route/route'),
-      name: "route",
-      meta: { title: "当地参团", requireAuth: false}
-    },
-    {
-      path:"/routeInfo/:id(\\d+)",
-      component: ()=> import('@/views/route/routeInfo'),
-      name: "routeInfo",
-      meta: { title: "当地参团详情", requireAuth: false}
-    },
-    {
-      path:"/routeSure",
-      component: ()=> import('@/views/route/routeSure'),
-      name: "routeSure",
-      meta: { title: "当地参团订单确定", requireAuth: false}
-    },
-    {
-      path:"/routePay",
-      component: ()=> import('@/views/route/routePay'),
-      name: "routePay",
-      meta: { title: "当地参团订单支付", requireAuth: false}
-    },
-    {
-      path:"/routeSuccess",
-      component: ()=> import('@/views/route/routeSuccess'),
-      name: "routeSuccess",
-      meta: { title: "当地参团订单支付成功", requireAuth: false}
-    },
-    {
-      path:"/sopt",
-      component: ()=> import('@/views/sopt/sopt'),
-      name: "sopt",
-      meta: { title: "景点首页", requireAuth: false}
-    },
-    {
-      path:"/soptList",
-      component: ()=> import('@/views/sopt/soptList'),
-      name: "soptList",
-      meta: { title: "景点列表", requireAuth: false}
-    },
-    {
-      path:"/soptInfo/:id(\\d+)",
-      component: ()=> import('@/views/sopt/soptInfo'),
-      name: "soptInfo",
-      meta: { title: "景点详情", requireAuth: false}
-    },
-    {
-      path:"/soptSure",
-      component: ()=> import('@/views/sopt/soptSure'),
-      name: "soptSure",
-      meta: { title: "景点订单确定", requireAuth: false}
-    },
+    ruleRouter,
+    routeRouter,
+    soptRouter,
+    cruiseRouter,
     {
       path: '*',
       component: ()=> import( '@/views/error/404'),

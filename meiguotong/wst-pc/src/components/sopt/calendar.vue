@@ -62,7 +62,7 @@ export default {
     };
   },
   computed: {
-     ...mapState([ "currencySign"]),
+     ...mapState([ "currencySign", "loginType"]),
      ...mapState({
             dataList: state => state.sopt.dataList,
             calendarDate: state => state.sopt.calendarDate,
@@ -73,10 +73,11 @@ export default {
   methods: {
     ...mapMutations("sopt",["setAdultNum", "setChildNum"]),
     ...mapActions("sopt", ["monthLeftClick", "monthRightClick", "dayClick", "calendarDateInit"]),
+    ...mapMutations(["loginFlagChange"]),
     //下单
     async addOrder(){
       if(this.checkData()) return;
-      this.$router.push("/soptSure")
+      this.$router.push({path:"/sopt/soptSure"})
     },
     //加入购物车
     async addCar() {

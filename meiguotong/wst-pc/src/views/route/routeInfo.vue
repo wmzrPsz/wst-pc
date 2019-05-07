@@ -39,7 +39,7 @@
                         <!-- <p class="font-f2">时尚半自助出游新选择！将团队游的实惠、便捷与自由行的轻松、惬意完美结合～</p> -->
                         <p>编号{{route.no}}：本产品由{{route.companyName}}及具有资质的合作旅行社提供相关服务</p>
                         <p><label v-for="(tag, index) in route.tagContent" :key="index">{{tag}}</label></p>
-                        <p>{{route.infor}}</p>
+                        <p v-html="route.infor"></p>
                         <div class="time-price-con floatl">
                             <div class="text-orange ez-price floatl">¥{{route.price}} <span class="text-gray">/元起</span>
                                 <el-popover placement="bottom-start" title="价格说明"  width="270" trigger="hover">
@@ -112,7 +112,7 @@
                             <dl class="dl-horizontal">
                                 <dt><img src="~images/news.png" alt=""></dt>
                                 <dd>“产品经理推荐”</dd>
-                                <dd>{{route.recommend}}</dd>
+                                <dd v-html="route.recommend"></dd>
                             </dl>
                         </div>
 
@@ -447,7 +447,7 @@ export default {
                     this.loginFlagChange(1);
                     return;
                 }
-                 this.$router.push({path:"/routeSure"})
+                 this.$router.push("/route/routeSure")
             },
             //添加用户咨询
             async addConsult() {
