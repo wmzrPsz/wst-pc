@@ -175,6 +175,7 @@ export default {
                 return;
             }
             this.$router.push("soptList");
+            this.$ro
         },
     },
 }
