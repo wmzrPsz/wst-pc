@@ -172,7 +172,7 @@ export default {
                 orderType: 4,
             })){
                 this.successMsg('支付成功',()=>{
-                       this.$router.push({path:"/ruleSuccess"})
+                       this.$router.push({path:"ruleSuccess"})
                 });
             }
         },

@@ -109,6 +109,7 @@ export default {
 
     },
     methods: {
+        ...mapMutations("sopt", ["orderidSet"]),
         //确定订单
         async sureorder(){
             if(this.loginType == 1){
@@ -146,7 +147,8 @@ export default {
                 orderMember: JSON.stringify(orderMember),
             },"post")
             if(data){
-                this.successMsg('下单成功')
+                this.orderidSet(data);
+                this.$router.push("soptPay")
             }
 
         },

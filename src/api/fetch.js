@@ -3,7 +3,7 @@
  * @Author: 彭善智
  * @LastEditors: 彭善智
  * @Date: 2019-03-01 22:48:18
- * @LastEditTime: 2019-05-05 23:20:17
+ * @LastEditTime: 2019-05-06 15:50:40
  */
 import store from '../store/index'
 import { errorMsg } from '../utils/popup'
@@ -45,13 +45,13 @@ export default async (url = '', data = {}, type = 'GET', method = 'fetch')=>{
   if (type == 'GET') {
     let _data = []
     Object.keys(data).forEach(key => {
-      _data.push(key + '=' + data[key] || "" )
+      _data.push(key + '=' + (isNull( data[key] ) ? "" : data[key] ))
     })
     url =  url + '?' + _data.join('&');
   } else {
     //sendData = JSON.stringify(data)
     Object.keys(data).forEach(key => {
-      formData.append(key,data[key] || "");
+      formData.append(key, isNull(data[key]) ? "" : data[key] );
     })
 
   }

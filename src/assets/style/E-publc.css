@@ -410,7 +410,7 @@ body>.content{width: 1220px;margin: 0 auto;overflow: hidden; margin-top: 25px;}
 .ez-travel-order .content-order-details-insurance>div a{color: #f99802;text-decoration: underline;}
 .ez-travel-order .content-order-details-visitors-info{width:810px}
 .ez-travel-order .content-order-details-visitors-info>div{overflow: hidden;margin: 5px 0;}
-.ez-travel-order .content-order-details-visitors-info>div>span{display: inline-block;width: 115px;float: left;line-height: 40px;height: 40px;}
+.ez-travel-order .content-order-details-visitors-info>div>span{display: inline-block;width: 115px;float: left;line-height: 45px;height: 40px;}
 .ez-travel-order .content-order-details-visitors-info>div>span>label{color: #f99802;margin-bottom: 0px}
 .ez-travel-order .content-order-details-visitors-info input{float: left;margin-left: 5px;}
 .ez-travel-order .content-order-details-visitors-info select{float: left;margin-left: 5px;}
@@ -558,7 +558,7 @@ body>.content{width: 1220px;margin: 0 auto;overflow: hidden; margin-top: 25px;}
 .ez-travel-info .travel-info-con-left .travel-list-con .content>div{width: 100%;line-height: 40px;}
 .ez-travel-info .travel-info-con-left .travel-list-con .content>p{display: -webkit-box;-webkit-line-clamp: 5;-webkit-box-orient: vertical;overflow: hidden;border-bottom: 1px dashed #ccc;padding-bottom: 18px;}
 .ez-travel-info .ez-aside-card{margin-top: 5px;}
-.ez-travel-info .time-info{position: absolute; display: inline-block; top: 1130px; left: 550px;z-index: 999;}
+.ez-travel-info .time-info{/**position: absolute;*/ display: inline-block; top: 1130px; left: 550px;z-index: 999;}
 .ez-travel-info .ez-datetimer{position: inherit;display: inline-block;top: 0;left: -244px;}
 
 .erji_a{

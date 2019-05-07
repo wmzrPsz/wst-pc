@@ -39,7 +39,7 @@
                     <p class="font-f2">{{route.subtitle}}</p>
                     <p>编号{{route.no}}：本产品由{{route.companyName}}及具有资质的合作旅行社提供相关服务</p>
                     <p><label v-for="(tag, index) in route.tagContent" :key="index">{{tag}}</label></p>
-                    <p>{{route.infor}}</p>
+                    <p  v-html="route.infor"></p>
                     <div class="time-price-con floatl">
                         <div class="text-orange ez-price floatl">{{currencySign}}{{route.price}} <span class="text-gray">/元起</span>
                                 <el-popover placement="bottom-start" title="价格说明"  width="270" trigger="hover">
@@ -116,7 +116,7 @@
                         <dl class="dl-horizontal">
                             <dt><img src="~images/news.png" alt=""></dt>
                             <dd>“产品经理推荐”</dd>
-                            <dd>{{route.recommend}}</dd>
+                            <dd v-html="route.recommend"></dd>
                         </dl>
                     </div>
 
@@ -437,12 +437,13 @@ export default {
         ...mapMutations(["loginFlagChange"]),
         //获取产品菜单
         async getProMenu() {
-                let data = await getProMenu({
-                    proType: 1,  //1.常规路线2.当地参团3.景点4.游轮
-                    proid: this.routeid,
-                })
+            let data = await getProMenu({
+                proType: 1,  //1.常规路线2.当地参团3.景点4.游轮
+                proid: this.routeid,
+            })
+            if(data){
                 this.proMenuList = data;
-                console.log(data)
+            }
         },
            //下单页面
             addOrder:function(){
@@ -451,7 +452,7 @@ export default {
                     this.loginFlagChange(1);
                     return;
                 }
-                 this.$router.push({path:"/ruleSure"})
+                 this.$router.push("/rule/ruleSure")
             },
             //添加用户咨询
             async addConsult() {
