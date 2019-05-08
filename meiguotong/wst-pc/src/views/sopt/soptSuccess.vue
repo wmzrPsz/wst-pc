@@ -7,12 +7,7 @@
     <!--content-->
     <div class="content ez-travel-complete">
         <div class="content-order">
-            <div class="content-order-icon">
-                <div style="border: 1px solid #f99905;"><i style="color:#f99905;" class="iconfont icon-dagou"></i><label>确认订单</label></div>
-                <div style="border: 1px solid #f99905;"><i style="color:#f99905;" class="iconfont icon-dagou"></i><label>确认付款</label></div>
-                <div style="border: 1px solid #f99905;"><i style="color:#f99905;" class="iconfont icon-dagou"></i><label>完成订单</label></div>
-                <p></p>
-            </div>
+        <orderIcon orderIconType="3"></orderIcon>
 
             <div class="content-order-info">
                 <div class="content-order-details">
@@ -39,6 +34,7 @@
 import ezHeader from "components/home/ezHeader"
 import ezContainer from "components/home/ezContainer"
 import ezWebsite from "components/home/ezWebsite"
+import orderIcon from "components/order/orderIcon"
 import { mapState } from "vuex"
 export default {
     name: "ruleSuccess",
@@ -54,6 +50,7 @@ export default {
         ezHeader,
         ezContainer,
         ezWebsite,
+        orderIcon,
     },
 }
 </script>

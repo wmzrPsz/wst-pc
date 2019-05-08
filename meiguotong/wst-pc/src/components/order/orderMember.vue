@@ -264,9 +264,14 @@ export default {
              
             }
         },
+        adultNum(){
+            this.orderMemberInit();
+        },
+        childNum(){
+            this.orderMemberInit();
+        }
     },
     created() {
-        this.orderMemberSet([]);
         this.insuranceSet("");
         this.orderMemberInit();
         this.getInsurancData();
@@ -277,7 +282,7 @@ export default {
          //获取保险数据
         async getInsurancData() {
             let data = await getInsurance({
-                  productType: this.productType,
+                  productType: this.productType,  // //1.包车租车2.短程接送3.接送机4常规路线5.当地参团6.游轮7.景点门票8.当地玩家9.旅游定制',
             })
             if(data){
                 this.insuranceList = data;
@@ -347,7 +352,9 @@ export default {
         },
         //出游人集合初始化
         orderMemberInit: function () {
+            this.orderMemberSet([]);
             let num = this.adultNum + this.childNum;
+            console.log(this.adultNum+"-"+this.childNum)
             if (!num) return;
             for (let k = 0; k < num; k++) {
                 this.emptyOrderMemberByIndex(k);

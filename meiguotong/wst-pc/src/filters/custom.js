@@ -3,8 +3,10 @@
  * @Author: 彭善智
  * @LastEditors: 彭善智
  * @Date: 2019-03-12 22:51:19
- * @LastEditTime: 2019-05-01 14:50:12
+ * @LastEditTime: 2019-05-08 15:43:32
  */
+
+import {nowDate} from 'utils/common'
 
 //性别过滤器
 export const sexVc = value => {
@@ -72,6 +74,13 @@ export const dayDateByHour = minute => {
     if(!minute) return "";
     return `${minute/60 >> 0}小时${minute%60 > 0 ? minute%60 +"分钟":""}`;
 }
+
+//分钟转小时分钟 date = yyyy-MM-dd
+export const endDayVC = (date, num = 0) => {
+    return nowDate(num, new Date(date));
+}
+
+
 
 // //网站默认图片
 // Vue.filter('defImg', function (value) {

@@ -80,10 +80,9 @@
                             <!-- <el-input v-model="input" placeholder="请选择日期" readonly @click="dialogTableVisible = true"></el-input> -->
                          <!-- <input type="text" slot="reference" class="demo-input"  placeholder="选择日期"  readonly> -->
                                 <!-- <el-popover placement="bottom-start" title="价格说明"  width="270" trigger="click">
-                                    <test></test>
                                 <input type="text" slot="reference" class="demo-input"  placeholder="选择日期"  readonly>
                                 </el-popover> -->
-                            <el-button type="text" @click="dialogTableVisible = true">选择日期</el-button>
+                            <el-button type="text" @click="dialogTableVisible = true">{{beginDate || '选择日期'}}</el-button>
 
                             <el-dialog :visible.sync="dialogTableVisible">
                                 <cruiseCalendar></cruiseCalendar>
@@ -288,7 +287,6 @@ import ezContainer from "components/home/ezContainer"
 import ezFooter from "components/home/ezFooter"
 import ezAside from "components/home/ezAside"
 import cruiseCalendar from "components/cruise/cruiseCalendar"
-import test from "components/cruise/test"
 import { mapState, mapMutations, mapGetters, mapActions } from "vuex"
 import {
     linerRoomList,
@@ -307,7 +305,7 @@ export default {
         return {
             // lineid:"",  //游轮航线ID
             linerline:{},  //邮轮路线详情
-            liner:{},  //邮轮详情
+            // liner:{},  //邮轮详情
             tripList:{},  //行程列表
             scenicNameList:[],  //景点列表
             tripIndex:1,  //展示的行程天数
@@ -321,8 +319,8 @@ export default {
             refundMsg:"",  //退款提示
             linerRoomList:[],  //邮轮房间
             tep:"",  //房间模板信息
-            beginDate:"",  //选择的时间
-            roomIds:[],  //选择的房间id
+            // beginDate:"",  //选择的时间
+            // roomIds:[],  //选择的房间id
             proMenuList: [], //产品菜单
             refundList: [], //退款说明
             imgIndex: 0, //选择的图片下班
@@ -331,7 +329,8 @@ export default {
     },
     computed: {
         ...mapState(["currencySign", "loginType"]),
-        ...mapState("cruise",["lineid"]),
+        ...mapState("cruise",["lineid","liner"]),
+        ...mapGetters('cruise',['beginDate', 'rooms']),
     },
     created () {
         this.lineidSet(this.$route.params.id);
@@ -348,11 +347,10 @@ export default {
         ezFooter,
         ezAside,
         cruiseCalendar,
-        test,
     },
     methods:{
         ...mapMutations(["loginFlagChange"]),
-        ...mapMutations("cruise",["lineidSet", "linerlineSet"]),
+        ...mapMutations("cruise",["lineidSet", "linerlineSet","linerSet"]),
         //获取产品菜单
         async getProMenu() {
             let data = await getProMenu({
@@ -367,72 +365,35 @@ export default {
         imgUrlClick(index){
             this.imgIndex = index;
         },
+        //验证参数是否正确
+        judge:function(){
+            if (this.isNull(this.beginDate)) {
+                this.infoMsg("请选择日期");
+                return false;
+            }
+            if (this.rooms.length == 0 ) {
+                this.infoMsg("请选择房间");
+                return false;
+            }
+            return true;
+        },
         //加入购物车
         addCar:function(){
-            layerMsg("加入购物车成功");
+            if(!this.judge()) return;
+            if(this.loginType == 1){
+                this.loginFlagChange(1);
+                return;
+            }
+             this.successMsg("加入购物车成功");
         },
         //预约
         addOrder:function(){
-            if(!this.beginDate){
-                layerMsg("请选择日期");
+            if(!this.judge()) return;
+            if(this.loginType == 1){
+                this.loginFlagChange(1);
                 return;
             }
-            if(!this.roomIds.length){
-                layerMsg("请选择房间");
-                return;
-            }
-            localStorage.removeItem("roomIds");
-            localStorage.removeItem("lineid");
-            localStorage.removeItem("beginDate");
-            localStorage.setItem("roomIds",this.roomIds);
-            localStorage.setItem("lineid",this.lineid);
-            localStorage.setItem("beginDate",this.beginDate);
-            location.href = "./K1-4.html";
-        },
-        //获取房间
-        getLinerRoom:function(){
-            requestGet(linerRoomListUrl,{
-                lineid:this.lineid,
-            },function(data){
-                app.linerRoomList = data.body.list;
-                let tep = "";
-                $(".ht-bottom ul").empty();
-                for (const list of Object.values(app.linerRoomList)) {
-                    tep += `<li class="tripRoomSelect" data-id="${list.id}"><img src="${list.imgUrl}" alt="房间图片"/>
-                    <span class="selectSpan"></span>
-                    <p>${list.name}</p><p>${list.spec} 须入住${list.peopleNumber}人 ${list.floor}层</p>
-                    <span class="text-orange" data-money="113">${app.currencySign}${list.price}/人</span></li>`;
-                }
-                $(".ht-bottom ul").append(tep);
-                //  app.tep = tep;
-                console.log(tep);
-            })
-        },
-        //获取日期
-        calendarClick :function(){
-            this.roomIds = [];
-            $('.calendar-box').show();
-            let priceDate = calendarDate.year + "-" + (calendarDate.month > 9 ? calendarDate.month : "0" + calendarDate.month);
-            console.log(priceDate);
-            requestGet(getLinePriceDetailsUrl,{
-                lineid:this.lineid,
-                priceDate:priceDate,
-            },function(data){
-                let list = data.body.list;
-                $(".date-box").calendar({
-                    ele: '.date-box', //依附dom
-                    title: '',
-                    data: list
-                });
-            })
-        },
-        //退款提示
-        refundTips: function () {
-            layer.tips(this.refundMsg, '#refundTips', {
-                tips: [1, '#3595CC'],
-                maxWidth:280,
-                time: 4000
-            });
+            this.$router.push("/cruise/cruiseSure")
         },
         //获取退款说明
         async getRefundInfo() {
@@ -457,7 +418,7 @@ export default {
                 return;
             }
             if(this.isNull(this.mobile,this.name,this.content)){
-                layerMsg("请完善数据");
+                 this.infoMsg("请完善数据");
                 return;
             }
             if(await saveConsult({
@@ -468,7 +429,7 @@ export default {
                 mobile: this.mobile,
             })){
                 $('#exampleModal').modal('hide');
-                layerMsg("提交用户咨询成功");
+                 this.successMsg("提交用户咨询成功");
                 this.content = "";
                 this.name = "";
                 this.mobile = "";
@@ -561,13 +522,13 @@ export default {
             })
             if(data){
                 this.linerline  = data.linerline;
-                this.liner  = data.liner;
                 //解决分数是字符串报错
                 this.$set(this.linerline , "star", this.linerline.star?parseInt(this.linerline.star):0)
                 this.linerline.imgUrl = this.linerline.imgUrl?this.linerline.imgUrl.split(","):[];
                 this.linerline.tagContent = this.linerline.tagContent?this.linerline.tagContent.split(","):[];
                 this.linerline.scenicContent = this.linerline.scenicContent?this.linerline.scenicContent.split(","):[];
                 this.linerlineSet(this.linerline)
+                this.linerSet(data.liner)
             }
         },
     },
