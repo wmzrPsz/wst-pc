@@ -60,7 +60,7 @@ import ezContainer from "components/home/ezContainer"
 import ezFooter from "components/home/ezFooter"
 import ezAside from "components/home/ezAside"
 import ezModule from "components/home/ezModule"
-import { mapMutations } from ''
+import { mapMutations } from 'vuex'
 export default {
     name: "tourIndex",
     data() {
@@ -76,10 +76,11 @@ export default {
         ezModule,
     },
     methods:{
-        ...mapMutations(["tourTypeSet"]),
+        ...mapMutations('tour',["tourTypeSet"]),
+        //选择旅游定制类型
         goToTreav:function(index){
             this.tourTypeSet(index);
-            this.$rputer.push("tourInfo");
+            this.$router.push("tourAfter");
         },
     }
 }
