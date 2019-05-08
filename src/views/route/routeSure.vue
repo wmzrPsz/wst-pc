@@ -160,7 +160,7 @@
 
                         <div>
                             <h4>行程</h4>
-                            <p><label>{{beginDate}} - {{startDateEnd}}（共{{route.dayNum}}天）</label></p>
+                             <p><label>{{beginDate}} - {{beginDate | endDayVC(route.dayNum)}}（共{{route.dayNum}}天）</label></p>
                             <p><label>{{route.title}}</label></p>
                             <p><label>路线价格</label> <span> {{(childNum + adultNum) * + route.price}}</span></p>
                             <p v-if="oneNum >0"><label>单人一房</label> <span>{{currencySign}}{{oneCost}}*{{oneNum}}</span></p>
@@ -284,10 +284,6 @@ export default {
                 content.push(`${this.childNum}儿童 `);
             }
             return content.toString();
-        },
-        //结束时间
-        startDateEnd: function () {
-            return nowDate(this.route.dayNum, new Date(this.beginDate));
         },
     },
     components: {

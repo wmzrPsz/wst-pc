@@ -5,21 +5,7 @@
 
     <div class="content  ez-travel-payment main_content">
       <div class="content-order">
-        <div class="content-order-icon">
-          <div style="border: 1px solid #f99905;">
-            <i style="color:#f99905;" class="iconfont icon-dagou"></i>
-            <label>确认订单</label>
-          </div>
-          <div style="border: 1px solid #f99905;">
-            <i style="color:#f99905;" class="iconfont icon-dagou"></i>
-            <label>确认付款</label>
-          </div>
-          <div>
-            <i class="iconfont icon-dagou"></i>
-            <label>完成订单</label>
-          </div>
-          <p></p>
-        </div>
+        <orderIcon orderIconType="2"></orderIcon>
         <div class="content-order-state">
           <div class="content-order-state-left">
             <i class="iconfont icon-shijian"></i>
@@ -190,6 +176,7 @@
 import ezHeader from "components/home/ezHeader";
 import ezContainer from "components/home/ezContainer";
 import ezWebsite from "components/home/ezWebsite";
+import orderIcon from "components/order/orderIcon"
 import { mapState, mapGetters } from "vuex";
 import { payOrder } from "getData";
 export default {
@@ -208,7 +195,8 @@ export default {
   components: {
     ezHeader,
     ezContainer,
-    ezWebsite
+    ezWebsite,
+    orderIcon,
   },
     methods:{
         //支付

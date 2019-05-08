@@ -522,7 +522,7 @@ body>.content{width: 1220px;margin: 0 auto;overflow: hidden; margin-top: 25px;}
 .ez-travel-info .local-introduce-con .text-goodat label{border: 1px solid #2577e3;color: #2577e3;padding:5px;margin-right:10px;}
 .ez-travel-info .local-time{overflow: hidden;margin:10px 0;}
 .ez-travel-info .time-number-title{width: 100px;height: 40px;line-height: 40px;}
-.ez-travel-info .time-number-con{width: 480px;/*height: 40px;*/ line-height: 40px;}
+.ez-travel-info .time-number-con{width: 480px;/*height: 40px; line-height: 40px;*/}
 .ez-travel-info .local-number-con>.floatl{line-height: 40px;}
 .ez-travel-info .local-number-con>.floatl div{width: 122px;height: 40px;line-height: 40px;border: 1px solid #ccc;border-radius: 20px;margin: 0 20px;}
 .ez-travel-info .local-number-con>.floatl div>span{display: inline-block; width: 40px;height: 40px;text-align: center;cursor: pointer;}
