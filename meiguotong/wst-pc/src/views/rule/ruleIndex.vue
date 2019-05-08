@@ -934,9 +934,7 @@ export default {
         },
         //获取全部城市
         async getCity() {
-            this.cityList = await getCityList({
-                cityid: this.startCity
-            });
+            this.cityList = await getCityList({});
         },
         //点击上一页 下一页
         pageChange: function (index) {

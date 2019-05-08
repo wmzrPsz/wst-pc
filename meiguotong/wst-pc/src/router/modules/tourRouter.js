@@ -3,7 +3,7 @@
  * @Author: 彭善智
  * @LastEditors: 彭善智
  * @Date: 2019-05-07 11:15:53
- * @LastEditTime: 2019-05-08 19:27:53
+ * @LastEditTime: 2019-05-08 21:07:30
  */
 
 const tourRouter = {
@@ -18,12 +18,12 @@ const tourRouter = {
             name: "tourIndex",
             meta: { title: "定制首页", requireAuth: false}
           },
-        //   {
-        //     path:"tourList",
-        //     component: ()=> import('@/views/tour/tourList'),
-        //     name: "tourList",
-        //     meta: { title: "定制列表", requireAuth: false}
-        //   },
+          {
+            path:"tourAfter",
+            component: ()=> import('@/views/tour/tourAfter'),
+            name: "tourAfter",
+            meta: { title: "定制选择人数", requireAuth: false}
+          },
           {
             path:"tourInfo",
             component: ()=> import('@/views/tour/tourInfo'),
