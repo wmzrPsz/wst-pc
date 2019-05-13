@@ -3,7 +3,7 @@
  * @Author: 彭善智
  * @LastEditors: 彭善智
  * @Date: 2019-03-29 13:12:37
- * @LastEditTime: 2019-04-30 21:43:51
+ * @LastEditTime: 2019-05-13 19:22:11
  */
 
 import ajax from './fetch'
@@ -253,6 +253,8 @@ export const selectAirportCar = (param = {}, type = 'GET') => ajax( process.env.
 export const saveAirportCarOrder = (param = {}, type = 'GET') => ajax( process.env.VUE_APP_PROXY_API +'car/saveAirportCarOrder', param, type);
 //获取车辆业务类型接口
 export const selectCarService = (param = {}, type = 'GET') => ajax( process.env.VUE_APP_PROXY_API +'car/selectCarService', param, type);
+//包车租车生成订单
+export const saveCarOrder = (param = {}, type = 'GET') => ajax( process.env.VUE_APP_PROXY_API +'car/saveCarOrder', param, type);
 
 
 

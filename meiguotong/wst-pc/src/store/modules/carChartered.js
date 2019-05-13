@@ -3,11 +3,12 @@
  * @Author: 彭善智
  * @LastEditors: 彭善智
  * @Date: 2019-04-24 18:26:49
- * @LastEditTime: 2019-05-13 18:12:41
+ * @LastEditTime: 2019-05-13 19:06:40
  */
 import { isNull } from 'utils/common'
 
 const state = {
+    orderType: 1, 
     startCity: "",  //城市ID
     startCityName:"",  //城市名称
     startAddress:"",  //详细地点

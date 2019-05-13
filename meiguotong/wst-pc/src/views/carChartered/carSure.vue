@@ -124,29 +124,14 @@ import ezWebsite from "components/home/ezWebsite"
 import orderMember from "components/order/orderMember"
 import orderAddress from "components/order/orderAddress"
 import orderIcon from "components/order/orderIcon"
-import { saveTravelOrder } from "getData"
+import { saveCarOrder } from "getData"
 import { mapState, mapMutations, mapGetters } from "vuex";
 import { nowDate} from 'utils/common'
 export default {
     name: "carSure",
     data() {
         return {
-            productType: 7,
-            appData: JSON.parse(localStorage.getItem("appData")),
-            oldOrderPrice: parseFloat(localStorage.getItem("orderPrice")),
-            // contactsName: "", //联系人
-            // contactsMobile: "", //联系人电话
-            // remark: "", //备注
-            // insuranceid: "", ///选择的保险ID
-            // orderMember: [],  //出游人集合
-            // insurancList: [],  //保险信息
-            // insuranc: {},  //选择的保险信息
-            // memberContactsList: [],  //常用联系人
-            // orderMemberIndex: "",  //点击添加联系人的下标
-            // memberContactsIndex: "", //选择的常用联系人的下标
-            // baNum: 0,   //商务活动数量
-            // spotNum:0,  //景点数量
-            // soptList:[],  //景点集合
+            productType: 1,
             hotelInfo: [],  //酒店信息
         }
     },
@@ -172,6 +157,55 @@ export default {
         orderIcon,
     },
     methods: {
+        ...mapMutations("carChartered",["stateChange"]),
+        //确定订单
+        async sureorder() {
+            if(this.loginType == 1){
+                this.loginFlagChange(1);
+                return;
+            }
+            if(this.isNull(this.contactsName, this.contactsMobile)){
+                this.infoMsg('请完善联系人信息'); return;
+            }
+            for (const list of Object.values(this.orderMember)) {
+                for (const [key, value] of Object.entries(list)) {
+                    if (this.isNull(value)) {
+                        console.log(key)
+                        this.infoMsg('请完善出游人信息'); return;
+                    }
+                }
+            }
+            let orderMember = this.copy(this.orderMember);
+            for (const list of Object.values(orderMember)) {
+                console.log(list)
+                Vue.set(list, "englishName", `${list.key}/${list.value}`);
+            }
+                     console.log(orderMember) 
+            let data = await saveCarOrder({
+                contactsName: this.contactsName,
+                contactsMobile: this.contactsMobile,
+                remark: this.remark,
+                startCity:this.startCity,
+                startAddress:this.startAddress,
+                startDate:this.startDate,
+                endDate:this.endDate,
+                dayNum:this.dayNum,
+                bagNum:this.bagNum,
+                adultNum:this.adultNum,
+                childNum:this.childNum,
+                carInfor:JSON.stringify(this.addCarList),
+                travelInfor:JSON.stringify(this.travelInfor),
+                orderMember:JSON.stringify(orderMember),
+                insuranceid:this.guideInfo.guideid,
+            },'post') 
+            if(data) {
+                this.stateChange({
+                    orderid: data
+                });
+                this.$router.push("carPay")
+            }
+        },
+        //获取所有酒店
         async getHotelAll(){
             let hotelInfo = [];
             for (const travel of Object.values(this.travelInfor)) {
@@ -180,45 +214,6 @@ export default {
                 }
             }
             this.hotelInfo = hotelInfo;
-        },
-        //确定订单
-        sureorder: function () {
-            if (!this.contactsName || !this.contactsMobile) {
-                layerMsg('请完善联系人信息'); return;
-            }
-            for (const list of Object.values(this.orderMember)) {
-                for (const [key, value] of Object.entries(list)) {
-                    if (value === "") {
-                        console.log(`---------------${key}`);
-                        layerMsg('请完善出游人信息'); return;
-                    }
-                }
-            }
-            let orderMember = this.orderMember;
-            for (const list of Object.values(orderMember)) {
-                Vue.set(list, "englishName", `${list.key}/${list.value}`);
-            }
-            requestGet(saveTravelOrderUrl, {
-                orderType: 1,
-                contactsName: this.contactsName,
-                contactsMobile: this.contactsMobile,
-                remark: this.remark,
-                startCity:this.appData.startCity,
-                startAddress:this.appData.startAddress,
-                startDate:this.appData.startDate,
-                endDate:this.appData.endDate,
-                dayNum:this.appData.dayNum,
-                bagNum:this.appData.bagNum,
-                adultNum:this.appData.adultNum,
-                childNum:this.appData.childNum,
-                carInfor:JSON.stringify(this.appData.addCarList),
-                travelInfor:JSON.stringify(this.appData.travelInfor),
-                orderMember:JSON.stringify(this.appData.orderMember),
-                insuranceid:this.insuranceid,
-            }, function (data) {
-                localStorage.setItem("orderid", data.body.orderid);
-                location.href = "./J4-1.html";
-            })
         },
     }
 }
