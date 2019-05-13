@@ -218,6 +218,7 @@ module.exports = {
       'jquery': '$',
       'vue-lazyload': 'VueLazyload',
       '@babel/polyfill': '@babel/polyfill',
+      'xe-utils': 'XEUtils ',
     }
 
     // 打包分析
