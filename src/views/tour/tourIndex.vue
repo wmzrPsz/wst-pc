@@ -76,10 +76,12 @@ export default {
         ezModule,
     },
     methods:{
-        ...mapMutations('tour',["tourTypeSet"]),
+        ...mapMutations('tour',["stateChange"]),
         //选择旅游定制类型
         goToTreav:function(index){
-            this.tourTypeSet(index);
+            this.stateChange({
+                orderType: index
+            });
             this.$router.push("tourAfter");
         },
     }
