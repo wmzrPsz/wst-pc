@@ -1383,7 +1383,7 @@ export default {
                 this.loginFlagChange(1);
                 return;
             }
-            if (this.commnotContent == "") {
+            if (this.isNull(this.commnotContent)) {
                 this.infoMsg("请输入评论内容"); return;
             }
             let data = await addChildComment({

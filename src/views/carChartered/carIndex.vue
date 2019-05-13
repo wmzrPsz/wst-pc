@@ -1,15 +1,25 @@
 <template>
     <div>
         
-        <ez-header></ez-header>
-        <ez-container></ez-container>
+        <ezHeader></ezHeader>
+        <ezContainer></ezContainer>
 
         <!--content-->
+        <div class="banner">
+            <div class="banner-img">
+                <p>【奥斯卡级】大佬圣诞节拉伸角度看</p>
+            </div>
+            <div class="banner-content">
+                <div class="b-a lis fu4   zu_a  zi_rrr right_aa ">
+                    <ul class="dianji_a bo_5 overflow ">
+                        <li class="beibai bo_12 baoche">包车租车</li>
+                        <li class="beibai bo_12"><a href="../C/C1-1.html">短程接送</a></li>
+                        <li class="beibai"><a href="../D/D1-1.html">接送机</a></li>
+                    </ul>
+                </div>
 
-        <div class="container ez-container text-darkgray">
-            
-            <!--part1 start-->
-            <section class="col-md-12 ez-index-wrap ez-custom-search">
+                <!-- <div class="banner-content-con"> -->
+            <section class="col-md-12 ez-index-wrap ez-custom-search" style="overflow: hidden;">
                 <form class="form-horizontal">
                     <div class="col-md-4 col-sm-4 col-xs-4">
                         <h4 class="ez-mb-md">地点</h4>
@@ -85,18 +95,23 @@
                     </div>
 
                     <div class="col-md-12 col-sm-12 col-xs-12">
-                        <a class="btn ez-btn-parmary pull-right" @click="goSet">立即定制</a>
+                        <a class="btn ez-btn-parmary pull-right" @click="goToCar">确定选车</a>
                     </div>
                 </form>
             </section>
-            <!-- part1 end -->
-
-            <!-- <ez-module :html-name = "orderTypeName" html-seal = "内容模块"></ez-module> -->
-            <!-- part3 end -->
+                <!-- </div> -->
+            </div>
+        </div>
+        <div class="content ez-travel-attractions">
+            <div class="container ez-container">
+                <!--part20 推荐景点 start-->
+                <ez-module html-name = "包车租车" html-seal = "内容模块"></ez-module>
+                <!--part20 end-->
+            </div>
         </div>
 
-        <ez-footer></ez-footer>
-        <ez-aside></ez-aside>
+        <ezFooter></ezFooter>
+        <ezAside></ezAside>
 
     </div>
 </template>
@@ -111,7 +126,7 @@ import {
     getCityList
 } from 'getData'
 export default {
-    name: "tourAfter",
+    name: "carIndex",
     data() {
         return {
             startCity: "",  //城市ID
@@ -124,15 +139,7 @@ export default {
             cityList: [], //城市列表
         }
     },
-    components: {
-        ezHeader,
-        ezContainer,
-        ezFooter,
-        ezAside,
-        ezModule,
-    },
     computed: {
-        ...mapGetters("tour",["orderTypeName"]),
         //城市名称
         startCityName(){
             let startCityName = "";
@@ -144,18 +151,24 @@ export default {
             return startCityName
         },
     },
+    components: {
+        ezHeader,
+        ezContainer,
+        ezFooter,
+        ezAside,
+        ezModule
+    },
     created() {
-        console.log(this.orderTypeName)
         this.getCityList();
     },
-    methods:{
-        ...mapMutations('tour',['stateChange']),
+    methods: {
+         ...mapMutations('carChartered',['stateChange']),
         //获取全部城市
         async getCityList() {
             this.cityList = await getCityList({});
         },
-        //点击立即定制
-        goSet:function(){
+        //去选车
+        goToCar:function(){
             if(this.isNull(this.startCity)){
                 this.infoMsg("请选择城市"); return;
             }
@@ -178,8 +191,16 @@ export default {
                 childNum: this.childNum,  
                 bagNum: this.bagNum,  
             })
-            this.$router.push("tourInfo");
+            this.$router.push("carInfo");
         },
     }
 }
 </script>
+<style lang="less" scoped>
+    .ez-custom-search{
+        overflow: hidden;
+        background-color: #fff;
+    }
+</style>
+
+

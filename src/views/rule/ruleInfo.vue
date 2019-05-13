@@ -82,7 +82,7 @@
                         </div>
 
                         <div class="local-number ez-travel-hotel ">
-                            <div class="time-number-title floatl">房间数量</div>
+                            <div class="time-number-title floatl">房间选择</div>
                             <div class="time-number-con floatl travel-content-main-search-type">
                             <p>
                                 <span class="number-right" >单人间</span>
