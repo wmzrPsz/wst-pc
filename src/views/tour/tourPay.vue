@@ -169,12 +169,12 @@
                     <div class="content-order-details-right"  v-show="orderShow">
                             <div class="content-order-details-print-info" @click="doPrint()">打印订单</div>
                 </div>
-
+ 
                 </div>
                 <div class="content-order-details-pay">
                         <h4><b>选择支付方式</b></h4>
 
-                        <span>应付金额 <b>{{currencySign}}122,780</b></span>
+                        <span>应付金额 <b>{{currencySign}}{{orderPrice}}</b></span>
 
                         <div class="content-order-details-pay-way">
                             <div :class="payType==list.id?'content-order-details-pay-way-style':''" @click="payTypeClick(list.id)"
@@ -184,7 +184,7 @@
                         </div>
 
                         <div class="content-order-details-pay-next" @click="payOrder">下一步</div>
-                    </div>
+                </div>
             </div>
         </div>
 
