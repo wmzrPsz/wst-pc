@@ -459,10 +459,10 @@ $(function(){
     /** jd-search end*/
 
     /** 图片左右滚动 */
-    setTimeout(function(){
-        moveBox();
-        moveList();
-    },500)
+    // setTimeout(function(){
+    //     moveBox();
+    //     moveList();
+    // },500)
 
      
     // function renderDate(el){
@@ -522,118 +522,118 @@ $(function(){
 // }
 
 /** 图片左右滚动 */
-function moveBox(){
-    var cWidth=$(".scroll-box li").width();   //单个子元素所需宽度
-    var boxWidth = $(".scroll-wrap").width();  //子元素所在区域宽度
-    var sum = $(".scroll-wrap ul").children("li").length;    //子元素数量
-    var num = parseInt(boxWidth/cWidth);   //需要显示的子元素的数量
-    var len = sum-num;  //子元素可移动次数（被隐藏的子元素数量）
-    var i=0;
-    $(".scroll-btns .scroll-right").click(function(){
-        i++;
-        if(i<=len){
-            $(".scroll-box").css("left",-(cWidth*i));
-        }else{
-            i=0;
-            $(".scroll-box").css("left",0);
-        }
-    });
-    $(".scroll-btns .scroll-left").click(function(){
-        i--;
-        if(i>=0){
-            $(".scroll-box").css("left",-(cWidth*i));
-        }else{
-            i=0;
-            $(".scroll-box").css("left",0);
-        }
-    });
-}
+// function moveBox(){
+//     var cWidth=$(".scroll-box li").width();   //单个子元素所需宽度
+//     var boxWidth = $(".scroll-wrap").width();  //子元素所在区域宽度
+//     var sum = $(".scroll-wrap ul").children("li").length;    //子元素数量
+//     var num = parseInt(boxWidth/cWidth);   //需要显示的子元素的数量
+//     var len = sum-num;  //子元素可移动次数（被隐藏的子元素数量）
+//     var i=0;
+//     $(".scroll-btns .scroll-right").click(function(){
+//         i++;
+//         if(i<=len){
+//             $(".scroll-box").css("left",-(cWidth*i));
+//         }else{
+//             i=0;
+//             $(".scroll-box").css("left",0);
+//         }
+//     });
+//     $(".scroll-btns .scroll-left").click(function(){
+//         i--;
+//         if(i>=0){
+//             $(".scroll-box").css("left",-(cWidth*i));
+//         }else{
+//             i=0;
+//             $(".scroll-box").css("left",0);
+//         }
+//     });
+// }
 
 
 
-/** 菜单左右滚动 */
-function moveList(){
-    var cWidth=$(".trip-scroll-box li").width();   //单个子元素所需宽度
-    var boxWidth = $(".trip-scroll-wrap").width();  //子元素所在区域宽度
-    var sum = $(".trip-scroll-wrap ul").children("li").length;    //子元素数量
-    var num = parseInt(boxWidth/cWidth);   //需要显示的子元素的数量
-    var len = sum-num;  //子元素可移动次数（被隐藏的子元素数量）
-    var i=0;
-    $(".trip-scroll-btns .scroll-right").click(function(){
-        i++;
-        if(i<=len){
-            $(".trip-scroll-box").css("left",-((cWidth+1)*i));
-        }else{
-            i=0;
-            $(".trip-scroll-box").css("left",0);
-        }
-    });
-    $(".trip-scroll-btns .scroll-left").click(function(){
-        i--;
-        if(i>=0){
-            $(".trip-scroll-box").css("left",-((cWidth+1)*i));
-        }else{
-            i=0;
-            $(".trip-scroll-box").css("left",0);
-        }
-    });
+// /** 菜单左右滚动 */
+// function moveList(){
+//     var cWidth=$(".trip-scroll-box li").width();   //单个子元素所需宽度
+//     var boxWidth = $(".trip-scroll-wrap").width();  //子元素所在区域宽度
+//     var sum = $(".trip-scroll-wrap ul").children("li").length;    //子元素数量
+//     var num = parseInt(boxWidth/cWidth);   //需要显示的子元素的数量
+//     var len = sum-num;  //子元素可移动次数（被隐藏的子元素数量）
+//     var i=0;
+//     $(".trip-scroll-btns .scroll-right").click(function(){
+//         i++;
+//         if(i<=len){
+//             $(".trip-scroll-box").css("left",-((cWidth+1)*i));
+//         }else{
+//             i=0;
+//             $(".trip-scroll-box").css("left",0);
+//         }
+//     });
+//     $(".trip-scroll-btns .scroll-left").click(function(){
+//         i--;
+//         if(i>=0){
+//             $(".trip-scroll-box").css("left",-((cWidth+1)*i));
+//         }else{
+//             i=0;
+//             $(".trip-scroll-box").css("left",0);
+//         }
+//     });
 
 
-//添加的点赞
- $(".icon-eye").click(function(){
-  console.log("like_icon");
-        $(this).toggleClass("yianying_lick");
+// //添加的点赞
+//  $(".icon-eye").click(function(){
+//   console.log("like_icon");
+//         $(this).toggleClass("yianying_lick");
        
- });
+//  });
 
- //添加n日游列表的切换
- $(".travel-list-head > div >ul >li").click(function(){
-        var i=$(this).index();
-        console.log(i);
-        $(this).parents(".travel-list").find(".travel-list-content-list").eq(i).addClass("active").siblings(".travel-list-content-list").removeClass("active");
-    });
+//  //添加n日游列表的切换
+//  $(".travel-list-head > div >ul >li").click(function(){
+//         var i=$(this).index();
+//         console.log(i);
+//         $(this).parents(".travel-list").find(".travel-list-content-list").eq(i).addClass("active").siblings(".travel-list-content-list").removeClass("active");
+//     });
 
- $(".trip-scroll-box > ul li ").click(function(){
-   $(this).addClass("travel-list-head-span-style").siblings("li").removeClass("travel-list-head-span-style");
- });
+//  $(".trip-scroll-box > ul li ").click(function(){
+//    $(this).addClass("travel-list-head-span-style").siblings("li").removeClass("travel-list-head-span-style");
+//  });
 
- $(".trip-scroll-box > ul li ").click(function(){
-        var i=$(this).index();
-        console.log(i);
-        $(this).parents(".tourism-custom").find(".travel-list-content-list").eq(i).addClass("travel-list-head-span-style_xians").siblings(".travel-list-content-list").removeClass("travel-list-head-span-style_xians");
-    });
+//  $(".trip-scroll-box > ul li ").click(function(){
+//         var i=$(this).index();
+//         console.log(i);
+//         $(this).parents(".tourism-custom").find(".travel-list-content-list").eq(i).addClass("travel-list-head-span-style_xians").siblings(".travel-list-content-list").removeClass("travel-list-head-span-style_xians");
+//     });
 
- //点击下一页
-   var  current_page=0;
-        $(".text-center").children().click(function(){
-           var i=$(this).index();
-           var page=Math.ceil($('.trip-aside-card').length/3)-1;
-            if (i==0) {//上一页
+//  //点击下一页
+//    var  current_page=0;
+//         $(".text-center").children().click(function(){
+//            var i=$(this).index();
+//            var page=Math.ceil($('.trip-aside-card').length/3)-1;
+//             if (i==0) {//上一页
 
-                current_page--;
-                if(current_page < 0){
-                    current_page= 0;
-                }
-                $('.huan_aa').stop().animate({'margin-top':current_page*-360+'px'});
-            }
+//                 current_page--;
+//                 if(current_page < 0){
+//                     current_page= 0;
+//                 }
+//                 $('.huan_aa').stop().animate({'margin-top':current_page*-360+'px'});
+//             }
 
-             if (i==1) {//下一页
+//              if (i==1) {//下一页
 
-                current_page++;
-                if (current_page>page) {
-                    current_page=0;
-                }
-                $('.huan_aa').stop().animate({'margin-top':current_page*-360+'px'});
-            }
+//                 current_page++;
+//                 if (current_page>page) {
+//                     current_page=0;
+//                 }
+//                 $('.huan_aa').stop().animate({'margin-top':current_page*-360+'px'});
+//             }
            
-        });
+//         });
 
 
         
 
 
  
-}
+// }
 
 
 

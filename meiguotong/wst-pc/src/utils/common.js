@@ -3,7 +3,7 @@
  * @Author: 彭善智
  * @LastEditors: 彭善智
  * @Date: 2019-03-12 22:51:19
- * @LastEditTime: 2019-05-08 15:39:03
+ * @LastEditTime: 2019-05-09 15:39:47
  */
 
 import store from '@/store/index'
@@ -83,6 +83,11 @@ export const nowDate = (num = 0, date = new Date()) => {
       day = "0" + day;
   }
   return year + "-" + month + "-" + day;
+}
+
+//计算天数  yyyy-MM-dd
+export const dataCountNum = (date, num)=>{
+  return nowDate(num, new Date(date));
 }
 
 

@@ -91,7 +91,7 @@
             </section>
             <!-- part1 end -->
 
-            <!-- <ez-module :html-name = "tourTypeName" html-seal = "内容模块"></ez-module> -->
+            <!-- <ez-module :html-name = "orderTypeName" html-seal = "内容模块"></ez-module> -->
             <!-- part3 end -->
         </div>
 
@@ -115,7 +115,6 @@ export default {
     data() {
         return {
             startCity: "",  //城市ID
-            startCityName:"广州",  //城市名称
             startAddress:"",  //详细地点
             startDate:"",  //开始时间
             endDate:"",  //结束时间
@@ -133,10 +132,20 @@ export default {
         ezModule,
     },
     computed: {
-        ...mapGetters("tour",["tourTypeName"]),
+        ...mapGetters("tour",["orderTypeName"]),
+        //城市名称
+        startCityName(){
+            let startCityName = "";
+            for (const list of this.cityList) {
+                if(list.cityid == this.startCity){
+                    startCityName = list.cityName
+                }
+            }
+            return startCityName
+        },
     },
     created() {
-        console.log(this.tourTypeName)
+        console.log(this.orderTypeName)
         this.getCityList();
     },
     methods:{
@@ -161,6 +170,7 @@ export default {
             }
             this.stateChange({
                 startCity: this.startCity,  
+                startCityName: this.startCityName,  
                 startAddress: this.startAddress,  
                 startDate: this.startDate,  
                 endDate: this.endDate,  
