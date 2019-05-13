@@ -9,12 +9,12 @@ import store from "./store/index";
 // import "bootstrap/dist/css/bootstrap.css"
 // import 'element-ui/lib/theme-chalk/index.css'
 import Navigation from 'vue-navigation'
+import "style/reset.css"
 import "style/ez-public.less"
 import "style/ez-website.less"
 import "style/ez-slider.less"
 import "style/E-publc.css"
 import "style/common.css"
-import "style/reset.css"
 import "style/iconfont/iconfont.css"
 import "style/ez-page.less"
 import "javaScript/ez-public.js"

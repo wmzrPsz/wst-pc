@@ -16,7 +16,7 @@
 .banner-content-con-list:nth-child(2){width: 520px;}
 .banner-content-con-list:nth-child(3){width: 450px;}
 .banner-content-con-list>div{font-size: 14px;}
-.banner-content-con-list-info span{margin-right: 30px;}
+.banner-content-con-list-info>span{margin-right: 30px;}
 .banner-content-con-list-info>.luggage{margin-right:30px;margin-left: 25px;}
 .banner-content-con-list-info input,.banner-content-con-list-info select{display:inline-block;width: inherit;}
 .banner-content-con-btn{clear: both; float: right;}
