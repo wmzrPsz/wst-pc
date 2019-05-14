@@ -91,7 +91,7 @@
                                 </div>
                             </div>
             
-                            <div v-if="orderType != 2">
+                            <div>
                                 <h4>导游</h4>
                                 <p><label>导游</label> <span>{{guideInfo.realName}}</span></p>
                                 <p><label>价格</label> <span>{{dayNum}}天*{{currencySign}}{{guideInfo.price}}</span></p>
@@ -136,7 +136,7 @@ export default {
         }
     },
     computed: {
-        ...mapState("carChartered", ["orderType", "startCity", "startCityName", "startAddress", "startDate","endDate",
+        ...mapState("carChartered", ["startCity", "startCityName", "startAddress", "startDate","endDate",
         "adultNum","childNum","bagNum","travelInfor","addCarList","guideInfo","guideType"]),
         ...mapState( "order", [ "contactsName", "contactsMobile", "remark", "orderMember", "insurance" ]),
         ...mapState(["currencySign"]),
@@ -180,7 +180,7 @@ export default {
                 console.log(list)
                 Vue.set(list, "englishName", `${list.key}/${list.value}`);
             }
-                     console.log(orderMember) 
+            console.log(orderMember) 
             let data = await saveCarOrder({
                 contactsName: this.contactsName,
                 contactsMobile: this.contactsMobile,
@@ -202,7 +202,7 @@ export default {
                 this.stateChange({
                     orderid: data
                 });
-                this.$router.push("carPay")
+                this.$router.push("carCharteredPay")
             }
         },
         //获取所有酒店

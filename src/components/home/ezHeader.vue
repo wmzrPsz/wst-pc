@@ -79,7 +79,8 @@
 import { getLanguage, getProtocol, getCurrency, myInfor } from 'getData';
 import { isNull } from "@/utils/common";
 import { mapState, mapMutations } from "vuex";
-import ezlogin from "components/home/ezLogin"
+import ezLogin from "components/home/ezLogin"
+import ezRegister from "components/home/ezRegister"
 export default {
     name: "ezHeader",
     data () {
@@ -92,8 +93,8 @@ export default {
         ...mapState([ "loginType", "languageid", "currencyid", "comProtocol", "loginFlag", "languageList", "currencyList", "member" ]),
         //动态组件
         currentTabComponent() {
-            if (this.loginFlag == 1) return "ezlogin";
-            // else if (this.loginFlag == 2) return "ezRegister";
+            if (this.loginFlag == 1) return "ezLogin";
+            else if (this.loginFlag == 2) return "ezRegister";
             // else if (this.loginFlag == 3) return "ezForest";
             else return "";
         },
@@ -107,8 +108,8 @@ export default {
         },
     },
     components: {
-        "ezlogin": ezlogin,
-    //     // // "ez-register": ezRegister,
+        ezLogin,
+        ezRegister,
     //     // // "ez-forest": ezForest,
     },
     created() {

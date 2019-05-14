@@ -61,12 +61,7 @@
                         <div class="local-content">
                             <div class="local-time">
                                 <div class="local-time-title time-number-title floatl">出发时间</div>
-                                <div class="calendar-box date-box time-info" id="calendar-box"></div>
-                                <div class="local-time-con time-number-con floatl">
-                                    <!-- <input type="text" class="demo-input" placeholder="选择日期" 
-                                     @click="calendarClick" v-model="beginDate"  readonly="readonly"> -->
-                                        {{beginDate}}
-                                        </div>
+                                 <div class="local-time-con time-number-con floatl time-number-title" >{{beginDate}}</div>
                             </div>
                         <div class="local-number">
                             <div class="local-number-title time-number-title floatl">出游人数</div>
@@ -545,6 +540,10 @@ export default {
                 }
                 if (this.oneNum + this.twoNum + this.threeNum + this.fourNum + this.arrangeNum <= 0) {
                      this.infoMsg("请选择房间");
+                    return false;
+                }
+                if (this.oneNum * 1 + this.twoNum * 2 + this.threeNum * 3+ this.fourNum * 4+ this.arrangeNum * 1 != this.childNum + this.adultNum ) {
+                     this.infoMsg("房间人数和出游人数不对应");
                     return false;
                 }
                 return true;

@@ -10,15 +10,8 @@
                 <p>【奥斯卡级】大佬圣诞节拉伸角度看</p>
             </div>
             <div class="banner-content">
-                <div class="b-a lis fu4   zu_a  zi_rrr right_aa ">
-                    <ul class="dianji_a bo_5 overflow ">
-                        <li class="beibai bo_12 baoche">包车租车</li>
-                        <li class="beibai bo_12"><a href="../C/C1-1.html">短程接送</a></li>
-                        <li class="beibai"><a href="../D/D1-1.html">接送机</a></li>
-                    </ul>
-                </div>
+            <carNav carType = "1" ></carNav>
 
-                <!-- <div class="banner-content-con"> -->
             <section class="col-md-12 ez-index-wrap ez-custom-search" style="overflow: hidden;">
                 <form class="form-horizontal">
                     <div class="col-md-4 col-sm-4 col-xs-4">
@@ -121,6 +114,7 @@ import ezContainer from "components/home/ezContainer"
 import ezFooter from "components/home/ezFooter"
 import ezAside from "components/home/ezAside"
 import ezModule from "components/home/ezModule"
+import carNav from "components/car/carNav"
 import { mapGetters, mapState, mapMutations } from 'vuex'
 import { 
     getCityList
@@ -156,7 +150,8 @@ export default {
         ezContainer,
         ezFooter,
         ezAside,
-        ezModule
+        ezModule,
+        carNav,
     },
     created() {
         this.getCityList();
@@ -191,7 +186,7 @@ export default {
                 childNum: this.childNum,  
                 bagNum: this.bagNum,  
             })
-            this.$router.push("carInfo");
+            this.$router.push("carCharteredInfo");
         },
     }
 }

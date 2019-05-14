@@ -208,7 +208,7 @@ export default {
                 orderType: 1,
             })){
                 this.successMsg('支付成功',()=>{
-                       this.$router.push("carSuccess")
+                       this.$router.push("carCharteredSuccess")
                 });
             }
         },

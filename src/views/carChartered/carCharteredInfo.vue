@@ -832,7 +832,7 @@ export default {
                 guideInfo: this.guideInfo, //导游详情
                 guideType: this.guideType, //导游类型
             })
-            this.$router.push("carSure");
+            this.$router.push("carCharteredSure");
         },
         //导游确定订单
         guideSure: function () {
@@ -933,13 +933,15 @@ export default {
                     if (carid == car.id) {
                         let map = {};
                         map["carid"] = car.id;
-                        map["carType"] = 4;
+                        map["carType"] = 1;
                         map["carName"] = car.carName;
                         map["carPrice"] = car.price;
                         map["carImg"] = car.carImg;
                         map["seatNum"] = car.seatNum;
                         map["bagNum"] = car.bagNum;
                         map["comfort"] = car.comfort;
+                        map["dayDate"] = 0;
+                        map["dayRange"] = 0;
                         this.addCarList.push(map);
                         this.carNum++;
                         Vue.set(this.carList[key], "carShow", true);
@@ -1006,21 +1008,21 @@ export default {
         },
         //点赞-取消点赞
         async digComment (id, index1, index2) {
-        if(this.loginType == 1){
-            this.loginFlagChange(1);
-            return;
-        }
-        let data = await digComment({
-            typeId: id,
-            digType: 1,
-        })
-        if (data) {
-            Vue.set(this.carList[index1].commentList[index2], "commentList", this.carList[index1].commentList[index2].digNum++);
-             this.successMsg("点赞成功");
-        } else {
-            Vue.set(this.carList[index1].commentList[index2], "commentList", this.carList[index1].commentList[index2].digNum--);
-             this.successMsg("取消点赞成功");
-        }
+            if(this.loginType == 1){
+                this.loginFlagChange(1);
+                return;
+            }
+            let data = await digComment({
+                typeId: id,
+                digType: 1,
+            })
+            if (data) {
+                Vue.set(this.carList[index1].commentList[index2], "commentList", this.carList[index1].commentList[index2].digNum++);
+                this.successMsg("点赞成功");
+            } else {
+                Vue.set(this.carList[index1].commentList[index2], "commentList", this.carList[index1].commentList[index2].digNum--);
+                this.successMsg("取消点赞成功");
+            }
         },
         //初始化二级评论分页
         commonPage2: function () {
@@ -1471,6 +1473,7 @@ export default {
                 map["airNo"] = "";
                 map["serviceid"] = "";
                 map["range"] = "";
+                map["day"] = index + 1;
                 Vue.set(map, "hotelInforDetails", []);
                 Vue.set(map, "hotelRoomNum", 0);
                 Vue.set(map, "hotelRoomPrice", 0);
