@@ -62,7 +62,7 @@ export default {
             if (data) {
                 this.addLogin(data);
                 this.loginFlagChange(0);
-                   this.successMsg("登录成功");
+                this.successMsg("登录成功");
             }
 
         },

@@ -3,26 +3,16 @@
  * @Author: 彭善智
  * @LastEditors: 彭善智
  * @Date: 2019-03-12 22:51:19
- * @LastEditTime: 2019-05-09 15:39:47
+ * @LastEditTime: 2019-05-14 14:27:35
  */
-
-import store from '@/store/index'
 import ajax from '../api/fetch';
 
-//判断是否登录
-export const fnIsLogin = () => {
-    if (isNull(store.state.uid)) {
-        return false;
-    }
-    return true;
-}
-
-export const nullArray = str =>{
+//判断数组，对象是否为空
+export const arrayisBlank = str =>{
   return Object.keys(str).length == 0;
 }
 
-
-//判断是否为空
+//判断对象是否为空
 export const isNull = (...str) => {
   let flag = false;
   for (const list of str) {
@@ -32,6 +22,55 @@ export const isNull = (...str) => {
   }
   return flag;
 }
+
+
+//判断对象类型
+export const getObjType = obj => {
+  let toString = Object.prototype.toString;
+  let map = {
+      '[object Boolean]': 'boolean',
+      '[object Number]': 'number',
+      '[object String]': 'string',
+      '[object Function]': 'function',
+      '[object Array]': 'array',
+      '[object Date]': 'date',
+      '[object RegExp]': 'regExp',
+      '[object Undefined]': 'undefined',
+      '[object Null]': 'null',
+      '[object Object]': 'object'
+  };
+  if (obj instanceof Element) {
+      return 'element';
+  }
+  return map[toString.call(obj)];
+};
+
+/**
+* 对象深拷贝
+*/
+export const deepClone = data => {
+  let type = getObjType(data);
+  let obj;
+  if (type === 'array') {
+      obj = [];
+  } else if (type === 'object') {
+      obj = {};
+  } else {
+      //不再具有下一层次
+      return data;
+  }
+  if (type === 'array') {
+      for (let i = 0, len = data.length; i < len; i++) {
+          obj.push(deepClone(data[i]));
+      }
+  } else if (type === 'object') {
+      for (let key in data) {
+          obj[key] = deepClone(data[key]);
+      }
+  }
+  return obj;
+};
+
 
 //对象深拷贝  不可为{} 会调对象原生属性的toString()方法转换成"[object Object]"
 export const copy = (str) => {

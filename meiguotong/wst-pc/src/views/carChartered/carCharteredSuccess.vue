@@ -18,7 +18,7 @@
                     </div>
                     <div class="content-order-details-btn">
                         <router-link :to="{ name: 'user'}" tag="div" >查看订单</router-link>
-                        <router-link :to="{ path: 'carIndex'}" tag="div" >返回包车租车</router-link>
+                        <router-link :to="{ path: 'carCharteredIndex'}" tag="div" >返回包车租车</router-link>
                     </div>
                     <p>如有疑问,请致电话{{comProtocol.phone}}</p>
                 </div>

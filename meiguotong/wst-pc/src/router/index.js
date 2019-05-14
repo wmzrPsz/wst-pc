@@ -3,7 +3,7 @@
  * @Author: 彭善智
  * @LastEditors: 彭善智
  * @Date: 2019-04-24 09:56:10
- * @LastEditTime: 2019-05-13 12:03:55
+ * @LastEditTime: 2019-05-14 11:11:53
  */
 // import Vue from 'vue'
 // import Router from 'vue-router'
@@ -14,6 +14,7 @@ import soptRouter from './modules/soptRouter'
 import cruiseRouter from './modules/cruiseRouter'
 import tourRouter from './modules/tourRouter'
 import carCharteredRouter from './modules/carCharteredRouter'
+import carShortRouter from './modules/carShortRouter'
 
 
 const createRouter = () =>  new VueRouter({
@@ -32,6 +33,7 @@ const createRouter = () =>  new VueRouter({
     cruiseRouter,
     tourRouter,
     carCharteredRouter,
+    carShortRouter,
     {
       path: '*',
       component: ()=> import( '@/views/error/404'),
