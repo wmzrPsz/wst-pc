@@ -207,7 +207,7 @@ export default {
                 carInfor:JSON.stringify(this.addCarList),
                 travelInfor:JSON.stringify(this.travelInfor),
                 orderMember:JSON.stringify(orderMember),
-                insuranceid:this.insuranceid,
+                insuranceid: this.insurance.id,
                 guideid:this.guideInfo.guideid,
                 guideType:this.guideType,
             },'post')

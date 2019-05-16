@@ -764,9 +764,9 @@ export default {
         }
     },
     computed: {
-        ...mapState("carChartered",["startCity","startCityName","startAddress","startDate","endDate","adultNum","childNum","bagNum"]),
+        ...mapState("carChar",["startCity","startCityName","startAddress","startDate","endDate","adultNum","childNum","bagNum"]),
         ...mapState(["loginType","currencySign"]),
-        ...mapGetters("carChartered",["dayNum"]),
+        ...mapGetters("carChar",["dayNum"]),
         orderPrice: function () {  //订单价格
             let price = 0;
             for (const orderCar of Object.values(this.orderCarDate)) {
@@ -814,7 +814,7 @@ export default {
     },
     methods: {
     ...mapMutations(["loginFlagChange"]),
-    ...mapMutations("carChartered",["stateChange"]),
+    ...mapMutations("carChar",["stateChange"]),
         //导游类型改变
         guideChange: function(){
             for (const guide of Object.values(this.guideList)) {
@@ -832,7 +832,7 @@ export default {
                 guideInfo: this.guideInfo, //导游详情
                 guideType: this.guideType, //导游类型
             })
-            this.$router.push("carCharteredSure");
+            this.$router.push("carCharSure");
         },
         //导游确定订单
         guideSure: function () {

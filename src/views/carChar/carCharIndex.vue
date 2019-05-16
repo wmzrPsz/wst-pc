@@ -12,7 +12,7 @@
             <div class="banner-content">
             <carNav carType = "1" ></carNav>
 
-            <section class="col-md-12 ez-index-wrap ez-custom-search" style="overflow: hidden;">
+            <section class="col-md-12 ez-index-wrap ez-custom-search" >
                 <form class="form-horizontal">
                     <div class="col-md-4 col-sm-4 col-xs-4">
                         <h4 class="ez-mb-md">地点</h4>
@@ -157,7 +157,7 @@ export default {
         this.getCityList();
     },
     methods: {
-         ...mapMutations('carChartered',['stateChange']),
+         ...mapMutations('carChar',['stateChange']),
         //获取全部城市
         async getCityList() {
             this.cityList = await getCityList({});
@@ -186,7 +186,7 @@ export default {
                 childNum: this.childNum,  
                 bagNum: this.bagNum,  
             })
-            this.$router.push("carCharteredInfo");
+            this.$router.push("carCharInfo");
         },
     }
 }
