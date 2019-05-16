@@ -136,11 +136,11 @@ export default {
         }
     },
     computed: {
-        ...mapState("carChartered", ["startCity", "startCityName", "startAddress", "startDate","endDate",
+        ...mapState("carChar", ["startCity", "startCityName", "startAddress", "startDate","endDate",
         "adultNum","childNum","bagNum","travelInfor","addCarList","guideInfo","guideType"]),
         ...mapState( "order", [ "contactsName", "contactsMobile", "remark", "orderMember", "insurance" ]),
         ...mapState(["currencySign"]),
-        ...mapGetters("carChartered",["dayNum","orderPrice"]),
+        ...mapGetters("carChar",["dayNum","orderPrice"]),
         playNum(){
             return `${this.adultNum}成人${this.childNum}儿童`
         }
@@ -157,7 +157,7 @@ export default {
         orderIcon,
     },
     methods: {
-        ...mapMutations("carChartered",["stateChange"]),
+        ...mapMutations("carChar",["stateChange"]),
         //确定订单
         async sureorder() {
             if(this.loginType == 1){
@@ -196,13 +196,14 @@ export default {
                 carInfor:JSON.stringify(this.addCarList),
                 travelInfor:JSON.stringify(this.travelInfor),
                 orderMember:JSON.stringify(orderMember),
-                insuranceid:this.guideInfo.guideid,
+                guideid:this.guideInfo.guideid,
+                insuranceid:this.insurance.id,
             },'post') 
             if(data) {
                 this.stateChange({
                     orderid: data
                 });
-                this.$router.push("carCharteredPay")
+                this.$router.push("carCharPay")
             }
         },
         //获取所有酒店

@@ -187,8 +187,8 @@ export default {
     },
     computed: {
         ...mapState(["currencySign"]),
-        ...mapGetters("carChartered",["orderPrice"]),
-        ...mapState("carChartered",["orderid"])
+        ...mapGetters("carChar",["orderPrice"]),
+        ...mapState("carChar",["orderid"])
     },
     created() {
         this.getOrderInfo();
@@ -208,7 +208,7 @@ export default {
                 orderType: 1,
             })){
                 this.successMsg('支付成功',()=>{
-                       this.$router.push("carCharteredSuccess")
+                       this.$router.push("carCharSuccess")
                 });
             }
         },

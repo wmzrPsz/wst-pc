@@ -5,7 +5,7 @@
 </template>
 <script>
 export default {
-    name: "carIndex",
+    name: "carTranIndex",
     data() {
         return {
             
