@@ -3,7 +3,7 @@
  * @Author: 彭善智
  * @LastEditors: 彭善智
  * @Date: 2019-04-24 09:56:10
- * @LastEditTime: 2019-05-15 16:16:50
+ * @LastEditTime: 2019-05-16 17:19:31
  */
 // import Vue from 'vue'
 // import Router from 'vue-router'
@@ -16,6 +16,7 @@ import tourRouter from './modules/tourRouter'
 import carCharRouter from './modules/carCharRouter'
 import carShortRouter from './modules/carShortRouter'
 import carTranRouter from './modules/carTranRouter'
+import gameRouter from './modules/gameRouter'
 
 
 const createRouter = () =>  new VueRouter({
@@ -36,6 +37,7 @@ const createRouter = () =>  new VueRouter({
     carCharRouter,
     carShortRouter,
     carTranRouter,
+    gameRouter,
     {
       path: '*',
       component: ()=> import( '@/views/error/404'),
