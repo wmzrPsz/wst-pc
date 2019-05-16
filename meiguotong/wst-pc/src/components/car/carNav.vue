@@ -21,10 +21,10 @@ export default {
         navClick(type){
             let url;
             switch (type) {
-                case 1: url = "/carChartered"; break;
+                case 1: url = "/carChar"; break;
                 case 2: url = "/carShort"; break;
-                case 3: url = "/carTransfer"; break;
-                default: url = "/carChartered"; break;
+                case 3: url = "/carTran"; break;
+                default: url = "/carChar"; break;
             }
             this.$router.push(url);
         },
