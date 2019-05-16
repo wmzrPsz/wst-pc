@@ -3,7 +3,7 @@
  * @Author: 彭善智
  * @LastEditors: 彭善智
  * @Date: 2019-04-24 18:26:49
- * @LastEditTime: 2019-05-06 12:16:15
+ * @LastEditTime: 2019-05-15 10:41:26
  */
 import { getRoutePriceDetails } from 'getData'
 import { nowDate, copy } from 'utils/common'
@@ -36,7 +36,7 @@ const getters = {
     orderPrice: (state)=> {
       return state.oneNum * state.oneCost + state.twoNum * state.twoCost + state.threeNum * state.threeCost +
             state.fourNum * state.fourCost + state.arrangeNum * state.arrangeCost + 
-            (state.adultNum + state.childNum) * (state.route ? state.route.price : 0 )
+            // (state.adultNum + state.childNum) * (state.route ? state.route.price : 0 )
             + ((state.insurance? state.insurance.price * (state.childNum + state.adultNum) : 0));
     },
     //选中的日期  yyyy-mm-dd

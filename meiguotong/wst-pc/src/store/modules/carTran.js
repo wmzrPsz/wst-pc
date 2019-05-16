@@ -1,26 +1,29 @@
 /*
- * @Description:  短程接送
+ * @Description:  接送机
  * @Author: 彭善智
  * @LastEditors: 彭善智
  * @Date: 2019-04-24 18:26:49
- * @LastEditTime: 2019-05-16 10:23:16
+ * @LastEditTime: 2019-05-16 15:20:57
  */
 
 
 const state = {
-    startCity:"",  //上车城市
-    startCityName:"",// 上车城市名称
-    startAddress:"",  //上车详细地址
-    endCity:"",   //下车城市
-    endCityName:"",// 下车城市名称
-    endAddress:"",   //下车详细地址
-    startDate:"", //上车时间
-    adultNum:1,   //大人数量
-    childNum:0,   //小孩数量
-    bagNum:0,   //包裹数量
+    airNo:"",  //航班号
+    sendAirport:"",  //起飞机场
+    sendDate:"",  //起飞时间
+    reachAirport:"",  //到达机场
+    reachDate:"",  //到达时间
+    startDate:"",  //接送机时间
+    startCity:"",  //接送机城市
+    startCityName:"",  //接送机城市名称
+    startAddress:"",  //接送机详细地址
+    adultNum: 0,   //大人数量
+    childNum: 1,   //小孩数量
+    bagNum: 0,   //包裹数量
+    orderType: 1,  //1接机  2送机   
 
-    carTime: "",   //行驶时间
-    distance: "",  //行驶距离
+    carTime: 0,   //行驶时间
+    distance: 0,  //行驶距离
     addCarList: [], //选择的车辆信息
     orderid: "",  //订单ID
 }
@@ -36,7 +39,7 @@ const getters = {
      //保险
       price += ((rootState.order.insurance? rootState.order.insurance.price * (state.childNum + state.adultNum) : 0));
       return price;
-      },
+    },
 }
 
 const mutations = {
