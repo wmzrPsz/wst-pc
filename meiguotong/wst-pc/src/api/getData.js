@@ -3,11 +3,11 @@
  * @Author: 彭善智
  * @LastEditors: 彭善智
  * @Date: 2019-03-29 13:12:37
- * @LastEditTime: 2019-05-13 19:22:11
+ * @LastEditTime: 2019-05-17 00:44:17
  */
 
 import ajax from './fetch'
-import {imgUpload} from "../utils/common"
+import { uploadImg } from "../utils/common"
 
 
 //登录
@@ -22,7 +22,8 @@ export const checkEmail = (param = {}, type = 'GET') => ajax( process.env.VUE_AP
 export const checkRegister = (param = {}, type = 'GET') => ajax( process.env.VUE_APP_PROXY_API +'/forlogin/checkRegister', param, type);
 //修改密码
 export const updatePassword = (param = {}, type = 'GET') => ajax( process.env.VUE_APP_PROXY_API +'/forlogin/updatePassword', param, type);
-
+//商家注册接口
+export const businessRegister = (param = {}, type = 'GET') => ajax( process.env.VUE_APP_PROXY_API +'/forlogin/businessRegister', param, type);
 
 
 //获取会员详情
@@ -101,7 +102,7 @@ export const saveGuideOrder = (param = {}, type = 'GET') => ajax( process.env.VU
 
 
 //图片上传
-export const imgUp = () => imgUpload( process.env.VUE_APP_PROXY_API +'/common/imgUpload')
+export const imgUpload = () => uploadImg( process.env.VUE_APP_PROXY_API +'/common/imgUpload')
 //获取导航栏
 export const getComNavigation = (param = {}, type = 'GET') => ajax( process.env.VUE_APP_PROXY_API +'/common/getComNavigation', param, type);
 //获取标签属性
@@ -317,7 +318,5 @@ export const getModuleDataInfo = (param = {}, type = 'GET') => ajax( process.env
 // const cancelOrderUrl = baseUrl + "member/cancelOrder";
 // //支付接口
 // const payOrderUrl = baseUrl + "common/payOrder";
-// //商家注册接口
-// const BusinessRegisterUrl = baseUrl + "forlogin/BusinessRegister";
 
 

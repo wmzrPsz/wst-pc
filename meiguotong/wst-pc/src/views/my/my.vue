@@ -1,0 +1,115 @@
+<template>
+    <div>
+
+        <ezHeader></ezHeader>
+        <ezContainer></ezContainer>
+
+        <div class="container ez-container ez-user-content">
+<div class="aside-left">
+    <!--用户信息-->
+    <div class="aside-userinfo text-center">
+        <div class="aside-avatar">
+            <img :src="member.photo|| defaultPhoto"class="center-block">
+        </div>
+        <h4 class="username-text">{{member.nickName}}</h4>
+        <h5>手机号：{{member.phone}}</h5>
+        <h5><span class="ez-mr-sm">{{member.sex | sexVc}}</span><span>{{member.birthday}}</span></h5>
+        <div class="aside-userinfo-btn">
+            <a href="./P1-4.html" class="btn text-lightorange">编辑</a>
+            <a class="btn" @click.stop = "removeLogin">退出登录</a>
+        </div>
+    </div>
+
+    <!--个人中心-->
+    <div class="ez-aside-card">
+        <div class="aside-card-title bg-style4">
+            <h4 class="title">个人中心</h4>
+        </div>
+        <ul class="aside-user-list text-center htmlUrl">
+            <router-link :to="{name: 'myOrder'}" tag="li" active-class="active"><a>我的订单</a><i></i></router-link>
+            <router-link :to="{name: 'myAfter'}" tag="li" active-class="active"><a>售后订单</a><i></i></router-link>
+            <router-link :to="{name: 'myCollection'}" tag="li" active-class="active"><a>我的收藏</a><i></i></router-link>
+             <router-link :to="{name: 'myInfo'}" tag="li" active-class="active"><a>个人信息</a><i></i></router-link>
+             <router-link :to="{name: 'myNews'}" tag="li" active-class="active"><a>消息中心</a><i></i></router-link>
+             <router-link :to="{name: 'myDraft'}" tag="li" active-class="active"><a>我的草稿</a><i></i></router-link>
+            <li><a href="./P1-7.html">财务管理</a><i></i></li>
+            <li><a href="./P1-8.html">常用联系人</a><i></i></li>
+        </ul>
+    </div>
+
+    <div class="ez-aside-card">
+        <div class="aside-card-title bg-style4">
+            <h4 class="title">玩家中心</h4>
+        </div>
+        <ul class="aside-user-list text-center htmlUrl">
+            <li><a href="./P1-9.html">玩家认证</a><i></i></li>
+            <li><a href="./P1-9-1.html">路线规划</a><i></i></li>
+            <li><a href="./P1-3.html">我的收藏</a><i></i></li>
+            <li><a href="./P1-9-3.html">价格设置</a><i></i></li>
+            <li><a href="./P1-9-5.html">玩家订单管理</a><i></i></li>
+            <li><a href="./P1-9-4.html">玩家时间管理</a><i></i></li>
+        </ul>
+    </div>
+
+    <div class="ez-aside-card">
+        <div class="aside-card-title bg-style4">
+            <h4 class="title">公司账号信息</h4>
+        </div>
+        <ul class="aside-user-list text-center htmlUrl">
+            <li><a href="./P1-10.html">公司信息</a><i></i></li>
+            <li><a href="./P1-10-1.html">旅行社子账号管理</a><i></i></li>
+        </ul>
+    </div>
+
+    <div class="ez-aside-card">
+        <div class="aside-card-title bg-style4">
+            <h4 class="title">关于我们</h4>
+        </div>
+        <ul class="aside-user-list text-center">
+            <li><a href="./P1-11.html">关于我们</a><i></i></li>
+        </ul>
+    </div>
+
+</div>
+             <router-view></router-view>
+        </div>
+
+
+        <ezFooter></ezFooter>
+        <ezAside></ezAside>
+
+ <router-view></router-view>
+
+    </div>
+</template>
+<script>
+import ezHeader from "components/home/ezHeader"
+import ezContainer from "components/home/ezContainer"
+import ezFooter from "components/home/ezFooter"
+import ezAside from "components/home/ezAside"
+import ezModule from "components/home/ezModule"
+import carNav from "components/car/carNav"
+import { mapGetters, mapState, mapMutations } from 'vuex'
+export default {
+    name: "myIndex",
+    data() {
+        return {
+            
+        }
+    },
+    computed: {
+        ...mapState(["member"])
+    },
+    components: {
+        ezHeader,
+        ezContainer,
+        ezFooter,
+        ezAside,
+        ezModule,
+        carNav,
+    },
+    methods: {
+        ...mapMutations(['removeLogin']),
+    },
+}
+</script>

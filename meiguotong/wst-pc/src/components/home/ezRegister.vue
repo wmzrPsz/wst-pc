@@ -57,7 +57,7 @@
          <div class="lan_jia_d_e"><i>注册即表示你已同意</i><i style="color: #1D9CFA">《万事通用户协议》</i></div>
          <div class="lan_jia_d_f">
          <i @click.stop="loginFlagChange(1)">已有账号，立即登陆</i>
-         <i>创建商家用户></i>
+         <i @click="geToShop">创建商家用户></i>
          </div>
        </div>
       </div>
@@ -167,7 +167,8 @@ export default {
         },
         //跳转到商家
         geToShop(){
-            location.href = "../index/A1-4.html";
+            this.loginFlagChange(0)
+            this.$router.push("homeBus")
         },
     },
 
