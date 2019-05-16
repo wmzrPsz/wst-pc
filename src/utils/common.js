@@ -3,7 +3,7 @@
  * @Author: 彭善智
  * @LastEditors: 彭善智
  * @Date: 2019-03-12 22:51:19
- * @LastEditTime: 2019-05-14 14:27:35
+ * @LastEditTime: 2019-05-16 22:19:30
  */
 import ajax from '../api/fetch';
 
@@ -179,7 +179,7 @@ function Base64(result){
 }
 
 //上传图片
-export const imgUpload = (url) => {
+export const uploadImg = (url) => {
   return new Promise((resolve, reject) => {
     let event = window.event || arguments.callee.caller.arguments[0];
     let file = event.target.files[0];

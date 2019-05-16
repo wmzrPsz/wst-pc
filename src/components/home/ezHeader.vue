@@ -33,7 +33,7 @@
                     <span class="caret" v-if="loginType == 2"></span>
                 </a>
                 <ul class="dropdown-menu" v-if="loginType == 2">
-                    <li><a href="../p-my/P1-4.html">个人资料</a></li>
+                    <li><router-link :to="{ name: 'my'}" tag="a">个人资料</router-link></li>
                     <!--<li><a href="#">玩家中心</a></li>-->
                     <!--<li><a href="#">关于我们</a></li>-->
                     <li role="separator" class="divider"></li>
@@ -81,6 +81,7 @@ import { isNull } from "@/utils/common";
 import { mapState, mapMutations } from "vuex";
 import ezLogin from "components/home/ezLogin"
 import ezRegister from "components/home/ezRegister"
+import ezForest from "components/home/ezForest"
 export default {
     name: "ezHeader",
     data () {
@@ -95,7 +96,7 @@ export default {
         currentTabComponent() {
             if (this.loginFlag == 1) return "ezLogin";
             else if (this.loginFlag == 2) return "ezRegister";
-            // else if (this.loginFlag == 3) return "ezForest";
+            else if (this.loginFlag == 3) return "ezForest";
             else return "";
         },
         //语言名称
@@ -110,7 +111,7 @@ export default {
     components: {
         ezLogin,
         ezRegister,
-    //     // // "ez-forest": ezForest,
+        ezForest,
     },
     created() {
         this.languageidFlag = this.languageid;

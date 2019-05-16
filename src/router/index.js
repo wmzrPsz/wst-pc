@@ -3,11 +3,11 @@
  * @Author: 彭善智
  * @LastEditors: 彭善智
  * @Date: 2019-04-24 09:56:10
- * @LastEditTime: 2019-05-16 17:19:31
+ * @LastEditTime: 2019-05-16 23:50:40
  */
 // import Vue from 'vue'
 // import Router from 'vue-router'
-// import homeRouter from './modules/homeRouter'
+import homeRouter from './modules/homeRouter'
 import ruleRouter from './modules/ruleRouter'
 import routeRouter from './modules/routeRouter'
 import soptRouter from './modules/soptRouter'
@@ -17,6 +17,7 @@ import carCharRouter from './modules/carCharRouter'
 import carShortRouter from './modules/carShortRouter'
 import carTranRouter from './modules/carTranRouter'
 import gameRouter from './modules/gameRouter'
+import myRouter from './modules/myRouter'
 
 
 const createRouter = () =>  new VueRouter({
@@ -25,10 +26,11 @@ const createRouter = () =>  new VueRouter({
   routes: [
     {
       path: "/",
-      component: ()=> import( '@/views/home/index'),
-      name: "index",
+      component: ()=> import( '@/views/home/homeIndex'),
+      redirect: '/home',
       meta: { title: "首页", requireAuth: false}
     },
+    homeRouter,
     ruleRouter,
     routeRouter,
     soptRouter,
@@ -38,6 +40,7 @@ const createRouter = () =>  new VueRouter({
     carShortRouter,
     carTranRouter,
     gameRouter,
+    myRouter,
     {
       path: '*',
       component: ()=> import( '@/views/error/404'),
