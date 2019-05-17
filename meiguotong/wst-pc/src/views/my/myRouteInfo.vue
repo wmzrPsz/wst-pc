@@ -195,7 +195,7 @@ export default {
     data() {
         return {
             list: {},
-            id: "",
+            id: this.$route.params.id,
             um: "",  //百度编辑器对象
             weekList: [],  //星期
             dayList: [],  //天数
@@ -301,13 +301,13 @@ export default {
             for (const [key, value] of Object.entries(this.list)) {
                 if (value === "" || value === null || value === undefined) {
                     console.log(key);
-                    layerMsg("请完善数据");
+                    this.infoMsg("请完善数据");
                     return;
                 }
             }
             if (await updateGuideRoute(this.list)){
-                layer.msg('保存成功', function () {
-                    location.href = "./P1-9-1.html";
+                 this.successMsg('保存成功', () => {
+                    this.$router.push("myRoute")
                 });
             }
         },
@@ -317,7 +317,7 @@ export default {
                 guideRouteid: this.id,
             })
             if(data) {
-                this.list = data.guideRoute;
+                this.list = data;
                 if (this.list.scenice) {
                     this.sceniceIds = this.list.scenice.split(",");
                 }

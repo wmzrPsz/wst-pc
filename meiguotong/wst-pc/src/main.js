@@ -73,6 +73,7 @@ Vue.use(VueLazyload,{
   Object.keys(global).forEach(key => {
     // Vue.set(Vue.prototype,key,global[key])
     Vue.prototype[key] =  global[key]
+    // console.log(key)
   })
 
 
@@ -84,8 +85,8 @@ Vue.use(VueLazyload,{
  * next() 进行管道中的下一个钩子 如果全部钩子执行完了，则状态就是 confirmed （确认的）
  */
 router.beforeEach((to, from, next) => {
-  // console.log(to)
-  // console.log(from)
+  console.log(to.fullPath)
+  console.log(from.fullPath)
   if(to.meta.requireAuth){ // 判断该路由是否需要登录权限
     if(store.state.sessionToken){ // 通过vuex state获取当前的token是否存在
       next();

@@ -1,3 +1,6 @@
+
+import router from "../router/index";
+
 const mutations = {
       //登录
       addLogin: (state,data)=> {
@@ -9,6 +12,7 @@ const mutations = {
         console.log("退出登录");
         [state.loginUid, state.loginKey, state.loginTime, state.loginType] = ['', '', '', 1];
         console.log(state.loginUid,state.loginKey,state.loginTime);
+        router.push("/")
       },
       //语言改变
       languageChange: (state, languageid)=> {

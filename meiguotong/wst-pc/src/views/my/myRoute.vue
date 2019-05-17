@@ -23,7 +23,9 @@
                                     <div class="text-orange ez-price"><span>¥</span>{{list.price}}<span class="text-gray">/天起</span></div>
                                 </div>
                                 <div class="pull-right text-gray">
-                                    <a class="btn ez-btn active ez-mt-10" :href="'./P1-9-2.html?id='+list.guideRouteid">编辑</a>
+                                    <!-- <a class="btn ez-btn active ez-mt-10" :href="'./P1-9-2.html?id='+list.guideRouteid">编辑</a> -->
+                                    <router-link :to="{name:'myRouteInfo',params: { id: list.guideRouteid }}" tag="a"  
+                                    class="btn ez-btn active ez-mt-10">编辑</router-link>
                                 </div>
                             </div>
                         </div>
