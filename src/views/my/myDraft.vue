@@ -65,7 +65,6 @@
             </div>
 </template>
 <script>
-
 import { 
     myDraft, 
     deleteDraft, 
