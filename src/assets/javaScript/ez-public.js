@@ -252,18 +252,24 @@ $(function(){
         $(".travel-info-local .local-info-left>img").attr('src',imgsrc);
     })
     //M1-1目的地详情:全文展开已收起
-    $(".ez-place-open").click(function(){
+    $("#app").on("click", ".ez-place-open", function(){
         //$(this).parents('.place-city-text').find('.text-content').animate({height:'auto'});
         $(this).parents('.place-city-text').find('.text-content').addClass('open');
         $(this).hide();
         $(".ez-place-close").show();
     });
-    $(".ez-place-close").click(function(){
+    $("#app").on("click", ".ez-place-close", function(){
         //$(this).parents('.place-city-text').find('.text-content').animate({height:'100px'});
         $(this).parents('.place-city-text').find('.text-content').removeClass('open');
         $(this).hide();
         $(".ez-place-open").show();
     });
+    $("#app").on("click", ".place-video-play", function(){
+        $("#vedioAlertModal").show();
+    });
+
+
+
 
     //关于我们：列表切换
     // $(".about-nav-list > li ").click(function(){

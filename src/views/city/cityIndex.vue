@@ -3,7 +3,7 @@
         <ezHeader></ezHeader>
         <ezContainer></ezContainer>
         <citySearchBar></citySearchBar>
-        <div class="container-fluid bg-scenic ez-search ez-place-search">
+        <div class="container ez-container text-darkgray">
             <ezModule html-name="首页" html-seal="内容模块"></ezModule>
         </div>
         <ezFooter></ezFooter>
@@ -31,6 +31,7 @@
     created () {
     console.log("----------------------------------------------------------------")
 },
+    
     components: {
     ezHeader,
     ezContainer,

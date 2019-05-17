@@ -28,7 +28,7 @@
                         <!-- defaultPhoto -->
                         <img alt="用户头像" v-lazy="member.photo" :key="member.photo">
                         <b class="text-black" v-if="loginType == 1" style="color: #2577e3;">未登录</b>
-                        <b class="text-black" v-if="loginType == 2">{{member.nickName}}</b>
+                        <b class="text-black" v-if="loginType == 2">list-inline text-center ez-navlistmember.nickName}}</b>
                     </span>
                     <span class="caret" v-if="loginType == 2"></span>
                 </a>
