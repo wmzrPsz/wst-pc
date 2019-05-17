@@ -3,7 +3,7 @@
  * @Author: 彭善智
  * @LastEditors: 彭善智
  * @Date: 2019-05-07 11:15:53
- * @LastEditTime: 2019-05-17 01:44:59
+ * @LastEditTime: 2019-05-17 10:54:54
  */
 
 const myRouter = {
@@ -47,6 +47,36 @@ const myRouter = {
             component: ()=> import('@/views/my/myDraft'),
             name: "myDraft",
             meta: { title: "我的草稿", requireAuth: false}
+        },
+        {
+            path:"myFinance",
+            component: ()=> import('@/views/my/myFinance'),
+            name: "myFinance",
+            meta: { title: "财务管理", requireAuth: false}
+        },
+        {
+            path:"myContacts",
+            component: ()=> import('@/views/my/myContacts'),
+            name: "myContacts",
+            meta: { title: "常用联系人", requireAuth: false}
+        },
+        {
+            path:"myPlayer",
+            component: ()=> import('@/views/my/myPlayer'),
+            name: "myPlayer",
+            meta: { title: "玩家认证", requireAuth: false}
+        },
+        {
+            path:"myRoute",
+            component: ()=> import('@/views/my/myRoute'),
+            name: "myRoute",
+            meta: { title: "路线规划", requireAuth: false}
+        },
+        {
+            path:"myRouteInfo",
+            component: ()=> import('@/views/my/myRouteInfo'),
+            name: "myRouteInfo",
+            meta: { title: "路线规划详情", requireAuth: false}
         },
     ]
 }

@@ -99,8 +99,8 @@
     </div>
 </template>
 <script>
-import { 
-    getCompush, 
+import {
+    getCompush,
     getComment,
      } from 'getData'
 export default {
@@ -164,7 +164,7 @@ export default {
         async getPushData() {
             let data = await getCompush({
                 pageNo:this.current_page,
-            }) 
+            })
             if(data) {
                 this.pushList = data.list;
                 this.totalPage1 = data.totalPage;
