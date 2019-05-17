@@ -17,7 +17,7 @@
                         <p>我们将安排好您的行程后，短信或邮箱通知您。</p>
                     </div>
                     <div class="content-order-details-btn">
-                        <router-link :to="{ name: 'user'}" tag="div" >查看订单</router-link>
+                        <router-link :to="{ name: 'myorder'}" tag="div" >查看订单</router-link>
                         <router-link :to="{ path: 'soptList'}" tag="div" >返回景点列表</router-link>
                     </div>
                     <p>如有疑问,请致电话{{comProtocol.phone}}</p>

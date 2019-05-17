@@ -275,7 +275,7 @@ $(function(){
     // });
 
     //关于我们：列表切换
-    $(".about-nav-list").on("click"," li ",function(){
+    $("#app").on("click",".about-nav-list li ",function(){
         var i=$(this).index();
         $(this).addClass("active").siblings("li").removeClass("active");
         $(this).parents(".wrap-about").find(".about-tabpane").eq(i).addClass("active").siblings(".about-tabpane").removeClass("active");

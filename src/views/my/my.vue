@@ -15,7 +15,7 @@
                 <h5>手机号：{{member.phone}}</h5>
                 <h5><span class="ez-mr-sm">{{member.sex | sexVc}}</span><span>{{member.birthday}}</span></h5>
                 <div class="aside-userinfo-btn">
-                    <a href="./P1-4.html" class="btn text-lightorange">编辑</a>
+                     <router-link :to="{name: 'myInfo'}" tag="a" class="btn text-lightorange">编辑</router-link>
                     <a class="btn" @click.stop = "removeLogin">退出登录</a>
                 </div>
             </div>
@@ -44,10 +44,10 @@
                 <ul class="aside-user-list text-center htmlUrl">
                     <router-link :to="{name: 'myPlayer'}" tag="li" active-class="active"><a>玩家认证</a><i></i></router-link>
                     <router-link :to="{name: 'myRoute'}" tag="li" active-class="active"><a>路线规划</a><i></i></router-link>
-                    <li><a href="./P1-3.html">我的收藏</a><i></i></li>
-                    <li><a href="./P1-9-3.html">价格设置</a><i></i></li>
-                    <li><a href="./P1-9-5.html">玩家订单管理</a><i></i></li>
-                    <li><a href="./P1-9-4.html">玩家时间管理</a><i></i></li>
+                     <router-link :to="{name: 'myCollection'}" tag="li" active-class="active"><a>我的收藏</a><i></i></router-link>
+                     <router-link :to="{name: 'myPrice'}" tag="li" active-class="active"><a>价格设置</a><i></i></router-link>
+                     <router-link :to="{name: 'myGameOrder'}" tag="li" active-class="active"><a>玩家订单管理</a><i></i></router-link>
+                     <router-link :to="{name: 'myDate'}" tag="li" active-class="active"><a>玩家时间管理</a><i></i></router-link>
                 </ul>
             </div>
 
@@ -56,8 +56,9 @@
                     <h4 class="title">公司账号信息</h4>
                 </div>
                 <ul class="aside-user-list text-center htmlUrl">
-                    <li><a href="./P1-10.html">公司信息</a><i></i></li>
-                    <li><a href="./P1-10-1.html">旅行社子账号管理</a><i></i></li>
+                    <li><a href="./P1-10.html"></a><i></i></li>
+                    <router-link :to="{name: 'myCompany'}" tag="li" active-class="active"><a>公司信息</a><i></i></router-link>
+                    <router-link :to="{name: 'mySub'}" tag="li" active-class="active"><a>旅行社子账号管理</a><i></i></router-link>
                 </ul>
             </div>
 
@@ -66,7 +67,7 @@
                     <h4 class="title">关于我们</h4>
                 </div>
                 <ul class="aside-user-list text-center">
-                    <li><a href="./P1-11.html">关于我们</a><i></i></li>
+                     <router-link :to="{name: 'myAbout'}" tag="div" active-class="active"><a>关于我们</a><i></i></router-link>
                 </ul>
             </div>
 
@@ -77,8 +78,6 @@
 
         <ezFooter></ezFooter>
         <ezAside></ezAside>
-
- <router-view></router-view>
 
     </div>
 </template>
