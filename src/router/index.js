@@ -42,21 +42,22 @@ const createRouter = () =>  new VueRouter({
     gameRouter,
     myRouter,
     {
-      path: '*',
-      component: ()=> import( '@/views/error/404'),
-      meta: { title: 404, requireAuth: false, cache: true}
-    },
-    {
       path:"/city",
       component: ()=> import('@/views/city/cityIndex'),
       name: "popular cities",
       meta: { title: "热门城市", requireAuth: false}
     },
     {
-        path: '/city/:id',
+        path: '/city/:id(\\d+)',
         component: ()=> import('@/views/city/cityDetail'),
         meta: { title: "热门城市详情", requireAuth: false}
-    }
+    },
+    {
+        path: '*',
+        component: ()=> import( '@/views/error/404'),
+        meta: { title: 404, requireAuth: false, cache: true}
+    },
+
   ]
 })
 
