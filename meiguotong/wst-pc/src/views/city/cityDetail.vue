@@ -1,113 +1,106 @@
-<<template>
+<template>
     <div>
         <ezHeader></ezHeader>
         <ezContainer></ezContainer>
-        <div class="container-fluid ez-search-wrap">
-            <div class="container ez-container ez-search">
-                <form class="ez-search-form">
-                    <h4 class="text-white">开启你的旅程</h4>
-                    <div class="input-group input-group-lg ez-search-box">
-                        <input type="text" class="form-control ez-search-input" placeholder="搜索旅行地/酒店/旅游/景点门票/交通"
-                            aria-describedby="basic-search">
-                        <a class="input-group-addon" id="basic-search" href="./pages/index/搜索-旅行.html"><i class="iconfont icon-search"></i></a>
-                    </div>
-                </form>
-            </div>
-            <div class="container ez-container">
-                 <ezModule html-name="首页" html-seal="内容模块"></ezModule>
-                <!--part23 目的地列表 start-->
-                <!-- <section class="col-md-12 ez-index-wrap ez-index-citylist">
-                    <h4 class="title">目的地列表</h4>
-                    <div class="row citylist-content">
-                        <div class="col-md-3">
-                            <ul class="country-list">
-                                <li class="active">美国</li>
-                                <li>中国</li>
-                                <li>加拿大</li>
-                            </ul>
-                        </div>
-                        <div class="col-md-9 city-box active">
-                            <ul class="city-list">
-                                <li><i>A</i><a>奥兰多</a><a>奥克兰</a><a>安大略</a></li>
-                                <li><i>B</i><a>波兹曼</a><a>缅因州·波特兰</a><a>波士顿</a><a>俄勒冈州·波特兰</a><a>巴尔的摩</a></li>
-                                <li><i>C</i><a>达拉斯</a><a>丹佛</a></li>
-                                <li><i>D</i><a>尔湾</a><a>奥克兰</a><a>安大略</a></li>
-                                <li><i>E</i><a>奥兰多</a><a>奥克兰</a><a>安大略</a></li>
-                                <li><i>F</i><a>费城</a></li>
-                            </ul>
-                            <ul class="city-list">
-                                <li><i>H</i><a>奥兰多</a><a>奥克兰</a><a>安大略</a></li>
-                                <li><i>I</i><a>奥兰多</a><a>奥克兰</a><a>安大略</a></li>
-                                <li><i>G</i><a>奥兰多</a><a>奥克兰</a><a>安大略</a></li>
-                                <li><i>K</i><a>奥兰多</a><a>奥克兰</a><a>安大略</a></li>
-                                <li><i>L</i><a>奥兰多</a><a>奥克兰</a><a>安大略</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-md-9 city-box">
-                            <ul class="city-list">
-                                <li><i>A</i><a>澳门</a><a>奥克兰</a><a>安大略</a></li>
-                                <li><i>B</i><a>北京</a><a>缅因州·波特兰</a></li>
-                                <li><i>C</i><a>达拉斯</a><a>丹佛</a></li>
-                                <li><i>D</i><a>大连</a><a>奥克兰</a><a>安大略</a></li>
-                                <li><i>E</i><a>奥兰多</a><a>奥克兰</a><a>安大略</a></li>
-                                <li><i>F</i><a>费城</a></li>
-                            </ul>
-                            <ul class="city-list">
-                                <li><i>H</i><a>海南</a><a>杭州</a><a>湖南</a></li>
-                                <li><i>I</i><a>奥兰多</a><a>奥克兰</a><a>安大略</a></li>
-                                <li><i>G</i><a>广东</a><a>广西</a><a>甘肃</a></li>
-                                <li><i>K</i><a>奥兰多</a><a>奥克兰</a><a>安大略</a></li>
-                                <li><i>L</i><a>兰州</a><a>奥克兰</a><a>安大略</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-md-9 city-box">
-                            <ul class="city-list">
-                                <li><i>M</i><a>蒙特利尔</a></li>
-                                <li><i>T</i><a>多伦多</a></li>
-                                <li><i>V</i><a>温哥华</a></li>
-                                <li><i>W</i><a>渥太华</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </section> -->
-                <!--part23 目的地列表 end-->
 
-                <!--part25 更多活动 start-->
-                <!-- <section class="col-md-12 ez-index-wrap ez-index-service">
-                    <div class="text-center">
-                        <div class="service-box">
-                            <a>
-                                <i class="iconfont icon-sun-half"></i>
-                                <h4 class="">阳光资讯</h4>
-                            </a>
+        <!-- 查看大图弹出框（Modal） -->
+        <div class="modal fade img-lager-modal" id="imgLagerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <!--<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>-->
+                        <button type="button" class="modal-close" data-dismiss="modal" aria-hidden="true"><i class="iconfont icon-close"></i></button>
+                        <h4 class="modal-title" >查看大图</h4>
+                    </div>
+                    <div class="modal-body ez-modal-img">
+                        <div class="modal-img pull-left">
+                            <div class="modal-img-lg"><img :src="currentBigPicUrl"></div>
+                            <div class="modal-img-xs">
+                                <div class="ez-scroll-content">
+                                    <div class="scroll-btns">
+                                        <a href="javascript:;" class="scroll-right"><i class="iconfont icon-next"></i></a>
+                                        <a href="javascript:;" class="scroll-left"><i class="iconfont icon-prev"></i></a>
+                                    </div>
+                                    <div class="scroll-wrap">
+                                        <div class="scroll-box">
+                                            <ul>
+                                                <li  v-for="(list,index) in city.photoList" :key="index" :class="{'active':list.flag}" @click="checkBigPic(list)">
+                                                    <a>
+                                                        <img :src="list" >
+                                                    </a>
+                                                </li>
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="service-box">
-                            <a>
-                                <i class="iconfont icon-app"></i>
-                                <h4 class="">加盟</h4>
-                            </a>
-                        </div>
-                        <div class="service-box">
-                            <a>
-                                <i class="iconfont icon-org"></i>
-                                <h4 class="">分销</h4>
-                            </a>
-                        </div>
-                        <div class="service-box">
-                            <a>
-                                <i class="iconfont icon-help"></i>
-                                <h4 class="">帮助</h4>
-                            </a>
-                        </div>
-                        <div class="service-box">
-                            <a>
-                                <i class="iconfont icon-feedback"></i>
-                                <h4 class="">体验反馈</h4>
-                            </a>
+                        <div class="modal-text pull-right">
+                            <h4 class="title">{{city.name}} <span>{{city.cityRemark}}</span></h4>
+                            <div class="content-text text-gray">
+                              {{city.cityDetails}}
+                            </div>
                         </div>
                     </div>
-                </section> -->
-                <!--part25 更多活动 end-->
+                </div>
+            </div>
+        </div>
+        <!-- 查看大图弹出框 /.modal -->
+        <div class="container ez-container">
+            <div class="ez-place-city">
+                <div class="place-city-img pull-left">
+                    <a data-toggle="modal" data-target="#imgLagerModal">
+                        <img :src="city.photoUrl" class="img-responsive">
+                        <div class="images-label text-center">{{getSize(city.photoList)}}张图片</div>
+                    </a>
+                </div>
+                <div class="place-city-text pull-right">
+                    <h4 class="title text-bold">{{city.cityName}}
+                        <small class="ez-ml-10">{{city.cityRemark}}</small>
+                        <small class="pull-right"><i class="iconfont icon-wind"></i>风&nbsp;&nbsp;26°C~28°C</small>
+                    </h4>
+                    <div class="text-content text-gray">
+                        {{city.cityDetails}}
+                    </div>
+
+                    <div class="btn-full-text">
+                        <a class="btn ez-place-open">查看全文 <i class="iconfont icon-down"></i></a>
+                        <a class="btn ez-place-close" style="display: none">收起全文 <i class="iconfont icon-up"></i></a>
+                    </div>
+
+                    <div class="col-md-12 col-sm-12 col-xs-12 ez-mb-md">
+                        <div class="pull-left place-video-play" id="viewCityDetailVedio" >
+                            <a class="text-blue" @click=""><i class="iconfont icon-bofang ez-mr-sm"></i>观看视频</a>
+                        </div>
+                        <div class="pull-right place-city-star">
+                            <div class="ez-star pull-left ez-mr-sm"></div>
+                            <a class="pull-left text-underline" href="#">{{getSize(city.remarks)}}条评价</a>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+                        <a class="btn btn-post-warning">发表游记</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Large modal -->
+        <div class="modal fade ez-player-modal" id="vedioAlertModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close video-close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">目的地视频</h4>
+                    </div>
+                    <div class="modal-body">
+                        <video :src="city.videoUrl" controls="controls" autoplay="autoplay" class="ez-video" style="width:100%;max-height:465px;"></video>
+                    </div>
+                    <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-default video-close" data-dismiss="modal">Close</button>
+        </div> -->
+                </div>
             </div>
         </div>
         <ezFooter></ezFooter>
@@ -121,18 +114,48 @@ import ezModule from "components/home/ezModule"
 import ezFooter from "components/home/ezFooter"
 import ezAside from "components/home/ezAside"
 import { mapState } from "vuex"
+import { getCityDetailInCityChannel } from 'getData'
+import {getSize} from 'xe-utils'
 export default {
     name: "home",
     data() {
         return {
-         
+            city: {},
+            currentBigPicUrl: "",
+
         }
     },
     computed: {
         ...mapState([ "comProtocol", ]),
     },
+    beforeCreate(){
+
+    },
     created () {
-        console.log("----------------------------------------------------------------")
+        this.getCityDetailsData( this.$route.params.id )
+        console.log('-------------#'+ this.city +'#-----------')
+
+    },
+    methods: {
+        async getCityDetailsData(cityId){
+            await getCityDetailInCityChannel({
+                cityid: cityId
+            }).then(res => {
+                this.city=res
+                this.currentBigPicUrl=this.city.photoUrl
+            })
+            
+        },
+        getSize(obj){
+            return getSize(obj)
+        },
+        checkBigPic(url){
+            this.currentBigPicUrl=url
+        },
+        viewVedio(){
+
+        }
+
     },
     components: {
         ezHeader,

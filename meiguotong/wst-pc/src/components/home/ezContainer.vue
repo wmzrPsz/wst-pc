@@ -36,7 +36,7 @@ export default {
         //点击城市
         hotCityListClick(city){
             this.setHotCityListIndex(city.cityid);
-            this.$router.push("/city")
+            this.$router.push("/city/"+city.cityid)
         },
         //点击导航栏
         comNavigationClick(list){

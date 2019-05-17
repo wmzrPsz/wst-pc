@@ -320,3 +320,8 @@ export const getModuleDataInfo = (param = {}, type = 'GET') => ajax( process.env
 // const payOrderUrl = baseUrl + "common/payOrder";
 
 
+//(城市)目的地相关接口
+//搜索
+//详情
+//城市详情
+export const getCityDetailInCityChannel = (param = {}, type = 'GET') => ajax( process.env.VUE_APP_PROXY_API +'/city/getCityDetails', param, type);
