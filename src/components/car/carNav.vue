@@ -12,14 +12,14 @@ export default {
     name: "carNav",
     props:{
         carType: {
-            type: String,
+            type: Number,
             required: true,
         }
     },
     methods: {
         //点击导航栏
         navClick(type){
-            let url;
+            let url = "/carChar";
             switch (type) {
                 case 1: url = "/carChar"; break;
                 case 2: url = "/carShort"; break;
