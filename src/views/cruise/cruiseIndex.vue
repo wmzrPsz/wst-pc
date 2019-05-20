@@ -278,7 +278,7 @@ export default {
         },
         //获取邮轮搜索列表
         async cruiseSearch() {
-            if (this.isNull(this.searchContent)) {
+            if (this.isEmpty (this.searchContent)) {
                 $(".ez-scenic-search .search-result-content").slideUp(200);
                 return;
             }

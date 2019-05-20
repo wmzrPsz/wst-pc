@@ -723,7 +723,7 @@ export default {
             carServiceList: [],  //车辆业务类型标题
             nearbyCityList: [],  //附近城市
             nearbyCityListString: "",  //附近城市字符串  （，隔开）
-            citySoptString: "",  //附近城市字符串  （，隔开）
+            citySoptString: "",  //附近景点字符串  （，隔开）
             orderCarDate: [],  //车辆日期list
             orderCarDateIndex: 0,  //展示数据的天数下标
             searchCityName: "",  //搜索城市名称
@@ -762,6 +762,11 @@ export default {
             guideid: "",  //选择的导游ID
             guideInfo: {},  //选择的导游信息
         }
+    },
+    watch:{
+        orderCarDateIndex(value){
+            console.log(value)
+        },
     },
     computed: {
         ...mapState("carChar",["startCity","startCityName","startAddress","startDate","endDate","adultNum","childNum","bagNum"]),
@@ -806,7 +811,7 @@ export default {
         ezAside,
     },
     created () {
-        console.log(this.isNull())
+        console.log(this.isEmpty ())
         this.selectCarService();
         this.getNearbyCity();
         this.getCitySpot();
@@ -993,7 +998,7 @@ export default {
                 this.loginFlagChange(1);
                 return;
             }
-            if (this.isNull(this.commnotContent)) {
+            if (this.isEmpty (this.commnotContent)) {
                 this.infoMsg("请输入评论内容"); return;
             }
             let data = await addChildComment({

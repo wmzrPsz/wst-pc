@@ -5,7 +5,7 @@
  * @Date: 2019-04-24 18:26:49
  * @LastEditTime: 2019-05-13 18:10:38
  */
-import { isNull } from 'utils/common'
+import { isEmpty  } from 'utils/common'
 
 const state = {
 
@@ -40,7 +40,7 @@ const getters = {
   //选择的行程天数
   dayNum(state){
     let dayNum = ''
-    if(!isNull(state.endDate) && !isNull(state.startDate)){
+    if(!isEmpty (state.endDate) && !isEmpty (state.startDate)){
       dayNum =  parseInt((new Date(state.endDate).getTime() - new Date(state.startDate)) / (24 * 60 * 60 * 1000)) + 1
     }
     return dayNum;

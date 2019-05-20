@@ -277,13 +277,13 @@ export default {
         },
         //导航栏切换
         goToCar: function () {
-            if(this.isNull(this.airNo)){
+            if(this.isEmpty (this.airNo)){
                 this.infoMsg("请输入航班号"); return;
             }
-            if(this.isNull(this.startDate)){
+            if(this.isEmpty (this.startDate)){
                 this.infoMsg("请输入时间"); return;
             }
-            if(this.isNull(this.startAddress)){
+            if(this.isEmpty (this.startAddress)){
                 this.infoMsg("请输入详细地址"); return;
             }
             if (this.adultNum + this.childNum <= 0) {

@@ -3,28 +3,52 @@
  * @Author: 彭善智
  * @LastEditors: 彭善智
  * @Date: 2019-03-01 22:48:18
- * @LastEditTime: 2019-05-15 19:59:10
+ * @LastEditTime: 2019-05-18 16:17:27
  */
 import store from '../store/index'
 import { errorMsg } from '../utils/popup'
-import { isNull } from '../utils/common'
+import { isEmpty  } from '../utils/common'
 
 
 export default async (url = '', data = {}, type = 'GET', method = 'fetch')=>{
-  const res = await Ajax(url,data,type,method);
-  console.log(url,res);
-  if(res.success){
-    if(!res.body) return res.success;
-    if(Object.keys(res.body).length == 1)
-      return res.body[Object.keys(res.body)[0]];
-    return res.body;
-  }else{
-    errorMsg(res.msg);
-    return false;
-  }
+  return new Promise((resolve, reject) =>
+    Fetch(url,data,type,method)
+    .then(res=>{
+      console.log(url,res);
+      let data;
+      if(res.success){
+        if(!res.body){
+          data = res.success
+        }else if(Object.keys(res.body).length == 1){
+          data = res.body[Object.keys(res.body)[0]];
+        }else{
+          data = res.body;
+        }
+        resolve(data)
+      }else{
+        errorMsg(res.msg);
+        reject(res.msg);
+      }
+    })
+    .catch(error=>{
+      reject(error)
+    })
+  )
+  // const res = await Ajax(url,data,type,method);
+  // console.log(url,res);
+  // if(res.success){
+  //   if(!res.body) return res.success;
+  //   if(Object.keys(res.body).length == 1)
+  //     return res.body[Object.keys(res.body)[0]];
+  //   return res.body;
+  // }else{
+  //   errorMsg(res.msg);
+  //   // return false;
+  //   throw new Error(error)
+  // }
 }
 
- async function Ajax(url = '', data = {}, type = 'GET', method = 'fetch'){
+ async function Fetch(url = '', data = {}, type = 'GET', method = 'fetch'){
 
   // 整理表单数据
    type = type.toUpperCase()
@@ -45,13 +69,13 @@ export default async (url = '', data = {}, type = 'GET', method = 'fetch')=>{
   if (type == 'GET') {
     let _data = []
     Object.keys(data).forEach(key => {
-      _data.push(key + '=' + (isNull( data[key] ) ? "" : data[key] ))
+      _data.push(key + '=' + (isEmpty ( data[key] ) ? "" : data[key] ))
     })
     url =  url + '?' + _data.join('&');
   } else {
     //sendData = JSON.stringify(data)
     Object.keys(data).forEach(key => {
-      formData.append(key, isNull(data[key]) ? "" : data[key] );
+      formData.append(key, isEmpty (data[key]) ? "" : data[key] );
     })
 
   }

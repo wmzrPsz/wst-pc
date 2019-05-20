@@ -3,9 +3,9 @@
  * @Author: 彭善智
  * @LastEditors: 彭善智
  * @Date: 2019-03-12 22:51:19
- * @LastEditTime: 2019-05-16 22:19:30
+ * @LastEditTime: 2019-05-18 16:27:37
  */
-import ajax from '../api/fetch';
+import fetch from '../api/fetch';
 
 //判断数组，对象是否为空
 export const arrayisBlank = str =>{
@@ -13,12 +13,15 @@ export const arrayisBlank = str =>{
 }
 
 //判断对象是否为空
-export const isNull = (...str) => {
+export const isEmpty  = (...str) => {
   let flag = false;
   for (const list of str) {
     if(list === '' || list === "" || list === null || list === undefined || list === "undefined"){
       flag = true;
     }
+    // if(XEUtils.isEmpty(list)){
+    //     flag = true;
+    // }
   }
   return flag;
 }
@@ -187,7 +190,7 @@ export const uploadImg = (url) => {
     reader.readAsDataURL(file);
     reader.onload = function (e) {
       console.log( Base64(e.target.result));
-      resolve(ajax(url,{"file": Base64(e.target.result)},"POST")) 
+      resolve(fetch(url,{"file": Base64(e.target.result)},"POST")) 
     }
   })
 }

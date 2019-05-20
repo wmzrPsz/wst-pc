@@ -15,7 +15,7 @@
                         <span class="input-group-addon select-scenic">
                             <a class="btn">选择景点</a>
                         </span>
-                    <input type="text" v-model.trim="searchContent"  class="form-control ez-search-input" placeholder="请输入景点 城市名称" aria-describedby="basic-search">
+                    <input type="text" v-model.trim="searchContent"  class="form-control ez-search-input search-input" placeholder="请输入景点 城市名称" aria-describedby="basic-search">
                     <a class="input-group-addon" id="basic-search" @click.stop="searchClick">
                         <i class="iconfont icon-search"></i>
                     </a>
@@ -170,7 +170,7 @@ export default {
     methods: {
         //点击搜索
         searchClick:function(){
-            if(this.isNull(this.searchContent)){
+            if(this.isEmpty (this.searchContent)){
                 this.infoMsg("请输入搜索内容");   
                 return;
             }

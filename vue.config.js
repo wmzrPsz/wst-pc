@@ -73,19 +73,13 @@ module.exports = {
 
   // 配置 webpack-dev-server 行为。
   devServer: {
-    //      open: process.platform === 'darwin',
-    //      openPage: "",
-    // host: 'localhost',
+    host: '0.0.0.0',
     disableHostCheck: true,
     port: 8080,
     https: false,
     hotOnly: false, ////热更新（webpack已实现了，这里false即可）
     open: false, ////浏览器自动打开页面
     historyApiFallback: true, //当使用 HTML5 History API 时，任意的 404 响应都可能需要被替代为 index.html
-    //    proxy: {
-    //        "/interface": 'http://47.105.70.4:8989/meiguotong/a/interface',
-    //    } , // string | Object
-    // proxy: 'http://localhost:8081',a
     proxy: {
       [process.env.VUE_APP_PROXY_API]: {
         target: process.env.VUE_APP_APIROOT,
@@ -218,7 +212,7 @@ module.exports = {
       'jquery': '$',
       'vue-lazyload': 'VueLazyload',
       '@babel/polyfill': '@babel/polyfill',
-      'xe-utils': 'XEUtils ',
+      'xe-utils': 'XEUtils',
     }
 
     // 打包分析

@@ -92,19 +92,19 @@ export default {
          ...mapMutations([ 'loginFlagChange', 'addLogin']),
         //注册
         async register() {
-            if(this.createType == 1 && this.isNull(this.phone)){
+            if(this.createType == 1 && this.isEmpty (this.phone)){
                  this.infoMsg("请输入手机号");
                 return;
             }
-            if(this.createType == 2 && this.isNull(this.email)){
+            if(this.createType == 2 && this.isEmpty (this.email)){
                  this.infoMsg("请输入邮箱");
                 return;
             }
-            if(this.isNull(this.smsCode)){
+            if(this.isEmpty (this.smsCode)){
                  this.infoMsg("请输入验证码");
                 return;
             }
-            if(this.isNull(this.passWord)){
+            if(this.isEmpty (this.passWord)){
                  this.infoMsg("请输入密码");
                 return;
             }
@@ -134,11 +134,11 @@ export default {
         //发送验证码
         async getSmsCode(){
             if(this.title != "发送验证码") return;
-            if(this.createType == 1 && this.isNull(this.phone)){
+            if(this.createType == 1 && this.isEmpty (this.phone)){
                  this.infoMsg("请输入手机号");
                 return;
             }
-            if(this.createType == 2 && this.isNull(this.email)){
+            if(this.createType == 2 && this.isEmpty (this.email)){
                  this.infoMsg("请输入邮箱");
                 return;
             }

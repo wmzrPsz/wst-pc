@@ -87,7 +87,7 @@ export default {
     },
     //获取语言
     async getLanguage() {
-       this.languageListChange(await getLanguage())
+       this.languageListChange(await getLanguage({}))
     },
     //获取货币
     async getCurrency() {

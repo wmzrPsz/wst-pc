@@ -231,7 +231,7 @@ export default {
         },
         //获取验证码
         async getSendSms(){
-            if(this.isNull(this.member.email)){
+            if(this.isEmpty (this.member.email)){
                 this.infoMsg("请输入邮箱");
                 return;
             }
@@ -247,11 +247,11 @@ export default {
         },
         //绑定邮箱
         async bindEmail(){
-            if(this.isNull(this.member.email)){
+            if(this.isEmpty (this.member.email)){
                 this.infoMsg("请输入邮箱");
                 return;
             }
-            if(this.isNull(this.code)){
+            if(this.isEmpty (this.code)){
                 this.infoMsg("请输入验证码");
                 return;
             }
@@ -265,34 +265,34 @@ export default {
         },
         //更新个人信息
         async updateMember(){
-            if(this.isNull(this.member.photo)){
+            if(this.isEmpty (this.member.photo)){
                 this.infoMsg("请上传用户头像");  return;
             }
-            if(this.isNull(this.member.phone)){
+            if(this.isEmpty (this.member.phone)){
                 this.infoMsg("请输入手机号");  return;
             }
-            if(this.isNull(this.member.countryid)){
+            if(this.isEmpty (this.member.countryid)){
                 this.infoMsg("请选择国家");  return;
             }
-            if(this.isNull(this.member.cityid)){
+            if(this.isEmpty (this.member.cityid)){
                 this.infoMsg("请选择城市");  return;
             }
-            if(this.isNull(this.member.address)){
+            if(this.isEmpty (this.member.address)){
                 this.infoMsg("请输入详细地址");  return;
             }
-            if(this.isNull(this.member.legalPerson)){
+            if(this.isEmpty (this.member.legalPerson)){
                 this.infoMsg("请输入法人代表");  return;
             }
-            if(this.isNull(this.member.companyName)){
+            if(this.isEmpty (this.member.companyName)){
                 this.infoMsg("请输入企业名称"); return;
             }
-            if(this.isNull(this.member.companyLogo)){
+            if(this.isEmpty (this.member.companyLogo)){
                 this.infoMsg("请上传企业LOGO");  return;
             }
-            if(this.isNull(this.member.companyImg)){
+            if(this.isEmpty (this.member.companyImg)){
                 this.infoMsg("请选择企业执照");  return;
             }
-            if(this.isNull(this.member.cardsImg)){
+            if(this.isEmpty (this.member.cardsImg)){
                 this.infoMsg("请上传法人身份证"); return;
             }
 

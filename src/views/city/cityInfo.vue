@@ -52,7 +52,7 @@
                 <div class="place-city-img pull-left">
                     <a data-toggle="modal" data-target="#imgLagerModal">
                         <img :src="city.photoUrl" class="img-responsive">
-                        <div class="images-label text-center">{{getSize(city.photoList)}}张图片</div>
+                        <div class="images-label text-center">{{$utils.getSize(city.photoList)}}张图片</div>
                     </a>
                 </div>
                 <div class="place-city-text pull-right">
@@ -71,7 +71,7 @@
 
                     <div class="col-md-12 col-sm-12 col-xs-12 ez-mb-md">
                         <div class="pull-left place-video-play" id="viewCityDetailVedio" >
-                            <a class="text-blue" @click=""><i class="iconfont icon-bofang ez-mr-sm"></i>观看视频</a>
+                            <a class="text-blue" @click="videoClick"><i class="iconfont icon-bofang ez-mr-sm"></i>观看视频</a>
                         </div>
                         <div class="pull-right place-city-star">
                             <div class="ez-star pull-left ez-mr-sm"></div>
@@ -85,24 +85,12 @@
                 </div>
             </div>
         </div>
+
+
+        <ezVideo :url="city.videoUrl" ref="ezVideo" ></ezVideo>
         <!-- Large modal -->
-        <div class="modal fade ez-player-modal" id="vedioAlertModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close video-close" data-dismiss="modal" aria-label="Close"><span
-                                aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">目的地视频</h4>
-                    </div>
-                    <div class="modal-body">
-                        <video :src="city.videoUrl" controls="controls" autoplay="autoplay" class="ez-video" style="width:100%;max-height:465px;"></video>
-                    </div>
-                    <!-- <div class="modal-footer">
-          <button type="button" class="btn btn-default video-close" data-dismiss="modal">Close</button>
-        </div> -->
-                </div>
-            </div>
-        </div>
+
+
         <ezFooter></ezFooter>
         <ezAside></ezAside>
     </div>
@@ -113,16 +101,17 @@ import ezContainer from "components/home/ezContainer"
 import ezModule from "components/home/ezModule"
 import ezFooter from "components/home/ezFooter"
 import ezAside from "components/home/ezAside"
+import ezVideo from "components/common/ezVideo"
 import { mapState } from "vuex"
-import { getCityDetailInCityChannel } from 'getData'
-import {getSize} from 'xe-utils'
+import { getCityInfo } from 'getData'
+// import { getSize } from 'XEUtils'
 export default {
     name: "home",
     data() {
         return {
             city: {},
             currentBigPicUrl: "",
-
+            show: false,
         }
     },
     computed: {
@@ -132,28 +121,28 @@ export default {
 
     },
     created () {
-        this.getCityDetailsData( this.$route.params.id )
-        console.log('-------------#'+ this.city +'#-----------')
-
+        this.getCityInfo( this.$route.params.id)
     },
     methods: {
-        async getCityDetailsData(cityId){
-            await getCityDetailInCityChannel({
+        getCityInfo(cityId){
+            getCityInfo({
                 cityid: cityId
             }).then(res => {
                 this.city=res
                 this.currentBigPicUrl=this.city.photoUrl
             })
-            
         },
         getSize(obj){
-            return getSize(obj)
+            return this.$utils.getSize(obj)
         },
         checkBigPic(url){
             this.currentBigPicUrl=url
         },
-        viewVedio(){
-
+        //点击视频
+        videoClick(){
+            console.log( this.$refs)
+            console.log( this.$children)
+            this.$refs.ezVideo.showVideo();
         }
 
     },
@@ -162,7 +151,8 @@ export default {
         ezContainer,
         ezModule,
         ezFooter,
-        ezAside
+        ezAside,
+        ezVideo,
     }
 }
 </script>

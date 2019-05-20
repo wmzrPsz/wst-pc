@@ -191,11 +191,11 @@ export default {
         //商家注册
         async BusinessRegisterClick() {
             if(this.companyType == 1){
-                if(this.isNull(this.nickName)){
+                if(this.isEmpty (this.nickName)){
                     this.infoMsg("请输入昵称");
                     return;
                 }
-                if(this.isNull(this.realName)){
+                if(this.isEmpty (this.realName)){
                     this.infoMsg("请输入真实姓名");
                     return;
                 }
@@ -203,35 +203,35 @@ export default {
                     this.infoMsg("请上传身份证件照片");
                     return;
                 }
-                if(this.isNull(this.photo)){
+                if(this.isEmpty (this.photo)){
                     this.infoMsg("请上传个人头像");
                     return;
                 }
                 
             }
             if(this.companyType == 2){
-                if(this.isNull(this.companyName)){
+                if(this.isEmpty (this.companyName)){
                     this.infoMsg("请输入公司名称");
                     return;
                 }
-                if(this.isNull(this.legalPerson)){
+                if(this.isEmpty (this.legalPerson)){
                     this.infoMsg("请输入法人代表");
                     return;
                 }
-                if(this.isNull(this.companyLogo)){
+                if(this.isEmpty (this.companyLogo)){
                     this.infoMsg("请上传企业logo");
                     return;
                 }
-                if(this.isNull(this.companyImg)){
+                if(this.isEmpty (this.companyImg)){
                     this.infoMsg("请上传公司营业执照");
                     return;
                 }
-                if(this.isNull(this.cardsImg2)){
+                if(this.isEmpty (this.cardsImg2)){
                     this.infoMsg("请上传法人身份证");
                     return;
                 }
             }
-            if(this.isNull(this.content)){
+            if(this.isEmpty (this.content)){
                     this.infoMsg("请输入简介");
                     return;
             }

@@ -3,7 +3,7 @@
  * @Author: 彭善智
  * @LastEditors: 彭善智
  * @Date: 2019-04-24 09:56:10
- * @LastEditTime: 2019-05-16 23:50:40
+ * @LastEditTime: 2019-05-17 16:35:10
  */
 // import Vue from 'vue'
 // import Router from 'vue-router'
@@ -18,6 +18,8 @@ import carShortRouter from './modules/carShortRouter'
 import carTranRouter from './modules/carTranRouter'
 import gameRouter from './modules/gameRouter'
 import myRouter from './modules/myRouter'
+import carRouter from './modules/carRouter'
+import cityRouter from './modules/cityRouter'
 
 
 const createRouter = () =>  new VueRouter({
@@ -41,17 +43,8 @@ const createRouter = () =>  new VueRouter({
     carTranRouter,
     gameRouter,
     myRouter,
-    {
-      path:"/city",
-      component: ()=> import('@/views/city/cityIndex'),
-      name: "popular cities",
-      meta: { title: "热门城市", requireAuth: false}
-    },
-    {
-        path: '/city/:id(\\d+)',
-        component: ()=> import('@/views/city/cityDetail'),
-        meta: { title: "热门城市详情", requireAuth: false}
-    },
+    carRouter,
+    cityRouter,
     {
         path: '*',
         component: ()=> import( '@/views/error/404'),

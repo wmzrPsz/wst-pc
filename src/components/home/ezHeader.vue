@@ -28,7 +28,7 @@
                         <!-- defaultPhoto -->
                         <img alt="用户头像" v-lazy="member.photo" :key="member.photo">
                         <b class="text-black" v-if="loginType == 1" style="color: #2577e3;">未登录</b>
-                        <b class="text-black" v-if="loginType == 2">list-inline text-center ez-navlistmember.nickName}}</b>
+                        <b class="text-black" v-if="loginType == 2">{{member.nickName}}</b>
                     </span>
                     <span class="caret" v-if="loginType == 2"></span>
                 </a>
@@ -41,12 +41,12 @@
                 </ul>
             </li>
             <li>
-                <a href="#">
+                <router-link :to="{name: 'carIndex'}" tag="a">
                     <div class="ez-shopcart text-center">
                         <span class="iconfont icon-shopcart"></span>
-                        <i class="on">6</i>
+                        <i class="on">{{carNum}}</i>
                     </div>
-                </a>
+                </router-link>
             </li>
         </ul>
 
@@ -77,8 +77,8 @@
 </template>
 <script>
 import { getLanguage, getProtocol, getCurrency, myInfor } from 'getData';
-import { isNull } from "@/utils/common";
-import { mapState, mapMutations } from "vuex";
+import { isEmpty  } from "@/utils/common";
+import { mapState, mapMutations, mapGetters } from "vuex";
 import ezLogin from "components/home/ezLogin"
 import ezRegister from "components/home/ezRegister"
 import ezForest from "components/home/ezForest"
@@ -92,6 +92,7 @@ export default {
     },
     computed: {
         ...mapState([ "loginType", "languageid", "currencyid", "comProtocol", "loginFlag", "languageList", "currencyList", "member" ]),
+        ...mapGetters("car",["carNum"]),
         //动态组件
         currentTabComponent() {
             if (this.loginFlag == 1) return "ezLogin";
