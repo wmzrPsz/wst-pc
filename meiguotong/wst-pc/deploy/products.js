@@ -50,7 +50,7 @@ const SERVER_LIST = [
     port: 22,// 端口
     username: 'root', // 登录服务器的账号
     password: 'Newsun123+45',// 登录服务器的账号
-    path: '/usr/share/nginx/dev'// 发布至静态服务器的项目路径
+    path: '/usr/share/nginx/dev/web'// 发布至静态服务器的项目路径
   },
   {
     id: 1,
@@ -60,7 +60,7 @@ const SERVER_LIST = [
     port: 22,
     username: 'root',
     password: 'Newsun123+45',
-    path: '/usr/share/nginx/prod'
+    path: '/usr/share/nginx/prod/web'
   }
 ];
 

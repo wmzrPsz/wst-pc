@@ -2,11 +2,11 @@
 <aside class="ez-aside">
     <div class="aside-box text-center">
         <div class="aside-shopcart">
-            <a href="#"><i class="iconfont icon-shopcart"></i></a>
+            <router-link :to="{name: 'carIndex'}" tag="a"> <i class="iconfont icon-shopcart"></i></router-link>
             <div class="shop-text">购</div>
             <div class="shop-text">物</div>
             <div class="shop-text">车</div>
-            <div class="shop-num">2</div>
+            <div class="shop-num">{{carNum}}</div>
         </div>
         <div class="aside-contact">
             <!--电话-->
@@ -57,3 +57,17 @@
     </div>
 </aside>
 </template>
+<script>
+import { mapState, mapMutations, mapGetters } from "vuex";
+export default {
+    name: "ezAside",
+    data() {
+        return {
+            
+        }
+    },
+    computed: {
+        ...mapGetters("car",["carNum"]),
+    }
+}
+</script>

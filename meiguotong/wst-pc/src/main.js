@@ -21,7 +21,7 @@ import "javaScript/ez-public.js"
 import "javaScript/jqPaginator.js"
 import "./directive/index.js"
 import { infoMsg, successMsg, errorMsg, warningMsg} from 'utils/popup'
-import { isNull, copy } from 'utils/common'
+import { isEmpty , copy } from 'utils/common'
 
 // import VueLazyload from 'vue-lazyload'  
 
@@ -31,10 +31,14 @@ Vue.prototype.infoMsg = infoMsg
 Vue.prototype.successMsg = successMsg
 Vue.prototype.errorMsg = errorMsg
 Vue.prototype.warningMsg = warningMsg
-Vue.prototype.isNull = isNull
+Vue.prototype.isEmpty  = isEmpty 
 Vue.prototype.copy = copy
 
 Vue.use(VueRouter)
+
+Vue.use(XEUtils)
+Vue.prototype.$utils = XEUtils
+
 
 Vue.use(Navigation, {router, store, moduleName: 'navigation', keyName: 'VNK'})
 

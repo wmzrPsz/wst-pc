@@ -115,7 +115,7 @@ export default {
         //获取验证码
         async getSmsCode() {
         if(this.count > 0) return;
-        if(this.isNull(this.accountNumbe)){
+        if(this.isEmpty (this.accountNumbe)){
                 this.infoMsg("请输入登录账号");
                 return;
             }
@@ -146,11 +146,11 @@ export default {
                 this.infoMsg("请先同意协议");
                 return;
             }
-            if(this.isNull(this.accountNumbe)){
+            if(this.isEmpty (this.accountNumbe)){
                 this.infoMsg("请输入登录账号");
                 return;
             }
-            if(this.isNull(this.accountNumbe)){
+            if(this.isEmpty (this.accountNumbe)){
                 this.infoMsg("请输入密码");
                 return;
             }
@@ -158,7 +158,7 @@ export default {
                 this.infoMsg("两次密码输入不一致");
                 return;
             }
-            if(this.isNull(this.smsCode)){
+            if(this.isEmpty (this.smsCode)){
                 this.infoMsg("请输入验证码");
                 return;
             }

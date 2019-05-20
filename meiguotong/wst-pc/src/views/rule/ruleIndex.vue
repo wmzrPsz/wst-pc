@@ -772,7 +772,7 @@ export default {
                 this.loginFlagChange(1);
                 return;
             }
-           if(this.isNull(this.content)){
+           if(this.isEmpty (this.content)){
                this.infoMsg("请输入评论内容");
                return;
            }
@@ -989,12 +989,12 @@ export default {
         },
         ebehind: function () {
             if (this.pages <= 7) return false;
-            var nowAy = this.indexs;
+            let nowAy = this.indexs;
             return nowAy[nowAy.length - 1] != this.pages;
         },
         indexs: function () {
 
-            var left = 1,
+            let left = 1,
                 right = this.pages,
                 ar = [];
             if (this.pages >= 7) {

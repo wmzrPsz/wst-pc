@@ -319,7 +319,7 @@ export default {
             }
             for (const list of Object.values(this.orderMember)) {
                 for (const [key, value] of Object.entries(list)) {
-                     if (this.isNull(value)) {
+                     if (this.isEmpty (value)) {
                          this.infoMsg('请完善出游人信息'); return;
                     }
                 }

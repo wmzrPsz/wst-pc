@@ -367,7 +367,7 @@ export default {
         },
         //验证参数是否正确
         judge:function(){
-            if (this.isNull(this.beginDate)) {
+            if (this.isEmpty (this.beginDate)) {
                 this.infoMsg("请选择日期");
                 return false;
             }
@@ -417,7 +417,7 @@ export default {
                 this.loginFlagChange(1);
                 return;
             }
-            if(this.isNull(this.mobile,this.name,this.content)){
+            if(this.isEmpty (this.mobile,this.name,this.content)){
                  this.infoMsg("请完善数据");
                 return;
             }
@@ -507,7 +507,7 @@ export default {
                 let list = [];
                 Object.values(this.tripList).forEach(list1 =>{
                     Object.values(list1.contentList).forEach(list2 =>{
-                        if(!this.isNull(list2.scenicName)){
+                        if(!this.isEmpty (list2.scenicName)){
                             list.push(list2.scenicName);
                         }
                     })

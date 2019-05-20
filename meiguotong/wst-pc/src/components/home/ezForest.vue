@@ -52,15 +52,15 @@ export default {
          ...mapMutations([ 'loginFlagChange', 'removeLogin']),
         //重置密码
         async forest(){
-            if(this.isNull(this.mobile)){
+            if(this.isEmpty (this.mobile)){
                 this.infoMsg("请输入账号");
                 return;
             }
-            if(this.isNull(this.smsCode)){
+            if(this.isEmpty (this.smsCode)){
                 this.infoMsg("请输入验证码");
                 return;
             }
-            if(this.isNull(this.passWord)){
+            if(this.isEmpty (this.passWord)){
                 this.infoMsg("请输入密码");
                 return;
             }
@@ -79,7 +79,7 @@ export default {
         //发送验证码
         async getSmsCode(){
             if(this.title != "发送验证码") return;
-            if(this.isNull(this.mobile)){
+            if(this.isEmpty (this.mobile)){
                 this.infoMsg("请输入账号");
                 return;
             }

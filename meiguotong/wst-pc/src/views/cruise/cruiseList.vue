@@ -699,7 +699,7 @@ export default {
                 this.loginFlagChange(1);
                 return;
             }
-            if(this.isNull(this.content)){
+            if(this.isEmpty (this.content)){
                 this.infoMsg("请输入评论内容");  
                 return;
             }

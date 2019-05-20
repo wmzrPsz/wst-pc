@@ -48,12 +48,12 @@ export default {
         ...mapMutations([ 'loginFlagChange', 'addLogin']),
        //登录
         async login() {
-            if (this.isNull(this.phone)) {
+            if (this.isEmpty (this.phone)) {
                 console.log(1)
                 this.infoMsg("请输入账号");
                 return;
             }
-            if (this.isNull(this.passWord)) {
+            if (this.isEmpty (this.passWord)) {
                  this.infoMsg("请输入密码");
                 return;
             }

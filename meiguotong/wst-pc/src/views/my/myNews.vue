@@ -56,7 +56,7 @@
                                     </div>
                                 </div>
                                 <div class="comments-body">
-                                    <div class="comments-text ez-mb-md">{{item.content}}</div>
+                                    <div class="comments-text ez-mb-md" v-html="item.content"></div>
 
                                     <div class="msg-comments-reply pull-left">
                                         <div class="ez-mb-sm">回复我的评论</div>

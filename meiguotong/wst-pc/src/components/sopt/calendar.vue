@@ -101,7 +101,7 @@ export default {
             this.loginFlagChange(1);
             return true;
         }
-        if(this.isNull(this.beginDate)){
+        if(this.isEmpty (this.beginDate)){
             this.infoMsg("请选择日期");
             return true;
         }

@@ -93,18 +93,16 @@ $(function(){
     });
 
     //右侧栏电话图标
-    $(".ez-btn-phone").click(function(){
-        console.log("phone");
+    $("#app").on("click",".ez-btn-phone",function(){
         $(this).next(".ez-tooltip-phonecall").toggle();
         $(".ez-tooltip-qq").hide();
-    });
+    })
 
     //右侧栏QQ图标
-    $(".ez-btn-qq").click(function(){
-        console.log("qq");
+    $("#app").on("click",".ez-btn-qq",function(){
         $(this).next(".ez-tooltip-qq").toggle();
         $(".ez-tooltip-phonecall").hide();
-    });
+    })
 
     //点赞
     $(".btn-like").click(function(){
@@ -189,7 +187,7 @@ $(function(){
     //     $(".ez-scenic-search .citylist-content").slideUp(100);
     //     $(".ez-scenic-search .search-result-content").slideToggle(200);
     // });
-    $("#app").on("click", ".ez-search-input",()=>{
+    $("#app").on("click", ".search-input",()=>{
         $(".ez-scenic-search .citylist-content").slideUp(100);
         $(".ez-scenic-search .search-result-content").slideToggle(200);
     })

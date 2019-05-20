@@ -116,12 +116,12 @@ export default {
                 this.loginFlagChange(1);
                 return;
             }
-            if(this.isNull(this.contactsName, this.contactsMobile)){
+            if(this.isEmpty (this.contactsName, this.contactsMobile)){
                 this.infoMsg('请完善联系人信息'); return;
             }
             for (const list of Object.values(this.orderMember)) {
                 for (const [key, value] of Object.entries(list)) {
-                    if (this.isNull(value)) {
+                    if (this.isEmpty (value)) {
                         console.log(key)
                         this.infoMsg('请完善出游人信息'); return;
                     }

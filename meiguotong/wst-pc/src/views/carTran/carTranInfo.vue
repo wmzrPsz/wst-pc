@@ -438,7 +438,7 @@ export default {
                 this.loginFlagChange(1);
                 return;
             }
-            if (this.isNull(this.commnotContent)) {
+            if (this.isEmpty (this.commnotContent)) {
                  this.infoMsg("请输入评论内容"); return;
             }
             let data = await addChildComment({

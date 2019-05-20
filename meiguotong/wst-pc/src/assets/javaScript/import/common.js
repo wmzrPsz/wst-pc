@@ -1,7 +1,7 @@
 //通用js
 
 //判断是否为空
-function isNull(str) {
+function isEmpty (str) {
     return (str == '' || str == "" || str == null || str == undefined || str == "undefined");
 }
 

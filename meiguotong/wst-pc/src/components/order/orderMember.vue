@@ -291,8 +291,8 @@ export default {
         //常用联系人数据改变
         infoChange(index, key, event){
             console.log(event)
-            let value = this.isNull(event)? "" : event;
-            if(!this.isNull(event) && !this.isNull(event.target)){
+            let value = this.isEmpty (event)? "" : event;
+            if(!this.isEmpty (event) && !this.isEmpty (event.target)){
                 value = event.target.value 
             }
             this.infoSet({index: index, key: key, value: value})

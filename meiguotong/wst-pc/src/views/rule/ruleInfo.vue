@@ -451,7 +451,7 @@ export default {
             },
             //添加用户咨询
             async addConsult() {
-                if (this.isNull(this.mobile) || this.isNull(this.name) || this.isNull(this.content)) {
+                if (this.isEmpty (this.mobile) || this.isEmpty (this.name) || this.isEmpty (this.content)) {
                     this.infoMsg("请完善数据");
                     return;
                 }
@@ -531,11 +531,11 @@ export default {
                 this.routeContentIndex = index;
             },
             judge:function(){
-                if(this.isNull(this.orderPrice)){
+                if(this.isEmpty (this.orderPrice)){
                      this.infoMsg("请完善数据");
                      return false;
                 }
-                if (this.isNull(this.beginDate)) {
+                if (this.isEmpty (this.beginDate)) {
                     this.infoMsg("请选择日期");
                     return false;
                 }

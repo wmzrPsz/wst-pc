@@ -156,13 +156,13 @@ export default {
         },
         //点击立即定制
         goSet:function(){
-            if(this.isNull(this.startCity)){
+            if(this.isEmpty (this.startCity)){
                 this.infoMsg("请选择城市"); return;
             }
-            if(this.isNull(this.startDate)){
+            if(this.isEmpty (this.startDate)){
                 this.infoMsg("请选择开始时间"); return;
             }
-            if(this.isNull(this.endDate)){
+            if(this.isEmpty (this.endDate)){
                 this.infoMsg("请选择结束时间"); return;
             }
             if(new Date(this.endDate).getTime() - new Date(this.startDate).getTime() <= 0){

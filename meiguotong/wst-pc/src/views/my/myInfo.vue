@@ -210,11 +210,11 @@ export default {
         },
         //上传图片
         async imgChange() {
-          ue.set(app.member,"photo", await imgUpload);
+          Vue.set(this.member,"photo", await imgUpload());
         },
         //获取验证码
         async getSendSms(){
-            if(this.isNull(this.member.email)){
+            if(this.isEmpty (this.member.email)){
                 this.infoMsg("请输入邮箱");
                 return;
             }
@@ -230,11 +230,11 @@ export default {
         },
         //绑定邮箱
         async bindEmail(){
-            if(this.isNull(this.member.email)){
+            if(this.isEmpty (this.member.email)){
                 this.infoMsg("请输入邮箱");
                 return;
             }
-            if(this.isNull(this.code)){
+            if(this.isEmpty (this.code)){
                 this.infoMsg("请输入验证码");
                 return;
             }
@@ -249,39 +249,39 @@ export default {
         },
         //更新个人信息
         async updateMember(){
-            if(this.isNull(this.member.nickName)){
+            if(this.isEmpty (this.member.nickName)){
                 this.infoMsg("请输入昵称");
                 return;
             }
-            if(this.isNull(this.member.photo)){
+            if(this.isEmpty (this.member.photo)){
                 this.infoMsg("请上传照片");
                 return;
             }
-            if(this.isNull(this.member.phone)){
+            if(this.isEmpty (this.member.phone)){
                 this.infoMsg("请输入手机号");
                 return;
             }
-            if(this.isNull(this.member.sex)){
+            if(this.isEmpty (this.member.sex)){
                 this.infoMsg("请选择性别");
                 return;
             }
-            if(this.isNull(this.member.birthday)){
+            if(this.isEmpty (this.member.birthday)){
                 this.infoMsg("请选择生日");
                 return;
             }
-            if(this.isNull(this.member.countryid)){
+            if(this.isEmpty (this.member.countryid)){
                 this.infoMsg("请选择国家");
                 return;
             }
-            if(this.isNull(this.member.cityid)){
+            if(this.isEmpty (this.member.cityid)){
                 this.infoMsg("请选择城市");
                 return;
             }
-            if(this.isNull(this.member.cityid)){
+            if(this.isEmpty (this.member.cityid)){
                 this.infoMsg("请选择城市");
                 return;
             }
-            if(this.isNull(this.member.address)){
+            if(this.isEmpty (this.member.address)){
                 this.infoMsg("请输入备注");
                 return;
             }

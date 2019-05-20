@@ -187,19 +187,19 @@ export default {
         //去选车
         goToCar:function(){
             console.log(this.startDate)
-            if(this.isNull(this.startCity)){
+            if(this.isEmpty (this.startCity)){
                 this.infoMsg("请选择上车城市"); return;
             }
-            if(this.isNull(this.startAddress)){
+            if(this.isEmpty (this.startAddress)){
                 this.infoMsg("请选择上车详细地点"); return;
             }
-            if(this.isNull(this.endCity)){
+            if(this.isEmpty (this.endCity)){
                 this.infoMsg("请选择下车城市"); return;
             }
-            if(this.isNull(this.endAddress)){
+            if(this.isEmpty (this.endAddress)){
                 this.infoMsg("请选择下车详细地点"); return;
             }
-            if(this.isNull(this.startDate)){
+            if(this.isEmpty (this.startDate)){
                 this.infoMsg("请选择日期"); return;
             }
             this.STATE_CHANGE({
