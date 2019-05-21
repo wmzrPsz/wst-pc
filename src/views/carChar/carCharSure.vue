@@ -188,6 +188,7 @@ export default {
                 startCity:this.startCity,
                 startAddress:this.startAddress,
                 startDate:this.startDate,
+                guideType: this.guideType,
                 endDate:this.endDate,
                 dayNum:this.dayNum,
                 bagNum:this.bagNum,
