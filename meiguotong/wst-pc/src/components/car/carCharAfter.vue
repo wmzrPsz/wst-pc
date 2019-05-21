@@ -117,9 +117,7 @@ export default {
         },
     },
     created() {
-        if(!this.isEmpty(this.cityid)){
-          this.startCity = this.cityid;
-        }
+        console.log(this.startCity)
         this.getCityList();
     },
     methods: {
@@ -127,6 +125,9 @@ export default {
         //获取全部城市
         async getCityList() {
             this.cityList = await getCityList({});
+            if(!this.isEmpty(this.cityid)){
+             this.startCity = this.cityid;
+            }
         },
         //去选车
         goToCar:function(){

@@ -160,33 +160,26 @@
             </div>
         </div>
         <div class="box-left pull-left">
-            <div class="box-card">
+            <div class="box-card" v-for="(list, index) in offeredList" :key="index">
                 <div class="box-card-left pull-left">
-                    <img src="~images/index-4-1.png">
+                    <img :src="list.imgLIst | splitVc(0)">
                     <div class="box-card-rate">
                         <div class="ez-star pull-left"></div>
-                        <span class="pull-right text-gray text-underline">11条评价</span>
+                        <span class="pull-right text-gray text-underline">{{list.commentNum}}条评价</span>
                     </div>
                 </div>
                 <div class="box-card-text pull-right">
-                    <h4 class="title ez-mb-md">旧金山行程二选一 | 环境优美+自主半价旧金山行程二选一 | 环境优美+自主半价</h4>
-                    <h5 class="subtitle text-blue ez-mb-md">时尚半自助出游新选择！将团队游的实惠、便捷与自由行的轻松惬意完美结合.</h5>
-                    <p class="intro text-gray ez-mb-md">旧金山（San Francisco），又译“三藩市”、“圣弗朗西斯科”，
-                        美国加利福尼亚州太平洋沿岸的港口城市，是世界著名旅游胜地、加州人口第四大城市。
-                        旧金山临近世界著名高新技术产业区硅谷，是世界最重要的高新技术研发基地和美国西部最重要的金融中心
-                    </p>
+                    <h4 class="title ez-mb-md" v-html="list.title"></h4>
+                    <h5 class="subtitle text-blue ez-mb-md" v-html="list.subtitle"></h5>
+                    <p class="intro text-gray ez-mb-md" v-html="list.infor"></p>
                     <div>
-                        <div class="ez-icon-tag ez-mr-sm">
+                        <div class="ez-icon-tag ez-mr-sm" v-for="(tag, index) in list.attrList" :key="index">
                             <div class="ez-triangle-left"><i></i></div>
-                            <div class="ez-rect">限时特卖</div>
-                        </div>
-                        <div class="ez-icon-tag">
-                            <div class="ez-triangle-left"><i></i></div>
-                            <div class="ez-rect">优惠立减</div>
+                            <div class="ez-rect">{{tag}}</div>
                         </div>
                     </div>
                     <div class="card-like">
-                        <span class="pull-left text-lightorange ez-price"><span>¥</span>699<span class="text-gray">/元起</span></span>
+                        <span class="pull-left text-lightorange ez-price"><span>{{currencySign}}</span>{{list.price}}<span class="text-gray">/元起</span></span>
                         <span class="pull-right text-lightorange text-underline">出发日期</span>
                     </div>
 
@@ -217,29 +210,397 @@
             </div>
 
         </div>
-        <nav aria-label="Page navigation" class="text-center">
-            <ul class="pagination ez-navigation">
-                <li>
-                    <a href="#" class="page-next" aria-label="Previous">
-                        <span aria-hidden="true">&laquo; Last</span>
-                    </a>
-                </li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#">6</a></li>
-                <li><a href="#">...</a></li>
-                <li>
-                    <a href="#" class="page-next" aria-label="Next">
-                        <span aria-hidden="true">Next &raquo;</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
+        <ezPage :pages="offeredPags" @page-change="getOfferedList"></ezPage>
     </div>
     <!--part2 当地参团 end-->
+
+    <!--part3 目的地景点 start-->
+    <section class="col-md-12 ez-index-wrap place-wrap-travel">
+        <div class="text-center">
+            <div class="ez-place-title">目的地景点</div>
+            <div class="ez-content-subtitle">
+                <div class="subtitle-text">FOLLOWING MORE DISPLAY</div>
+            </div>
+        </div>
+        <div class="ez-row">
+            <div class="col-md-3 col-sm-3 col-xs-3 ez-index-grid" v-for="(list, index) in scenicSpotList" :key="index">
+                <div class="grid-img">
+                    <img :src="list.imgList | splitVc(0)" class="center-block img-responsive">
+                </div>
+                <div class="text-center grid-text">
+                    <h4 class="title">{{list.name}}</h4>
+                    <p class="ez-price">{{currencySign}}{{list.price}}<span>/元起</span></p>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <!--part3 目的地景点 end-->
+
+
+    <!--part4 当地玩家 start-->
+    <section class="col-md-12 ez-index-wrap place-wrap-player">
+        <div class="text-center">
+            <div class="ez-place-title">当地玩家</div>
+            <div class="ez-content-subtitle">
+                <div class="subtitle-text">FOLLOWING MORE DISPLAY</div>
+            </div>
+        </div>
+        <div class="ez-nav-tabs ez-nav-item4">
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <!-- 内容1-->
+                <div class="tab-pane ez-row active">
+                    <div class="col-md-3 col-sm-3 col-xs-3 ez-hot-card" v-for="(list, index) in playList" :key="index">
+                        <div class="hot-card-img">
+                            <img v-lazy="list.img">
+                            <div class="hot-card-logo">
+                                <img  v-lazy="list.photo">
+                            </div>
+                        </div>
+                        <div class="hot-card-player">
+                            <h4 class="text-center">明星玩家·{{list.nickName}}</h4>
+                            <div class="content" v-html="list.introduction"></div>
+                            <div class="card-like">
+                             <!--   <span class="pull-left text-gray"><i class="iconfont icon-mark"></i>美国·纽约</span>-->
+                                <span class="pull-right text-lightorange ez-price"><span>{{currencySign}}</span>{{list.price}}<span class="text-gray">/天</span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+    <!--part4 当地玩家 end-->
+
+    <!--part5 start-->
+    <section class="col-md-12 ez-index-wrap ez-city-commun">
+        <div class="text-center">
+            <div class="ez-place-title">城市交流</div>
+            <div class="ez-content-subtitle">
+                <div class="subtitle-text">FOLLOWING MORE DISPLAY</div>
+            </div>
+        </div>
+
+        <div class="box-left pull-left">
+            <div class="ez-nav-tabs ez-nav-item pull-left">
+                <!-- Nav tabs -->
+                <ul class="tab-item-list list-inline">
+                    <li class="text-center"><a>评价城市</a></li>
+                    <li class="text-center active"><a>游戏攻略</a></li>
+                </ul>
+                <!-- Tab panes -->
+                <div class="tab-content tab-content-place pull-left">
+                    <!-- 评价城市-->
+                    <div class="tab-pane">
+                        <div class="scenic-intro-text pull-left">
+                            <div class="user-comments pull-left">
+                                <div class="comments-header">
+                                    <div class="comments-avatar">
+                                        <img src="~images/avatar-2.png" class="img-circle">
+                                    </div>
+                                    <div class="pull-left">
+                                        <span class="pull-left ez-mr-sm">爱上汪星人的喵星人</span>
+                                    </div>
+                                    <div class="pull-right">
+                                        <div class="ez-icon-star">
+                                            <i class="iconfont icon-star text-lightorange"></i>
+                                            <i class="iconfont icon-star text-lightorange"></i>
+                                            <i class="iconfont icon-star text-lightorange"></i>
+                                            <i class="iconfont icon-star text-lightorange"></i>
+                                            <i class="iconfont icon-star text-lightorange"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="comments-body">
+                                    <div class="comments-text">
+                                        非常棒的一次体验，本来定得最便宜的车，结果因为同等级都被租走免费升级了天籁，而且是新车。
+                                        我在离机场有一段距离的地方住，工作人员直接把车给我送来了，还带我去加油站教我加了油。
+                                        还车也非常方便。虽然比其他公司贵点，但也包含了全险和各种附加服务，
+                                        对于第一次来美租车的人来说可以说非常值了。
+                                    </div>
+                                    <div class="comments-info pull-left">
+                                        <div class="pull-left">2018-01-06</div>
+                                        <div class="pull-right">
+                                            <a class="ez-mr-50"><i class="iconfont icon-like"></i>23</a>
+                                            <a ><i class="iconfont icon-dialog"></i>2323</a>
+                                        </div>
+                                    </div>
+
+                                    <div class="comments-reply pull-left">
+                                        <div class="form-control-reply">
+                                            <input type="text" class="form-control reply-input" placeholder="回复@卖女孩的小火柴：">
+                                        </div>
+                                        <div class="comments-reply-wrap">
+                                            <div class="comments-header">
+                                                <div class="comments-avatar">
+                                                    <img src="~images/avatar-2.png" class="img-circle">
+                                                </div>
+                                                <div class="pull-left">爱上汪星人的喵星人</div>
+                                                <div class="pull-right">2018-01-06</div>
+                                            </div>
+                                            <div class="comments-reply-body">非常赞，非常不错</div>
+                                        </div>
+
+                                        <nav class="text-right">
+                                            <ul class="pagination ez-navigation">
+                                                <li class="active"><a href="#">1</a></li>
+                                                <li><a href="#">2</a></li>
+                                                <li><a href="#">3</a></li>
+                                                <li><a href="#">4</a></li>
+                                                <li><a href="#">5</a></li>
+                                                <li><a href="#">6</a></li>
+                                                <li><a href="#">...</a></li>
+                                                <li>
+                                                    <a href="#" class="page-next" aria-label="Next">
+                                                        <span aria-hidden="true">Next &gt;</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </nav>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="user-comments pull-left">
+                                <div class="comments-header">
+                                    <div class="comments-avatar">
+                                        <img src="~images/avatar-2.png" class="img-circle">
+                                    </div>
+                                    <div class="pull-left">
+                                        <span class="pull-left ez-mr-sm">爱上汪星人的喵星人</span>
+                                    </div>
+                                    <div class="pull-right">
+                                        <div class="ez-icon-star">
+                                            <i class="iconfont icon-star text-lightorange"></i>
+                                            <i class="iconfont icon-star text-lightorange"></i>
+                                            <i class="iconfont icon-star text-lightorange"></i>
+                                            <i class="iconfont icon-star text-lightorange"></i>
+                                            <i class="iconfont icon-star text-lightorange"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="comments-body">
+                                    <div class="comments-text">
+                                        非常棒的一次体验，本来定得最便宜的车，结果因为同等级都被租走免费升级了天籁，而且是新车。
+                                        我在离机场有一段距离的地方住，工作人员直接把车给我送来了，还带我去加油站教我加了油。
+                                        还车也非常方便。虽然比其他公司贵点，但也包含了全险和各种附加服务，
+                                        对于第一次来美租车的人来说可以说非常值了。
+                                    </div>
+                                    <div class="comments-info pull-left">
+                                        <div class="pull-left">2018-01-06</div>
+                                        <div class="pull-right">
+                                            <a class="ez-mr-50"><i class="iconfont icon-like"></i>23</a>
+                                            <a ><i class="iconfont icon-dialog"></i>2323</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="user-comments pull-left">
+                                <div class="comments-header">
+                                    <div class="comments-avatar">
+                                        <img src="~images/avatar-3.png" class="img-circle">
+                                    </div>
+                                    <div class="pull-left">
+                                        <span class="pull-left ez-mr-sm">卖女孩的小火柴</span>
+                                    </div>
+                                    <div class="pull-right">
+                                        <div class="ez-icon-star">
+                                            <i class="iconfont icon-star text-lightorange"></i>
+                                            <i class="iconfont icon-star text-lightorange"></i>
+                                            <i class="iconfont icon-star text-lightorange"></i>
+                                            <i class="iconfont icon-star text-lightorange"></i>
+                                            <i class="iconfont icon-star text-lightorange"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="comments-body">
+                                    <div class="comments-text">
+                                        非常棒的一次体验，本来定得最便宜的车，结果因为同等级都被租走免费升级了天籁，而且是新车。
+                                        我在离机场有一段距离的地方住，工作人员直接把车给我送来了，还带我去加油站教我加了油。
+                                        还车也非常方便。虽然比其他公司贵点，但也包含了全险和各种附加服务，
+                                        对于第一次来美租车的人来说可以说非常值了。
+                                    </div>
+                                    <div class="comments-info pull-left">
+                                        <div class="pull-left">2018-01-06</div>
+                                        <div class="pull-right">
+                                            <a class="ez-mr-50"><i class="iconfont icon-like"></i>23</a>
+                                            <a ><i class="iconfont icon-dialog"></i>2323</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- 游戏攻略-->
+                    <div class="tab-pane active">
+                        <div class="box-card box-card-game">
+                            <div class="box-card-left pull-left">
+                                <img src="~images/index-4-1.png">
+                            </div>
+                            <div class="box-card-text pull-right">
+                                <h4 class="title text-bold">泰国行程二选一 | 环境优美+自主半价旧金山行程二选一 | 环境优美+自主半价</h4>
+                                <div class="content">
+                                    位于伊利湖南岸，凯霍加河的河口，昔日西储地的范围内，距离宾州100公里，是俄亥俄州凯霍加县的首府。
+                                    开埠于1796年，历史上由于位于伊利湖南岸，凯霍加河的河口，昔日西储地的范围内，距离宾州100公里，是俄亥俄州凯霍加县的首府。
+                                    开埠于1796年，历史上由于
+                                </div>
+                                <div class="box-card-user">
+                                    <div class="user-avatar">
+                                        <img src="~images/avatar-3.png" class="img-circle">
+                                    </div>
+                                    <div class="user-name">卖女孩的小火柴</div>
+                                    <div>
+                                        <span class="pull-left text-gray">2018-07-20</span>
+                                        <span class="pull-right card-user-like">
+                                            <a><i class="iconfont icon-like text-babyblue"></i>23</a>
+                                            <a><i class="iconfont icon-dialog text-babyblue"></i>2333</a>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="box-card box-card-game">
+                            <div class="box-card-left pull-left">
+                                <img src="~images/index-11-2.png">
+                            </div>
+                            <div class="box-card-text pull-right">
+                                <h4 class="title text-bold">泰国行程二选一 | 环境优美+自主半价旧金山行程二选一 | 环境优美+自主半价</h4>
+                                <div class="content">
+                                    位于伊利湖南岸，凯霍加河的河口，昔日西储地的范围内，距离宾州100公里，是俄亥俄州凯霍加县的首府。
+                                    开埠于1796年，历史上由于位于伊利湖南岸，凯霍加河的河口，昔日西储地的范围内，距离宾州100公里，是俄亥俄州凯霍加县的首府。
+                                    开埠于1796年，历史上由于
+                                </div>
+                                <div class="box-card-user">
+                                    <div class="user-avatar">
+                                        <img src="~images/avatar-3.png" class="img-circle">
+                                    </div>
+                                    <div class="user-name">卖女孩的小火柴</div>
+                                    <div>
+                                        <span class="pull-left text-gray">2018-07-20</span>
+                                        <span class="pull-right card-user-like">
+                                            <a><i class="iconfont icon-like text-babyblue"></i>23</a>
+                                            <a><i class="iconfont icon-dialog text-babyblue"></i>2333</a>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="box-card box-card-game">
+                            <div class="box-card-left pull-left">
+                                <img src="~images/index-11-3.png">
+                            </div>
+                            <div class="box-card-text pull-right">
+                                <h4 class="title text-bold">泰国行程二选一 | 环境优美+自主半价旧金山行程二选一 | 环境优美+自主半价</h4>
+                                <div class="content">
+                                    位于伊利湖南岸，凯霍加河的河口，昔日西储地的范围内，距离宾州100公里，是俄亥俄州凯霍加县的首府。
+                                    开埠于1796年，历史上由于位于伊利湖南岸，凯霍加河的河口，昔日西储地的范围内，距离宾州100公里，是俄亥俄州凯霍加县的首府。
+                                    开埠于1796年，历史上由于
+                                </div>
+                                <div class="box-card-user">
+                                    <div class="user-avatar">
+                                        <img src="~images/avatar-3.png" class="img-circle">
+                                    </div>
+                                    <div class="user-name">卖女孩的小火柴</div>
+                                    <div>
+                                        <span class="pull-left text-gray">2018-07-20</span>
+                                        <span class="pull-right card-user-like">
+                                            <a><i class="iconfont icon-like text-babyblue"></i>23</a>
+                                            <a><i class="iconfont icon-dialog text-babyblue"></i>2333</a>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="box-card box-card-game">
+                            <div class="box-card-left pull-left">
+                                <img src="~images/business-2.png">
+                            </div>
+                            <div class="box-card-text pull-right">
+                                <h4 class="title text-bold">泰国行程二选一 | 环境优美+自主半价旧金山行程二选一 | 环境优美+自主半价</h4>
+                                <div class="content">
+                                    位于伊利湖南岸，凯霍加河的河口，昔日西储地的范围内，距离宾州100公里，是俄亥俄州凯霍加县的首府。
+                                    开埠于1796年，历史上由于位于伊利湖南岸，凯霍加河的河口，昔日西储地的范围内，距离宾州100公里，是俄亥俄州凯霍加县的首府。
+                                    开埠于1796年，历史上由于
+                                </div>
+                                <div class="box-card-user">
+                                    <div class="user-avatar">
+                                        <img src="~images/avatar-3.png" class="img-circle">
+                                    </div>
+                                    <div class="user-name">卖女孩的小火柴</div>
+                                    <div>
+                                        <span class="pull-left text-gray">2018-07-20</span>
+                                        <span class="pull-right card-user-like">
+                                            <a><i class="iconfont icon-like text-babyblue"></i>23</a>
+                                            <a><i class="iconfont icon-dialog text-babyblue"></i>2333</a>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <nav aria-label="Page navigation" class="text-center">
+                            <ul class="pagination ez-navigation">
+                                <li>
+                                    <a href="#" class="page-next" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo; Last</span>
+                                    </a>
+                                </li>
+                                <li><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">5</a></li>
+                                <li><a href="#">6</a></li>
+                                <li><a href="#">...</a></li>
+                                <li>
+                                    <a href="#" class="page-next" aria-label="Next">
+                                        <span aria-hidden="true">Next &raquo;</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+        <div class="box-right pull-right">
+            <div class="place-group-btn text-center">
+                <a class="btn btn-lg pull-left">评价城市</a>
+                <a class="btn btn-lg pull-right active">发表游记</a>
+            </div>
+            <div class="ez-aside-card">
+                <div class="aside-card-title bg-style4">
+                    <h4 class="title">新人指引</h4>
+                </div>
+                <ul class="lawer-guide text-lightgray">
+                    <li><i class="li-disc"></i>法律法规底线：有法可依、有法必依、执法必严、违法必究，任何时候，无论是网上网下，都将始终做到违法必究；</li>
+                    <li><i class="li-disc"></i>社会主义制度底线：为我们全面建成小康社会提供了有力地制度保障，我们要积极拥护社会主义及社会主义制度；</li>
+                    <li><i class="li-disc"></i>国家利益底线：作为国家公民，时刻维护我们伟大祖国的利益，这也是宪法赋予我们每位公民的光荣义务；</li>
+                    <li><i class="li-disc"></i>公民合法权益底线：我们在网络反腐的同时，切记不能以“艳照”等不健康、不正当甚至违法手段对别人进行人身攻击，
+                        否则不仅触犯法律，也侵犯了无辜者的合法权益。
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+    </section>
+    <!--part5 end-->
+
 
         </div>
 
@@ -260,11 +621,14 @@ import ezFooter from "components/home/ezFooter"
 import ezAside from "components/home/ezAside"
 import ezVideo from "components/common/ezVideo"
 import carAfter from "components/car/carAfter"
+import ezPage from "components/common/ezPage"
 import { mapState } from "vuex"
 import { 
     getCityInfo,
     getTravelCustomizationList,
     getOfferedList,
+    getScenicSpotList,
+    getPlayList,
     } from 'getData'
 // import { getSize } from 'XEUtils'
 export default {
@@ -276,10 +640,14 @@ export default {
             city: {},  //城市详情
             currentBigPicUrl: "",  //选中的图片
             travelCustomizationList: [],  //旅游定制列表
+            offeredList: [], //当地参团列表
+            offeredPags: 1,  //当地参团列表总页数
+            scenicSpotList: [], //景点列表
+            playList: [], //当地玩家列表
         }
     },
     computed: {
-        ...mapState([ "comProtocol", ]),
+        ...mapState([ "currencySign", ]),
     },
     beforeCreate(){
 
@@ -289,17 +657,37 @@ export default {
         this.getCityInfo()
         this.getTravelCustomizationList()
         this.getOfferedList()
+        this.getScenicSpotList()
+        this.getPlayList()
     },
     methods: {
+        //当地玩家
+        getPlayList(pageNo = 1){
+            getPlayList({
+                id: this.cityid,
+                pageNo: pageNo,
+                pageSize: 5,
+            }).then(res => {
+                this.playList = res;
+            })
+        },
+        //景点列表
+        getScenicSpotList(pageNo = 1){
+            getScenicSpotList({
+                id: this.cityid,
+            }).then(res => {
+                this.scenicSpotList = res
+            })
+        },
         //获取当地参团
-        getOfferedList(){
+        getOfferedList(pageNo = 1){
             getOfferedList({
                 id: this.cityid,
-                pageNo: 1,
+                pageNo: pageNo,
                 pageSize: 5,
             }).then(res=>{
-                console.log(res)
-                // this.offeredList = res
+                this.offeredList = res.list
+                this.offeredPags = res.toTalPage
             })
         },
         //处理景点
@@ -318,7 +706,6 @@ export default {
             getTravelCustomizationList({
                 id: this.cityid
             }).then(res=>{
-                console.log(res)
                 this.travelCustomizationList = res
             })
         },
@@ -355,6 +742,7 @@ export default {
         ezAside,
         ezVideo,
         carAfter,
+        ezPage,
     }
 }
 </script>

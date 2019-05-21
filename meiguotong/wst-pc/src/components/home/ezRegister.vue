@@ -168,7 +168,7 @@ export default {
         //跳转到商家
         geToShop(){
             this.loginFlagChange(0)
-            this.$router.push("homeBus")
+            this.$router.push("/home/homeBus")
         },
     },
 

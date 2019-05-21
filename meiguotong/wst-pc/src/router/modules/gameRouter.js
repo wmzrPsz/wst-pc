@@ -3,7 +3,7 @@
  * @Author: 彭善智
  * @LastEditors: 彭善智
  * @Date: 2019-05-07 11:15:53
- * @LastEditTime: 2019-05-16 21:06:13
+ * @LastEditTime: 2019-05-21 19:08:33
  */
 
 const gameRouter = {
@@ -25,7 +25,7 @@ const gameRouter = {
             meta: { title: "当地玩家列表", requireAuth: false}
           },
           {
-            path:"gameInfo",
+            path:"gameInfo/:id(\\d+)",
             component: ()=> import('@/views/game/gameInfo'),
             name: "gameInfo",
             meta: { title: "当地玩家详情", requireAuth: false}

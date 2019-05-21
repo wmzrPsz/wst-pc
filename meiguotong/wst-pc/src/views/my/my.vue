@@ -9,7 +9,7 @@
             <!--用户信息-->
             <div class="aside-userinfo text-center">
                 <div class="aside-avatar">
-                    <img :src="member.photo|| defaultPhoto"class="center-block">
+                    <img :src="member.photo" class="center-block">
                 </div>
                 <h4 class="username-text">{{member.nickName}}</h4>
                 <h5>手机号：{{member.phone}}</h5>

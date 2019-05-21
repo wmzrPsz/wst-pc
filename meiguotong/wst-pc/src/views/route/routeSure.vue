@@ -234,7 +234,7 @@
 import ezHeader from "components/home/ezHeader"
 import ezContainer from "components/home/ezContainer"
 import ezWebsite from "components/home/ezWebsite"
-import {getMemberContact, getInsurance, saveRouteOrder } from "getData"
+import {getMemberContact, getInsurance, saveCityRouteOrder } from "getData"
 import { mapState, mapMutations, mapGetters } from "vuex";
 import { nowDate } from 'utils/common'
 
@@ -329,7 +329,7 @@ export default {
             for (const list of Object.values(orderMember)) {
                 Vue.set(list, "englishName", `${list.key}/${list.value}`);
             }
-            let data = await saveRouteOrder({
+            let data = await saveCityRouteOrder({
                 routeid: this.routeid,
                 contactsName: this.contactsName,
                 contactsMobile: this.contactsMobile,

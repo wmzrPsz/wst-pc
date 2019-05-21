@@ -3,7 +3,7 @@
  * @Author: 彭善智
  * @LastEditors: 彭善智
  * @Date: 2019-03-12 22:51:19
- * @LastEditTime: 2019-05-17 01:03:41
+ * @LastEditTime: 2019-05-21 17:17:42
  */
 
 import {nowDate} from 'utils/common'
@@ -55,7 +55,7 @@ export const carLevelVc = value => {
 
 //截取逗号拼接的第n个
 export const splitVc = (value,index) => {
-    console.log(value,index)
+    // console.log(value,index)
     if(!value) return "";
     if( typeof value == String){
         return value.split(",")[index];

@@ -104,7 +104,7 @@
                 <div class="form-group">
                     <span class="label-txt">详情</span>
                     <div class="form-content" >
-                        <div class="ez-ueditor-box" id="ez-Editor"></div>
+                        <textarea class="ez-control-textarea" rows="10" cols="30" v-model.trim="list.deltails" maxlength="50"  placeholder="请输入详情">详情</textarea>
                     </div>
                 </div>
 
@@ -212,10 +212,8 @@ export default {
         },
         //获取玩家认证信息
         async getData() {
-            let data = await getGuideInfo()
-            
-            if(data) {
-                let list = data;;
+                let list = await getGuideInfo() || {};
+                debugger
                 if(list.photoUrl){
                     Vue.set(list,'img0',list.photoUrl.split(',')[0]);
                     Vue.set(list,'img1',list.photoUrl.split(',')[1]);
@@ -227,7 +225,6 @@ export default {
                 this.list = list;
                 this.getCountryCity();
                 this.getLAbleData();
-            }
         },
         //获取玩家擅长属性
         async getLAbleData() {

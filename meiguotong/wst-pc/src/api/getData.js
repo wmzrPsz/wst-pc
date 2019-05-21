@@ -3,7 +3,7 @@
  * @Author: 彭善智
  * @LastEditors: 彭善智
  * @Date: 2019-03-29 13:12:37
- * @LastEditTime: 2019-05-20 19:00:52
+ * @LastEditTime: 2019-05-21 16:51:19
  */
 
 import ajax from './fetch'
@@ -178,7 +178,7 @@ export const selectCityRoute = (param , type) => ajax( process.env.VUE_APP_PROXY
 //参团详情
 export const getCityRouteDetails = (param , type) => ajax( process.env.VUE_APP_PROXY_API +'route/getCityRouteDetails', param, type);
 //当地参团生成订单
-export const saveCityRouteOrder = (param , type) => ajax( process.env.VUE_APP_PROXY_API +'route/saveCityRouteOrder', param, type);
+export const saveCityRouteOrder = (param , type) => ajax( process.env.VUE_APP_PROXY_API +'route/saveCityRoouteOrder', param, type);
 
 
 
@@ -285,7 +285,7 @@ export const getCityInfo = (param , type) => ajax( process.env.VUE_APP_PROXY_API
 export const getTravelCustomizationList = (param , type) => ajax( process.env.VUE_APP_PROXY_API +'/city/getTravelCustomizationList', param, type);
 //目的地详情页面 获取当地参团列表
 export const getOfferedList = (param , type) => ajax( process.env.VUE_APP_PROXY_API +'/city/getOfferedList', param, type);
-//目的地景点
+//目的地详情页面 获取景点列表
 export const getScenicSpotList = (param , type) => ajax( process.env.VUE_APP_PROXY_API +'/city/getScenicSpotList', param, type);
 //目的地详情页面 当地玩家
 export const getPlayList = (param , type) => ajax( process.env.VUE_APP_PROXY_API +'/city/getPlayList', param, type);
