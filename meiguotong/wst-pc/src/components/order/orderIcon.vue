@@ -11,9 +11,8 @@ export default {
     name: "orderIcon",
     props:{
         orderIconType:{
-            type: String,
+            type: Number,
             default: 1,
-            required: true
         }
     }
 }

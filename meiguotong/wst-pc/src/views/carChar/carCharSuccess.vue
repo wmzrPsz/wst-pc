@@ -7,7 +7,7 @@
     <!--content-->
     <div class="content ez-travel-complete">
         <div class="content-order">
-        <orderIcon orderIconType="3"></orderIcon>
+        <orderIcon :orderIconType="3"></orderIcon>
 
             <div class="content-order-info">
                 <div class="content-order-details">

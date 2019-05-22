@@ -23,7 +23,7 @@
                         <div class="local-title ">
                             <div class="floatl"><img :src="guide.photo | defPhoto"> <span>{{guide.realName}}</span></div>
                             <div class="floatr">
-                                <i class="iconfont icon-star" v-for="num in 5" v-if="guide.star>=num"></i>
+                                <i class="iconfont icon-star" v-for="num in 5" v-if="guide.star>=num" :key="num"></i>
                                 <u>{{guide.commentNum}}条评价</u>
                             </div>
                         </div>
@@ -44,8 +44,14 @@
                             <div class="local-time-title time-number-title floatl">出发时间</div>
                             <div class="calendar-box date-box time-info" style="display: none;"></div>
                             <div class="local-time-con time-number-con floatl">
-                                <input type="text" class="demo-input" readonly @click="getGuideDateDetails" placeholder="选择日期"
-                                    id="test6"></div>
+                                <!-- <input type="text" class="demo-input" readonly @click="getGuideDateDetails" placeholder="选择日期" id="test6"> -->
+
+                                <el-popover placement="left"  width="524" trigger="click">
+                                    <gameCalendar></gameCalendar>
+                                    <a @click="calendarDateInit({guideId:guideId,clickType:1})"  slot="reference">选择日期</a>
+                                </el-popover>
+
+                            </div>
                         </div>
                         <!-- <div class="local-number">
                             <div class="local-number-title time-number-title floatl">出游人数</div>
@@ -95,7 +101,11 @@
                                 <div class="footer-bottom">
                                     <div class="text-orange ez-price pull-left"><span class="text-gray">
                                         </span> {{currencySign}}{{list.price}}<span class="text-gray">/元起</span></div>
-                                    <a class="pull-right btn-reservation" @click="guideRouteClick(list.id)">预定路线</a>
+                                    <!-- <a class="pull-right btn-reservation">预定路线</a> -->
+                                <el-popover placement="left"  width="524" trigger="click">
+                                    <gameCalendar></gameCalendar>
+                                    <a class="pull-right btn-reservation"  slot="reference" @click="calendarDateInit({guideRoute:list,clickType:2})" >预定路线</a>
+                                </el-popover>
                                 </div>
 
                                 <div class="calendar-box date-box ez-datetimer" style="display: none;"></div>
@@ -248,6 +258,7 @@ import ezContainer from "components/home/ezContainer"
 import ezFooter from "components/home/ezFooter"
 import ezAside from "components/home/ezAside"
 import ezModule from "components/home/ezModule"
+import gameCalendar from "components/game/gameCalendar"
 import {
     saveCar,
     getGuideDateDetails,
@@ -255,8 +266,9 @@ import {
     guideRoute,
     refundInfor,
     guideDetails,
+    getGuideRouteDateDetails,
 } from 'getData';
-import { mapState } from 'vuex';
+import { mapState, mapMutations, mapActions } from 'vuex';
 export default {
     name: "gameInfo",
     data() {
@@ -279,15 +291,20 @@ export default {
         ezHeader,
         ezContainer,
         ezFooter,
-        ezAside
+        ezAside,
+        ezModule,
+        gameCalendar,
     },
     created() {
-            this.getInfo();
-            this.getRefundInfo();
-            this.guideRoute();
-            this.selectComment(1, 1)
+        this.guideId = this.$route.params.id
+        this.getInfo();
+        this.getRefundInfo();
+        this.guideRoute();
+        this.selectComment(1, 1)
     },
     methods: {
+        ...mapActions("game",['calendarDateInit']),
+        ...mapMutations("game",['STATE_CHANGE']),
         guideRouteClick:function(id){
             this.guideRouteid = id;
         },
@@ -372,29 +389,6 @@ export default {
                 layerMsg("接口未写");
             }
         },
-        //导游日期详情
-        getGuideDateDetails: function () {
-            thhis.clickType = 1;
-            this.calendarEmpty();
-            let priceDate = calendarDate.year + "-" + (calendarDate.month > 9 ? calendarDate.month : "0" + calendarDate.month);
-            getGuideDateDetails({
-                guideid: this.guideId,
-                priceDate: priceDate,
-            }).then( res => {
-                $(".time-info").show();
-                $(".time-info").calendar({
-                    ele: '.date-box', //依附dom
-                    title: '',
-                    //beginDate : '2017-10-07',
-                    //endDate : '2017-12-04',
-                    data: res.list || []
-                });
-            })
-        },
-        //导游路线日期详情
-        getGuideRouteDateDetails: function () {
-
-        },
         //初始化一级评论分页
         pageCreate1: function () {
             let this_ = this;
@@ -471,6 +465,9 @@ export default {
                 guideId: this.guideId,
             }).then( res => {
                 this.guide = res;
+                this.STATE_CHANGE({
+                    guide: res
+                })
             });
         },
     },
