@@ -441,135 +441,30 @@
 
                     <!-- 游戏攻略-->
                     <div class="tab-pane active">
-                        <div class="box-card box-card-game">
+
+                        <div class="box-card box-card-game" v-for="(list, index) in strategyList" :key="index">
                             <div class="box-card-left pull-left">
-                                <img src="~images/index-4-1.png">
+                                <img v-lazy="list.imgUrl">
                             </div>
                             <div class="box-card-text pull-right">
-                                <h4 class="title text-bold">泰国行程二选一 | 环境优美+自主半价旧金山行程二选一 | 环境优美+自主半价</h4>
-                                <div class="content">
-                                    位于伊利湖南岸，凯霍加河的河口，昔日西储地的范围内，距离宾州100公里，是俄亥俄州凯霍加县的首府。
-                                    开埠于1796年，历史上由于位于伊利湖南岸，凯霍加河的河口，昔日西储地的范围内，距离宾州100公里，是俄亥俄州凯霍加县的首府。
-                                    开埠于1796年，历史上由于
-                                </div>
+                                <h4 class="title text-bold">{{list.title}}</h4>
+                                <div class="content">{{list.content}}</div>
                                 <div class="box-card-user">
                                     <div class="user-avatar">
-                                        <img src="~images/avatar-3.png" class="img-circle">
+                                        <img v-lazy="list.photo" class="img-circle">
                                     </div>
-                                    <div class="user-name">卖女孩的小火柴</div>
+                                    <div class="user-name">{{list.nickName}}</div>
                                     <div>
-                                        <span class="pull-left text-gray">2018-07-20</span>
+                                        <span class="pull-left text-gray">{{list.createDate}}</span>
                                         <span class="pull-right card-user-like">
-                                            <a><i class="iconfont icon-like text-babyblue"></i>23</a>
-                                            <a><i class="iconfont icon-dialog text-babyblue"></i>2333</a>
+                                            <a><i class="iconfont icon-like text-babyblue"></i>{{list.digNum}}</a>
+                                            <a><i class="iconfont icon-dialog text-babyblue"></i>{{list.commentNum}}</a>
                                         </span>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="box-card box-card-game">
-                            <div class="box-card-left pull-left">
-                                <img src="~images/index-11-2.png">
-                            </div>
-                            <div class="box-card-text pull-right">
-                                <h4 class="title text-bold">泰国行程二选一 | 环境优美+自主半价旧金山行程二选一 | 环境优美+自主半价</h4>
-                                <div class="content">
-                                    位于伊利湖南岸，凯霍加河的河口，昔日西储地的范围内，距离宾州100公里，是俄亥俄州凯霍加县的首府。
-                                    开埠于1796年，历史上由于位于伊利湖南岸，凯霍加河的河口，昔日西储地的范围内，距离宾州100公里，是俄亥俄州凯霍加县的首府。
-                                    开埠于1796年，历史上由于
-                                </div>
-                                <div class="box-card-user">
-                                    <div class="user-avatar">
-                                        <img src="~images/avatar-3.png" class="img-circle">
-                                    </div>
-                                    <div class="user-name">卖女孩的小火柴</div>
-                                    <div>
-                                        <span class="pull-left text-gray">2018-07-20</span>
-                                        <span class="pull-right card-user-like">
-                                            <a><i class="iconfont icon-like text-babyblue"></i>23</a>
-                                            <a><i class="iconfont icon-dialog text-babyblue"></i>2333</a>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="box-card box-card-game">
-                            <div class="box-card-left pull-left">
-                                <img src="~images/index-11-3.png">
-                            </div>
-                            <div class="box-card-text pull-right">
-                                <h4 class="title text-bold">泰国行程二选一 | 环境优美+自主半价旧金山行程二选一 | 环境优美+自主半价</h4>
-                                <div class="content">
-                                    位于伊利湖南岸，凯霍加河的河口，昔日西储地的范围内，距离宾州100公里，是俄亥俄州凯霍加县的首府。
-                                    开埠于1796年，历史上由于位于伊利湖南岸，凯霍加河的河口，昔日西储地的范围内，距离宾州100公里，是俄亥俄州凯霍加县的首府。
-                                    开埠于1796年，历史上由于
-                                </div>
-                                <div class="box-card-user">
-                                    <div class="user-avatar">
-                                        <img src="~images/avatar-3.png" class="img-circle">
-                                    </div>
-                                    <div class="user-name">卖女孩的小火柴</div>
-                                    <div>
-                                        <span class="pull-left text-gray">2018-07-20</span>
-                                        <span class="pull-right card-user-like">
-                                            <a><i class="iconfont icon-like text-babyblue"></i>23</a>
-                                            <a><i class="iconfont icon-dialog text-babyblue"></i>2333</a>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="box-card box-card-game">
-                            <div class="box-card-left pull-left">
-                                <img src="~images/business-2.png">
-                            </div>
-                            <div class="box-card-text pull-right">
-                                <h4 class="title text-bold">泰国行程二选一 | 环境优美+自主半价旧金山行程二选一 | 环境优美+自主半价</h4>
-                                <div class="content">
-                                    位于伊利湖南岸，凯霍加河的河口，昔日西储地的范围内，距离宾州100公里，是俄亥俄州凯霍加县的首府。
-                                    开埠于1796年，历史上由于位于伊利湖南岸，凯霍加河的河口，昔日西储地的范围内，距离宾州100公里，是俄亥俄州凯霍加县的首府。
-                                    开埠于1796年，历史上由于
-                                </div>
-                                <div class="box-card-user">
-                                    <div class="user-avatar">
-                                        <img src="~images/avatar-3.png" class="img-circle">
-                                    </div>
-                                    <div class="user-name">卖女孩的小火柴</div>
-                                    <div>
-                                        <span class="pull-left text-gray">2018-07-20</span>
-                                        <span class="pull-right card-user-like">
-                                            <a><i class="iconfont icon-like text-babyblue"></i>23</a>
-                                            <a><i class="iconfont icon-dialog text-babyblue"></i>2333</a>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <nav aria-label="Page navigation" class="text-center">
-                            <ul class="pagination ez-navigation">
-                                <li>
-                                    <a href="#" class="page-next" aria-label="Previous">
-                                        <span aria-hidden="true">&laquo; Last</span>
-                                    </a>
-                                </li>
-                                <li><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                                <li><a href="#">6</a></li>
-                                <li><a href="#">...</a></li>
-                                <li>
-                                    <a href="#" class="page-next" aria-label="Next">
-                                        <span aria-hidden="true">Next &raquo;</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
                     </div>
 
 
@@ -629,6 +524,7 @@ import {
     getOfferedList,
     getScenicSpotList,
     getPlayList,
+    findStrategyList,
     } from 'getData'
 // import { getSize } from 'XEUtils'
 export default {
@@ -644,6 +540,7 @@ export default {
             offeredPags: 1,  //当地参团列表总页数
             scenicSpotList: [], //景点列表
             playList: [], //当地玩家列表
+            strategyList: [], //攻略列表
         }
     },
     computed: {
@@ -659,8 +556,18 @@ export default {
         this.getOfferedList()
         this.getScenicSpotList()
         this.getPlayList()
+        this.findStrategyList();
     },
     methods: {
+        //攻略列表
+        findStrategyList(pageNo = 1){
+            findStrategyList({
+                cityid: this.cityid,
+                pageNo: pageNo,
+            }).then( res => {
+                this.strategyList = res
+            })
+        },  
         //当地玩家
         getPlayList(pageNo = 1){
             getPlayList({

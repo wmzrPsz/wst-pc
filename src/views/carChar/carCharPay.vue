@@ -7,7 +7,7 @@
         <!--content-->
         <div class="content ez-travel-payment main_content">
             <div class="content-order">
-                <orderIcon orderIconType="2"></orderIcon>
+                <orderIcon :orderIconType="2"></orderIcon>
                 <div class="content-order-state">
                     <div class="content-order-state-left">
                         <i class="iconfont icon-shijian"></i>

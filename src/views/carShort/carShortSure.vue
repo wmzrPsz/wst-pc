@@ -8,7 +8,7 @@
         <div class="content ez-travel-order main_content">
             <div class="content-order">
 
-                <orderIcon orderIconType="1"></orderIcon>
+                <orderIcon :orderIconType="1"></orderIcon>
 
                 <div class="content-order-details">
                     <div class="content-order-details-left">
