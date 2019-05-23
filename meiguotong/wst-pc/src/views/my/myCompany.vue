@@ -8,23 +8,23 @@
             <!--用户信息-->
             <form class="form-horizontal wrap-account">
 
-                <!-- <div class="form-group">
+                 <div class="form-group">
                     <span class="label-txt required">昵称</span>
                     <div class="form-content" >
-                        <input class="form-control" type="text" v-model.trim="member.nickName"  maxlength="20" >
+                        <input class="form-control" type="text" v-model.trim="member.companyName"  maxlength="20" >
                     </div>
-                </div> -->
+                </div> 
 
                 <div class="form-group">
                     <span class="label-txt required">用户头像</span>
                     <div class="form-content upload-plugin avatarImgUpload" >
-                        <img class="upload-img" :src="member.photo?member.photo:'../../images/upload2.png'">
+                        <img class="upload-img" :src="member.companyLogo">
                         <div class="upload-text">
                             <p>建议上传图片尺寸为500*500</p>
                             <p>大小不超过20M</p> 
                             <!--<a class="btn ez-btn">上传封面</a>-->
                           <div class="ez-upload-btn ez-mt-10">
-                                <input type="file" title="上传封面" @change="imgChange('photo')" accept="image/*"> 上传封面
+                                <input type="file" title="上传封面" @change="imgChange('companyLogo')" accept="image/*"> 上传封面
                             </div>
                         </div>
                     </div>
@@ -33,7 +33,7 @@
                 <div class="form-group">
                     <span class="label-txt required">手机号</span>
                     <div class="form-content" >
-                        <input class="form-control" type="number" maxlength="20" v-model.trim="member.phone" >
+                        <input class="form-control" type="number" maxlength="20" v-model.trim="member.mobile" >
                     </div>
                 </div>
 

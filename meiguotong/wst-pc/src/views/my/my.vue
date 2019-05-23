@@ -29,7 +29,7 @@
                     <router-link :to="{name: 'myOrder'}" tag="li" active-class="active"><a>我的订单</a><i></i></router-link>
                     <router-link :to="{name: 'myAfter'}" tag="li" active-class="active"><a>售后订单</a><i></i></router-link>
                     <router-link :to="{name: 'myCollection'}" tag="li" active-class="active"><a>我的收藏</a><i></i></router-link>
-                    <router-link :to="{name: 'myInfo'}" tag="li" active-class="active"><a>个人信息</a><i></i></router-link>
+                    <router-link :to="{name: 'myInfo'}" tag="li" active-class="active" v-if="member.type==1"><a>个人信息</a><i></i></router-link>
                     <router-link :to="{name: 'myNews'}" tag="li" active-class="active"><a>消息中心</a><i></i></router-link>
                     <router-link :to="{name: 'myDraft'}" tag="li" active-class="active"><a>我的草稿</a><i></i></router-link>
                     <router-link :to="{name: 'myFinance'}" tag="li" active-class="active"><a>财务管理</a><i></i></router-link>
@@ -37,7 +37,7 @@
                 </ul>
             </div>
 
-            <div class="ez-aside-card">
+            <div class="ez-aside-card" v-if="member.type==1">
                 <div class="aside-card-title bg-style4">
                     <h4 class="title">玩家中心</h4>
                 </div>

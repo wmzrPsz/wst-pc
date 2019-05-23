@@ -3,13 +3,13 @@
  * @Author: 彭善智
  * @LastEditors: 彭善智
  * @Date: 2019-05-07 11:15:53
- * @LastEditTime: 2019-05-17 14:48:33
+ * @LastEditTime: 2019-05-23 19:17:30
  */
 
 const myRouter = {
     path: '/my',
     component: ()=> import( '@/views/my/my'),
-    redirect: '/my/myInfo',
+    redirect: '/my/myOrder',
     name: "my",
     children: [
         {

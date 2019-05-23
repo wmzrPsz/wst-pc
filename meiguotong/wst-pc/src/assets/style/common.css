@@ -1028,7 +1028,8 @@ input[readonly]{
 .b_zhan{ height:30px; list-style:none;}
 .b_zhan input{
     margin-left:17px;
-    border:#CCC 1px solid; color:#CFCFCF;
+    border:#CCC 1px solid; 
+    /* color:#CFCFCF; */
     line-height: 3rem;
     display: block;
     padding-left: 0.5rem;
