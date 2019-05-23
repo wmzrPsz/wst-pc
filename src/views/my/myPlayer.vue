@@ -213,7 +213,6 @@ export default {
         //获取玩家认证信息
         async getData() {
                 let list = await getGuideInfo() || {};
-                debugger
                 if(list.photoUrl){
                     Vue.set(list,'img0',list.photoUrl.split(',')[0]);
                     Vue.set(list,'img1',list.photoUrl.split(',')[1]);

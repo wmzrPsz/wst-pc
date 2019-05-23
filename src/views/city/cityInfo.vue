@@ -253,9 +253,9 @@
                 <div class="tab-pane ez-row active">
                     <div class="col-md-3 col-sm-3 col-xs-3 ez-hot-card" v-for="(list, index) in playList" :key="index">
                         <div class="hot-card-img">
-                            <img v-lazy="list.img">
+                            <img v-lazy="list.img" :key="list.img">
                             <div class="hot-card-logo">
-                                <img  v-lazy="list.photo">
+                                <img  v-lazy="list.photo" :key="list.photo">
                             </div>
                         </div>
                         <div class="hot-card-player">
@@ -295,148 +295,7 @@
                 <div class="tab-content tab-content-place pull-left">
                     <!-- 评价城市-->
                     <div class="tab-pane">
-                        <div class="scenic-intro-text pull-left">
-                            <div class="user-comments pull-left">
-                                <div class="comments-header">
-                                    <div class="comments-avatar">
-                                        <img src="~images/avatar-2.png" class="img-circle">
-                                    </div>
-                                    <div class="pull-left">
-                                        <span class="pull-left ez-mr-sm">爱上汪星人的喵星人</span>
-                                    </div>
-                                    <div class="pull-right">
-                                        <div class="ez-icon-star">
-                                            <i class="iconfont icon-star text-lightorange"></i>
-                                            <i class="iconfont icon-star text-lightorange"></i>
-                                            <i class="iconfont icon-star text-lightorange"></i>
-                                            <i class="iconfont icon-star text-lightorange"></i>
-                                            <i class="iconfont icon-star text-lightorange"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="comments-body">
-                                    <div class="comments-text">
-                                        非常棒的一次体验，本来定得最便宜的车，结果因为同等级都被租走免费升级了天籁，而且是新车。
-                                        我在离机场有一段距离的地方住，工作人员直接把车给我送来了，还带我去加油站教我加了油。
-                                        还车也非常方便。虽然比其他公司贵点，但也包含了全险和各种附加服务，
-                                        对于第一次来美租车的人来说可以说非常值了。
-                                    </div>
-                                    <div class="comments-info pull-left">
-                                        <div class="pull-left">2018-01-06</div>
-                                        <div class="pull-right">
-                                            <a class="ez-mr-50"><i class="iconfont icon-like"></i>23</a>
-                                            <a ><i class="iconfont icon-dialog"></i>2323</a>
-                                        </div>
-                                    </div>
-
-                                    <div class="comments-reply pull-left">
-                                        <div class="form-control-reply">
-                                            <input type="text" class="form-control reply-input" placeholder="回复@卖女孩的小火柴：">
-                                        </div>
-                                        <div class="comments-reply-wrap">
-                                            <div class="comments-header">
-                                                <div class="comments-avatar">
-                                                    <img src="~images/avatar-2.png" class="img-circle">
-                                                </div>
-                                                <div class="pull-left">爱上汪星人的喵星人</div>
-                                                <div class="pull-right">2018-01-06</div>
-                                            </div>
-                                            <div class="comments-reply-body">非常赞，非常不错</div>
-                                        </div>
-
-                                        <nav class="text-right">
-                                            <ul class="pagination ez-navigation">
-                                                <li class="active"><a href="#">1</a></li>
-                                                <li><a href="#">2</a></li>
-                                                <li><a href="#">3</a></li>
-                                                <li><a href="#">4</a></li>
-                                                <li><a href="#">5</a></li>
-                                                <li><a href="#">6</a></li>
-                                                <li><a href="#">...</a></li>
-                                                <li>
-                                                    <a href="#" class="page-next" aria-label="Next">
-                                                        <span aria-hidden="true">Next &gt;</span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </nav>
-
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="user-comments pull-left">
-                                <div class="comments-header">
-                                    <div class="comments-avatar">
-                                        <img src="~images/avatar-2.png" class="img-circle">
-                                    </div>
-                                    <div class="pull-left">
-                                        <span class="pull-left ez-mr-sm">爱上汪星人的喵星人</span>
-                                    </div>
-                                    <div class="pull-right">
-                                        <div class="ez-icon-star">
-                                            <i class="iconfont icon-star text-lightorange"></i>
-                                            <i class="iconfont icon-star text-lightorange"></i>
-                                            <i class="iconfont icon-star text-lightorange"></i>
-                                            <i class="iconfont icon-star text-lightorange"></i>
-                                            <i class="iconfont icon-star text-lightorange"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="comments-body">
-                                    <div class="comments-text">
-                                        非常棒的一次体验，本来定得最便宜的车，结果因为同等级都被租走免费升级了天籁，而且是新车。
-                                        我在离机场有一段距离的地方住，工作人员直接把车给我送来了，还带我去加油站教我加了油。
-                                        还车也非常方便。虽然比其他公司贵点，但也包含了全险和各种附加服务，
-                                        对于第一次来美租车的人来说可以说非常值了。
-                                    </div>
-                                    <div class="comments-info pull-left">
-                                        <div class="pull-left">2018-01-06</div>
-                                        <div class="pull-right">
-                                            <a class="ez-mr-50"><i class="iconfont icon-like"></i>23</a>
-                                            <a ><i class="iconfont icon-dialog"></i>2323</a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="user-comments pull-left">
-                                <div class="comments-header">
-                                    <div class="comments-avatar">
-                                        <img src="~images/avatar-3.png" class="img-circle">
-                                    </div>
-                                    <div class="pull-left">
-                                        <span class="pull-left ez-mr-sm">卖女孩的小火柴</span>
-                                    </div>
-                                    <div class="pull-right">
-                                        <div class="ez-icon-star">
-                                            <i class="iconfont icon-star text-lightorange"></i>
-                                            <i class="iconfont icon-star text-lightorange"></i>
-                                            <i class="iconfont icon-star text-lightorange"></i>
-                                            <i class="iconfont icon-star text-lightorange"></i>
-                                            <i class="iconfont icon-star text-lightorange"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="comments-body">
-                                    <div class="comments-text">
-                                        非常棒的一次体验，本来定得最便宜的车，结果因为同等级都被租走免费升级了天籁，而且是新车。
-                                        我在离机场有一段距离的地方住，工作人员直接把车给我送来了，还带我去加油站教我加了油。
-                                        还车也非常方便。虽然比其他公司贵点，但也包含了全险和各种附加服务，
-                                        对于第一次来美租车的人来说可以说非常值了。
-                                    </div>
-                                    <div class="comments-info pull-left">
-                                        <div class="pull-left">2018-01-06</div>
-                                        <div class="pull-right">
-                                            <a class="ez-mr-50"><i class="iconfont icon-like"></i>23</a>
-                                            <a ><i class="iconfont icon-dialog"></i>2323</a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                        </div>
+                        <comment :typeid="cityid" :proType="14"></comment>
                     </div>
 
                     <!-- 游戏攻略-->
@@ -444,26 +303,28 @@
 
                         <div class="box-card box-card-game" v-for="(list, index) in strategyList" :key="index">
                             <div class="box-card-left pull-left">
-                                <img v-lazy="list.imgUrl">
+                                <img v-lazy="list.imgUrl" :key="list.imgUrl">
                             </div>
                             <div class="box-card-text pull-right">
                                 <h4 class="title text-bold">{{list.title}}</h4>
                                 <div class="content">{{list.content}}</div>
                                 <div class="box-card-user">
                                     <div class="user-avatar">
-                                        <img v-lazy="list.photo" class="img-circle">
+                                        <img v-lazy="list.photo" :key="list.photo" class="img-circle">
                                     </div>
                                     <div class="user-name">{{list.nickName}}</div>
                                     <div>
                                         <span class="pull-left text-gray">{{list.createDate}}</span>
                                         <span class="pull-right card-user-like">
-                                            <a><i class="iconfont icon-like text-babyblue"></i>{{list.digNum}}</a>
+                                            <a><i class="iconfont icon-like text-babyblue" @click="digComment(index)"></i>{{list.digNum}}</a>
                                             <a><i class="iconfont icon-dialog text-babyblue"></i>{{list.commentNum}}</a>
                                         </span>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                           <ezPage :pages="strategyTotalPage" @page-change="findStrategyList"></ezPage>
 
                     </div>
 
@@ -517,6 +378,7 @@ import ezAside from "components/home/ezAside"
 import ezVideo from "components/common/ezVideo"
 import carAfter from "components/car/carAfter"
 import ezPage from "components/common/ezPage"
+import comment from "components/common/comment"
 import { mapState } from "vuex"
 import { 
     getCityInfo,
@@ -525,6 +387,7 @@ import {
     getScenicSpotList,
     getPlayList,
     findStrategyList,
+    digComment,
     } from 'getData'
 // import { getSize } from 'XEUtils'
 export default {
@@ -541,10 +404,22 @@ export default {
             scenicSpotList: [], //景点列表
             playList: [], //当地玩家列表
             strategyList: [], //攻略列表
+            strategyTotalPage: 1, //攻略总页数
         }
     },
     computed: {
         ...mapState([ "currencySign", ]),
+    },
+    components: {
+        ezHeader,
+        ezContainer,
+        ezModule,
+        ezFooter,
+        ezAside,
+        ezVideo,
+        carAfter,
+        ezPage,
+        comment,
     },
     beforeCreate(){
 
@@ -559,13 +434,33 @@ export default {
         this.findStrategyList();
     },
     methods: {
+        //攻略点赞-攻略取消点赞
+        digComment(index){
+            if(this.loginType == 1){
+                this.loginFlagChange(1);
+                return;
+            }
+            digComment({
+                typeId: this.strategyList[index].id,
+                digType: 2,
+            }).then( res => {
+                if(res){
+                    Vue.set(this.strategyList[index], "digNum", this.strategyList[index].digNum+1);
+                     this.successMsg("点赞成功");
+                }else{
+                    Vue.set(this.strategyList[index], "digNum", this.strategyList[index].digNum-1);
+                    this.successMsg("取消点赞成功");
+                }
+            })
+        },
         //攻略列表
         findStrategyList(pageNo = 1){
             findStrategyList({
                 cityid: this.cityid,
                 pageNo: pageNo,
             }).then( res => {
-                this.strategyList = res
+                this.strategyList = res.list
+                this.strategyTotalPage = res.totalPage
             })
         },  
         //当地玩家
@@ -641,15 +536,5 @@ export default {
         }
 
     },
-    components: {
-        ezHeader,
-        ezContainer,
-        ezModule,
-        ezFooter,
-        ezAside,
-        ezVideo,
-        carAfter,
-        ezPage,
-    }
 }
 </script>

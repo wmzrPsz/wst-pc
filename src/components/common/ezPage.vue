@@ -27,6 +27,9 @@ export default {
         pages:{
             type: Number,
             default: 1
+        },
+        params:{
+            type: Object,
         }
     },
     data() {
@@ -88,7 +91,7 @@ export default {
                 return;
             }
             this.pageNo = index;
-            this.$emit('page-change',this.pageNo)
+            this.getData();
         },
         //选择页数
         jumpPage: function (id) {
@@ -96,9 +99,13 @@ export default {
                 return;
             }
             this.pageNo = id;
-            this.$emit('page-change',this.pageNo)
+            this.getData();
         },
-    }
+        //重新获取数量
+        getData(){
+             this.$emit('page-change',this.pageNo,this.params) 
+        },
+    },
 }
 </script>
 
