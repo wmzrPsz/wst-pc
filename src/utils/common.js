@@ -3,9 +3,21 @@
  * @Author: 彭善智
  * @LastEditors: 彭善智
  * @Date: 2019-03-12 22:51:19
- * @LastEditTime: 2019-05-21 01:49:01
+ * @LastEditTime: 2019-05-24 15:13:04
  */
 import fetch from '../api/fetch';
+import store from '../store/index'
+
+//判断是否登录
+export const isLogin = () => {
+  if(store.state.loginType == 1){
+    store.commit('STATE_CHANGE',{
+      loginFlag: 1
+    })
+    return true;
+  }
+  return false;
+}
 
 //判断数组，对象是否为空
 export const arrayisBlank = str => {
@@ -212,4 +224,9 @@ export const uploadImg = (url) => {
       }, "POST"))
     }
   })
+}
+
+//获取毫秒数
+export const getTime = (obj = new Date()) => {
+  return new Date(obj).getTime()
 }

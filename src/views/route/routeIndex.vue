@@ -188,10 +188,9 @@
                             <h5 class="text-marbom max-1">当地上车参团：<i style="color: red;">{{list.endCityContent}}成团 </i>
                                 |  {{list.scenicContentLength}}个景点：{{list.scenicContent}}</h5>
                             <p class="intro text-gray ez-mb-md max-4" v-html="list.infor"></p>
-                            <h5 class=" ez-mb-md">团期：{{list.routeDate}}</h5>
+                            <h5 class=" ez-mb-md">团期：{{routeDate(list)}}</h5>
                             <div class="card-like">
                                 <span class="pull-left text-orange ez-price"><span>{{currencySign}}</span>{{list.price}}<span class="text-gray">起</span></span>
-                                <span class="pull-right text-orange" @click.stop="calendarClick(index)">出发日期</span>
                             </div>
                         </div>
                         <div class="evaluation-info" :class="{'hidden-info':!list.show}" v-if="list.show">
@@ -301,6 +300,7 @@ import ezHeader from "components/home/ezHeader"
 import ezContainer from "components/home/ezContainer"
 import ezFooter from "components/home/ezFooter"
 import ezAside from "components/home/ezAside"
+import {routeDate} from 'langCommon';
 import { mapState } from "vuex";
 import { 
     getRoutePriceDetails,
@@ -359,6 +359,9 @@ export default {
         this.priceInit();
     },
     methods: {
+        routeDate(obj){
+            return routeDate(obj);
+        },
         //删除展示数据
         delOpt: function (index) {
             if (this.opt[index].key > 3) {  //标签属性
@@ -620,29 +623,6 @@ export default {
             }
             console.log(List);
             this.dataList = List;
-        },
-        //点击日历
-        calendarClick: function (index) {
-            for (const [key, value] of Object.entries(this.routeList)) {
-                if (key != index) {
-                    Vue.set(value, "calendarShow", false);
-                } else {
-                    Vue.set(value, "calendarShow", !value.calendarShow);
-                }
-            }
-            let priceDate = calendarDate.year + "-" + (calendarDate.month > 9 ? calendarDate.month : "0" + calendarDate.month);
-            console.log(priceDate);
-            let nthis = $(this).parent().parent().next().next(".calendar-box");
-            requestGet(getRoutePriceDetailsUrl, {
-                routeid: this.routeList[index].routeid,
-                priceDate: priceDate,
-            }, function (data) {
-                nthis.calendar({
-                    ele: '.date-box', //依附dom
-                    title: '',
-                    data: data.body.list
-                });
-            })
         },
         //参团详情页面
         getInfor: function (id) {

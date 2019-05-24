@@ -193,6 +193,7 @@ module.exports = {
       .set('components', resolve('src/components'))
       .set('utils', resolve('src/utils'))
       .set('getData', resolve('src/api/getData'))
+      .set('langCommon', resolve('src/lang/langCommon'))
     .externals =  ['.js', '.vue', '.css' ]
 
     //修复延迟加载路由错误：循环依赖

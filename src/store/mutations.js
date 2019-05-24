@@ -2,6 +2,19 @@
 import router from "../router/index";
 
 const mutations = {
+      //改变state的值
+      STATE_CHANGE(state, opt){
+          console.log({...state})
+          Object.keys({...state}).forEach(k1 => {
+            Object.keys({...opt}).forEach(k2 => {
+                if(k1 == k2){
+                  state[k1] = opt[k2]
+                }
+            });
+          });
+          console.log({...state})
+          console.log({...opt});
+      },
       //登录
       addLogin: (state,data)=> {
         [state.loginUid, state.loginKey, state.loginTime, state.loginType] = [data.uid, data.key, data.time, 2];

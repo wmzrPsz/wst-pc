@@ -12,7 +12,7 @@
                     <img :src="member.photo" class="center-block">
                 </div>
                 <h4 class="username-text">{{member.nickName}}</h4>
-                <h5>手机号：{{member.phone}}</h5>
+                <h5>手机号：{{member.mobile}}</h5>
                 <h5><span class="ez-mr-sm">{{member.sex | sexVc}}</span><span>{{member.birthday}}</span></h5>
                 <div class="aside-userinfo-btn">
                      <router-link :to="{name: 'myInfo'}" tag="a" class="btn text-lightorange">编辑</router-link>
@@ -51,12 +51,11 @@
                 </ul>
             </div>
 
-            <div class="ez-aside-card">
+            <div class="ez-aside-card"  v-if="member.type==2">
                 <div class="aside-card-title bg-style4">
                     <h4 class="title">公司账号信息</h4>
                 </div>
                 <ul class="aside-user-list text-center htmlUrl">
-                    <li><a href="./P1-10.html"></a><i></i></li>
                     <router-link :to="{name: 'myCompany'}" tag="li" active-class="active"><a>公司信息</a><i></i></router-link>
                     <router-link :to="{name: 'mySub'}" tag="li" active-class="active"><a>旅行社子账号管理</a><i></i></router-link>
                 </ul>
