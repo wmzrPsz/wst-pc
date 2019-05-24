@@ -1,5 +1,5 @@
 <template>
-    <div class="scenic-intro-text pull-left">
+    <div class="intro">
         <div class="user-comments pull-left" v-for="(lists, index) in commentList" :key="index">
             <div class="comments-header">
                 <div class="comments-avatar">
@@ -63,7 +63,7 @@ export default {
             required: true,
         },
         typeid:{
-            type: Number,
+            // type: Number,
             required: true,
         }
     },
@@ -171,3 +171,8 @@ export default {
     },
 }
 </script>
+<style lang="less" scoped>
+.intro{
+    overflow:hidden;
+}
+</style>

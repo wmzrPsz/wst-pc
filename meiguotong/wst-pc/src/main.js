@@ -21,7 +21,7 @@ import "javaScript/ez-public.js"
 import "javaScript/jqPaginator.js"
 import "./directive/index.js"
 import { infoMsg, successMsg, errorMsg, warningMsg} from 'utils/popup'
-import { isEmpty , copy } from 'utils/common'
+import { isEmpty , copy, isLogin } from 'utils/common'
 
 // import VueLazyload from 'vue-lazyload'  
 
@@ -33,6 +33,7 @@ Vue.prototype.errorMsg = errorMsg
 Vue.prototype.warningMsg = warningMsg
 Vue.prototype.isEmpty  = isEmpty 
 Vue.prototype.copy = copy
+Vue.prototype.isLogin = isLogin
 
 Vue.use(VueRouter)
 

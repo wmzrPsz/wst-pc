@@ -6,12 +6,16 @@
         <div class="content-panel">
 
             <!--用户信息-->
-            <form class="form-horizontal wrap-account">
+            <form class="form-horizontal wrap-account" v-if="member.companyType == 1">
 
                  <div class="form-group">
                     <span class="label-txt required">昵称</span>
                     <div class="form-content" >
-                        <input class="form-control" type="text" v-model.trim="member.companyName"  maxlength="20" >
+                            <el-input
+                            placeholder="请输入昵称"
+                            v-model.trim="member.companyName"
+                            clearable>
+                            </el-input>
                     </div>
                 </div> 
 
@@ -22,9 +26,8 @@
                         <div class="upload-text">
                             <p>建议上传图片尺寸为500*500</p>
                             <p>大小不超过20M</p> 
-                            <!--<a class="btn ez-btn">上传封面</a>-->
                           <div class="ez-upload-btn ez-mt-10">
-                                <input type="file" title="上传封面" @change="imgChange('companyLogo')" accept="image/*"> 上传封面
+                                <input type="file" title="上传头像" @change="imgChange('companyLogo')" accept="image/*"> 上传头像
                             </div>
                         </div>
                     </div>
@@ -33,7 +36,15 @@
                 <div class="form-group">
                     <span class="label-txt required">手机号</span>
                     <div class="form-content" >
-                        <input class="form-control" type="number" maxlength="20" v-model.trim="member.mobile" >
+                        <div class="select-group">
+                            <el-input
+                            placeholder="请输入手机号"
+                            v-model.trim.number="member.mobile"
+                            :step="1"
+                            :min ="0"
+                            clearable>
+                            </el-input>
+                        </div>
                     </div>
                 </div>
 
@@ -48,73 +59,111 @@
                     <span class="label-txt required">我的地址</span>
                     <div class="form-content" >
                         <div class="select-group">
-                            <select class="form-control ez-mr-sm" v-model="member.countryid" @change="countryChange">
-                                <option value="" selected>请选择</option>
-                                <option :value="country.countryid" v-for="(country, index) in countryList" :key="index">{{country.countryName}}</option>
-                            </select>
-                            <select class="form-control ez-mr-sm s" v-model="member.cityid">
-                                 <option value="" selected>请选择</option>
-                                 <option :value="city.cityid"  v-for="(city, index) in cityList" :key="index">{{city.cityName}}</option>
-                            </select>
-                        </div>
-                        <div>
-                            <input class="form-control" type="text" v-model.trim="member.address" placeholder="详细地址">
+                            <el-cascader
+                                :options="countryList"
+                                v-model="selectedOptions"
+                                >
+                            </el-cascader>
                         </div>
                     </div>
                 </div>
-
                 <div class="form-group">
                     <span class="label-txt"></span>
                     <div class="form-content" >
-                        <a class="btn btn-lg ez-btn-parmary ez-mr-md">编辑</a>
-                        <a class="btn btn-lg ez-btn">修改密码</a>
+                        <div class="select-group">
+                            <el-input
+                            placeholder="请输入详细地址"
+                            v-model.trim="member.address"
+                            clearable>
+                            </el-input>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <span class="label-txt"></span>
+                    <div class="form-content" >
+                        <a class="btn btn-lg ez-btn-parmary ez-mr-md" @click.stop="updateMember">编辑</a>
+                        <!-- <a class="btn btn-lg ez-btn">修改密码</a> -->
                     </div>
                 </div>
 
             </form>
 
             <!--公司信息-->
-            <form class="form-horizontal wrap-account">
+            <form class="form-horizontal wrap-account" v-if="member.companyType == 2">
                 <div class="form-group">
                     <span class="label-txt">法人代表</span>
                     <div class="form-content" >
-                        <input class="form-control" type="text" maxlength="20" v-model.trim="member.legalPerson">
+                        <el-input
+                        placeholder="请输入法人代表"
+                        v-model.trim="member.legalPerson"
+                        clearable>
+                        </el-input>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <span class="label-txt">企业名称</span>
                     <div class="form-content" >
-                        <input class="form-control" type="text" maxlength="20" v-model.trim="member.companyName">
+                        <el-input
+                        placeholder="请输入企业名称"
+                        v-model.trim="member.companyName"
+                        clearable>
+                        </el-input>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <span class="label-txt ">企业logo</span>
                     <div class="form-content upload-plugin" > 
-                         <input type="file" title="上传封面" @change="imgChange('companyLogo')" accept="image/*"  id="companyLogo" v-show> 
                          <img onclick="{ $('#companyLogo').click();}" class="upload-img" :src="member.companyLogo?member.companyLogo:'../../images/upload2.png'">
+                        <div class="upload-text">
+                            <p>建议上传图片尺寸为500*500</p>
+                            <p>大小不超过20M</p> 
+                          <div class="ez-upload-btn ez-mt-10">
+                                <input type="file" title="上传头像" @change="imgChange('companyLogo')" accept="image/*"> 上传企业logo
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <span class="label-txt ">企业执照</span>
-                    <div class="form-content-sm" >
-                        <input type="file" title="上传封面" @change="imgChange('companyImg')" accept="image/*"  id="companyImg" v-show> 
-                        <img onclick="{ $('#companyImg').click();}" class="upload-img" :src="member.companyImg?member.companyImg:'../../images/idcard-com.png'" width="185" height="110">
-                    </div>
-                    <span class="label-txt ">法人身份证</span>
-                    <div class="form-content-sm" >
-                        <input type="file" title="上传封面" @change="imgChange('cardsImg')" accept="image/*"  id="cardsImg" v-show> 
-                        <img onclick="{ $('#cardsImg').click();}" class="upload-img" :src="member.cardsImg?member.cardsImg:'../../images/idcard-com2.png'" width="185" height="110">
+                    <div class="form-content upload-plugin" >
+                        <!-- <input type="file" title="上传封面" @change="imgChange('companyImg')" accept="image/*"  id="companyImg" v-show>  -->
+                        <img onclick="{ $('#companyImg').click();}" class="upload-company" :src="member.companyImg?member.companyImg:'../../images/idcard-com.png'" width="185" height="110">
+                        <div class="upload-text">
+                            <p>建议上传图片尺寸为500*500</p>
+                            <p>大小不超过20M</p> 
+                          <div class="ez-upload-btn ez-mt-10">
+                                <input type="file" title="上传头像" @change="imgChange('companyImg')" accept="image/*"> 上传企业执照
+                            </div>
+                        </div>
                     </div>
                 </div>
-
+                <div class="form-group">
+                    <span class="label-txt ">法人身份证</span>
+                    <div class="form-content upload-plugin" >
+                        <!-- <input type="file" title="上传封面" @change="imgChange('cardsImg')" accept="image/*"  id="cardsImg" v-show>  -->
+                        <img onclick="{ $('#cardsImg').click();}" class="upload-company" :src="member.cardsImg?member.cardsImg:'../../images/idcard-com2.png'" width="185" height="110">
+                        <div class="upload-text">
+                            <p>建议上传图片尺寸为500*500</p>
+                            <p>大小不超过20M</p> 
+                          <div class="ez-upload-btn ez-mt-10">
+                                <input type="file" title="上传头像" @change="imgChange('cardsImg')" accept="image/*"> 上传法人身份证
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="form-group">
                     <span class="label-txt ">企业简介</span>
                     <div class="form-content" >
-                        <textarea class="ez-control-textarea" rows="10" cols="30" v-model="member.companyContent"></textarea>
-
+                            <el-input
+                            type="textarea"
+                            :autosize="{ minRows: 4}"
+                            placeholder="请输入企业简介"
+                            v-model.trim="member.companyContent">
+                            </el-input>
                     </div>
                 </div>
 
@@ -172,12 +221,12 @@
     </div>
 </template>
 <script>
+import { mapState } from 'vuex';
 import {
-    myInfor,
     getCountryCity,
     sendSms,
     checkEmail,
-    updateMy,
+    updateMyTravel,
     imgUpload,
      } from 'getData'
 export default {
@@ -188,40 +237,32 @@ export default {
             countryList:[],  //国家
             cityList:[],  //城市
             code:"", //验证码
+            selectedOptions: [],  //选择的国家城市
         }
     },
+    computed: {
+        ...mapState({memberInfo:"member"})
+    },
     created () {
-        this.getMember();
+        this.member = this.copy(this.memberInfo)
+        this.getCountryCity();
+        if(!this.isEmpty(this.member.countryid)){
+            this.selectedOptions.push(this.member.countryid)
+            if(!this.isEmpty(this.member.cityid)){
+                this.selectedOptions.push(this.member.cityid)
+            }
+        }
     },
     methods: {
         imgClick:function(){
             $("#companyLogo").click();
-        },
-        //国家改变
-        countryChange:function(){
-            this.member.cityid = "";
-            this.countryPd();
-        },
-        countryPd:function(){
-            for(let k in this.countryList){
-                if(this.countryList[k].countryid == this.member.countryid) 
-                this.cityList = this.countryList[k].cityList;
-            }
-        },
-        //获取会员信息
-        async getMember() {
-            let data = await myInfor()
-             if(data) {
-                this.member = data;
-                this.getCountryCity();
-            }
         },
         //根据语言获取国家城市
         async getCountryCity() {
             let data = await getCountryCity()
             if(data) {
                 this.countryList = data;
-                this.countryPd();
+                console.log(this.selectedOptions)
             }
         },
         //上传图片
@@ -265,38 +306,44 @@ export default {
         },
         //更新个人信息
         async updateMember(){
-            if(this.isEmpty (this.member.photo)){
-                this.infoMsg("请上传用户头像");  return;
+            if(this.member.companyType == 1){
+                if(this.isEmpty (this.member.companyLogo)){
+                    this.infoMsg("请上传用户头像");  return;
+                }
+                if(this.isEmpty (this.member.mobile)){
+                    this.infoMsg("请输入手机号");  return;
+                }
+                if(this.isEmpty (this.selectedOptions[0])){
+                    this.infoMsg("请选择国家");  return;
+                }
+                Vue.set(this.member, "countryid", this.selectedOptions[0])
+                if(this.isEmpty (this.selectedOptions[1])){
+                    this.infoMsg("请选择城市");  return;
+                }
+                  Vue.set(this.member, "cityid", this.selectedOptions[1])
+                if(this.isEmpty (this.member.address)){
+                    this.infoMsg("请输入详细地址");  return;
+                }
+            }else if(this.member.companyType == 2){
+                if(this.isEmpty (this.member.legalPerson)){
+                    this.infoMsg("请输入法人代表");  return;
+                }
+                if(this.isEmpty (this.member.companyName)){
+                    this.infoMsg("请输入企业名称"); return;
+                }
+                if(this.isEmpty (this.member.companyLogo)){
+                    this.infoMsg("请上传企业LOGO");  return;
+                }
+                if(this.isEmpty (this.member.companyImg)){
+                    this.infoMsg("请选择企业执照");  return;
+                }
+                if(this.isEmpty (this.member.cardsImg)){
+                    this.infoMsg("请上传法人身份证"); return;
+                }
+            }else{
+                new Error("会员类型错误")
             }
-            if(this.isEmpty (this.member.phone)){
-                this.infoMsg("请输入手机号");  return;
-            }
-            if(this.isEmpty (this.member.countryid)){
-                this.infoMsg("请选择国家");  return;
-            }
-            if(this.isEmpty (this.member.cityid)){
-                this.infoMsg("请选择城市");  return;
-            }
-            if(this.isEmpty (this.member.address)){
-                this.infoMsg("请输入详细地址");  return;
-            }
-            if(this.isEmpty (this.member.legalPerson)){
-                this.infoMsg("请输入法人代表");  return;
-            }
-            if(this.isEmpty (this.member.companyName)){
-                this.infoMsg("请输入企业名称"); return;
-            }
-            if(this.isEmpty (this.member.companyLogo)){
-                this.infoMsg("请上传企业LOGO");  return;
-            }
-            if(this.isEmpty (this.member.companyImg)){
-                this.infoMsg("请选择企业执照");  return;
-            }
-            if(this.isEmpty (this.member.cardsImg)){
-                this.infoMsg("请上传法人身份证"); return;
-            }
-
-            if(await updateMy(this.member)){
+            if(await updateMyTravel(this.member)){
                   this.successMsg("修改公司信息成功");
             }
         },
