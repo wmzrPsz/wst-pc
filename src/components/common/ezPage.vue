@@ -91,7 +91,7 @@ export default {
                 return;
             }
             this.pageNo = index;
-            this.getData();
+            this.getCommentData();
         },
         //选择页数
         jumpPage: function (id) {
@@ -99,12 +99,16 @@ export default {
                 return;
             }
             this.pageNo = id;
-            this.getData();
+            this.getCommentData();
         },
         //重新获取数量
-        getData(){
+        getCommentData(){
              this.$emit('page-change',this.pageNo,this.params) 
         },
+        reset(){
+            this.pageNo = 1;
+            this.getCommentData();
+        }   
     },
 }
 </script>

@@ -150,8 +150,7 @@ export default {
                     console.log(this.$refs)
                     console.log(this.$refs[`comment${index}`][0])
                     console.log(this.$refs[`comment${index}`][0].pageNo)
-                    this.$refs[`comment${index}`][0].pageNo = 1;
-                    this.$refs[`comment${index}`][0].getData();
+                    this.$refs[`comment${index}`][0].reset();
                 })
            }
         },
