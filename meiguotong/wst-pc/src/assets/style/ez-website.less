@@ -3089,12 +3089,15 @@
   .search-city-result{
     padding: 0 60px;
     .result-hot{
+      overflow: hidden;
       .result-city-card{
-        margin: 0 auto;
+        margin-bottom: 0.5rem;
+        float: left;
       }
     }
     .result-title{
       margin: 20px 0;
+      clear: both;
     }
     .result-list{
       .result-grid{
@@ -3102,6 +3105,9 @@
         width: 300px;
         height: 100px;
         margin: 5px;
+        >.active{
+          border: 1px solid @base-blue;
+        }
       }
     }
   }

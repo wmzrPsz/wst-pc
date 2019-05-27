@@ -41,7 +41,7 @@
                 </ul>
             </li>
             <li>
-                <router-link :to="{name: 'carIndex'}" tag="a">
+                <router-link :to="{name: 'buyIndex'}" tag="a">
                     <div class="ez-shopcart text-center">
                         <span class="iconfont icon-shopcart"></span>
                         <i class="on">{{carNum}}</i>

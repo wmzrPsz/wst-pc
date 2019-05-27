@@ -3,7 +3,7 @@
  * @Author: 彭善智
  * @LastEditors: 彭善智
  * @Date: 2019-03-29 13:12:37
- * @LastEditTime: 2019-05-24 10:51:02
+ * @LastEditTime: 2019-05-27 16:54:41
  */
 
 import ajax from './fetch'
@@ -163,6 +163,8 @@ export const payOrder = (param , type) => ajax( process.env.VUE_APP_PROXY_API +'
 export const getScenicByCity = (param , type) => ajax( process.env.VUE_APP_PROXY_API +'common/getScenicByCity', param, type);
 //添加一级评论
 export const addComment = (param , type) => ajax( process.env.VUE_APP_PROXY_API +'common/addComment', param, type);
+//根据语言获取酒店
+export const getHotelByLanguage = (param , type) => ajax( process.env.VUE_APP_PROXY_API +'common/getHotelByLanguage', param, type);
 
 
 
@@ -297,3 +299,5 @@ export const getPlayList = (param , type) => ajax( process.env.VUE_APP_PROXY_API
 export const findStrategyList = (param , type) => ajax( process.env.VUE_APP_PROXY_API +'/city/findStrategyList', param, type);
 //查看攻略
 export const findStrategy = (param , type) => ajax( process.env.VUE_APP_PROXY_API +'/city/findStrategy', param, type);
+//添加攻略
+export const addStrategy = (param , type) => ajax( process.env.VUE_APP_PROXY_API +'/city/addStrategy', param, type);

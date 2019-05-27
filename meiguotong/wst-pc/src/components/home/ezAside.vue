@@ -2,7 +2,7 @@
 <aside class="ez-aside">
     <div class="aside-box text-center">
         <div class="aside-shopcart">
-            <router-link :to="{name: 'carIndex'}" tag="a"> <i class="iconfont icon-shopcart"></i></router-link>
+            <router-link :to="{name: 'buyIndex'}" tag="a"> <i class="iconfont icon-shopcart"></i></router-link>
             <div class="shop-text">购</div>
             <div class="shop-text">物</div>
             <div class="shop-text">车</div>

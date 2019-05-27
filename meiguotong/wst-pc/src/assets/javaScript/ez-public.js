@@ -486,10 +486,10 @@ $(function(){
      
     });
 
-   $(".n_b").click(function(){
-      $(".n_c").slideToggle(200);
-   });
 
+   $("#app").on("click",".n_b",function() {
+    $(".n_c").slideToggle(200);
+   })
 
 });
 

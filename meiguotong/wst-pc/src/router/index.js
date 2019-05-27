@@ -3,7 +3,7 @@
  * @Author: 彭善智
  * @LastEditors: 彭善智
  * @Date: 2019-04-24 09:56:10
- * @LastEditTime: 2019-05-17 16:35:10
+ * @LastEditTime: 2019-05-27 17:01:37
  */
 // import Vue from 'vue'
 // import Router from 'vue-router'
@@ -18,7 +18,7 @@ import carShortRouter from './modules/carShortRouter'
 import carTranRouter from './modules/carTranRouter'
 import gameRouter from './modules/gameRouter'
 import myRouter from './modules/myRouter'
-import carRouter from './modules/carRouter'
+import buyRouter from './modules/buyRouter'
 import cityRouter from './modules/cityRouter'
 
 
@@ -43,7 +43,7 @@ const createRouter = () =>  new VueRouter({
     carTranRouter,
     gameRouter,
     myRouter,
-    carRouter,
+    buyRouter,
     cityRouter,
     {
         path: '*',
