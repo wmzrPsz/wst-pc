@@ -3,14 +3,14 @@
  * @Author: 彭善智
  * @LastEditors: 彭善智
  * @Date: 2019-05-06 17:39:02
- * @LastEditTime: 2019-05-06 17:42:00
+ * @LastEditTime: 2019-05-24 19:28:24
  */
 
 const homeRouter = {
     path: '/route',
     component: ()=> import( '@/views/route/routeHome'),
     redirect: '/route/route',
-    name: "home",
+    name: "route",
     children: [
           {
             path:"route",

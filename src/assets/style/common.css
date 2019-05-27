@@ -1518,7 +1518,7 @@ a{text-decoration: none; color:#000000; }
 .dl-horizontal_b{width:150px; display:block;}
 .dl-horizontal_c{width:150px; display:block;}
 .dian{float: left;}
-.ez-mb-md_a{width:200px;word-wrap:break-word ; background-color: #F5F5F5; padding-left: 1rem;
+.ez-mb-md_a{/**width:200px;*/word-wrap:break-word ; background-color: #F5F5F5; padding-left: 1rem;
     padding-right: 1rem; line-height: 2.5rem;}
 .gou_btn-primary{width: 100px; background-color:#FFB90F; border: none; color: white;
     margin-left: 2.5rem; margin-bottom:2rem;}

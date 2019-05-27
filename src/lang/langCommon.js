@@ -1,11 +1,9 @@
-import { Object } from "core-js";
-
 /*
  * @Description:  语言切换工具类
  * @Author: 彭善智
  * @Date: 2019-05-24 14:19:37
  * @LastEditors: 彭善智
- * @LastEditTime: 2019-05-24 15:13:57
+ * @LastEditTime: 2019-05-27 17:28:32
  */
 import {getTime, dataCountNum} from 'utils/common';
 

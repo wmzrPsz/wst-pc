@@ -3,7 +3,7 @@
  * @Author: 彭善智
  * @LastEditors: 彭善智
  * @Date: 2019-03-12 22:51:19
- * @LastEditTime: 2019-05-24 15:13:04
+ * @LastEditTime: 2019-05-27 17:43:35
  */
 import fetch from '../api/fetch';
 import store from '../store/index'
@@ -24,6 +24,11 @@ export const arrayisBlank = str => {
   return Object.keys(str).length == 0;
 }
 
+//判断对象是否不为空
+export const isNotEmpty = (...str) => {
+  return !isEmpty(...str)
+}
+
 //判断对象是否为空
 export const isEmpty = (...str) => {
   for (const val of str) {
@@ -33,6 +38,7 @@ export const isEmpty = (...str) => {
   }
   return false;
 }
+
 
 
 /**
