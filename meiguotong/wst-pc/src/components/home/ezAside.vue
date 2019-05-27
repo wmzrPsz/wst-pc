@@ -6,7 +6,7 @@
             <div class="shop-text">购</div>
             <div class="shop-text">物</div>
             <div class="shop-text">车</div>
-            <div class="shop-num">{{carNum}}</div>
+            <div class="shop-num">{{buyNum}}</div>
         </div>
         <div class="aside-contact">
             <!--电话-->
@@ -67,7 +67,7 @@ export default {
         }
     },
     computed: {
-        ...mapGetters("car",["carNum"]),
+        ...mapGetters("buy",["buyNum"]),
     }
 }
 </script>

@@ -3,22 +3,22 @@
  * @Author: 彭善智
  * @LastEditors: 彭善智
  * @Date: 2019-03-12 22:51:19
- * @LastEditTime: 2019-05-21 17:17:42
+ * @LastEditTime: 2019-05-27 19:07:44
  */
 
-import {nowDate} from 'utils/common'
+import {nowDate, isEmpty} from 'utils/common'
 
 //性别过滤器
-export const sexVc = value => {
-    if (!value) return '';
-    if(value == 1 ) return "男"; return "女";
+export const sexVc = obj => {
+    if (isEmpty(obj)) return '';
+    if(obj == 1 ) return "男"; return "女";
 }
 
 //证件类型过滤器
-export const certTypeVc = value => {
-    if (!value) return '';
+export const certTypeVc = obj => {
+    if (isEmpty(obj)) return '';
     let content = "";
-    switch (value) {
+    switch (obj) {
         case 1:  content = "身份证";  break;
         case 2:  content = "护照";    break;      
         case 3:  content = "本地ID";  break;
@@ -27,10 +27,10 @@ export const certTypeVc = value => {
 }
 
 //导游类型过滤器
-export const guideTypeVc = value => {
-    if (!value) return '';
+export const guideTypeVc = obj => {
+    if (isEmpty(obj)) return '';
     let content = "";
-    switch (parseInt(value)) {
+    switch (parseInt(obj)) {
         case 1:  content = "当地玩家";  break;
         case 2:  content = "定制旅游-导游";    break;      
         case 3:  content = "定制旅游-司兼导";  break;
@@ -41,10 +41,10 @@ export const guideTypeVc = value => {
 }
 
 //车辆等级过滤器
-export const carLevelVc = value => {
-    if (!value) return '';
+export const carLevelVc = obj => {
+    if (isEmpty(obj)) return '';
     let content = "";
-    switch (parseInt(value)) {
+    switch (parseInt(obj)) {
         case 1:  content = "一般";  break;
         case 2:  content = "舒适";    break;      
         case 3:  content = "很舒适";  break;
@@ -54,19 +54,19 @@ export const carLevelVc = value => {
 }
 
 //截取逗号拼接的第n个
-export const splitVc = (value,index) => {
-    // console.log(value,index)
-    if(!value) return "";
-    if( typeof value == String){
-        return value.split(",")[index];
+export const splitVc = (obj,index) => {
+    // console.log(obj,index)
+    if(isEmpty(obj)) return "";
+    if( typeof obj == String){
+        return obj.split(",")[index];
     }  else{
-        return value[index];
+        return obj[index];
     }
 }
 
 //星级转化百分比
-export const perVc = value => {
-    if(!value) return''; return parseInt(value/5*100);
+export const perVc = obj => {
+    if(isEmpty(obj)) return''; return parseInt(obj/5*100);
 }
 
 //分钟转小时分钟
@@ -83,25 +83,25 @@ export const endDayVC = (date, num = 0) => {
 
 
 //网站默认图片
-export const defImg = (value) => {
-    if(!value){
+export const defImg = (obj) => {
+    if(isEmpty(obj)){
          return ""; 
-    } return value;
+    } return obj;
 }
 
 //网站默认头像
-export const defPhoto = (value) => {
-    if(!value){
+export const defPhoto = (obj) => {
+    if(isEmpty(obj)){
          return ""; 
-    } return value;
+    } return obj;
 }
 
 
 //订单类型
-export const orderTypeVc = (value) => {
+export const orderTypeVc = (obj) => {
     let content;
   //  1.包车租车2.短程接送3.接送机4常规路线5.当地参团6.游轮7.景点门票8.当地玩家/导游9.酒店10.保险11.旅游定制13.商务定制14.商务旅游',
-    switch (parseInt(value)) {
+    switch (parseInt(obj)) {
         case 1:  content = "包车租车";  break;
         case 2:  content = "短程接送";    break;      
         case 3:  content = "接送机";  break;
@@ -122,10 +122,10 @@ export const orderTypeVc = (value) => {
 
 
 //订单状态
-export const orderStatusVc = (value) => {
-    if (!value) return '';
+export const orderStatusVc = (obj) => {
+    if (isEmpty(obj)) return '';
     let content = "待付款";
-    switch (parseInt(value)) {
+    switch (parseInt(obj)) {
         case 1:  content = "待付款";  break;
         case 2:  content = "待确定";    break;      
         case 3:  content = "待出行";  break;
@@ -141,14 +141,31 @@ export const orderStatusVc = (value) => {
 }
 
 //支付类型
-export const orderPayTypeVc =  (value) => {
-    if (!value) return '';
+export const orderPayTypeVc =  (obj) => {
+    if (isEmpty(obj)) return '';
     let content = "支付宝";
-    switch (parseInt(value)) {
+    switch (parseInt(obj)) {
         case 1:  content = "支付宝";  break;
         case 2:  content = "微信";    break;      
         case 3:  content = "银联";  break;
         case 4:  content = "Paypal";  break;
     }
     return content;
+}
+
+//购物车类型
+export const buyTypeVc = (obj) => {
+    if (isEmpty(obj)) return '';
+    let str;
+    switch (parseInt(obj)) {
+        case 0:  str = "全部商品";  break;
+        case 1:  str = "常规路线";  break;
+        case 2:  str = "当地参团";    break;      
+        case 3:  str = "当地玩家";  break;
+        case 4:  str = "游轮";  break;
+        case 5:  str = "景点门票";  break;
+        default: str = "全部商品"; break
+
+    }
+    return str;
 }

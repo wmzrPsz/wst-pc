@@ -3,18 +3,23 @@
  * @Author: 彭善智
  * @LastEditors: 彭善智
  * @Date: 2019-04-24 18:26:49
- * @LastEditTime: 2019-05-20 15:35:38
+ * @LastEditTime: 2019-05-27 20:35:42
  */
-
+import productCarNum from 'getData'
+import { isNotEmpty} from 'utils/common';
 
 const state = {
-    
+  buyNumList: [], //购物车数量
 }
 
 const getters = {
     //购物车数量
-    carNum(state){
-        return 9;
+    buyNum(state){
+      let buyNum = 0;
+      if(isNotEmpty(state.buyNumList)){
+        buyNum = state.buyNumList[0].num
+      }
+        return buyNum;
     }
 }
 
@@ -35,7 +40,14 @@ const mutations = {
 }
 
 const actions = {
- 
+        //获取购物车数量
+        getCarNum({state, commit}){
+          productCarNum().then( res => {
+            commit({
+              buyNumList: res
+            })
+          })
+      },
 }
 
 export default {

@@ -44,7 +44,7 @@
                 <router-link :to="{name: 'buyIndex'}" tag="a">
                     <div class="ez-shopcart text-center">
                         <span class="iconfont icon-shopcart"></span>
-                        <i class="on">{{carNum}}</i>
+                        <i class="on">{{buyNum}}</i>
                     </div>
                 </router-link>
             </li>
@@ -92,7 +92,7 @@ export default {
     },
     computed: {
         ...mapState([ "loginType", "languageid", "currencyid", "comProtocol", "loginFlag", "languageList", "currencyList", "member" ]),
-        ...mapGetters("car",["carNum"]),
+        ...mapGetters("buy",["buyNum"]),
         //动态组件
         currentTabComponent() {
             if (this.loginFlag == 1) return "ezLogin";

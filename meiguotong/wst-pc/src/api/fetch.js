@@ -3,17 +3,26 @@
  * @Author: 彭善智
  * @LastEditors: 彭善智
  * @Date: 2019-03-01 22:48:18
- * @LastEditTime: 2019-05-24 11:07:59
+ * @LastEditTime: 2019-05-27 21:07:51
  */
 import store from '../store/index'
 import { errorMsg } from '../utils/popup'
 import { isEmpty  } from '../utils/common'
 
+let urls = [];
 
 export default async (url = '', data = {}, type = 'GET', method = 'fetch')=>{
+  if(urls.some( el => {
+    return el == url
+  })){
+    new Error("重复点击")
+    return;
+  }
+  urls.push(url)
   return new Promise((resolve, reject) =>
     Fetch(url,data,type,method)
     .then(res=>{
+      urls.splice(urls.findIndex(v => v=== url),1);
       console.log(url,res);
       let data;
       if(res.success){
@@ -31,6 +40,7 @@ export default async (url = '', data = {}, type = 'GET', method = 'fetch')=>{
       }
     })
     .catch(error=>{
+      urls.splice(urls.findIndex(v => v === url),1);
       reject(error)
     })
   )

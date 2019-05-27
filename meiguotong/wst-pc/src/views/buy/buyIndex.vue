@@ -6,26 +6,27 @@
 
     <div class="container ez-container ez-search-result n_aa">
        <div class="n_a">
-       <div class="fu n_b">全部商品（2）<i class="iconfont icon-down"></i></div>
-       <button class="btn btn-primary_a" style="float: right!important;margin-right:2.5rem">删除</button>
+       <div class="fu n_b">{{carTypeStr.type | buyTypeVc}}（{{carTypeStr.num}}）<i class="iconfont icon-down"></i></div>
+       <button class="btn btn-primary_a" style="float: right!important;margin-right:2.5rem" @click="deleteCar">删除</button>
        </div>
        <div class="qingchu n_c wan_aaa">
       <ul class="">
-        <li>常规路线（2）</li>
-        <li>当地玩家（0）</li>
-        <li>当地参团（0）</li>
+        <li v-for="(list, index) in buyNumList" :key="index" v-if="list.type != carType" @click="carTypeClick(list.type)">
+            {{list.type | buyTypeVc}}（{{list.num}}）
+            </li>
       </ul>
        </div>
     </div>
 
     <div class="container ez-container ez-search-result">
         <div class="box-left pull-left">
-         <div v-for="(list, index) in buyList" :key="index">
-            <input class="ma6 luyoudizi_c_a  fu" type="radio" name="a">
-            <button class="btn  gou_btn-primary">常规路线</button>
+         <div v-for="(list, index) in buyList" :key="list.id">
+            <!-- <input class="ma6 luyoudizi_c_a  fu" type="radio" name="a"> -->
+             <el-checkbox v-model="list.flag"></el-checkbox>
+            <button class="btn  gou_btn-primary">{{list.type | buyTypeVc}}</button>
             <div class="box-card">
                 <div class="box-card-left pull-left">
-                    <img src="~images/index-4-1.png">
+                    <img v-lazy="list.img" :key="list.img">
                 </div>
                 <div class="box-card-text pull-right">
                     <h4 class="title ez-mb-md">{{list.title}}</h4>
@@ -35,7 +36,7 @@
                 </div>
             </div>
           </div>
-        <ezPage :pages="bugPages" @page-change="productCar"></ezPage>
+        <ezPage :pages="bugPages" @page-change="productCar" ref="buyPage"></ezPage>
         </div>
         <div class="box-right pull-right">
             <div class="ez-aside-banner ez-mb-md">
@@ -78,9 +79,9 @@
    <div class=" container ez-container ez-search-result">
     <ul class="n_d">
         <li class="fu n_d_a">
-            <i><input class="ma6 luyoudizi_c_a  fu" type="radio" name="a"/>全选</i>
-            <i class="sssss">删除</i>
-            <i class="sssss">清空失效宝贝</i>
+            <i> <el-checkbox v-model="checked" @change="selectAll">全选</el-checkbox></i>
+            <i class="sssss"  @click="deleteCar">删除</i>
+            <i class="sssss" @click="cleanBuy">清空失效宝贝</i>
         </li>
         <li class="fu1">
             <i>已经选择</i>
@@ -116,10 +117,20 @@ export default {
             carType: 0,  //0.全部 1.常规路线2.当地参团3.当地玩家4.邮轮5.门票
             buyList: [], //购物车列表
             bugPages: 1, //总页数
+            buyNumList: [], //购物车数量
+            checked: false, //是否全选
         }
     },
     computed: {
         ...mapState(["currencySign"]),
+        //选中的类型
+        carTypeStr(){
+            let obj = {}
+            if(this.isNotEmpty(this.buyNumList)){
+                obj = this.buyNumList[this.carType]
+            }
+            return obj
+        },
     },
     components: {
         ezHeader,
@@ -134,6 +145,45 @@ export default {
         this.getCarNum()
     },
     methods: {
+        //全选
+        selectAll(){
+            for (const list of this.buyList) {
+                Vue.set(list, "flag", this.checked)
+            }
+        },
+        //清空失效
+        cleanBuy(){
+            cancleTimeOuteProductCar().then( res => {
+                this.successMsg("清空失效宝贝成功")
+                this.$refs.buyPage.reset()
+            })
+        },
+        //删除购物车
+        deleteCar(){
+            let carids = [];
+            for (const list of this.buyList) {
+                if(list.flag){
+                    carids.push(list.id)
+                }
+            }
+            if(this.isEmpty(carids)){
+                this.infoMsg("请选择要删除的购物车")
+                return
+            }
+            deleteCar({
+                carids: carids
+            }).then( res => {
+                this.successMsg("删除购物车成功")
+                this.$refs.buyPage.reset()
+            })
+        },
+        //点击选中的类型
+        carTypeClick(type){
+             $(".n_c").slideToggle(200)
+            this.carType = type
+            this.$refs.buyPage.reset()
+            this.getCarNum()
+        },
         //获取购物车数量
         getCarNum(){
             productCarNum().then( res => {
@@ -173,6 +223,7 @@ export default {
             let data = await productCar({
                 carType: this.carType,
                 pageNo: pageNo,
+                pageSize: -1,
                 });
             console.log(data)
             if(data){
