@@ -3,7 +3,7 @@
  * @Author: 彭善智
  * @LastEditors: 彭善智
  * @Date: 2019-05-07 11:15:53
- * @LastEditTime: 2019-05-21 19:08:33
+ * @LastEditTime: 2019-05-30 12:41:05
  */
 
 const gameRouter = {
@@ -34,19 +34,19 @@ const gameRouter = {
             path:"gameSure",
             component: ()=> import('@/views/game/gameSure'),
             name: "gameSure",
-            meta: { title: "当地玩家订单确定", requireAuth: false}
+            meta: { title: "当地玩家订单确定", requireAuth: true}
           },
           {
             path:"gamePay",
             component: ()=> import('@/views/game/gamePay'),
             name: "gamePay",
-            meta: { title: "当地玩家订单支付", requireAuth: false}
+            meta: { title: "当地玩家订单支付", requireAuth: true}
           },
           {
             path:"gameSuccess",
             component: ()=> import('@/views/game/gameSuccess'),
             name: "gameSuccess",
-            meta: { title: "当地玩家订单支付成功", requireAuth: false}
+            meta: { title: "当地玩家订单支付成功", requireAuth: true}
           },
     ]
 }

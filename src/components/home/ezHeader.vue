@@ -37,7 +37,7 @@
                     <!--<li><a href="#">玩家中心</a></li>-->
                     <!--<li><a href="#">关于我们</a></li>-->
                     <li role="separator" class="divider"></li>
-                    <li><a @click.prevent = "removeLoginClick" >退出登录</a></li>
+                    <li><a @click.prevent = "removeLogin($route)" >退出登录</a></li>
                 </ul>
             </li>
             <li>
@@ -78,7 +78,7 @@
 <script>
 import { getLanguage, getProtocol, getCurrency, myInfor } from 'getData';
 import { isEmpty  } from "@/utils/common";
-import { mapState, mapMutations, mapGetters } from "vuex";
+import { mapState, mapMutations, mapGetters, mapActions } from "vuex";
 import ezLogin from "components/home/ezLogin"
 import ezRegister from "components/home/ezRegister"
 import ezForest from "components/home/ezForest"
@@ -119,28 +119,32 @@ export default {
         this.currencyidFlag = this.currencyid;
     },
     methods: {
-        ...mapMutations([ "addLogin", "removeLogin", "languageChange", "currencyChange", "setComProtocol", "loginFlagChange" ]),
+        ...mapMutations([ "STATE_CHANGE"]),
+        ...mapActions(["removeLogin"]),
         //点击用户头像
         loginFlagClick(index) {
             if(this.loginType == 1){
-                this.loginFlagChange(index);
+                this.STATE_CHANGE({
+                    loginFlag: index
+                })
             }
         },
        //语言改变
         changeLanguage() {
-            this.languageChange(this.languageidFlag);
+            this.STATE_CHANGE({
+                languageid: this.languageidFlag
+            })
         },
         //货币改变
         changeCurrency() {
             for (const list of this.currencyList) {
                 if (list.currencyid == this.currencyidFlag) {
-                    this.currencyChange(list)
+                    this.STATE_CHANGE({
+                        currencyid : list.currencyid,
+                        currencySign : list.sign,
+                    })
                 }
             }
-        },
-        //退出登录
-        removeLoginClick() {
-            this.removeLogin();
         },
     },
 }

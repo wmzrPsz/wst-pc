@@ -13,7 +13,7 @@
                 <div class="content-order-details">
                     <div class="content-order-details-left">
 
-                    <orderAddress :cityName="guide.cityName" :startDate="beginDate" :playNum="playNum" ></orderAddress>
+                    <orderHead :cityName="guide.cityName" :startDate="beginDate" :playNum="playNum" ></orderHead>
 
                         <div class="content-order-details-tourguide">
                             <h4>导游信息</h4>
@@ -44,12 +44,12 @@
                             <h4>行程</h4>
                             <p><label>{{beginDate}} - {{endDate}}（共{{dayNum}}天）</label></p>
                             <p><label>导游</label> <span>{{guide.realName}}</span></p>
-                            <p v-if="!guideRoute"><label>价格</label> <span>{{currencySign}}{{guide.price}}</span></p>
+                            <p><label>价格</label> <span>{{currencySign}}{{guide.price}}</span></p>
                         </div>
 
                         <div v-if="guideRoute">
                             <h4>导游路线</h4>
-                            <p><label>行程</label> <span>{{guideRoute.content}}</span></p>
+                            <p><label>行程</label> <span>{{guideRoute.title}}</span></p>
                             <p><label>价格</label> <span>{{currencySign}}{{guideRoute.price}}</span></p>
                         </div>
 
@@ -79,7 +79,7 @@ import ezHeader from "components/home/ezHeader"
 import ezContainer from "components/home/ezContainer"
 import ezWebsite from "components/home/ezWebsite"
 import orderMember from "components/order/orderMember"
-import orderAddress from "components/order/orderAddress"
+import orderHead from "components/order/orderHead"
 import orderIcon from "components/order/orderIcon"
 import { saveGuideOrder } from "getData"
 import { mapState, mapMutations, mapGetters } from "vuex";
@@ -104,7 +104,7 @@ export default {
         ezContainer,
         ezWebsite,
         orderMember,
-        orderAddress,
+        orderHead,
         orderIcon,
     },
     methods: {

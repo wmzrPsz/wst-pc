@@ -3,13 +3,14 @@
  * @Author: 彭善智
  * @LastEditors: 彭善智
  * @Date: 2019-04-24 18:26:49
- * @LastEditTime: 2019-05-27 20:35:42
+ * @LastEditTime: 2019-05-30 12:11:48
  */
-import productCarNum from 'getData'
+import { productCarNum } from 'getData'
 import { isNotEmpty} from 'utils/common';
 
 const state = {
   buyNumList: [], //购物车数量
+  buyIds: [], //选中的购物车ID
 }
 
 const getters = {
@@ -25,7 +26,7 @@ const getters = {
 
 const mutations = {
   //改变state的值
-  stateChange(state, opt){
+  STATE_CHANGE(state, opt){
     console.log({...state})
     Object.keys({...state}).forEach(k1 => {
       Object.keys({...opt}).forEach(k2 => {
@@ -41,12 +42,14 @@ const mutations = {
 
 const actions = {
         //获取购物车数量
-        getCarNum({state, commit}){
-          productCarNum().then( res => {
-            commit({
-              buyNumList: res
+        async getCarNum({ commit, rootState }){
+            let buyNumList = []
+            if(rootState.loginType == 2){
+               buyNumList = await productCarNum()
+            }
+            commit("STATE_CHANGE", {
+              buyNumList: buyNumList
             })
-          })
       },
 }
 

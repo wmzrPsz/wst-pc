@@ -3,7 +3,7 @@
  * @Author: 彭善智
  * @LastEditors: 彭善智
  * @Date: 2019-05-07 11:15:53
- * @LastEditTime: 2019-05-15 16:09:10
+ * @LastEditTime: 2019-05-30 12:40:07
  */
 
 const carCharRouter = {
@@ -28,19 +28,19 @@ const carCharRouter = {
             path:"carCharSure",
             component: ()=> import('@/views/carChar/carCharSure'),
             name: "carCharSure",
-            meta: { title: "包车租车订单确定", requireAuth: false}
+            meta: { title: "包车租车订单确定", requireAuth: true}
           },
           {
             path:"carCharPay",
             component: ()=> import('@/views/carChar/carCharPay'),
             name: "carCharPay",
-            meta: { title: "包车租车订单支付", requireAuth: false}
+            meta: { title: "包车租车订单支付", requireAuth: true}
           },
           {
             path:"carCharSuccess",
             component: ()=> import('@/views/carChar/carCharSuccess'),
             name: "carCharSuccess",
-            meta: { title: "包车租车订单支付成功", requireAuth: false}
+            meta: { title: "包车租车订单支付成功", requireAuth: true}
           },
     ]
 }

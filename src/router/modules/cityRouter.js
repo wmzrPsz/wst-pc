@@ -34,13 +34,13 @@ const cityRouter = {
             path:"addStrategy/:id(\\d+)",
             component: ()=> import('@/views/city/addStrategy'),
             name: "addStrategy",
-            meta: { title: "发布城市攻略", requireAuth: false}
+            meta: { title: "发布城市攻略", requireAuth: true}
         },
         {
             path:"addCityComment/:id(\\d+)",
             component: ()=> import('@/views/city/addCityComment'),
             name: "addCityComment",
-            meta: { title: "评论城市", requireAuth: false}
+            meta: { title: "评论城市", requireAuth: true}
         },
     ]
 }

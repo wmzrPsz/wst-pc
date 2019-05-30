@@ -3,11 +3,11 @@
  * @Author: 彭善智
  * @LastEditors: 彭善智
  * @Date: 2019-03-01 22:48:18
- * @LastEditTime: 2019-05-27 21:07:51
+ * @LastEditTime: 2019-05-28 15:18:24
  */
 import store from '../store/index'
-import { errorMsg } from '../utils/popup'
-import { isEmpty  } from '../utils/common'
+import { errorMsg } from 'utils/popup'
+import { isEmpty } from 'utils/common'
 
 let urls = [];
 
@@ -15,8 +15,9 @@ export default async (url = '', data = {}, type = 'GET', method = 'fetch')=>{
   if(urls.some( el => {
     return el == url
   })){
-    new Error("重复点击")
-    return;
+    return new Promise((resolve, reject) =>{
+      reject(`${url}重复点击`)
+    })
   }
   urls.push(url)
   return new Promise((resolve, reject) =>

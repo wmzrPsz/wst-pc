@@ -63,7 +63,7 @@ export default {
   },
   computed: {
      ...mapState([ "currencySign", "loginType"]),
-    ...mapState("game",["dataList","calendarDate","guideId","clickType","guideRoute","beginDate"]),
+    ...mapState("game",["dataList","calendarDate","guideId","clickType","guideRoute","beginDate","endDate"]),
     ...mapGetters("game", ["orderPrice"]),
   },
   methods: {
@@ -82,6 +82,7 @@ export default {
             typeid: this.clickType ==1?this.guideId:this.guideRoute.id,
             carType: this.clickType ==1?3:6,  //1.常规路线2.当地参团3.当地玩家4.游轮5.景点6导游路线
             beginDate: this.beginDate,
+            endDate: this.clickType ==1?this.endDate:"",
             adultNum: this.adultNum,
             childNum: this.childNum,
             price: this.orderPrice,

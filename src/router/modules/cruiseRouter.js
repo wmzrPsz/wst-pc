@@ -3,7 +3,7 @@
  * @Author: 彭善智
  * @LastEditors: 彭善智
  * @Date: 2019-05-07 11:15:53
- * @LastEditTime: 2019-05-07 11:17:40
+ * @LastEditTime: 2019-05-30 12:40:56
  */
 
 const cruiseRouter = {
@@ -34,19 +34,19 @@ const cruiseRouter = {
             path:"cruiseSure",
             component: ()=> import('@/views/cruise/cruiseSure'),
             name: "cruiseSure",
-            meta: { title: "游轮订单确定", requireAuth: false}
+            meta: { title: "游轮订单确定", requireAuth: true}
           },
           {
             path:"cruisePay",
             component: ()=> import('@/views/cruise/cruisePay'),
             name: "cruisePay",
-            meta: { title: "游轮订单支付", requireAuth: false}
+            meta: { title: "游轮订单支付", requireAuth: true}
           },
           {
             path:"cruiseSuccess",
             component: ()=> import('@/views/cruise/cruiseSuccess'),
             name: "cruiseSuccess",
-            meta: { title: "游轮订单支付成功", requireAuth: false}
+            meta: { title: "游轮订单支付成功", requireAuth: true}
           },
     ]
 }
