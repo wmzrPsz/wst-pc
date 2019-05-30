@@ -22,7 +22,7 @@
                         <p>我们将安排好您的行程后，短信或邮箱通知您。</p>
                     </div>
                     <div class="content-order-details-btn">
-                        <router-link :to="{ name: 'myorder'}" tag="div" >查看订单</router-link>
+                        <router-link :to="{ name: 'myOrder'}" tag="div" >查看订单</router-link>
                         <router-link :to="{ path: 'route'}" tag="div" >返回当地参团</router-link>
                     </div>
                     <p>如有疑问,请致电话{{comProtocol.phone}}</p>

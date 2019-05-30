@@ -27,19 +27,19 @@ const ruleRouter = {
             path:"ruleSure",
             component: ()=> import('@/views/rule/ruleSure'),
             name: "ruleSure",
-            meta: { title: "常规路线订单确定", requireAuth: false}
+            meta: { title: "常规路线订单确定", requireAuth: true}
           },
           {
             path:"rulePay",
             component: ()=> import('@/views/rule/rulePay'),
             name: "rulePay",
-            meta: { title: "常规路线订单支付", requireAuth: false}
+            meta: { title: "常规路线订单支付", requireAuth: true}
           },
           {
             path:"ruleSuccess",
             component: ()=> import('@/views/rule/ruleSuccess'),
             name: "ruleSuccess",
-            meta: { title: "常规路线订单支付成功", requireAuth: false}
+            meta: { title: "常规路线订单支付成功", requireAuth: true}
           },
     ]
 }

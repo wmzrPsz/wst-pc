@@ -3,7 +3,7 @@
  * @Author: 彭善智
  * @LastEditors: 彭善智
  * @Date: 2019-04-24 18:26:49
- * @LastEditTime: 2019-05-17 16:40:34
+ * @LastEditTime: 2019-05-30 15:24:22
  */
 import { isEmpty  } from 'utils/common'
 
@@ -20,7 +20,8 @@ const state = {
     addCarList: "", //选择的车辆信息
     travelInfor: "", //行程信息
     guideType: "", //导游类型 
-    guideInfo: ""  //导游信息
+    guideInfo: "",  //导游信息
+    orderid: "", //订单ID
 }
 
 const getters = {

@@ -3,7 +3,7 @@
  * @Author: 彭善智
  * @LastEditors: 彭善智
  * @Date: 2019-03-29 13:12:37
- * @LastEditTime: 2019-05-27 16:54:41
+ * @LastEditTime: 2019-05-29 17:39:06
  */
 
 import ajax from './fetch'
@@ -279,6 +279,8 @@ export const cancleTimeOuteProductCar = (param , type) => ajax( process.env.VUE_
 export const productCarDetail = (param , type) => ajax( process.env.VUE_APP_PROXY_API +'/buyCar/productCarDetail', param, type);
 //获取购物车数量
 export const productCarNum = (param , type) => ajax( process.env.VUE_APP_PROXY_API +'/buyCar/productCarNum', param, type);
+//购物车下单
+export const saveOrderByCar = (param , type) => ajax( process.env.VUE_APP_PROXY_API +'/buyCar/saveOrderByCar', param, type);
 
 
 

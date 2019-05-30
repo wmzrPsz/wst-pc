@@ -56,7 +56,7 @@
                         </div>
 
                         <div class="content-order-details-insurance ">
-                            <h4>常规路线</h4>
+                            <h4>当地参团</h4>
                             <div class="ez-mb-md">
                                 <div>{{route.title}}</div>
                                 <div class="text-lightorange">{{route.subtitle}}</div>
@@ -75,7 +75,7 @@
                         <div class="content-order-details-insurance">
                             <h4>保险方案</h4>
                             <div>
-                                <p>意外险</p>
+                                <!-- <p>意外险</p> -->
                                 <!-- <div v-for="(list, index) in insuranceList" :key="index">
                                   
                                         <input type="radio" :value="list.id" v-model="insuranceid" name="insurance">{{list.name}}

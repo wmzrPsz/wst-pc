@@ -298,6 +298,7 @@ import {
     tripList,
     linerlineDetails,
     getProMenu,
+    saveCar,
 } from 'getData'
 export default {
     name: "cruisInfo",
@@ -378,13 +379,25 @@ export default {
             return true;
         },
         //加入购物车
-        addCar:function(){
+        addCar(){
             if(!this.judge()) return;
             if(this.loginType == 1){
                 this.loginFlagChange(1);
                 return;
             }
-             this.successMsg("加入购物车成功");
+             let roomids = []
+             for (const list of this.rooms) {
+                 roomids.push(list.id)
+             }
+            saveCar({
+                typeid: this.lineid,
+                carType: 4,
+                beginDate: this.beginDate,
+                roomids: roomids.toString(),
+                price: this.linerline.price,
+            }).then( res => {
+                 this.successMsg("添加购物车成功");
+            })
         },
         //预约
         addOrder:function(){

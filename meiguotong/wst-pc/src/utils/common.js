@@ -3,7 +3,7 @@
  * @Author: 彭善智
  * @LastEditors: 彭善智
  * @Date: 2019-03-12 22:51:19
- * @LastEditTime: 2019-05-27 17:43:35
+ * @LastEditTime: 2019-05-29 11:12:09
  */
 import fetch from '../api/fetch';
 import store from '../store/index'
@@ -163,7 +163,7 @@ export const nowDate = (num = 0, date = new Date()) => {
 }
 
 //计算天数  yyyy-MM-dd
-export const dataCountNum = (date, num) => {
+export const dataCountNum = (date, num = 0) => {
   return nowDate(num, new Date(date));
 }
 

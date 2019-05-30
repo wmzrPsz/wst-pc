@@ -16,7 +16,7 @@
                 <h5><span class="ez-mr-sm">{{member.sex | sexVc}}</span><span>{{member.birthday}}</span></h5>
                 <div class="aside-userinfo-btn">
                      <router-link :to="{name: 'myInfo'}" tag="a" class="btn text-lightorange">编辑</router-link>
-                    <a class="btn" @click.stop = "removeLogin">退出登录</a>
+                    <a class="btn" @click.stop = "removeLogin($route)">退出登录</a>
                 </div>
             </div>
 
@@ -87,7 +87,7 @@ import ezFooter from "components/home/ezFooter"
 import ezAside from "components/home/ezAside"
 import ezModule from "components/home/ezModule"
 import carNav from "components/car/carNav"
-import { mapGetters, mapState, mapMutations } from 'vuex'
+import { mapGetters, mapState, mapMutations, mapActions } from 'vuex'
 export default {
     name: "myIndex",
     data() {
@@ -107,7 +107,7 @@ export default {
         carNav,
     },
     methods: {
-        ...mapMutations(['removeLogin']),
+        ...mapActions(['removeLogin']),
     },
 }
 </script>

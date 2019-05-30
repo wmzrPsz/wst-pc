@@ -13,7 +13,7 @@
                 <div class="content-order-details">
                     <div class="content-order-details-left">
 
-                    <orderAddress :cityName="scenicSpot.countryName+'·'+scenicSpot.cityName" :startDate="beginDate" :playNum="playNum" ></orderAddress>
+                    <orderHead :cityName="scenicSpot.countryName+'·'+scenicSpot.cityName" :startDate="beginDate" :playNum="playNum" ></orderHead>
   
                         <div class="content-order-details-insurance ">
                             <h4>景点</h4>
@@ -76,7 +76,7 @@ import ezHeader from "components/home/ezHeader"
 import ezContainer from "components/home/ezContainer"
 import ezWebsite from "components/home/ezWebsite"
 import orderMember from "components/order/orderMember"
-import orderAddress from "components/order/orderAddress"
+import orderHead from "components/order/orderHead"
 import orderIcon from "components/order/orderIcon"
 import { saveScenicOrder } from "getData"
 import { mapState, mapMutations, mapGetters } from "vuex";
@@ -102,7 +102,7 @@ export default {
         ezContainer,
         ezWebsite,
         orderMember,
-        orderAddress,
+        orderHead,
         orderIcon,
     },
     created() {
@@ -112,10 +112,7 @@ export default {
         ...mapMutations("sopt", ["orderidSet"]),
         //确定订单
         async sureorder(){
-            if(this.loginType == 1){
-                this.loginFlagChange(1);
-                return;
-            }
+            if(this.isLogin()) return;
             if(this.isEmpty (this.contactsName, this.contactsMobile)){
                 this.infoMsg('请完善联系人信息'); return;
             }

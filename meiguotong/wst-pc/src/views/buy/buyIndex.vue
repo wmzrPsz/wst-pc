@@ -86,7 +86,7 @@
         <li class="fu1">
             <i>已经选择</i>
             <i class="zi_b sssss zi_c ">￥699</i>
-            <i> <button class="btn  gou_btn-primary">结算</button></i>
+            <i> <button class="btn  gou_btn-primary" @click="goSure">结算</button></i>
         </li>
     </ul>
     </div>
@@ -102,7 +102,7 @@ import ezContainer from "components/home/ezContainer"
 import ezFooter from "components/home/ezFooter"
 import ezAside from "components/home/ezAside"
 import ezModule from "components/home/ezModule"
-import { mapState, mapMutations, mapGetters } from "vuex";
+import { mapState, mapMutations, mapGetters, mapActions } from "vuex";
 import ezPage from "components/common/ezPage"
 import { 
     productCar,
@@ -117,12 +117,12 @@ export default {
             carType: 0,  //0.全部 1.常规路线2.当地参团3.当地玩家4.邮轮5.门票
             buyList: [], //购物车列表
             bugPages: 1, //总页数
-            buyNumList: [], //购物车数量
             checked: false, //是否全选
         }
     },
     computed: {
         ...mapState(["currencySign"]),
+        ...mapState("buy",["buyNumList"]),
         //选中的类型
         carTypeStr(){
             let obj = {}
@@ -130,6 +130,16 @@ export default {
                 obj = this.buyNumList[this.carType]
             }
             return obj
+        },
+        //选中的购物车ID
+        buyIds(){
+            let buyIds = [];
+            for (const list of this.buyList) {
+                if(list.flag){
+                    buyIds.push(list.id)
+                }
+            }
+            return buyIds
         },
     },
     components: {
@@ -145,6 +155,19 @@ export default {
         this.getCarNum()
     },
     methods: {
+        ...mapMutations("buy",["STATE_CHANGE"]),
+        ...mapActions("buy",["getCarNum"]),
+        //点击结算
+        goSure(){
+            if(this.isEmpty(this.buyIds)){
+                this.infoMsg("请选择要结算的商品")
+                return
+            }
+            this.STATE_CHANGE({
+                buyIds: this.buyIds
+            })
+            this.$router.push("buySure")
+        },
         //全选
         selectAll(){
             for (const list of this.buyList) {
@@ -156,25 +179,21 @@ export default {
             cancleTimeOuteProductCar().then( res => {
                 this.successMsg("清空失效宝贝成功")
                 this.$refs.buyPage.reset()
+                this.getCarNum()
             })
         },
         //删除购物车
         deleteCar(){
-            let carids = [];
-            for (const list of this.buyList) {
-                if(list.flag){
-                    carids.push(list.id)
-                }
-            }
-            if(this.isEmpty(carids)){
-                this.infoMsg("请选择要删除的购物车")
+            if(this.isEmpty(this.buyIds)){
+                this.infoMsg("请选择要删除的商品")
                 return
             }
             deleteCar({
-                carids: carids
+                carids: this.buyIds
             }).then( res => {
                 this.successMsg("删除购物车成功")
                 this.$refs.buyPage.reset()
+                this.getCarNum()
             })
         },
         //点击选中的类型
@@ -183,12 +202,6 @@ export default {
             this.carType = type
             this.$refs.buyPage.reset()
             this.getCarNum()
-        },
-        //获取购物车数量
-        getCarNum(){
-            productCarNum().then( res => {
-                this.buyNumList = res
-            })
         },
         //处理日期人数房间显示
         dataInit(list){

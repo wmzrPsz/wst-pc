@@ -28,19 +28,19 @@ const carTranRouter = {
             path:"carTranSure",
             component: ()=> import('@/views/carTran/carTranSure'),
             name: "carTranSure",
-            meta: { title: "接送机订单确定", requireAuth: false}
+            meta: { title: "接送机订单确定", requireAuth: true}
           },
           {
             path:"carTranPay",
             component: ()=> import('@/views/carTran/carTranPay'),
             name: "carTranPay",
-            meta: { title: "接送机订单支付", requireAuth: false}
+            meta: { title: "接送机订单支付", requireAuth: true}
           },
           {
             path:"carTranSuccess",
             component: ()=> import('@/views/carTran/carTranSuccess'),
             name: "carTranSuccess",
-            meta: { title: "接送机订单支付成功", requireAuth: false}
+            meta: { title: "接送机订单支付成功", requireAuth: true}
           },
     ]
 }

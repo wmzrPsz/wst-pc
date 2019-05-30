@@ -28,19 +28,19 @@ const homeRouter = {
             path:"routeSure",
             component: ()=> import('@/views/route/routeSure'),
             name: "routeSure",
-            meta: { title: "当地参团订单确定", requireAuth: false}
+            meta: { title: "当地参团订单确定", requireAuth: true}
           },
           {
             path:"routePay",
             component: ()=> import('@/views/route/routePay'),
             name: "routePay",
-            meta: { title: "当地参团订单支付", requireAuth: false}
+            meta: { title: "当地参团订单支付", requireAuth: true}
           },
           {
             path:"routeSuccess",
             component: ()=> import('@/views/route/routeSuccess'),
             name: "routeSuccess",
-            meta: { title: "当地参团订单支付成功", requireAuth: false}
+            meta: { title: "当地参团订单支付成功", requireAuth: true}
           },
     ]
 }

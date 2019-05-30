@@ -3,7 +3,7 @@
  * @Author: 彭善智
  * @LastEditors: 彭善智
  * @Date: 2019-03-12 22:51:19
- * @LastEditTime: 2019-05-27 19:07:44
+ * @LastEditTime: 2019-05-28 14:25:31
  */
 
 import {nowDate, isEmpty} from 'utils/common'
@@ -75,7 +75,7 @@ export const dayDateByHour = minute => {
     return `${minute/60 >> 0}小时${minute%60 > 0 ? minute%60 +"分钟":""}`;
 }
 
-//分钟转小时分钟 date = yyyy-MM-dd
+//x天后的日期
 export const endDayVC = (date, num = 0) => {
     return nowDate(num, new Date(date));
 }
@@ -164,6 +164,7 @@ export const buyTypeVc = (obj) => {
         case 3:  str = "当地玩家";  break;
         case 4:  str = "游轮";  break;
         case 5:  str = "景点门票";  break;
+        case 6:  str = "导游路线";  break;
         default: str = "全部商品"; break
 
     }

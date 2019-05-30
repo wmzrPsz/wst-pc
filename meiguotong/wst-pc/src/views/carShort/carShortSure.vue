@@ -13,7 +13,7 @@
                 <div class="content-order-details">
                     <div class="content-order-details-left">
 
-                        <orderAddress :cityName="startCityName" :startDate="startDate" :playNum="playNum" ></orderAddress>
+                        <orderHead :cityName="startCityName" :startDate="startDate" :playNum="playNum" ></orderHead>
 
                         <div>
                             <h4>短程接送</h4>
@@ -98,7 +98,7 @@ import ezHeader from "components/home/ezHeader"
 import ezContainer from "components/home/ezContainer"
 import ezWebsite from "components/home/ezWebsite"
 import orderMember from "components/order/orderMember"
-import orderAddress from "components/order/orderAddress"
+import orderHead from "components/order/orderHead"
 import orderIcon from "components/order/orderIcon"
 import { saveShortCarOrder } from "getData"
 import { mapState, mapMutations, mapGetters } from "vuex";
@@ -128,7 +128,7 @@ export default {
         ezContainer,
         ezWebsite,
         orderMember,
-        orderAddress,
+        orderHead,
         orderIcon,
     },
     methods: {

@@ -33,19 +33,19 @@ const soptRouter = {
             path:"soptSure",
             component: ()=> import('@/views/sopt/soptSure'),
             name: "soptSure",
-            meta: { title: "景点订单确定", requireAuth: false}
+            meta: { title: "景点订单确定", requireAuth: true}
           },
           {
             path:"soptPay",
             component: ()=> import('@/views/sopt/soptPay'),
             name: "soptPay",
-            meta: { title: "景点订单支付", requireAuth: false}
+            meta: { title: "景点订单支付", requireAuth: true}
           },
           {
             path:"soptSuccess",
             component: ()=> import('@/views/sopt/soptSuccess'),
             name: "soptSuccess",
-            meta: { title: "景点订单支付成功", requireAuth: false}
+            meta: { title: "景点订单支付成功", requireAuth: true}
           },
     ]
 }

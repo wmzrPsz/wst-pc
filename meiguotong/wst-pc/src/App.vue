@@ -1,52 +1,36 @@
 <template>
   <div id="app" v-cloak>
-    <transition
-      :enter-active-class="enterTransition"
-      :leave-active-class="leaveTransition">
+    <!-- <transition :name = "transitionName"> -->
       <navigation>
         <router-view/>
       </navigation>
-    </transition>
+    <!-- </transition> -->
   </div>
 </template>
-
-<style lang="less">
-[v-cloak] {
-  display: none;
-}
-// #app {
-//   font-family: "Avenir", Helvetica, Arial, sans-serif;
-//   font-family: "Avenir", Helvetica, Arial, sans-serif;
-//   -webkit-font-smoothing: antialiased;
-//   -moz-osx-font-smoothing: grayscale;
-//   text-align: center;
-//   color: #2c3e50;
-// }
-//navigation  前进刷新  后退缓存恢复
-</style>
 <script>
-import { mapState, mapMutations } from "vuex";
-import { getLanguage, getProtocol, getCurrency, myInfor, getHotCity, getComNavigation} from 'getData';
+import {  mapActions } from "vuex";
 export default {
   name: "App",
   data () {
     return {
-      enterTransition: 'animated fadeIn',
-      leaveTransition: 'animated fadeOut',
+      transitionName: '',
     }
   },
   created() {
+//navigation  前进刷新  后退缓存恢复
+// forward：前进
+// back：后退
+// replace：替换
+// refresh：刷新
+// reset：重置
     this.$navigation.on('forward', (to, from) => {
-      this.enterTransition = 'animated fadeInRight';
-      this.leaveTransition = 'animated fadeOutLeft';
+        this.transitionName = 'slide-left';
     })
     this.$navigation.on('back', (to, from) => {
-      this.enterTransition = 'animated fadeInLeft';
-      this.leaveTransition = 'animated fadeOutRight';
+       this.transitionName = 'slide-right';
     })
     this.$navigation.on('replace', (to, from) => {
-      this.enterTransition = 'animated fadeIn';
-      this.leaveTransition = 'animated fadeOut';
+       this.transitionName = 'slide-left';
     })
     // sessionStorage.removeItem("store")
     //在页面加载时读取sessionStorage里的状态信息
@@ -59,63 +43,42 @@ export default {
     window.addEventListener("beforeunload",()=>{
         sessionStorage.setItem("store",JSON.stringify(this.$store.state))
     })
-    this.getProtocol();
-    this.loginFlagInit();
-    this.getLanguage();
-    this.getCurrency();
-    this.getMember();
-    this.getHotCity();
-    this.getComNavigation();
+    this.craeteInit()
+    // this.getCarNum()
   },
-  computed: {
-      ...mapState([ "loginType" ]),
-  },
-  // beforeRouteLeave(to, from, next) {
-  //     // 设置下一个路由的 meta
-  //   to.meta.keepAlive = true;  // B 跳转到 A 时，让 A 缓存，即不刷新
-  //   next();
-  // },
   methods: {
-    ...mapMutations(["loginFlagChange", "languageListChange", "currencyListChange", "setComProtocol", "setMember", "sethotCityList", "setComNavigationList"]),
-    //弹窗类型初始化
-    loginFlagInit() {
-      this.loginFlagChange(0)
-    },
-    //获取网站基本参数
-    async getProtocol() {
-      this.setComProtocol(await getProtocol());
-    },
-    //获取语言
-    async getLanguage() {
-       this.languageListChange(await getLanguage({}))
-    },
-    //获取货币
-    async getCurrency() {
-      this.currencyListChange(await getCurrency())
-    },
-    //获取热门城市
-    async getHotCity(){
-      let data = await getHotCity();
-      for (const list of data) {
-        Vue.set(list, "flag", false);
-      }
-      this.sethotCityList(data)
-    },
-    //获取导航栏
-    async getComNavigation(){
-      let data = await getComNavigation();
-      for (const list of data) {
-        Vue.set(list, "flag", false);
-      }
-      this.setComNavigationList(data)
-    },
-    //获取会员信息
-    async getMember() {
-        if (this.loginType == 2) {
-            this.setMember(await myInfor());
-        }
-    },
+    ...mapActions(["craeteInit"])
   }
 };
 </script>
+<style lang="less">
+[v-cloak] {
+  display: none;
+}
+.slide-right-enter-active,
+.slide-right-leave-active,
+.slide-left-enter-active,
+.slide-left-leave-active {
+  will-change: transform;
+  transition: all 500ms;
+  position: absolute;
+}
+.slide-right-enter {
+  opacity: 0;
+  transform: translate3d(-100%, 0, 0);
+}
+.slide-right-leave-active {
+  opacity: 0;
+  transform: translate3d(100%, 0, 0);
+}
+.slide-left-enter {
+  opacity: 0;
+  transform: translate3d(100%, 0, 0);
+}
+.slide-left-leave-active {
+  opacity: 0;
+  transform: translate3d(-100%, 0, 0);
+}
+</style>
+
 

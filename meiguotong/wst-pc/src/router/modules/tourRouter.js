@@ -3,7 +3,7 @@
  * @Author: 彭善智
  * @LastEditors: 彭善智
  * @Date: 2019-05-07 11:15:53
- * @LastEditTime: 2019-05-08 21:07:30
+ * @LastEditTime: 2019-05-30 12:44:25
  */
 
 const tourRouter = {
@@ -34,19 +34,19 @@ const tourRouter = {
             path:"tourSure",
             component: ()=> import('@/views/tour/tourSure'),
             name: "tourSure",
-            meta: { title: "定制订单确定", requireAuth: false}
+            meta: { title: "定制订单确定", requireAuth: true}
           },
           {
             path:"tourPay",
             component: ()=> import('@/views/tour/tourPay'),
             name: "tourPay",
-            meta: { title: "定制订单支付", requireAuth: false}
+            meta: { title: "定制订单支付", requireAuth: true}
           },
           {
             path:"tourSuccess",
             component: ()=> import('@/views/tour/tourSuccess'),
             name: "tourSuccess",
-            meta: { title: "定制订单支付成功", requireAuth: false}
+            meta: { title: "定制订单支付成功", requireAuth: true}
           },
     ]
 }

@@ -27,7 +27,7 @@
     </div>
 </template>
 <script>
-import { mapState, mapMutations } from "vuex"
+import { mapState, mapMutations, mapActions } from "vuex"
 import { login } from "getData"
 import md5 from 'js-md5';
 export default {
@@ -45,9 +45,10 @@ export default {
         // alert(0)
     },
     methods: {
-        ...mapMutations([ 'loginFlagChange', 'addLogin']),
+        ...mapMutations([ 'loginFlagChange']),
+        ...mapActions(['addLogin']),
        //登录
-        async login() {
+        login() {
             if (this.isEmpty (this.phone)) {
                 console.log(1)
                 this.infoMsg("请输入账号");
@@ -57,14 +58,14 @@ export default {
                  this.infoMsg("请输入密码");
                 return;
             }
-            let data = await login({phone: this.phone, passWord: md5(this.passWord)});
-            console.log(data)
-            if (data) {
-                this.addLogin(data);
-                this.loginFlagChange(0);
+            login({
+                phone: this.phone, 
+                passWord: md5(this.passWord)
+            }).then( res => {
+                res["route"] = this.$route
+                this.addLogin(res);
                 this.successMsg("登录成功");
-            }
-
+            })
         },
     }
 }
